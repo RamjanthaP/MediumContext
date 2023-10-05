@@ -1,13 +1,11 @@
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react/rsc";
 
-const Grid = ({ blok }:any) => {
-  return (
-    <div  {...storyblokEditable(blok)}>
-      {blok.columns.map((nestedBlok: any) => (
-        <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
-      ))}
-    </div>
-  );
-};
+const Page = ({ blok }:any) => (
+  <main {...storyblokEditable(blok)}>
+    {blok.body.map((nestedBlok:any) => (
+      <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
+    ))}
+  </main>
+);
 
-export default Grid;
+export default Page;
