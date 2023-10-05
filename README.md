@@ -1,3 +1,16 @@
+# Amaceit.se
+
+## Stack
+- Next 
+- Storyblok
+
+## Get types for storyblock
+
+1. Install Storyblok CLI (unless you already have it) `npm i -g storyblok`
+2. Login `storyblok login` (Use your credentials)
+3. Get all types from our storyblok `yarn fetch-sb-types`
+4. Create types for our code `yarn generate-sb-types`
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -13,6 +26,8 @@ pnpm dev
 # or
 bun dev
 ```
+
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 

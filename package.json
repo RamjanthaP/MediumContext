@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "fetch-sb-types": "storyblok pull-components --space 255438",
+    "generate-sb-types": "storyblok-generate-ts source=./components.255438.json target=./component-types-sb"
   },
   "dependencies": {
     "@storyblok/react": "^2.4.7",
@@ -22,6 +24,7 @@
     "eslint": "^8",
     "eslint-config-next": "13.5.4",
     "postcss": "^8",
+    "storyblok-generate-ts": "^1.15.1",
     "tailwindcss": "^3",
     "typescript": "^5"
   }
