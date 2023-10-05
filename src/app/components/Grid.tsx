@@ -1,6 +1,7 @@
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react/rsc";
+import { GridStoryblok } from "../../../component-types-sb";
 
-const Grid = ({ blok }:any) => {
+const Grid = ({ blok }:GridStoryblok) => {
   return (
     <div  { ...storyblokEditable(blok) } >
     {
