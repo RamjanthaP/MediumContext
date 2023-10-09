@@ -1,16 +1,15 @@
-import { ISbResult } from "@storyblok/react/rsc";
 import StoryblokStory from "@storyblok/react/story";
-import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
-import { useStoryblokPage } from "./useStoryBlokPage";
+import { getStoryblokPage } from "../../services/getStoryBlokPage";
+import Config from "../components/Menu/Config";
 
 export default async function Page({ params }: { params: { path: string } }) {
   const path = params.path;
-  const { data } = await useStoryblokPage(path);
+  const { props } = await getStoryblokPage(path);
   return (
     <div>
-      <Navigation />
-      <StoryblokStory story={data.story} />
+      <Config blok={props.config} />
+      <StoryblokStory story={props.story} />
       <Footer />
     </div>
   );

@@ -1,23 +1,14 @@
-import { getStoryblokApi } from "@storyblok/react/rsc";
 import StoryblokStory from "@storyblok/react/story";
-import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import { getStoryblokPage } from "@/services/getStoryBlokPage";
+import Config from "./components/Menu/Config";
 
 export default async function Home() {
-  const { data } = await fetchData();
+  const { props } = await getStoryblokPage();
 
   return (
     <div>
-      <Navigation />
-      <StoryblokStory story={data.story} />
-      <Footer />
+      <StoryblokStory story={props.story} />
     </div>
   );
-}
-
-export async function fetchData() {
-  let sbParams = { version: "draft" as const };
-  const storyblokApi = getStoryblokApi();
-  const data = storyblokApi.get(`cdn/stories/home`, sbParams);
-  return data;
 }
