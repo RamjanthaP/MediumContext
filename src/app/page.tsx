@@ -17,7 +17,7 @@ export default async function Home() {
 
 export async function fetchData() {
   let sbParams = { version: "draft" as const };
-
   const storyblokApi = getStoryblokApi();
-  return storyblokApi.get(`cdn/stories/home`, sbParams);
+  const data = storyblokApi.get(`cdn/stories/home`, sbParams);
+  return data;
 }
