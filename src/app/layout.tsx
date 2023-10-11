@@ -27,12 +27,13 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const props = await getStoryblokConfig();
+  const config = await getStoryblokConfig();
+
   return (
     <html lang="en">
       <StoryblokProvider>
         <body className={inter.className}>
-          <Config blok={props.props.config} />
+          <Config blok={config} />
           {children}
           <Footer />
         </body>
