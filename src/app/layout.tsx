@@ -6,7 +6,6 @@ const inter = Inter({ subsets: ["latin"] });
 import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
 import StoryblokProvider from "./components/StoryblokProvider";
 import Config from "./components/Menu/Config";
-import Footer from "./components/Footer";
 import { getStoryblokConfig } from "@/services/getStoryBlokPage";
 import { ThemeSwitcher } from "./components/DevUtils/ThemeSwitcher";
 
