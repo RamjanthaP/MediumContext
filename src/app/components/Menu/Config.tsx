@@ -6,6 +6,7 @@ import {
   ConfigStoryblok,
   MenuLinkStoryblok,
 } from "../../../../component-types-sb";
+import Image from "next/image";
 
 const Config = ({ blok }: ConfigStoryblok) => {
   return (
@@ -17,7 +18,7 @@ const Config = ({ blok }: ConfigStoryblok) => {
         <div className="flex justify-between items-center  py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <Link href="/">
-              <img
+              <Image
                 className="h-20 w-auto sm:h-10"
                 src="https://a.storyblok.com/f/88751/251x53/0d3909fe96/storyblok-primary.png"
                 alt=""
