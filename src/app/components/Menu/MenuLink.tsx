@@ -13,6 +13,7 @@ const MenuLink = ({ blok }: { blok: MenuLinkStoryblok }) => {
         blok.subItems?.map((child: MenuLinkStoryblok) => (
           <>
             <StoryblokComponent
+              key={child._uid}
               blok={{ ...child, title: child.title + " (child)" }}
             />
           </>
