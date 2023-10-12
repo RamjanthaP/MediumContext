@@ -2,11 +2,13 @@ import type { Config } from 'tailwindcss'
 
 import plugin from 'tailwindcss/plugin'
 const config: Config = {
+  darkMode: 'class', // Trigger darkmode by class, until we got things in place
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  safelist: [{pattern: /^[wh]-(24|32|44)$/}],
   theme: {
     colors: {
       black: '#1C1C1C',
