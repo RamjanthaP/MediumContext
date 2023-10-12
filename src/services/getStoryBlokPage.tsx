@@ -1,4 +1,5 @@
 import { ISbStoriesParams, getStoryblokApi } from "@storyblok/react/rsc";
+import { ConfigStoryblok } from "../../component-types-sb";
 
 export async function getStoryblokPage(path = "home") {
   let sbParams = { version: "draft" as const };
@@ -13,12 +14,12 @@ export async function getStoryblokPage(path = "home") {
   };
 }
 
-export async function getStoryblokConfig() {
+export async function getStoryblokConfig(): Promise<ConfigStoryblok> {
   let sbParams: ISbStoriesParams = { version: "draft" };
   const storyblokApi = getStoryblokApi();
   const configReq = await storyblokApi.get(
     "cdn/stories/settings/config",
     sbParams
   );
-  return configReq ? configReq.data.story : false;
+  return configReq.data.story;
 }
