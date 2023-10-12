@@ -2,8 +2,12 @@
 
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 import Link from "next/link";
+import {
+  ConfigStoryblok,
+  MenuLinkStoryblok,
+} from "../../../../component-types-sb";
 
-const Config = ({ blok }: any) => {
+const Config = ({ blok }: ConfigStoryblok) => {
   return (
     <div
       className="relative bg-white border-b-2 border-gray-100"
@@ -20,7 +24,7 @@ const Config = ({ blok }: any) => {
               />
             </Link>
           </div>
-          {blok?.content.header_menu?.map((nestedBlok: any) => (
+          {blok?.content.header_menu?.map((nestedBlok: MenuLinkStoryblok) => (
             <StoryblokComponent
               className=""
               blok={nestedBlok}
