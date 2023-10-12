@@ -8,8 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "fetch-sb-types": "storyblok pull-components --space 255438",
-    "generate-sb-types": "storyblok-generate-ts source=./components.255438.json target=./component-types-sb"
+    "sb-types:fetch": "storyblok pull-components --space 255438",
+    "sb-types:generate": "storyblok-generate-ts source=./components.255438.json target=./component-types-sb"
   },
   "dependencies": {
     "@storyblok/react": "^2.4.7",
