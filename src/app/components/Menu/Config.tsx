@@ -9,7 +9,6 @@ import {
 import Image from "next/image";
 
 const Config = ({ blok }: { blok: ConfigStoryblok }) => {
-const Config = ({ blok }: { blok: ConfigStoryblok }) => {
   return (
     <div
       className="relative bg-white border-b-2 border-gray-100"
