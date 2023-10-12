@@ -12,6 +12,10 @@
     "sb-types:generate": "storyblok-generate-ts source=./components.255438.json target=./component-types-sb"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.13",
+    "@mui/material": "^5.14.13",
     "@storyblok/react": "^2.4.7",
     "next": "13.5.4",
     "react": "^18",
