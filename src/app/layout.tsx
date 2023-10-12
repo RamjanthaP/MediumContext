@@ -10,7 +10,7 @@ import Footer from "./components/Footer";
 import { getStoryblokConfig } from "@/services/getStoryBlokPage";
 
 storyblokInit({
-  accessToken: "isvrOVvrEDwbKVLqsr0E7wtt",
+  accessToken: process.env.STORYBLOK_API_TOKEN,
   use: [apiPlugin],
   apiOptions: {
     region: "eu",
@@ -28,7 +28,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const config = await getStoryblokConfig();
-
   return (
     <html lang="en">
       <StoryblokProvider>
