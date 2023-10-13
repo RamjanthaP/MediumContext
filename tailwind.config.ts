@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import  {gray } from 'tailwindcss/colors'
 
 import plugin from 'tailwindcss/plugin'
 const config: Config = {
@@ -12,6 +13,7 @@ const config: Config = {
   theme: {
     colors: {
       black: '#1C1C1C',
+      white: '#FFFFFF',
       primary: {
         50: '#E5F9E8',
         100: '#C1E8C7',
@@ -36,6 +38,7 @@ const config: Config = {
         800: '#2C2C2C',
         900: '#121212',
       },
+      gray,
       transparent: 'transparent',
     },
     fontFamily: {
