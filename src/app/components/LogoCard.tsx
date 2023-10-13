@@ -22,13 +22,14 @@ const LogoCard = (props: LogoCardProps) => {
 
   return (
     <div className="bg-white transition-colors dark:bg-gray-800 h-52 w-52 flex items-center justify-center shadow justify-self-center">
+      <div className="sr-only">{props.svgAlt}</div>
       <div
         className={`h-${size} w-${size} relative bg-gray-600 dark:bg-gray-400`}
         style={{
           mask: `url(${props.svgUrl}) no-repeat center`,
           WebkitMask: `url(${props.svgUrl}) no-repeat center`,
         }}
-      />
+      ></div>
     </div>
   );
 };
