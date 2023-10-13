@@ -8,7 +8,7 @@ import {
 } from "../../../../component-types-sb";
 import Image from "next/image";
 
-const Config = ({ blok }: ConfigStoryblok) => {
+const Config = ({ blok }: { blok: ConfigStoryblok }) => {
   return (
     <div
       className="relative bg-white border-b-2 border-gray-100"
@@ -25,6 +25,8 @@ const Config = ({ blok }: ConfigStoryblok) => {
 
                 src="https://a.storyblok.com/f/88751/251x53/0d3909fe96/storyblok-primary.png"
                 alt=""
+                width="251"
+                height="53"
               />
             </Link>
           </div>

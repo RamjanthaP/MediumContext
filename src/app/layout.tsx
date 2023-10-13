@@ -34,7 +34,6 @@ export default async function RootLayout({
         <body className={inter.className}>
           <Config blok={config} />
           {children}
-          <Footer />
         </body>
       </StoryblokProvider>
     </html>
