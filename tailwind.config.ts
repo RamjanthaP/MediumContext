@@ -9,7 +9,10 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  safelist: [{pattern: /^[wh]-(24|32|44)$/}],
+  safelist: [
+    {pattern: /^[wh]-(24|32|44)$/},
+    {pattern: /^bg-(white|black|gray|primary|secondary)(-[1-9]0+)?$/}
+  ],
   theme: {
     colors: {
       black: '#1C1C1C',
