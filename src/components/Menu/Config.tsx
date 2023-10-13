@@ -5,7 +5,7 @@ import Link from "next/link";
 import {
   ConfigStoryblok,
   MenuLinkStoryblok,
-} from "../../../../component-types-sb";
+} from "../../../component-types-sb";
 import Image from "next/image";
 
 const Config = ({ blok }: { blok: ConfigStoryblok }) => {

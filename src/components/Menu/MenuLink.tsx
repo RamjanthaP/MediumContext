@@ -1,6 +1,6 @@
 import { StoryblokComponent, storyblokEditable } from "@storyblok/react";
 import Link from "next/link";
-import { MenuLinkStoryblok } from "../../../../component-types-sb";
+import { MenuLinkStoryblok } from "../../../component-types-sb";
 const MenuLink = ({ blok }: { blok: MenuLinkStoryblok }) => {
   return (
     <>
@@ -11,12 +11,10 @@ const MenuLink = ({ blok }: { blok: MenuLinkStoryblok }) => {
       </Link>
       {typeof blok?.subItems !== "string" &&
         blok.subItems?.map((child: MenuLinkStoryblok) => (
-          <>
-            <StoryblokComponent
-              key={child._uid}
-              blok={{ ...child, title: child.title + " (child)" }}
-            />
-          </>
+          <StoryblokComponent
+            key={child._uid}
+            blok={{ ...child, title: child.title + " (child)" }}
+          />
         ))}
     </>
   );
