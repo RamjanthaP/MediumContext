@@ -4,10 +4,10 @@ import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
-import StoryblokProvider from "../components/StoryblokProvider";
-import Config from "../components/Menu/Config";
-import Footer from "../components/Footer";
+import StoryblokProvider from "./components/StoryblokProvider";
+import Config from "./components/Menu/Config";
 import { getStoryblokConfig } from "@/services/getStoryBlokPage";
+import { ThemeSwitcher } from "./components/DevUtils/ThemeSwitcher";
 
 storyblokInit({
   accessToken: process.env.STORYBLOK_API_TOKEN,
@@ -34,6 +34,7 @@ export default async function RootLayout({
         <body className={inter.className}>
           <Config blok={config} />
           {children}
+          {process.env.NODE_ENV === "development" && <ThemeSwitcher />}
         </body>
       </StoryblokProvider>
     </html>

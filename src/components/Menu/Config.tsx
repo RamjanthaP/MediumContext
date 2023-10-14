@@ -22,8 +22,8 @@ const Config = ({ blok }: { blok: ConfigStoryblok }) => {
                 className="h-20 w-auto sm:h-10"
                 src="https://a.storyblok.com/f/88751/251x53/0d3909fe96/storyblok-primary.png"
                 alt=""
-                width="251"
-                height="53"
+                width={251}
+                height={53}
               />
             </Link>
           </div>
