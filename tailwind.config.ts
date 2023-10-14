@@ -1,15 +1,22 @@
 import type { Config } from 'tailwindcss'
+import  {gray } from 'tailwindcss/colors'
 
 import plugin from 'tailwindcss/plugin'
 const config: Config = {
+  darkMode: 'class', // Trigger darkmode by class, until we got things in place
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  safelist: [
+    {pattern: /^[wh]-(24|32|44)$/},
+    {pattern: /^bg-(white|black|gray|primary|secondary)(-[1-9]0+)?$/}
+  ],
   theme: {
     colors: {
       black: '#1C1C1C',
+      white: '#FFFFFF',
       primary: {
         50: '#E5F9E8',
         100: '#C1E8C7',
@@ -34,6 +41,7 @@ const config: Config = {
         800: '#2C2C2C',
         900: '#121212',
       },
+      gray,
       transparent: 'transparent',
     },
     fontFamily: {
