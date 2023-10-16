@@ -11,7 +11,7 @@ const config: Config = {
   ],
   safelist: [
     {pattern: /^[wh]-(24|32|44)$/},
-    {pattern: /^bg-(white|black|gray|primary|secondary)(-[1-9]0+)?$/}
+    {pattern: /^(dark:)?bg-(white|black|gray|primary|secondary)(-[1-9]0+)?$/}
   ],
   theme: {
     colors: {
@@ -52,11 +52,14 @@ const config: Config = {
       sm: ['0.875rem', { lineHeight: '1.6' }],
       base: ['1rem', { lineHeight: '1.6' }],
       lg: ['1.125rem', { lineHeight: '1.6' }],
-      xlg: ['1.5rem', { lineHeight: '1.6' }]
+      xl: ['1.5rem', { lineHeight: '1.6' }],
+      "2xl": ['2rem', { lineHeight: '1.6' }],
+      "3xl": ['2.5rem', { lineHeight: '1.6' }],
     },
     fontWeight: {
       normal: '400',
-      bold: '600'
+      bold: '600',
+      bolder: '900',
     },
     extend: {
       ringWidth: {
