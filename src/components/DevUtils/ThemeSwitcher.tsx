@@ -24,7 +24,7 @@ export const ThemeSwitcher = () => {
 
   return (
     <button
-      className="p-4 bg-gray-100 text-black dark:bg-gray-800 dark:text-white absolute bottom-0 right-0"
+      className="p-4 bg-gray-100 text-black dark:bg-gray-800 dark:text-white fixed bottom-0 right-0"
       onClick={toggleMode}
     >
       Switch to {mode === "dark" ? "☀️ Light" : "🌙 Dark"} mode
