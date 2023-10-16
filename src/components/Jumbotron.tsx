@@ -1,34 +1,43 @@
 import Image from "next/image";
-
-type BackgroundColor = "primary" | "secondary" | "gray";
+import { ReactNode, useMemo } from "react";
 
 interface JumbotronProps {
-  variant: "background" | "blank" | "image-right" | "image-left";
-  backgroundColor: BackgroundColor;
+  variant?: "content-right" | "content-left";
+  children?: ReactNode;
+  title: string;
+  className?: string;
+  imageUrl?: string;
 }
 
-export function Jumbotron(props: JumbotronProps) {
-  const color = props.backgroundColor || "gray";
+export function Jumbotron({
+  children,
+  variant = "content-left",
+
+  title,
+  imageUrl,
+}: JumbotronProps) {
+  const layoutClass =
+    variant === "content-right" ? "md:flex-row-reverse" : "md:flex-row";
   return (
-    <div
-      className={`wrapper flex flex-col sm:flex-row bg-${color}-200 dark:bg-${color}-800`}
-    >
-      <div className={`content w-full flex items-center`}>
-        <div className="px-4 md:px-12 lg:px-24 pb-24">
-          <h1 className="text-3xl font-bolder">Jumbotron</h1>
-          <div className="content">
-            <p>Something something</p>
-            <p>Something something</p>
+    <div className="bg-white dark:bg-black">
+      <div className={`container wrapper flex flex-col ${layoutClass} mx-auto`}>
+        <div className={`content w-full flex items-center`}>
+          <div className="px-8  py-8 md:py-0">
+            {title && (
+              <>
+                <h1 className="md:text-xl lg:text-2xl xl:text-3xl font-bolder color-black dark:text-white">
+                  {title}
+                </h1>
+                {children && <div className="mt-4">{children}</div>}
+              </>
+            )}
           </div>
         </div>
-      </div>
-      <div className="flex  justify-center w-full py-8">
-        <Image
-          src="https://unsplash.it/500/500"
-          alt="Image alt PLACEHOLDER"
-          width="500"
-          height="500"
-        />
+        <div className="flex justify-center w-full md:py-8 h-72 md:h-screen  relative">
+          {imageUrl && (
+            <Image src={imageUrl} fill alt="Nej" className="object-contain" />
+          )}
+        </div>
       </div>
     </div>
   );
