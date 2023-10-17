@@ -56,7 +56,7 @@ const config: Config = {
       lg: ['1.125rem', { lineHeight: '1.6' }],
       xlg: ['1.5rem', { lineHeight: '1.6' }],
       xxl: '4.6vw',
-      btn: '0.75vw'     
+      btn: '0.75vw'
     },
     fontWeight: {
       normal: '400',
