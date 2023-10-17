@@ -28,7 +28,7 @@ const Button: React.FC<ButtonProps> = ({
   children,
   ...props
 }) => {
-  const baseClasses = "p-4 rounded-full border-2   uppercase";
+  const baseClasses = "p-4 rounded-full border-2 uppercase";
   const colorClass = colorVariants[variant][transparent ? 'transparent' : 'default'];
 
   return (

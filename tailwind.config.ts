@@ -55,7 +55,7 @@ const config: Config = {
       base: ['1rem', { lineHeight: '1.6' }],
       lg: ['1.125rem', { lineHeight: '1.6' }],
       xlg: ['1.5rem', { lineHeight: '1.6' }],
-      xxl: '4.6vw',          // Adjust as needed
+      xxl: '4.6vw',
       btn: '0.75vw'     
     },
     fontWeight: {
