@@ -8,6 +8,7 @@ import StoryblokProvider from "@/components/StoryblokProvider";
 import Config from "@/components/Menu/Config";
 import { getStoryblokConfig } from "@/services/getStoryBlokPage";
 import { ThemeSwitcher } from "@/components/DevUtils/ThemeSwitcher";
+import Footer from "@/components/Footer/Footer";
 
 storyblokInit({
   accessToken: process.env.STORYBLOK_API_TOKEN,
@@ -35,6 +36,7 @@ export default async function RootLayout({
           <Config blok={config} />
           {children}
           {process.env.NODE_ENV === "development" && <ThemeSwitcher />}
+          <Footer />
         </body>
       </StoryblokProvider>
     </html>
