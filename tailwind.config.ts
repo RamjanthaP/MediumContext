@@ -54,7 +54,7 @@ const config: Config = {
       sm: ['0.875rem', { lineHeight: '1.6' }],
       base: ['1rem', { lineHeight: '1.6' }],
       lg: ['1.125rem', { lineHeight: '1.6' }],
-      xlg: ['1.5rem', { lineHeight: '1.6' }],
+      xl: ['1.5rem', { lineHeight: '1.6' }],
       xxl: '4.6vw',
       btn: '0.75vw'
     },
