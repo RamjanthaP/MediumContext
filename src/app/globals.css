@@ -25,3 +25,38 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+/* Base button styles */
+.btn {
+  @apply text-btn leading-btn tracking-btn text-left;
+}
+
+/* Solid green button */
+.btn-green {
+  @apply bg-btn-green text-white border-btn-green;
+}
+
+/* Transparent green button */
+.btn-green-transparent {
+  @apply text-btn-green bg-transparent border-btn-green;
+}
+
+/* Solid white button */
+.btn-white {
+  @apply bg-btn-white text-btn-black border-btn-white;
+}
+
+/* Transparent white button */
+.btn-white-transparent {
+  @apply text-btn-white bg-transparent border-btn-white;
+}
+
+/* Solid black button */
+.btn-black {
+  @apply bg-btn-black text-white border-btn-black;
+}
+
+/* Transparent black button */
+.btn-black-transparent {
+  @apply text-btn-black bg-transparent border-btn-black;
+}

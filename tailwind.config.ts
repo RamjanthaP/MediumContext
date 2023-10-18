@@ -41,8 +41,10 @@ const config: Config = {
         800: '#2C2C2C',
         900: '#121212',
       },
-      gray,
       transparent: 'transparent',
+      'btn-green': '#2FAB09',
+      'btn-white': '#FFFFFF',
+      'btn-black': '#1C1C1C',
     },
     fontFamily: {
       heading: ['var(--lotaGrotesqueAlt2-font)'],
@@ -55,11 +57,22 @@ const config: Config = {
       xl: ['1.5rem', { lineHeight: '1.6' }],
       "2xl": ['2rem', { lineHeight: '1.6' }],
       "3xl": ['2.5rem', { lineHeight: '1.6' }],
+      hero: '4.6vw',
+      btn: '0.75vw',
     },
     fontWeight: {
       normal: '400',
       bold: '600',
       bolder: '900',
+    },
+    lineHeight: {
+      btn: '24px'
+    },
+    letterSpacing: {
+      btn: '-0.01em'
+    },
+    textAlign: {
+      btn: 'left'
     },
     extend: {
       ringWidth: {
