@@ -4,21 +4,31 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-rgb: 255, 255, 255;
+
+  --themed-default-foreground: rgb(var(--foreground-rgb));
+  --themed-default-background: rgb(var(--background-rgb));
+
+  --themed-inverted-foreground: rgb(var(--background-rgb));
+  --themed-inverted-background: rgb(var(--foreground-rgb));
+
+  --themed-discrete-foreground: rgb(33, 33, 33);
+  --themed-discrete-background: rgb(244, 244, 244);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-rgb: 0, 0, 0;
+
+    --themed-discrete-foreground: rgb(200, 200, 200);
+    --themed-discrete-background: rgb(24, 24, 24);
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: rgba(var(--background-end-rgb));
+  background: rgba(var(--background-rgb));
   min-height: 100vh;
 }
 
@@ -55,4 +65,19 @@ body {
 /* Transparent black button */
 .btn-black-transparent {
   @apply text-btn-black bg-transparent border-btn-black;
+}
+
+.theme-block-default {
+  color: var(--themed-default-foreground);
+  background: var(--themed-default-background);
+}
+
+.theme-block-inverted {
+  color: var(--themed-inverted-foreground);
+  background: var(--themed-inverted-background);
+}
+
+.theme-block-discrete {
+  color: var(--themed-discrete-foreground);
+  background: var(--themed-discrete-background);
 }

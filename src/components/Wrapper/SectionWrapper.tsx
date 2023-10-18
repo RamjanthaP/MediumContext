@@ -1,24 +1,28 @@
 interface SectionWrapperProps {
-  color?: "gray" | "primary" | "secondary";
+  color?: "default" | "inverted" | "discrete";
   title?: string;
   titleElement?: "h1" | "h2" | "h3" | "span";
   children: React.ReactNode;
 }
 
 const SectionWrapper: React.FC<SectionWrapperProps> = ({
-  color,
+  color = "default",
   title,
   titleElement,
   children,
 }) => {
-  const TitleElement = titleElement || "span";
+  const TitleElement = titleElement || "div";
   return (
-    <div className="my-8 bg-secondary-50">
+    <div className={`theme-block-${color}`}>
       <section
-        className={`bg-${color}-300 flex flex-col py-12 mx-auto max-w-7xl lg:py-16 px-12 lg:px-20`}
+        className={`container mx-auto py-8 lg:py-16 px-12 lg:px-20 xl:px-0`}
       >
-        <TitleElement className="flex font-bold">{title}</TitleElement>
-        <div className="mx-auto">{children}</div>
+        <div>
+          <TitleElement className="font-bold text-xlg mb-4">
+            {title}
+          </TitleElement>
+          <div className="flex">{children}</div>
+        </div>
       </section>
     </div>
   );
