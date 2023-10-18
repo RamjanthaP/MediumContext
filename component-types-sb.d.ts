@@ -29,13 +29,6 @@ export interface CaseStoryblok {
   [k: string]: any;
 }
 
-export interface ConfigStoryblok {
-  header_menu?: MenuLinkStoryblok[];
-  _uid: string;
-  component: "config";
-  [k: string]: any;
-}
-
 export interface FeatureStoryblok {
   name?: string;
   _uid: string;
@@ -47,6 +40,13 @@ export interface GridStoryblok {
   columns?: any[];
   _uid: string;
   component: "grid";
+  [k: string]: any;
+}
+
+export interface MenuStoryblok {
+  header_menu?: MenuLinkStoryblok[];
+  _uid: string;
+  component: "menu";
   [k: string]: any;
 }
 

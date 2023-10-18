@@ -2,13 +2,10 @@
 
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 import Link from "next/link";
-import {
-  ConfigStoryblok,
-  MenuLinkStoryblok,
-} from "../../../component-types-sb";
+import { MenuStoryblok, MenuLinkStoryblok } from "../../../component-types-sb";
 import Image from "next/image";
 
-const Menu = ({ blok }: { blok: ConfigStoryblok }) => {
+const Menu = ({ blok }: { blok: MenuStoryblok }) => {
   return (
     <div
       className="relative bg-white border-b-2 border-gray-100"

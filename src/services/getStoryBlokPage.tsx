@@ -1,5 +1,5 @@
 import { ISbStoriesParams, getStoryblokApi } from "@storyblok/react/rsc";
-import { ConfigStoryblok } from "../../component-types-sb";
+import { MenuStoryblok } from "../../component-types-sb";
 
 export async function getStoryblokPage(path = "home") {
   let sbParams = { version: "draft" as const };
@@ -14,8 +14,7 @@ export async function getStoryblokPage(path = "home") {
   };
 }
 
-// TODO: Update return type when CDN is updated
-export async function getStoryblokMenuData(): Promise<ConfigStoryblok> {
+export async function getStoryblokMenuData(): Promise<MenuStoryblok> {
   let sbParams: ISbStoriesParams = { version: "draft" };
   const storyblokApi = getStoryblokApi();
   const configReq = await storyblokApi.get(
