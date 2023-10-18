@@ -23,8 +23,9 @@ const Hero = ({ headLine, imageUrl, primaryButtonTitle, secondaryButtonTitle }: 
         className="z-0"
       />}
       <div className="flex">
-        <h1 className="text-xxl text-secondary-500 text-2xl mb-4 z-20">{remaining}</h1>
-        <h1 className="text-xxl text-primary-500 text-2xl mb-4 z-20">{lastWord}</h1>
+        <h1 className="text-hero text-secondary-500 text-2xl mb-4 z-20">{remaining}
+          <span className="text-primary-500">{lastWord}</span></h1>
+        
       </div>
       <div className="space-x-4 z-20">
         {primaryButtonTitle && <Button variant="green" transparent>{primaryButtonTitle}</Button>}
