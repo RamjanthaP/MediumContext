@@ -19,6 +19,7 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: rgba(var(--background-end-rgb));
+  min-height: 100vh;
 }
 
 /* Base button styles */
