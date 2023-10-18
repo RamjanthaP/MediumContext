@@ -8,7 +8,7 @@ import {
 } from "../../../component-types-sb";
 import Image from "next/image";
 
-const Config = ({ blok }: { blok: ConfigStoryblok }) => {
+const Menu = ({ blok }: { blok: ConfigStoryblok }) => {
   return (
     <div
       className="relative bg-white border-b-2 border-gray-100"
@@ -39,4 +39,4 @@ const Config = ({ blok }: { blok: ConfigStoryblok }) => {
     </div>
   );
 };
-export default Config;
+export default Menu;
