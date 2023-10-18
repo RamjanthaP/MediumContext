@@ -14,11 +14,12 @@ export async function getStoryblokPage(path = "home") {
   };
 }
 
-export async function getStoryblokConfig(): Promise<ConfigStoryblok> {
+// TODO: Update return type when CDN is updated
+export async function getStoryblokMenuData(): Promise<ConfigStoryblok> {
   let sbParams: ISbStoriesParams = { version: "draft" };
   const storyblokApi = getStoryblokApi();
   const configReq = await storyblokApi.get(
-    "cdn/stories/settings/config",
+    "cdn/stories/settings/menu",
     sbParams
   );
   return configReq.data.story;
