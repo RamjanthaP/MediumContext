@@ -4,8 +4,11 @@ import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 import Link from "next/link";
 import { MenuStoryblok, MenuLinkStoryblok } from "../../../component-types-sb";
 import Image from "next/image";
+import Button from "../Button/Button";
+
 
 const Menu = ({ blok }: { blok: MenuStoryblok }) => {
+  console.log(blok?.content.header_menu)
   return (
     <div
       className="relative bg-white border-b-2 border-gray-100"
@@ -16,21 +19,28 @@ const Menu = ({ blok }: { blok: MenuStoryblok }) => {
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <Link href="/">
               <Image
-                className="h-20 w-auto sm:h-10"
-                src="https://a.storyblok.com/f/88751/251x53/0d3909fe96/storyblok-primary.png"
+                src="/logos/amaceit.png"
                 alt=""
-                width={251}
+                width={150}
                 height={53}
               />
             </Link>
           </div>
-          {blok?.content.header_menu?.map((nestedBlok: MenuLinkStoryblok) => (
-            <StoryblokComponent
-              className=""
-              blok={nestedBlok}
-              key={nestedBlok._uid}
-            />
-          ))}
+          {/* TODO: exchange the title from "tjänster" to "kontakta oss" */}
+          {blok?.content.header_menu?.filter((nestedBlok: MenuLinkStoryblok) => nestedBlok.title !== "Tjänster-s")
+            .map((nestedBlok: MenuLinkStoryblok) => (
+              <div key={nestedBlok._uid}>
+                <StoryblokComponent
+                  className=""
+                  blok={nestedBlok}
+                  key={nestedBlok._uid}
+                />
+              </div>
+            ))}
+          {blok?.content.header_menu.map((nestedBlok: MenuLinkStoryblok) => nestedBlok.title === "Tjänster-s" &&
+            <Button variant="green" key={nestedBlok._uid}>{nestedBlok.title}</Button>
+          )}
+          
         </div>
       </div>
     </div>
