@@ -89,7 +89,7 @@ body {
 
 /* Apply the filter to elements with the .custom-filter class */
 .custom-filter {
-  filter: var(--filter-light); /* Use light mode filter by default */
+  filter: var(--filter-light); /* light mode filter by default */
 }
 
 /* Apply the dark mode filter to specific elements with .custom-filter-dark class */
@@ -100,6 +100,6 @@ body {
 }
 
 .custom-svg {
-  width: 30%;  /* or you can use a fixed size like 150px */
+  width: 30%; 
   height: auto;
 }
