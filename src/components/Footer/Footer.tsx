@@ -1,4 +1,4 @@
-import SectionWrapper from "../Wrapper/SectionWrapper";
+import SectionWrapper from "@/components/Layout/SectionWrapper";
 
 interface OfficeItemProps {
   title: string;
