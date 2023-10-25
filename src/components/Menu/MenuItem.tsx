@@ -3,6 +3,7 @@ import { StoryblokComponent } from "@storyblok/react";
 import Button, { ButtonSizes } from "../Button/Button";
 import { specialItemTitle } from "./AppHeader";
 import { MenuLinkStoryblok } from "@sb-types";
+import Link from "next/link";
 
 export const MenuItem = ({
   item,
@@ -16,9 +17,12 @@ export const MenuItem = ({
   }
   if (item.title === specialItemTitle) {
     return (
-      <Button size={size} variant="green">
-        {item.title}
-      </Button>
+      // TODO Replace with a link to the contact page. No button needed.
+      <Link href={item.link.cached_url}>
+        <Button size={size} variant="green">
+          {item.title}
+        </Button>
+      </Link>
     );
   }
   return <StoryblokComponent blok={item} />;
