@@ -103,3 +103,7 @@ body {
   width: 100%;
   height: auto;
 }
+
+.z-app-header {
+  z-index: 90;
+}
