@@ -14,6 +14,8 @@
 
   --themed-discrete-foreground: rgb(33, 33, 33);
   --themed-discrete-background: rgb(244, 244, 244);
+  /* Filter for svg */
+  --filter-light: invert(0%);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,6 +25,9 @@
 
     --themed-discrete-foreground: rgb(200, 200, 200);
     --themed-discrete-background: rgb(24, 24, 24);
+
+    /* Filter for svg */
+    --filter-dark: invert(100%);
   }
 }
 
@@ -80,4 +85,25 @@ body {
 .theme-block-discrete {
   color: var(--themed-discrete-foreground);
   background: var(--themed-discrete-background);
+}
+
+/* Filter to elements with the .custom-filter class */
+.custom-filter {
+  filter: var(--filter-light); /* light mode filter by default */
+}
+
+/* Dark mode filter to specific elements with .custom-filter-dark class */
+@media (prefers-color-scheme: dark) {
+  .custom-filter {
+    filter: var(--filter-dark);
+  }
+}
+
+.custom-svg {
+  width: 100%;
+  height: auto;
+}
+
+.z-app-header {
+  z-index: 90;
 }
