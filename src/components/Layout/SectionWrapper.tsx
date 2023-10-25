@@ -23,7 +23,7 @@ const SectionWrapper: React.FC<SectionWrapperProps> = ({
           <TitleElement className="text-2xl font-bold mb-4">
             {title}
           </TitleElement>
-          <div className="flex">{children}</div>
+          <div>{children}</div>
         </div>
       </Container>
     </div>
