@@ -9,13 +9,14 @@ const MenuLink = ({ blok }: { blok: MenuLinkStoryblok }) => {
           {blok.title}
         </span>
       </Link>
-      {typeof blok?.subItems !== "string" &&
+      {/* TODO: Enable sub pages if we need them */}
+      {/* {typeof blok?.subItems !== "string" &&
         blok.subItems?.map((child: MenuLinkStoryblok) => (
           <StoryblokComponent
             key={child._uid}
             blok={{ ...child, title: child.title + " (child)" }}
           />
-        ))}
+        ))} */}
     </>
   );
 };
