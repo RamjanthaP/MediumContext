@@ -106,8 +106,8 @@ export type MultilinkStoryblok =
     };
 
 export interface MenuLinkStoryblok {
-  link?: MultilinkStoryblok;
-  title?: string;
+  link: MultilinkStoryblok;
+  title: string;
   subItems?: MenuLinkStoryblok[];
   _uid: string;
   component: "menu_link";
