@@ -8,6 +8,7 @@ import BurgerMenu from "./BurgerMenu";
 import { MenuItem } from "./MenuItem";
 import { MobileMenu } from "./MobileMenu";
 import { DesktopMenu } from "./DesktopMenu";
+import { AnimatePresence, motion } from "framer-motion";
 
 export const specialItemTitle = "Kontakta oss";
 const Menu = ({ blok }: { blok: MenuStoryblok }) => {
@@ -26,7 +27,7 @@ const Menu = ({ blok }: { blok: MenuStoryblok }) => {
   return (
     <div
       {...storyblokEditable(blok)}
-      className="bg-default sticky top-0 bg-white z-app-header"
+      className="bg-default sticky top-0  z-app-header"
     >
       <div className="container mx-auto px-4 sm:px-0">
         <div className="flex justify-between items-center py-6 md:space-x-10">
@@ -38,9 +39,18 @@ const Menu = ({ blok }: { blok: MenuStoryblok }) => {
           </Link>
           <DesktopMenu menuItems={menuItems} specialItem={specialItem} />
           <div className="flex">
-            <div className="md:hidden">
-              {!isOpen && <MenuItem size="small" item={specialItem} />}
-            </div>
+            <AnimatePresence>
+              {!isOpen && (
+                <motion.div
+                  className="md:hidden"
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0, opacity: 0 }}
+                >
+                  <MenuItem size="small" item={specialItem} />
+                </motion.div>
+              )}
+            </AnimatePresence>
             <div className="flex items-center md:hidden">
               <BurgerMenu toggleMenu={toggleMenu} isOpen={isOpen} />
             </div>

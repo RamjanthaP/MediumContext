@@ -1,6 +1,7 @@
 "use client";
 import type { MenuLinkStoryblok } from "@sb-types";
 import { MenuItem } from "./MenuItem";
+import { AnimatePresence, motion } from "framer-motion";
 
 export function MobileMenu(props: {
   menuItems: MenuLinkStoryblok[];
@@ -11,7 +12,15 @@ export function MobileMenu(props: {
       {props.menuItems.map((item) => (
         <MenuItem key={item._uid} item={item} />
       ))}
-      <MenuItem size="small" item={props.specialItem} />
+      <AnimatePresence>
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0, opacity: 0 }}
+        >
+          <MenuItem size="small" item={props.specialItem} />
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }
