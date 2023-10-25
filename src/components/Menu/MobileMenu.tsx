@@ -11,6 +11,7 @@ export function MobileMenu(props: {
       {props.menuItems.map((item) => (
         <MenuItem key={item._uid} item={item} />
       ))}
+      <MenuItem size="small" item={props.specialItem} />
     </div>
   );
 }

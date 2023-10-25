@@ -1,9 +1,9 @@
 import React from "react";
 
-function Amaceit() {
+function Amaceit(props: { className?: string }) {
   return (
     <svg
-      className="custom-svg"
+      className={`${props.className} custom-svg`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 841 158"
     >

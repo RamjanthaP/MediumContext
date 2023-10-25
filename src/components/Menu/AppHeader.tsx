@@ -24,19 +24,22 @@ const Menu = ({ blok }: { blok: MenuStoryblok }) => {
   );
 
   return (
-    <div {...storyblokEditable(blok)} className="relative bg-default">
+    <div
+      {...storyblokEditable(blok)}
+      className="bg-default sticky top-0 bg-white z-app-header"
+    >
       <div className="container mx-auto px-4 sm:px-0">
         <div className="flex justify-between items-center py-6 md:space-x-10">
           <Link
             href="/"
             className="flex justify-start flex-grow-1 w-3/12 lg:w-2/12"
           >
-            <LogoAmaceit />
+            <LogoAmaceit className="-translate-y-2 md:translate-y-0" />
           </Link>
           <DesktopMenu menuItems={menuItems} specialItem={specialItem} />
           <div className="flex">
             <div className="md:hidden">
-              <MenuItem size="small" item={specialItem} />
+              {!isOpen && <MenuItem size="small" item={specialItem} />}
             </div>
             <div className="flex items-center md:hidden">
               <BurgerMenu toggleMenu={toggleMenu} isOpen={isOpen} />
