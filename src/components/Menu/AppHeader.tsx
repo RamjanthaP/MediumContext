@@ -1,57 +1,49 @@
 "use client";
-import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
+import { storyblokEditable } from "@storyblok/react";
 import Link from "next/link";
-import { MenuStoryblok, MenuLinkStoryblok } from "../../../component-types-sb";
-import Button from "../Button/Button";
-import Amaceit from "../Logo/Amaceit";
-import BurgerMenu from "./BurgerMenu";
 import { useState } from "react";
+import { MenuStoryblok, MenuLinkStoryblok } from "@sb-types";
+import LogoAmaceit from "../Logo/Amaceit";
+import BurgerMenu from "./BurgerMenu";
+import { MenuItem } from "./MenuItem";
+import { MobileMenu } from "./MobileMenu";
+import { DesktopMenu } from "./DesktopMenu";
 
-const MenuItem = ({ item }: any) => {
-  {/* TODO: exchange the title from "tjänster" to "kontakta oss" */ }
-  if (item.title === "Tjänster-s") {
-    return <div className="mx-auto my-3">
-      <Button variant="green">{item.title}</Button>
-    </div>
-   
-  }
-  return (
-    <div key={item._uid} className="mx-4 my-3">
-      <StoryblokComponent blok={item} key={item._uid} />
-    </div>
-  );
-};
-
+export const specialItemTitle = "Kontakta oss";
 const Menu = ({ blok }: { blok: MenuStoryblok }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  const menuItems = blok.content?.header_menu?.filter((item: MenuLinkStoryblok) => item.title !== "Tjänster-s") || [];
-  const specialItem = blok.content?.header_menu?.find((item: MenuLinkStoryblok) => item.title === "Tjänster-s");
+  const menuItems =
+    blok.content?.header_menu?.filter(
+      (item: MenuLinkStoryblok) => item.title !== specialItemTitle
+    ) || [];
+
+  const specialItem = blok.content?.header_menu?.find(
+    (item: MenuLinkStoryblok) => item.title === specialItemTitle
+  );
 
   return (
-    <div {...storyblokEditable(blok)} className="relative bg-default border-b-2 border-gray-100">
-      <div className="container mx-auto px-4 sm:px-6">
+    <div {...storyblokEditable(blok)} className="relative bg-default">
+      <div className="container mx-auto px-4 sm:px-0">
         <div className="flex justify-between items-center py-6 md:space-x-10">
-          <Link href="/" className="flex justify-start">    
-              <Amaceit />          
+          <Link
+            href="/"
+            className="flex justify-start flex-grow-1 w-3/12 lg:w-2/12"
+          >
+            <LogoAmaceit />
           </Link>
-          <div className="hidden md:flex items-center ">
-            {menuItems.map((item: { _uid: any; }) => (
-              <MenuItem key={item._uid} item={item} />
-            ))}
-            {specialItem && <MenuItem item={specialItem} />}
-          </div>
-          <div className="flex items-center md:hidden">
-            <BurgerMenu toggleMenu={toggleMenu} isOpen={isOpen} />
+          <DesktopMenu menuItems={menuItems} specialItem={specialItem} />
+          <div className="flex">
+            <div className="md:hidden">
+              <MenuItem size="small" item={specialItem} />
+            </div>
+            <div className="flex items-center md:hidden">
+              <BurgerMenu toggleMenu={toggleMenu} isOpen={isOpen} />
+            </div>
           </div>
           {isOpen && (
-            <div className="fixed flex flex-col my-6 items-center theme-block-default  md:hidden z-50 top-16 right-0 bottom-0 left-0">
-              {menuItems.map((item: { _uid: any; }) => (
-                <MenuItem key={item._uid} item={item} />
-              ))}
-              {specialItem && <MenuItem item={specialItem} />}
-            </div>
+            <MobileMenu menuItems={menuItems} specialItem={specialItem} />
           )}
         </div>
       </div>
