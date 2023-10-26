@@ -1,5 +1,4 @@
 import type { Config } from 'tailwindcss'
-import  {gray } from 'tailwindcss/colors'
 
 import plugin from 'tailwindcss/plugin'
 const config: Config = {
@@ -59,36 +58,17 @@ const config: Config = {
       btn: '-0.01em',
     },
     fontSize: {
-      // Normal font sizes
-      'xs/normal': ['12px', { lineHeight: '1.5', letterSpacing: '-0.012em' }],
-      'sm/normal': ['14px', { lineHeight: '1.7', letterSpacing: '-0.01em' }],
-      'md/normal': ['16px', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
-      'lg/normal': ['20px', { lineHeight: '1.3', letterSpacing: '-0.0125em' }],
-      'xl/normal': ['24px', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
-      'xxl/normal': ['32px', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
-      '3xl/normal': ['48px', { lineHeight: '1.1', letterSpacing: '-0.01em' }],
+      'xs': ['12px', { lineHeight: '1.5', letterSpacing: '-0.012em' }],
+      'sm': ['14px', { lineHeight: '1.7', letterSpacing: '-0.01em' }],
+      'md': ['16px', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
+      'lg': ['20px', { lineHeight: '1.3', letterSpacing: '-0.0125em' }],
+      'xl': ['24px', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
+      'xxl': ['32px', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+      '3xl': ['48px', { lineHeight: '1.1', letterSpacing: '-0.01em' }],
 
-      // Bold font sizes
-      'xs/bold': ['12px', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
-      'sm/bold': ['14px', { lineHeight: '1.7', letterSpacing: '-0.01em' }],
-      'md/bold': ['16px', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
-      'lg/bold': ['20px', { lineHeight: '1.3', letterSpacing: '-0.01em' }],
-      'xl/bold': ['24px', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
-      'xxl/bold': ['32px', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
-      '3xl/bold': ['48px', { lineHeight: '1.1', letterSpacing: '-0.01em' }],
-
-      // Jumbo font sizes
       'Jumbo/sm': ['32px', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
       'Jumbo/lg': ['56px', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
       'Jumbo/xl': ['75px', { lineHeight: 'normal', letterSpacing: '-0.75px' }],
-
-      // Standard sizes
-      sm: ['0.875rem', { lineHeight: '1.6' }],
-      base: ['1rem', { lineHeight: '1.6' }],
-      lg: ['1.125rem', { lineHeight: '1.6' }],
-      xl: ['1.5rem', { lineHeight: '1.6' }],
-      "2xl": ['2rem', { lineHeight: '1.6' }],
-      "3xl": ['2.5rem', { lineHeight: '1.6' }],
 
       // Additional sizes
       hero: '4.6vw',
