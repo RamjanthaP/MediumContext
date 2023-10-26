@@ -46,8 +46,6 @@ const config: Config = {
       "btn-black": "#1C1C1C",
     },
     fontFamily: {
-      heading: ['var(--lotaGrotesqueAlt2-font)'],
-      body: ['Poppins', 'sans-serif'],
       'inter': ['Inter', 'sans-serif'],
     },
     letterSpacing: {
