@@ -34,7 +34,7 @@
       "name": "feature",
       "display_name": null,
       "created_at": "2023-10-05T08:08:49.707Z",
-      "updated_at": "2023-10-26T11:44:03.617Z",
+      "updated_at": "2023-10-26T11:49:37.185Z",
       "id": 4673137,
       "schema": {
         "title": {
@@ -61,7 +61,8 @@
           "restrict_components": true,
           "component_whitelist": [
             "menu_link"
-          ]
+          ],
+          "maximum": 1
         },
         "ctaSecondary": {
           "type": "bloks",
@@ -72,7 +73,8 @@
           "restrict_components": true,
           "component_whitelist": [
             "menu_link"
-          ]
+          ],
+          "maximum": 1
         }
       },
       "image": null,
@@ -117,6 +119,69 @@
       "color": "#395ece",
       "icon": "block-text-img-r-l",
       "component_group_name": "Blocks"
+    },
+    {
+      "name": "Hero",
+      "display_name": null,
+      "created_at": "2023-10-26T12:13:01.667Z",
+      "updated_at": "2023-10-26T12:15:50.278Z",
+      "id": 4789750,
+      "schema": {
+        "headLine": {
+          "type": "text"
+        },
+        "image": {
+          "type": "asset"
+        },
+        "ctaPrimary": {
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "Link"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Hero",
+      "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
+      "color": null,
+      "icon": null,
+      "component_group_name": "Blocks"
+    },
+    {
+      "name": "Link",
+      "display_name": null,
+      "created_at": "2023-10-26T12:14:52.785Z",
+      "updated_at": "2023-10-26T12:15:22.140Z",
+      "id": 4789751,
+      "schema": {
+        "text": {
+          "type": "text"
+        },
+        "link": {
+          "type": "multilink",
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Link",
+      "component_group_uuid": "7ecc464e-3f49-423f-8178-0bfddf627095",
+      "color": null,
+      "icon": null,
+      "component_group_name": "Elements"
     },
     {
       "name": "menu",
