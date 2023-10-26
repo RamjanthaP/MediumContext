@@ -1,7 +1,7 @@
 import StoryblokStory from "@storyblok/react/story";
 import { getStoryblokPage } from "@/services/getStoryBlokPage";
 import LogoCard from "@/components/LogoCard";
-import SectionWrapper from "@/components/Wrapper/SectionWrapper";
+import SectionWrapper from "@/components/Layout/SectionWrapper";
 
 // TODO: Remove folder when done with components
 export default async function ServiceOverview() {

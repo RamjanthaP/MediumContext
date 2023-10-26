@@ -4,10 +4,12 @@ import { MenuLinkStoryblok } from "../../../component-types-sb";
 const MenuLink = ({ blok }: { blok: MenuLinkStoryblok }) => {
   return (
     <>
-      <Link href={"/" + blok?.link?.cached_url} {...storyblokEditable(blok)}>
-        <span className="text-base uppercase font-medium text-gray-500 hover:text-gray-900 ">
-          {blok.title}
-        </span>
+      <Link
+        href={"/" + blok?.link?.cached_url}
+        {...storyblokEditable(blok)}
+        className="text-base uppercase cursor-pointer transition-all duration-300 border-b-2 border-b-transparent hover:border-primary-500"
+      >
+        {blok.title}
       </Link>
       {/* TODO: Enable sub pages if we need them */}
       {/* {typeof blok?.subItems !== "string" &&

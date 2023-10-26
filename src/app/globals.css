@@ -87,6 +87,16 @@ body {
   background: var(--themed-discrete-background);
 }
 
+.bg-default {
+  background: var(--themed-default-background);
+}
+.bg-inverted {
+  background: var(--themed-inverted-background);
+}
+.bg-discrete {
+  background: var(--themed-discrete-background);
+}
+
 /* Filter to elements with the .custom-filter class */
 .custom-filter {
   filter: var(--filter-light); /* light mode filter by default */

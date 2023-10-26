@@ -9,6 +9,7 @@ import { MenuItem } from "./MenuItem";
 import { MobileMenu } from "./MobileMenu";
 import { DesktopMenu } from "./DesktopMenu";
 import { AnimatePresence, motion } from "framer-motion";
+import { Container } from "../Layout/Container";
 
 export const specialItemTitle = "Kontakta oss";
 const Menu = ({ blok }: { blok: MenuStoryblok }) => {
@@ -29,8 +30,8 @@ const Menu = ({ blok }: { blok: MenuStoryblok }) => {
       {...storyblokEditable(blok)}
       className="bg-default sticky top-0  z-app-header"
     >
-      <div className="container mx-auto px-4 sm:px-0">
-        <div className="flex justify-between items-center py-6 md:space-x-10">
+      <Container>
+        <div className="flex justify-between items-center py-6">
           <Link
             href="/"
             className="flex justify-start flex-grow-1 w-3/12 lg:w-2/12"
@@ -59,7 +60,7 @@ const Menu = ({ blok }: { blok: MenuStoryblok }) => {
             <MobileMenu menuItems={menuItems} specialItem={specialItem} />
           )}
         </div>
-      </div>
+      </Container>
     </div>
   );
 };
