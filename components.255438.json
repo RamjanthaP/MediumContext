@@ -34,7 +34,7 @@
       "name": "feature",
       "display_name": null,
       "created_at": "2023-10-05T08:08:49.707Z",
-      "updated_at": "2023-10-26T10:28:55.727Z",
+      "updated_at": "2023-10-26T11:44:03.617Z",
       "id": 4673137,
       "schema": {
         "title": {
@@ -55,21 +55,29 @@
           "pos": 3
         },
         "ctaPrimary": {
-          "type": "multilink",
-          "display_name": "Call to action Primary",
-          "key": "ctaPrimary",
-          "pos": 4
+          "type": "bloks",
+          "tooltip": false,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "menu_link"
+          ]
         },
         "ctaSecondary": {
-          "type": "multilink",
+          "type": "bloks",
           "display_name": "Call to action Secondary",
           "key": "ctaSecondary",
-          "pos": 5
+          "pos": 5,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "menu_link"
+          ]
         }
       },
       "image": null,
       "preview_field": null,
-      "is_root": false,
+      "is_root": true,
       "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
