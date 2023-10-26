@@ -1,39 +1,68 @@
 "use client";
-
-import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
+import { storyblokEditable } from "@storyblok/react";
 import Link from "next/link";
-import { MenuStoryblok, MenuLinkStoryblok } from "../../../component-types-sb";
-import Image from "next/image";
+import { useState } from "react";
+import { MenuStoryblok, MenuLinkStoryblok } from "@sb-types";
+import LogoAmaceit from "../Logo/Amaceit";
+import BurgerMenu from "./BurgerMenu";
+import { MenuItem } from "./MenuItem";
+import { MobileMenu } from "./MobileMenu";
+import { DesktopMenu } from "./DesktopMenu";
+import { AnimatePresence, motion } from "framer-motion";
+import { Container } from "../Layout/Container";
 
+export const specialItemTitle = "Kontakta oss";
 const Menu = ({ blok }: { blok: MenuStoryblok }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  const menuItems =
+    blok.content?.header_menu?.filter(
+      (item: MenuLinkStoryblok) => item.title !== specialItemTitle
+    ) || [];
+
+  const specialItem = blok.content?.header_menu?.find(
+    (item: MenuLinkStoryblok) => item.title === specialItemTitle
+  );
+
   return (
     <div
-      className="relative bg-white border-b-2 border-gray-100"
       {...storyblokEditable(blok)}
+      className="bg-default sticky top-0  z-app-header"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex justify-between items-center  py-6 md:justify-start md:space-x-10">
-          <div className="flex justify-start lg:w-0 lg:flex-1">
-            <Link href="/">
-              <Image
-                className="h-20 w-auto sm:h-10"
-                src="https://a.storyblok.com/f/88751/251x53/0d3909fe96/storyblok-primary.png"
-                alt=""
-                width={251}
-                height={53}
-              />
-            </Link>
+      <Container>
+        <div className="flex justify-between items-center py-6">
+          <Link
+            href="/"
+            className="flex justify-start flex-grow-1 w-3/12 lg:w-2/12"
+          >
+            <LogoAmaceit className="-translate-y-2 md:translate-y-0" />
+          </Link>
+          <DesktopMenu menuItems={menuItems} specialItem={specialItem} />
+          <div className="flex">
+            <AnimatePresence>
+              {!isOpen && (
+                <motion.div
+                  className="md:hidden"
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0, opacity: 0 }}
+                >
+                  <MenuItem size="small" item={specialItem} />
+                </motion.div>
+              )}
+            </AnimatePresence>
+            <div className="flex items-center md:hidden">
+              <BurgerMenu toggleMenu={toggleMenu} isOpen={isOpen} />
+            </div>
           </div>
-          {blok?.content.header_menu?.map((nestedBlok: MenuLinkStoryblok) => (
-            <StoryblokComponent
-              className=""
-              blok={nestedBlok}
-              key={nestedBlok._uid}
-            />
-          ))}
+          {isOpen && (
+            <MobileMenu menuItems={menuItems} specialItem={specialItem} />
+          )}
         </div>
-      </div>
+      </Container>
     </div>
   );
 };
+
 export default Menu;

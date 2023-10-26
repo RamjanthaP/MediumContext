@@ -1,4 +1,4 @@
-import SectionWrapper from "../Wrapper/SectionWrapper";
+import SectionWrapper from "@/components/Layout/SectionWrapper";
 
 interface OfficeItemProps {
   title: string;
@@ -51,22 +51,20 @@ const Footer = () => {
   const offices = mockData;
   return (
     <SectionWrapper color="default" title="Contact">
-      <div className="w-full">
-        <div className="generic-info">
-          <div>
-            Email: <a href="mailto:info@amaceit.se">info@amaceit.se</a>
-          </div>
-          <div>Phone: XXX-XX XX XX</div>
+      <div className="generic-info">
+        <div>
+          Email: <a href="mailto:info@amaceit.se">info@amaceit.se</a>
         </div>
-        <div className="offices w-full mt-4 flex flex-col md:flex-row gap-6">
-          {offices.map((office) => (
-            <OfficeItem
-              key={office.title}
-              title={office.title}
-              address={office.address}
-            />
-          ))}
-        </div>
+        <div>Phone: XXX-XX XX XX</div>
+      </div>
+      <div className="offices w-full mt-4 flex flex-col md:flex-row gap-6">
+        {offices.map((office) => (
+          <OfficeItem
+            key={office.title}
+            title={office.title}
+            address={office.address}
+          />
+        ))}
       </div>
     </SectionWrapper>
   );

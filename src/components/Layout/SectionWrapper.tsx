@@ -1,8 +1,11 @@
-interface SectionWrapperProps {
+import React from "react";
+import { Container } from "./Container";
+import { BaseProps } from "@/components/PropsHelpers";
+
+interface SectionWrapperProps extends BaseProps {
   color?: "default" | "inverted" | "discrete";
   title?: string;
   titleElement?: "h1" | "h2" | "h3" | "span";
-  children: React.ReactNode;
 }
 
 const SectionWrapper: React.FC<SectionWrapperProps> = ({
@@ -10,20 +13,19 @@ const SectionWrapper: React.FC<SectionWrapperProps> = ({
   title,
   titleElement,
   children,
+  className = "",
 }) => {
   const TitleElement = titleElement || "div";
   return (
-    <div className={`theme-block-${color}`}>
-      <section
-        className={`container mx-auto py-8 lg:py-16 px-12 lg:px-20 xl:px-0`}
-      >
+    <div className={`theme-block-${color} ${className}`}>
+      <Container element="section" className="lg:py-16">
         <div>
-          <TitleElement className="font-bold text-xlg mb-4">
+          <TitleElement className="text-2xl font-bold mb-4">
             {title}
           </TitleElement>
-          <div className="flex">{children}</div>
+          <div>{children}</div>
         </div>
-      </section>
+      </Container>
     </div>
   );
 };
