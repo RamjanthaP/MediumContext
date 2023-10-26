@@ -96,6 +96,7 @@ export interface FeatureStoryblok {
 }
 
 export interface GridStoryblok {
+  title?: string;
   columns?: any[];
   _uid: string;
   component: "grid";

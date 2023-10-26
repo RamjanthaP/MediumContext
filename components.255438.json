@@ -84,11 +84,17 @@
       "name": "grid",
       "display_name": null,
       "created_at": "2023-10-05T08:08:49.695Z",
-      "updated_at": "2023-10-11T07:45:14.378Z",
+      "updated_at": "2023-10-26T10:54:10.162Z",
       "id": 4673136,
       "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "Title"
+        },
         "columns": {
-          "type": "bloks"
+          "type": "bloks",
+          "pos": 1
         }
       },
       "image": null,
