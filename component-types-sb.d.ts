@@ -29,27 +29,6 @@ export interface CaseStoryblok {
   [k: string]: any;
 }
 
-export interface FeatureStoryblok {
-  name?: string;
-  _uid: string;
-  component: "feature";
-  [k: string]: any;
-}
-
-export interface GridStoryblok {
-  columns?: any[];
-  _uid: string;
-  component: "grid";
-  [k: string]: any;
-}
-
-export interface MenuStoryblok {
-  header_menu?: MenuLinkStoryblok[];
-  _uid: string;
-  component: "menu";
-  [k: string]: any;
-}
-
 export type MultilinkStoryblok =
   | {
       cached_url?: string;
@@ -104,6 +83,31 @@ export type MultilinkStoryblok =
       linktype?: "email";
       [k: string]: any;
     };
+
+export interface FeatureStoryblok {
+  title?: string;
+  image?: AssetStoryblok;
+  body?: string;
+  ctaPrimary?: MultilinkStoryblok;
+  ctaSecondary?: MultilinkStoryblok;
+  _uid: string;
+  component: "feature";
+  [k: string]: any;
+}
+
+export interface GridStoryblok {
+  columns?: any[];
+  _uid: string;
+  component: "grid";
+  [k: string]: any;
+}
+
+export interface MenuStoryblok {
+  header_menu?: MenuLinkStoryblok[];
+  _uid: string;
+  component: "menu";
+  [k: string]: any;
+}
 
 export interface MenuLinkStoryblok {
   link: MultilinkStoryblok;
