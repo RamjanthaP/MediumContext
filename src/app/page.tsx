@@ -11,12 +11,7 @@ export default async function Home() {
       <Container className="bg-discrete">
         <h1 className="text-3xl font-medium">{props.story.name}</h1>
       </Container>
-      <Hero
-        headLine={props.story.content.body[1].headline}
-        imageUrl="/assets/Hero.png"
-        primaryButtonTitle="Transparent"
-        secondaryButtonTitle="Green"
-      />
+
       <StoryblokStory story={props.story} />
     </div>
   );
