@@ -1,5 +1,4 @@
-import type { Config } from "tailwindcss";
-import { gray } from "tailwindcss/colors";
+import type { Config } from 'tailwindcss'
 
 import plugin from "tailwindcss/plugin";
 const config: Config = {
@@ -47,29 +46,39 @@ const config: Config = {
       "btn-black": "#1C1C1C",
     },
     fontFamily: {
-      heading: ["var(--lotaGrotesqueAlt2-font)"],
-      body: ["Poppins", "sans-serif"],
-    },
-    fontSize: {
-      sm: ["0.875rem", { lineHeight: "1.6" }],
-      base: ["1rem", { lineHeight: "1.6" }],
-      lg: ["1.125rem", { lineHeight: "1.6" }],
-      xl: ["1.5rem", { lineHeight: "1.6" }],
-      "2xl": ["2rem", { lineHeight: "1.6" }],
-      "3xl": ["2.5rem", { lineHeight: "1.6" }],
-      hero: "4.6vw",
-      btn: "0.75vw",
-    },
-    fontWeight: {
-      normal: "400",
-      bold: "600",
-      bolder: "900",
-    },
-    lineHeight: {
-      btn: "24px",
+      'inter': ['Inter', 'sans-serif'],
     },
     letterSpacing: {
-      btn: "-0.01em",
+      normal: '-0.01em',
+      small: '-0.012em',
+      smaller: '-0.0125em',
+      large: '-0.02em',
+      btn: '-0.01em',
+    },
+    fontSize: {
+      'xs': ['12px', { lineHeight: '1.5', letterSpacing: '-0.012em' }],
+      'sm': ['14px', { lineHeight: '1.7', letterSpacing: '-0.01em' }],
+      'md': ['16px', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
+      'lg': ['20px', { lineHeight: '1.3', letterSpacing: '-0.0125em' }],
+      'xl': ['24px', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
+      'xxl': ['32px', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+      '3xl': ['48px', { lineHeight: '1.1', letterSpacing: '-0.01em' }],
+
+      'Jumbo/sm': ['32px', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+      'Jumbo/lg': ['56px', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+      'Jumbo/xl': ['75px', { lineHeight: 'normal', letterSpacing: '-0.75px' }],
+
+      // Additional sizes
+      hero: '4.6vw',
+      btn: '0.75vw',
+    },
+    fontWeight: {
+      normal: '400',
+      bold: '700',
+      black: '900',
+    },
+    lineHeight: {
+      btn: '24px',
     },
     textAlign: {
       btn: "left",
