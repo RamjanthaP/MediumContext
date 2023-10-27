@@ -1,5 +1,5 @@
 import React from "react";
-import RightIcon from "../Icons/RightIcon";
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
 export type ButtonSizes = keyof typeof sizeClass;
 export type ButtonColors = keyof typeof colorVariants;
@@ -54,7 +54,7 @@ const Button: React.FC<ButtonProps> = ({
     >
       <div className="flex px-2 w-full items-center">
         {children}
-        {icon && <RightIcon className="h-5 w-5 ml-3" />}
+        {icon && <ArrowRightIcon className="h-5 w-5 ml-3" />}
       </div>
     </button>
   );
