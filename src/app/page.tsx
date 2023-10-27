@@ -1,9 +1,6 @@
 import StoryblokStory from "@storyblok/react/story";
 import { getStoryblokPage } from "@/services/getStoryBlokPage";
-import Hero from "../components/Hero/Hero";
 import { Container } from "@/components/Layout/Container";
-import { SectionServices } from "../components/Section/Services";
-import Placholder from "@/components/DevUtils/Placeholder";
 
 export default async function Home() {
   const { props } = await getStoryblokPage();
