@@ -19,7 +19,7 @@ function FeatureSection({ title, titleElement = "h2", isContentRight = false, bg
   const TitleElement = titleElement || "div";
   const layout = isContentRight ? 'flex-row' : 'flex-row-reverse';
   return (
-    <div className={`bg-default`}>
+    <div className={`bg-${bgColor}`}>
       <Container element="section" className="lg:py-16">
         <div className={`flex ${layout} mx-auto`}>
           <div className='w-1/2 flex flex-col items-start px-8'>
