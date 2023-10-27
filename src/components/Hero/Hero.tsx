@@ -28,8 +28,8 @@ const Hero = ({ headLine, imageUrl, primaryButtonTitle, secondaryButtonTitle }: 
         
       </div>
       <div className="space-x-4 z-20">
-        {primaryButtonTitle && <Button variant="green" transparent>{primaryButtonTitle}</Button>}
-        {secondaryButtonTitle && <Button variant="green">{secondaryButtonTitle}</Button>}
+        {primaryButtonTitle && <Button variant="primary">{primaryButtonTitle}</Button>}
+        {secondaryButtonTitle && <Button variant="primary" transparent>{secondaryButtonTitle}</Button>}
       </div>
     </div>
   );
