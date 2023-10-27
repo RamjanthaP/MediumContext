@@ -15,7 +15,7 @@ export const MenuItem = ({
   {
     /* TODO: exchange the title from "tjänster" to "kontakta oss" */
   }
-  if (item.title === specialItemTitle) {
+  if (item && item.title === specialItemTitle) {
     return (
       // TODO Replace with a link to the contact page. No button needed.
       <Link href={item.link.cached_url}>
