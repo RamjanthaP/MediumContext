@@ -30,23 +30,30 @@ export interface CaseStoryblok {
 }
 
 export interface FeatureStoryblok {
-  name?: string;
+  title?: string;
+  image?: AssetStoryblok;
+  body?: string;
+  ctaPrimary?: MenuLinkStoryblok[];
+  ctaSecondary?: MenuLinkStoryblok[];
   _uid: string;
   component: "feature";
   [k: string]: any;
 }
 
 export interface GridStoryblok {
+  title?: string;
   columns?: any[];
   _uid: string;
   component: "grid";
   [k: string]: any;
 }
 
-export interface MenuStoryblok {
-  header_menu?: MenuLinkStoryblok[];
+export interface HeroStoryblok {
+  headLine?: string;
+  image?: AssetStoryblok;
+  ctaPrimary?: LinkStoryblok[];
   _uid: string;
-  component: "menu";
+  component: "Hero";
   [k: string]: any;
 }
 
@@ -104,6 +111,21 @@ export type MultilinkStoryblok =
       linktype?: "email";
       [k: string]: any;
     };
+
+export interface LinkStoryblok {
+  text?: string;
+  link: MultilinkStoryblok;
+  _uid: string;
+  component: "Link";
+  [k: string]: any;
+}
+
+export interface MenuStoryblok {
+  header_menu?: MenuLinkStoryblok[];
+  _uid: string;
+  component: "menu";
+  [k: string]: any;
+}
 
 export interface MenuLinkStoryblok {
   link: MultilinkStoryblok;

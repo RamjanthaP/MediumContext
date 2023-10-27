@@ -1,11 +1,12 @@
 import { storyblokEditable } from "@storyblok/react/rsc";
 import { TeaserStoryblok } from "../../component-types-sb";
+import Placholder from "./DevUtils/Placeholder";
 
 const Teaser = ({ blok }: TeaserStoryblok) => {
   return (
-    <h2 className="text-2xl mb-10" {...storyblokEditable(blok)}>
-      {blok.headline}
-    </h2>
+    <div {...storyblokEditable(blok)}>
+      <Placholder name="Teaser" data={blok} />
+    </div>
   );
 };
 

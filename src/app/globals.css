@@ -5,6 +5,8 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
+  --themed-discrete-foreground-rgb: 33, 33, 33;
+  --themed-discrete-background-rgb: 244, 244, 244;
 
   --themed-default-foreground: rgb(var(--foreground-rgb));
   --themed-default-background: rgb(var(--background-rgb));
@@ -12,8 +14,8 @@
   --themed-inverted-foreground: rgb(var(--background-rgb));
   --themed-inverted-background: rgb(var(--foreground-rgb));
 
-  --themed-discrete-foreground: rgb(33, 33, 33);
-  --themed-discrete-background: rgb(244, 244, 244);
+  --themed-discrete-foreground: rgb(var(--themed-discrete-foreground-rgb));
+  --themed-discrete-background: rgb(var(--themed-discrete-background-rgb));
   /* Filter for svg */
   --filter-light: invert(0%);
 }
@@ -22,9 +24,8 @@
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-rgb: 0, 0, 0;
-
-    --themed-discrete-foreground: rgb(200, 200, 200);
-    --themed-discrete-background: rgb(24, 24, 24);
+    --themed-discrete-foreground-rgb: 24, 24, 24;
+    --themed-discrete-background-rgb: 200, 200, 200;
 
     /* Filter for svg */
     --filter-dark: invert(100%);
@@ -90,8 +91,14 @@ body {
 .bg-default {
   background: var(--themed-default-background);
 }
+.bg-default-opacity {
+  background: rgba(var(--background-rgb), var(--tw-bg-opacity));
+}
 .bg-inverted {
   background: var(--themed-inverted-background);
+}
+.bg-inverted-opacity {
+  background: rgba(var(--foreground-rgb), var(--tw-bg-opacity));
 }
 .bg-discrete {
   background: var(--themed-discrete-background);

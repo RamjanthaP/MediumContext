@@ -1,6 +1,5 @@
 import StoryblokStory from "@storyblok/react/story";
 import { getStoryblokPage } from "@/services/getStoryBlokPage";
-import Hero from "../components/Hero/Hero";
 import { Container } from "@/components/Layout/Container";
 
 export default async function Home() {
