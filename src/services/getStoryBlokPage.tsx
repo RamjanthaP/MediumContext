@@ -1,5 +1,5 @@
 import { ISbStoriesParams, getStoryblokApi } from "@storyblok/react/rsc";
-import { MenuStoryblok } from "../../component-types-sb";
+import { FooterStoryblok, MenuStoryblok } from "../../component-types-sb";
 import { notFound, redirect } from "next/navigation";
 
 export async function getStoryblokPage(path = "home") {
@@ -26,6 +26,17 @@ export async function getStoryblokMenuData(): Promise<MenuStoryblok> {
     .get("cdn/stories/settings/menu", sbParams)
     .catch((e) => {
       throw new Error("Hittar inte menyn");
+    });
+  return configReq.data.story;
+}
+
+export async function getStoryblokFooterData(): Promise<FooterStoryblok> {
+  let sbParams: ISbStoriesParams = { version: "draft" };
+  const storyblokApi = getStoryblokApi();
+  const configReq = await storyblokApi
+    .get("cdn/stories/settings/footer", sbParams)
+    .catch((e) => {
+      throw new Error("Hittar inte footer");
     });
   return configReq.data.story;
 }

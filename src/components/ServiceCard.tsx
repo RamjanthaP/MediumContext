@@ -11,8 +11,8 @@ export interface ServiceCardProps {
 }
 
 const ServiceCard = (props: ServiceCardProps) => (
-  <div className="bg-white flex flex-col shadow">
-    <div className="h-36  relative">
+  <div className="bg-white flex flext-grow-1 flex-col rounded-lg overflow-hidden border-2 w-full">
+    <div className="h-36 relative">
       <Image
         className="object-cover"
         src={props.imageUrl}

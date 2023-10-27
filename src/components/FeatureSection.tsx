@@ -14,6 +14,7 @@ interface FeatureSectionProps extends BaseProps {
   secondButton?: string;
   image?: string;
 }
+/* TODO : Add a linkbutton see(ticket [#991]) */
 
 function FeatureSection({ title, titleElement = "h2", isContentRight = false, bgColor = 'default', children, firstButton, secondButton, image }: FeatureSectionProps) {
   const TitleElement = titleElement || "div";

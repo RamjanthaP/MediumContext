@@ -12,6 +12,10 @@
 3. Get all types from our storyblok `yarn fetch-sb-types`
 4. Create types for our code `yarn generate-sb-types`
 
+### Troubleshooting
+
+If there's an error fetching, try to logout of storyblok cli by `storyblok logout` and then login again with `storyblok login` and enter your credentials.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Setup

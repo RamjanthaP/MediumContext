@@ -1,4 +1,4 @@
-import {StoryblokStory} from 'storyblok-generate-ts'
+import { StoryblokStory } from "storyblok-generate-ts";
 
 export interface RichtextStoryblok {
   type: string;
@@ -29,24 +29,46 @@ export interface CaseStoryblok {
   [k: string]: any;
 }
 
+export interface ContactFooterStoryblok {
+  offices?: OfficesStoryblok[];
+  _uid: string;
+  component: "contact_footer";
+  [k: string]: any;
+}
+
 export interface FeatureStoryblok {
-  name?: string;
+  title?: string;
+  image?: AssetStoryblok;
+  body?: string;
+  ctaPrimary?: LinkStoryblok[];
+  ctaSecondary?: LinkStoryblok[];
   _uid: string;
   component: "feature";
   [k: string]: any;
 }
 
+export interface FooterStoryblok {
+  offices?: OfficesStoryblok[];
+  _uid: string;
+  component: "footer";
+  [k: string]: any;
+}
+
 export interface GridStoryblok {
+  title?: string;
   columns?: any[];
   _uid: string;
   component: "grid";
   [k: string]: any;
 }
 
-export interface MenuStoryblok {
-  header_menu?: MenuLinkStoryblok[];
+export interface HeroStoryblok {
+  headLine?: string;
+  image?: AssetStoryblok;
+  ctaPrimary?: LinkStoryblok[];
+  ctaSecondary?: LinkStoryblok[];
   _uid: string;
-  component: "menu";
+  component: "hero";
   [k: string]: any;
 }
 
@@ -105,12 +127,36 @@ export type MultilinkStoryblok =
       [k: string]: any;
     };
 
+export interface LinkStoryblok {
+  text?: string;
+  link: MultilinkStoryblok;
+  _uid: string;
+  component: "Link";
+  [k: string]: any;
+}
+
+export interface MenuStoryblok {
+  header_menu?: MenuLinkStoryblok[];
+  _uid: string;
+  component: "menu";
+  [k: string]: any;
+}
+
 export interface MenuLinkStoryblok {
   link: MultilinkStoryblok;
   title: string;
   subItems?: MenuLinkStoryblok[];
   _uid: string;
   component: "menu_link";
+  [k: string]: any;
+}
+
+export interface OfficesStoryblok {
+  streetadress?: string;
+  zip?: string;
+  city: string;
+  _uid: string;
+  component: "offices";
   [k: string]: any;
 }
 
