@@ -1,64 +1,29 @@
 import SectionWrapper from "@/components/Layout/SectionWrapper";
+import { OfficeItem, OfficeItemProps } from "./OfficeItem";
+import { FooterStoryblok, OfficesStoryblok } from "@sb-types";
 
-interface OfficeItemProps {
-  title: string;
-  address: {
-    street: string;
-    zip: string;
-    city: string;
-  };
+function mapOfficeDTOtoData(dto: FooterStoryblok) {
+  return dto.content.offices.map((office: OfficesStoryblok) => ({
+    title: office.city,
+    address: {
+      street: office.streetadress,
+      zip: office.zip,
+      city: office.city,
+    },
+  }));
 }
-const OfficeItem = ({ title, address }: OfficeItemProps) => (
-  <div className="office flex-grow">
-    <h2 className="office__title text-xlg">{title}</h2>
-    <div className="office__content">
-      <div className="office__address">{address.street}</div>
-      <div className="office__address">{address.zip}</div>
-      <div className="office__address">{address.city}</div>
-    </div>
-  </div>
-);
 
-// TODO: Get this from API
-const mockData = [
-  {
-    title: "Linköping",
-    address: {
-      street: "Drottninggatan 19",
-      zip: "582 25",
-      city: "Linköping",
-    },
-  },
-  {
-    title: "Stockholm",
-    address: {
-      street: "Vattugatan 1",
-      zip: "111 52",
-      city: "Stockholm",
-    },
-  },
-  {
-    title: "Ljungby",
-    address: {
-      street: "Kånnavägen 40",
-      zip: "341 31",
-      city: "Ljungby",
-    },
-  },
-];
-
-const Footer = () => {
-  const offices = mockData;
+const Footer = ({ blok }: { blok: FooterStoryblok }) => {
+  const offices = mapOfficeDTOtoData(blok);
   return (
-    <SectionWrapper color="default" title="Contact">
+    <SectionWrapper color="default" title="Kontakta oss">
       <div className="generic-info">
         <div>
           Email: <a href="mailto:info@amaceit.se">info@amaceit.se</a>
         </div>
-        <div>Phone: XXX-XX XX XX</div>
       </div>
       <div className="offices w-full mt-4 flex flex-col md:flex-row gap-6">
-        {offices.map((office) => (
+        {offices.map((office: OfficeItemProps) => (
           <OfficeItem
             key={office.title}
             title={office.title}

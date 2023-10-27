@@ -18,9 +18,9 @@ const SectionWrapper: React.FC<SectionWrapperProps> = ({
   const TitleElement = titleElement || "div";
   return (
     <div className={`theme-block-${color} ${className}`}>
-      <Container element="section" className="lg:py-16">
+      <Container element="section" className="lg:py-7">
         <div>
-          <TitleElement className="text-2xl font-bold mb-4">
+          <TitleElement className="text-xl md:text-xxl font-bold mb-7">
             {title}
           </TitleElement>
           <div>{children}</div>

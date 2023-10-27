@@ -6,7 +6,10 @@ const inter = Inter({ subsets: ["latin"] });
 import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
 import StoryblokProvider from "@/components/StoryblokProvider";
 import AppHeader from "@/components/Menu/AppHeader";
-import { getStoryblokMenuData } from "@/services/getStoryBlokPage";
+import {
+  getStoryblokFooterData,
+  getStoryblokMenuData,
+} from "@/services/getStoryBlokPage";
 import { ThemeSwitcher } from "@/components/DevUtils/ThemeSwitcher";
 import Footer from "@/components/Footer/Footer";
 
@@ -31,6 +34,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const menuData = await getStoryblokMenuData();
+  const footerData = await getStoryblokFooterData();
   return (
     <html lang="en">
       <StoryblokProvider>
@@ -38,7 +42,7 @@ export default async function RootLayout({
           <AppHeader blok={menuData} />
           {children}
           {process.env.NODE_ENV === "development" && <ThemeSwitcher />}
-          <Footer />
+          <Footer blok={footerData} />
         </body>
       </StoryblokProvider>
     </html>
