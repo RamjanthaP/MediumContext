@@ -31,10 +31,43 @@
       "component_group_name": "Content"
     },
     {
+      "name": "contact_footer",
+      "display_name": null,
+      "created_at": "2023-10-27T06:43:39.008Z",
+      "updated_at": "2023-10-27T06:44:49.747Z",
+      "id": 4793670,
+      "schema": {
+        "offices": {
+          "type": "bloks",
+          "display_name": "Offices",
+          "key": "Offices",
+          "pos": 0,
+          "maximum": 3,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "offices"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "contact_footer",
+      "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
+      "color": null,
+      "icon": null,
+      "component_group_name": "Blocks"
+    },
+    {
       "name": "feature",
       "display_name": null,
       "created_at": "2023-10-05T08:08:49.707Z",
-      "updated_at": "2023-10-26T11:49:37.185Z",
+      "updated_at": "2023-10-26T13:30:21.464Z",
       "id": 4673137,
       "schema": {
         "title": {
@@ -60,7 +93,7 @@
           "restrict_type": "",
           "restrict_components": true,
           "component_whitelist": [
-            "menu_link"
+            "Link"
           ],
           "maximum": 1
         },
@@ -72,7 +105,7 @@
           "restrict_type": "",
           "restrict_components": true,
           "component_whitelist": [
-            "menu_link"
+            "Link"
           ],
           "maximum": 1
         }
@@ -91,10 +124,38 @@
       "component_group_name": "Blocks"
     },
     {
+      "name": "footer",
+      "display_name": "Footer",
+      "created_at": "2023-10-27T06:33:50.338Z",
+      "updated_at": "2023-10-27T06:41:57.340Z",
+      "id": 4793662,
+      "schema": {
+        "offices": {
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "offices"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Footer",
+      "component_group_uuid": null,
+      "color": "#fbce41",
+      "icon": "block-monitor"
+    },
+    {
       "name": "grid",
       "display_name": null,
       "created_at": "2023-10-05T08:08:49.695Z",
-      "updated_at": "2023-10-26T10:54:10.162Z",
+      "updated_at": "2023-10-27T06:33:15.002Z",
       "id": 4673136,
       "schema": {
         "title": {
@@ -116,15 +177,15 @@
       "preset_id": null,
       "real_name": "grid",
       "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
-      "color": "#395ece",
+      "color": "#2db47d",
       "icon": "block-text-img-r-l",
       "component_group_name": "Blocks"
     },
     {
-      "name": "Hero",
+      "name": "hero",
       "display_name": null,
       "created_at": "2023-10-26T12:13:01.667Z",
-      "updated_at": "2023-10-26T12:15:50.278Z",
+      "updated_at": "2023-10-27T06:32:34.921Z",
       "id": 4789750,
       "schema": {
         "headLine": {
@@ -139,7 +200,18 @@
           "restrict_components": true,
           "component_whitelist": [
             "Link"
-          ]
+          ],
+          "maximum": 2
+        },
+        "ctaSecondary": {
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "Link"
+          ],
+          "maximum": 2,
+          "minimum": 1
         }
       },
       "image": null,
@@ -149,17 +221,17 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "Hero",
+      "real_name": "hero",
       "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
-      "color": null,
-      "icon": null,
+      "color": "#2db47d",
+      "icon": "block-text-img-c",
       "component_group_name": "Blocks"
     },
     {
       "name": "Link",
       "display_name": null,
       "created_at": "2023-10-26T12:14:52.785Z",
-      "updated_at": "2023-10-26T12:15:22.140Z",
+      "updated_at": "2023-10-27T06:32:58.563Z",
       "id": 4789751,
       "schema": {
         "text": {
@@ -179,8 +251,8 @@
       "preset_id": null,
       "real_name": "Link",
       "component_group_uuid": "7ecc464e-3f49-423f-8178-0bfddf627095",
-      "color": null,
-      "icon": null,
+      "color": "#2db47d",
+      "icon": "block-tag",
       "component_group_name": "Elements"
     },
     {
@@ -215,7 +287,7 @@
       "name": "menu_link",
       "display_name": null,
       "created_at": "2023-10-06T09:32:02.270Z",
-      "updated_at": "2023-10-25T12:06:10.202Z",
+      "updated_at": "2023-10-27T06:33:05.291Z",
       "id": 4680287,
       "schema": {
         "link": {
@@ -253,8 +325,45 @@
       "preset_id": null,
       "real_name": "menu_link",
       "component_group_uuid": null,
-      "color": "#ffac00",
+      "color": "#fbce41",
       "icon": "block-tag"
+    },
+    {
+      "name": "offices",
+      "display_name": null,
+      "created_at": "2023-10-27T06:34:01.274Z",
+      "updated_at": "2023-10-27T07:00:07.281Z",
+      "id": 4793663,
+      "schema": {
+        "streetadress": {
+          "type": "text",
+          "key": "Streetadress",
+          "pos": 0,
+          "display_name": "Streetaddress"
+        },
+        "zip": {
+          "type": "text",
+          "key": "zip",
+          "pos": 1
+        },
+        "city": {
+          "type": "text",
+          "key": "city",
+          "pos": 2,
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": "city",
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "offices",
+      "component_group_uuid": null,
+      "color": "#fbce41",
+      "icon": "block-buildin"
     },
     {
       "name": "page",
