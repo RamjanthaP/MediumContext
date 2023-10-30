@@ -1,4 +1,4 @@
-import { BaseProps } from "../PropsHelpers";
+import { BaseProps } from "@/types/props";
 
 export interface OfficeItemProps extends BaseProps {
   title: string;
@@ -10,7 +10,7 @@ export interface OfficeItemProps extends BaseProps {
 }
 export const OfficeItem = ({ title, address, className }: OfficeItemProps) => (
   <div
-    className="flex-grow"
+    className={`flex-grow ${className}`}
     itemScope
     itemType="https://schema.org/LocalBusiness"
   >
