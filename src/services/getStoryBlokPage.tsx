@@ -1,5 +1,8 @@
 import { ISbStoriesParams, getStoryblokApi } from "@storyblok/react/rsc";
-import { FooterStoryblok, MenuStoryblok } from "../../component-types-sb";
+import {
+  ContactFooterStoryblok,
+  MenuStoryblok,
+} from "../../component-types-sb";
 import { notFound, redirect } from "next/navigation";
 
 export async function getStoryblokPage(path = "home") {
@@ -30,7 +33,7 @@ export async function getStoryblokMenuData(): Promise<MenuStoryblok> {
   return configReq.data.story;
 }
 
-export async function getStoryblokFooterData(): Promise<FooterStoryblok> {
+export async function getStoryblokFooterData(): Promise<ContactFooterStoryblok> {
   let sbParams: ISbStoriesParams = { version: "draft" };
   const storyblokApi = getStoryblokApi();
   const configReq = await storyblokApi

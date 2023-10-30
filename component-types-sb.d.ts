@@ -134,8 +134,9 @@ export interface LinkStoryblok {
 export interface LogoCardStoryblok {
   name: string;
   svgLogo: AssetStoryblok;
+  size: "" | "small" | "medium" | "large";
   _uid: string;
-  component: "logoCard";
+  component: "logo_card";
   [k: string]: any;
 }
 
