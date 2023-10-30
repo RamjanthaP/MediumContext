@@ -1,4 +1,4 @@
-import { BaseProps } from "@/components/PropsHelpers";
+import { BaseProps } from "@/types/props";
 interface ContainerProps extends BaseProps {
   element?:
     | "div"
