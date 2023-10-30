@@ -19,7 +19,7 @@ export const MenuItem = ({
     return (
       // TODO Replace with a link to the contact page. No button needed.
       <Link href={item.link.cached_url}>
-        <Button size={size} variant="green">
+        <Button size={size} variant="primary">
           {item.title}
         </Button>
       </Link>

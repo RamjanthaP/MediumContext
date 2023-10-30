@@ -5,6 +5,7 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
+  --primary-color: theme('colors.primary.400');
   --themed-discrete-foreground-rgb: 33, 33, 33;
   --themed-discrete-background-rgb: 244, 244, 244;
 
@@ -13,6 +14,9 @@
 
   --themed-inverted-foreground: rgb(var(--background-rgb));
   --themed-inverted-background: rgb(var(--foreground-rgb));
+
+  --themed-primary-foreground: var(--themed-default-background);
+  --themed-primary-background: var(--primary-color);
 
   --themed-discrete-foreground: rgb(var(--themed-discrete-foreground-rgb));
   --themed-discrete-background: rgb(var(--themed-discrete-background-rgb));
@@ -41,36 +45,28 @@ body {
 /* Base button styles */
 .btn {
   @apply text-btn leading-btn tracking-btn text-left;
+  
+}
+/* Default backgrouund button */
+.btn-default{
+   color: var(--themed-default-background);
+  background: var(--themed-default-foreground);
+  
+}
+.btn-default-transparent{
+  color: var(--themed-default-foreground);
+  background: var(--themed-default-background);
 }
 
-/* Solid green button */
-.btn-green {
-  @apply bg-btn-green text-white border-btn-green;
+/* Green Button */
+.btn-primary {
+  color: var(--themed-primary-foreground);
+  background: var(--themed-primary-background);
 }
 
-/* Transparent green button */
-.btn-green-transparent {
-  @apply text-btn-green bg-transparent border-btn-green;
-}
-
-/* Solid white button */
-.btn-white {
-  @apply bg-btn-white text-btn-black border-btn-white;
-}
-
-/* Transparent white button */
-.btn-white-transparent {
-  @apply text-btn-white bg-transparent border-btn-white;
-}
-
-/* Solid black button */
-.btn-black {
-  @apply bg-btn-black text-white border-btn-black;
-}
-
-/* Transparent black button */
-.btn-black-transparent {
-  @apply text-btn-black bg-transparent border-btn-black;
+.btn-primary-transparent {
+  color: var(--themed-primary-background);
+  background: var(--themed-inverted-foreground);
 }
 
 .theme-block-default {

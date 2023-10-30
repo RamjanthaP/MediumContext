@@ -39,7 +39,7 @@ const Hero = ({ blok }: { blok: HeroStoryblok }) => {
                 className="inline-block"
                 href={blok?.ctaSecondary[0].link.cached_url}
               >
-                <Button variant="black" transparent>
+                <Button variant="primary" transparent>
                   {blok?.ctaSecondary[0].text}
                 </Button>
               </Link>

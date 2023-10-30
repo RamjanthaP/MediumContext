@@ -14,17 +14,13 @@ type ButtonProps = {
 };
 
 const colorVariants = {
-  green: {
-    default: "btn-green",
-    transparent: "btn-green-transparent",
+  primary: {
+    default: "btn-primary",
+    transparent: "btn-primary-transparent",
   },
-  white: {
-    default: "btn-white",
-    transparent: "btn-white-transparent",
-  },
-  black: {
-    default: "btn-black",
-    transparent: "btn-black-transparent",
+  default: {
+    default: "btn-default",
+    transparent: "btn-default-transparent",
   },
 };
 
@@ -35,7 +31,7 @@ const sizeClass = {
 };
 
 const Button: React.FC<ButtonProps> = ({
-  variant = "green",
+  variant = "primary",
   transparent = false,
   size = "medium",
   children,
