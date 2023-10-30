@@ -1,7 +1,10 @@
 import { BaseProps } from "@/types/props";
 
 const Placholder = (
-  props: Partial<BaseProps> & { name: string; data?: any }
+  props: Partial<BaseProps> & {
+    name: string;
+    data?: { title?: string; headline?: string } & any;
+  }
 ) => {
   return (
     <div className="border-primary-500 border-dashed border p-4 m-4 relative">
@@ -9,7 +12,7 @@ const Placholder = (
         Placeholder {props.name}
       </div>
       <h1 className="text-lg mt-4 text-primary-400">
-        {props.data.title || props.data.headline || "utan namn"}
+        {props.data?.title || props.data?.headline || "utan namn"}
       </h1>
       <div>
         <details>
