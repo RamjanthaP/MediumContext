@@ -67,7 +67,7 @@
       "name": "feature",
       "display_name": null,
       "created_at": "2023-10-05T08:08:49.707Z",
-      "updated_at": "2023-10-26T13:30:21.464Z",
+      "updated_at": "2023-10-27T18:20:21.186Z",
       "id": 4673137,
       "schema": {
         "title": {
@@ -108,10 +108,52 @@
             "Link"
           ],
           "maximum": 1
+        },
+        "layout": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "_uid": "a857036d-442c-47bc-9248-84c6c9aad60a",
+              "name": "Content left",
+              "value": "content-left"
+            },
+            {
+              "_uid": "ad327037-20cb-4af8-9d04-2f9e96012b8b",
+              "value": "content-right",
+              "name": "Content right"
+            }
+          ],
+          "default_value": "content-right",
+          "display_name": ""
+        },
+        "theme": {
+          "type": "option",
+          "use_uuid": true,
+          "display_name": "Theme",
+          "required": false,
+          "options": [
+            {
+              "_uid": "66ee7bda-0b63-464d-b488-5b9021de5b08",
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "_uid": "797afcae-2099-44ee-843e-a2240445fce3",
+              "value": "inverted",
+              "name": "Inverted"
+            },
+            {
+              "_uid": "29ae0938-9266-401a-a1d5-abb7e16dcdfd",
+              "value": "discrete",
+              "name": "Discrete"
+            }
+          ],
+          "default_value": ""
         }
       },
       "image": null,
-      "preview_field": null,
+      "preview_field": "title",
       "is_root": true,
       "preview_tmpl": null,
       "is_nestable": true,
@@ -124,58 +166,59 @@
       "component_group_name": "Blocks"
     },
     {
-      "name": "footer",
-      "display_name": "Footer",
-      "created_at": "2023-10-27T06:33:50.338Z",
-      "updated_at": "2023-10-27T06:41:57.340Z",
-      "id": 4793662,
-      "schema": {
-        "offices": {
-          "type": "bloks",
-          "restrict_type": "",
-          "restrict_components": true,
-          "component_whitelist": [
-            "offices"
-          ]
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "Footer",
-      "component_group_uuid": null,
-      "color": "#fbce41",
-      "icon": "block-monitor"
-    },
-    {
       "name": "grid",
-      "display_name": null,
+      "display_name": "Grid Section",
       "created_at": "2023-10-05T08:08:49.695Z",
-      "updated_at": "2023-10-27T06:33:15.002Z",
+      "updated_at": "2023-10-27T19:54:08.248Z",
       "id": 4673136,
       "schema": {
         "title": {
           "type": "text",
           "pos": 0,
-          "display_name": "Title"
+          "display_name": "Title",
+          "key": "title"
         },
         "columns": {
           "type": "bloks",
-          "pos": 1
+          "pos": 1,
+          "key": "columns",
+          "maximum": 4,
+          "minimum": 1
+        },
+        "theme": {
+          "type": "option",
+          "use_uuid": true,
+          "display_name": "Theme",
+          "key": "bgColor",
+          "pos": 2,
+          "options": [
+            {
+              "_uid": "81dd4272-985f-4ac1-aff4-cd8c3516265c",
+              "name": "Default",
+              "value": "default"
+            },
+            {
+              "_uid": "c6716e20-9b72-4dac-87de-bdbcc02dae7e",
+              "value": "inverted",
+              "name": "Inverted"
+            },
+            {
+              "_uid": "3f894fff-5ab9-4144-8ba3-8b80757a6517",
+              "value": "discrete",
+              "name": "Discrete"
+            }
+          ],
+          "default_value": "default"
         }
       },
-      "image": null,
-      "preview_field": null,
+      "image": "//a.storyblok.com/f/255438/x/3b4ee58d9b/section-preview.png",
+      "preview_field": "title",
       "is_root": false,
-      "preview_tmpl": null,
+      "preview_tmpl": "<div>{{title}}</div>\n<div>{{theme}}</div>\n<div>{{columns.length}} blocks</div>\n",
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "grid",
+      "real_name": "Grid Section",
       "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
       "color": "#2db47d",
       "icon": "block-text-img-r-l",
@@ -185,14 +228,20 @@
       "name": "hero",
       "display_name": null,
       "created_at": "2023-10-26T12:13:01.667Z",
-      "updated_at": "2023-10-27T06:32:34.921Z",
+      "updated_at": "2023-10-27T19:01:32.106Z",
       "id": 4789750,
       "schema": {
         "headLine": {
-          "type": "text"
+          "type": "text",
+          "required": true
         },
         "image": {
-          "type": "asset"
+          "type": "asset",
+          "required": true,
+          "filetypes": [
+            "images",
+            "videos"
+          ]
         },
         "ctaPrimary": {
           "type": "bloks",
@@ -201,7 +250,8 @@
           "component_whitelist": [
             "Link"
           ],
-          "maximum": 2
+          "maximum": 2,
+          "required": false
         },
         "ctaSecondary": {
           "type": "bloks",
@@ -231,11 +281,12 @@
       "name": "Link",
       "display_name": null,
       "created_at": "2023-10-26T12:14:52.785Z",
-      "updated_at": "2023-10-27T06:32:58.563Z",
+      "updated_at": "2023-10-27T19:35:29.475Z",
       "id": 4789751,
       "schema": {
         "text": {
-          "type": "text"
+          "type": "text",
+          "required": true
         },
         "link": {
           "type": "multilink",
@@ -254,6 +305,36 @@
       "color": "#2db47d",
       "icon": "block-tag",
       "component_group_name": "Elements"
+    },
+    {
+      "name": "logoCard",
+      "display_name": "Logo Card",
+      "created_at": "2023-10-27T20:02:25.763Z",
+      "updated_at": "2023-10-27T20:04:46.248Z",
+      "id": 4797844,
+      "schema": {
+        "name": {
+          "type": "text",
+          "required": true
+        },
+        "svgLogo": {
+          "type": "asset",
+          "required": true,
+          "description": "Please provide a monocromic, transparent svg without any background",
+          "tooltip": false
+        }
+      },
+      "image": null,
+      "preview_field": "name",
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Logo Card",
+      "component_group_uuid": null,
+      "color": "#2db47d",
+      "icon": null
     },
     {
       "name": "menu",
@@ -369,7 +450,7 @@
       "name": "page",
       "display_name": null,
       "created_at": "2023-10-05T08:08:49.662Z",
-      "updated_at": "2023-10-11T07:44:34.903Z",
+      "updated_at": "2023-10-27T09:10:31.082Z",
       "id": 4673134,
       "schema": {
         "body": {
@@ -377,7 +458,7 @@
         }
       },
       "image": null,
-      "preview_field": null,
+      "preview_field": "body",
       "is_root": true,
       "preview_tmpl": null,
       "is_nestable": false,

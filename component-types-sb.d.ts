@@ -1,4 +1,4 @@
-import { StoryblokStory } from "storyblok-generate-ts";
+import {StoryblokStory} from 'storyblok-generate-ts'
 
 export interface RichtextStoryblok {
   type: string;
@@ -42,29 +42,25 @@ export interface FeatureStoryblok {
   body?: string;
   ctaPrimary?: LinkStoryblok[];
   ctaSecondary?: LinkStoryblok[];
+  layout?: "" | "content-left" | "content-right";
+  theme?: "" | "default" | "inverted" | "discrete";
   _uid: string;
   component: "feature";
-  [k: string]: any;
-}
-
-export interface FooterStoryblok {
-  offices?: OfficesStoryblok[];
-  _uid: string;
-  component: "footer";
   [k: string]: any;
 }
 
 export interface GridStoryblok {
   title?: string;
   columns?: any[];
+  theme?: "" | "default" | "inverted" | "discrete";
   _uid: string;
   component: "grid";
   [k: string]: any;
 }
 
 export interface HeroStoryblok {
-  headLine?: string;
-  image?: AssetStoryblok;
+  headLine: string;
+  image: AssetStoryblok;
   ctaPrimary?: LinkStoryblok[];
   ctaSecondary?: LinkStoryblok[];
   _uid: string;
@@ -128,10 +124,18 @@ export type MultilinkStoryblok =
     };
 
 export interface LinkStoryblok {
-  text?: string;
+  text: string;
   link: MultilinkStoryblok;
   _uid: string;
   component: "Link";
+  [k: string]: any;
+}
+
+export interface LogoCardStoryblok {
+  name: string;
+  svgLogo: AssetStoryblok;
+  _uid: string;
+  component: "logoCard";
   [k: string]: any;
 }
 
