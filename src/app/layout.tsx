@@ -10,7 +10,6 @@ import {
   getStoryblokFooterData,
   getStoryblokMenuData,
 } from "@/services/getStoryBlokPage";
-import { ThemeSwitcher } from "@/components/DevUtils/ThemeSwitcher";
 import Footer from "@/components/Footer/Footer";
 
 storyblokInit({
@@ -41,7 +40,6 @@ export default async function RootLayout({
         <body className={inter.className}>
           <AppHeader blok={menuData} />
           {children}
-          {process.env.NODE_ENV === "development" && <ThemeSwitcher />}
           <Footer blok={footerData} />
         </body>
       </StoryblokProvider>
