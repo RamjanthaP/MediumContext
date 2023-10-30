@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "./Container";
-import { BaseProps } from "@/components/PropsHelpers";
+import { BaseProps } from "@/types/props";
 
 interface SectionWrapperProps extends BaseProps {
   color?: "default" | "inverted" | "discrete";

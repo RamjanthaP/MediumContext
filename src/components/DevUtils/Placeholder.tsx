@@ -1,4 +1,4 @@
-import { BaseProps } from "../PropsHelpers";
+import { BaseProps } from "@/types/props";
 
 const Placholder = (
   props: Partial<BaseProps> & { name: string; data?: any }
