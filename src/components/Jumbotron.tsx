@@ -1,44 +1,51 @@
-import Image from "next/image";
-import { ReactNode, useMemo } from "react";
+import Image from 'next/image';
 
-interface JumbotronProps {
-  variant?: "content-right" | "content-left";
-  children?: ReactNode;
+import { ImageProps } from '@/types/common';
+import { BaseProps } from '@/types/props';
+
+import { Container } from './Layout/Container';
+
+interface JumbotronProps extends BaseProps {
+  variant?: 'content-right' | 'content-left';
   title: string;
-  className?: string;
-  imageUrl?: string;
+  image: ImageProps;
 }
 
 export function Jumbotron({
   children,
-  variant = "content-left",
-
+  variant = 'content-left',
+  className = '',
   title,
-  imageUrl,
+  image,
 }: JumbotronProps) {
   const layoutClass =
-    variant === "content-right" ? "md:flex-row-reverse" : "md:flex-row";
+    variant === 'content-right' ? 'md:flex-row-reverse' : 'md:flex-row';
   return (
-    <div className="bg-white dark:bg-black">
-      <div className={`container wrapper flex flex-col ${layoutClass} mx-auto`}>
+    <div className={`content-block-default ${className}`}>
+      <Container className={`flex flex-col-reverse md:gap-8 ${layoutClass}`}>
         <div className={`content w-full flex items-center`}>
           <div className='px-8  py-8 md:py-0'>
             {title && (
               <>
-                <h1 className="md:text-xl lg:text-2xl xl:text-3xl font-bolder color-black dark:text-white">
+                <h1 className='md:text-xl lg:text-2xl xl:text-3xl font-bolder color-black dark:text-white'>
                   {title}
                 </h1>
-                {children && <div className="mt-4">{children}</div>}
+                {children && <div className='mt-4'>{children}</div>}
               </>
             )}
           </div>
         </div>
-        <div className="flex justify-center w-full md:py-8 h-72 md:h-screen  relative">
-          {imageUrl && (
-            <Image src={imageUrl} fill alt="Nej" className="object-contain" />
+        <div className='flex justify-center w-full md:py-8 h-72 md:h-screen  relative'>
+          {image && (
+            <Image
+              src={image.url}
+              fill
+              alt={image.alt}
+              className='object-contain'
+            />
           )}
         </div>
-      </div>
+      </Container>
     </div>
   );
 }
