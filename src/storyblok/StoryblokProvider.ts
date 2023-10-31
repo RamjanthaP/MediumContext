@@ -9,7 +9,7 @@ import Teaser from "@/components/Teaser";
 import Feature from "./components/Feature";
 import HeaderMenu from "@/components/Menu/HeaderMenu";
 import MenuLink from "@/components/Menu/MenuLink";
-import Hero from "./components/Hero";
+import        Hero from "./components/Hero";
 import LogoCardSb from "./components/LogoCard";
 import Placholder from "@/storyblok/fallback-component/Fallback";
 

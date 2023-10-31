@@ -16,7 +16,6 @@ export default HeroSb;
 function mapHeroDtoToData(blok: HeroStoryblok): HeroProps {
   return {
     title: blok.headLine || "Title missing",
-
     image: {
       url: blok.image.filename,
       alt: blok.image.alt || "Bakgrund",

@@ -5,7 +5,7 @@ import { storyblokEditable } from "@storyblok/react";
 import { HeroStoryblok, LinkStoryblok } from "@sb-types";
 import Link from "next/link";
 
-type HeroProps = {
+export type HeroProps = {
   headLine: string;
   imageUrl?: string;
   primaryButtonTitle?: string;

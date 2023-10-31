@@ -1,6 +1,6 @@
-import React from "react";
-import { ArrowRightIcon } from "@heroicons/react/24/solid";
-import { ValueOf } from "next/dist/shared/lib/constants";
+import React from 'react';
+import { ArrowRightIcon } from '@heroicons/react/24/solid';
+import { ValueOf } from 'next/dist/shared/lib/constants';
 
 export type ButtonSizes = keyof typeof sizeClass;
 export type ButtonColors = keyof typeof colorVariants;
@@ -16,36 +16,38 @@ type ButtonProps = {
 
 const colorVariants = {
   primary: {
-    default: "btn-primary",
-    transparent: "btn-primary-transparent",
+    default: 'btn-primary',
+    transparent: 'btn-primary-transparent',
   },
   white: {
-    default: "btn-white",
-    transparent: "btn-white-transparent",
+    default: 'btn-white',
+    transparent: 'btn-white-transparent',
   },
   default: {
-    default: "btn-default",
-    transparent: "btn-default-transparent",
+    default: 'btn-default',
+    transparent: 'btn-default-transparent',
   },
 };
 
 const sizeClass = {
-  small: "px-4 py-2",
-  medium: "px-6 py-3",
-  large: "px-7 py-3",
+  small: 'px-4 py-2',
+  medium: 'px-6 py-3',
+  large: 'px-7 py-3',
 };
 
 const Button: React.FC<ButtonProps> = ({
-  variant = "primary",
+  variant = 'primary',
   transparent = false,
-  size = "medium",
+  size = 'medium',
   children,
   icon,
   ...props
 }) => {
   const baseClasses = `mx-2 rounded-full border-2 uppercase whitespace-pre`;
   const colorVariant = colorVariants[variant] || colorVariants.default;
-  const colorClass = transparent ? colorVariant.transparent : colorVariant.default;
+  const colorClass = transparent
+    ? colorVariant.transparent
+    : colorVariant.default;
   const sizeClasses = sizeClass[size];
 
   return (
@@ -53,9 +55,9 @@ const Button: React.FC<ButtonProps> = ({
       className={`${baseClasses} ${colorClass} ${sizeClasses}`}
       {...props}
     >
-      <div className="flex px-2 w-full items-center">
+      <div className='flex w-full items-center px-2'>
         {children}
-        {icon && <ArrowRightIcon className="h-5 w-5 ml-3" />}
+        {icon && <ArrowRightIcon className='ml-3 h-5 w-5' />}
       </div>
     </button>
   );
