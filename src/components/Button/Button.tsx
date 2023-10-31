@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
+import { ValueOf } from "next/dist/shared/lib/constants";
 
 export type ButtonSizes = keyof typeof sizeClass;
 export type ButtonColors = keyof typeof colorVariants;
@@ -39,8 +40,15 @@ const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const baseClasses = `mx-2 rounded-full border-2 uppercase whitespace-pre`;
-  const colorClass =
-    colorVariants[variant][transparent ? "transparent" : "default"];
+  // TODO: Make a pretty solution for this
+  let colorClass = colorVariants.default.default;
+  if (variant === "primary") {
+    colorClass = transparent
+      ? colorVariants.primary.transparent
+      : colorVariants.primary.default;
+  } else {
+    colorClass = colorVariants.default.transparent;
+  }
   const sizeClasses = sizeClass[size];
 
   return (

@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
-import StoryblokProvider from "@/components/StoryblokProvider";
+import StoryblokProvider from "@/storyblok/StoryblokProvider";
 import AppHeader from "@/components/Menu/AppHeader";
 import {
   getStoryblokFooterData,

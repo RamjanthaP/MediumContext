@@ -5,7 +5,7 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
-  --primary-color: theme('colors.primary.400');
+  --primary-color: theme("colors.primary.400");
   --themed-discrete-foreground-rgb: 33, 33, 33;
   --themed-discrete-background-rgb: 244, 244, 244;
 
@@ -28,8 +28,8 @@
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-rgb: 0, 0, 0;
-    --themed-discrete-foreground-rgb: 24, 24, 24;
-    --themed-discrete-background-rgb: 200, 200, 200;
+    --themed-discrete-foreground-rgb: 170, 170, 170;
+    --themed-discrete-background-rgb: 24, 24, 24;
 
     /* Filter for svg */
     --filter-dark: invert(100%);
@@ -45,15 +45,13 @@ body {
 /* Base button styles */
 .btn {
   @apply text-btn leading-btn tracking-btn text-left;
-  
 }
 /* Default backgrouund button */
-.btn-default{
-   color: var(--themed-default-background);
+.btn-default {
+  color: var(--themed-default-background);
   background: var(--themed-default-foreground);
-  
 }
-.btn-default-transparent{
+.btn-default-transparent {
   color: var(--themed-default-foreground);
   background: var(--themed-default-background);
 }
