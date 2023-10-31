@@ -7,10 +7,6 @@ export default async function Home() {
 
   return (
     <div>
-      <Container className="bg-discrete">
-        <h1 className="text-3xl font-medium">{props.story.name}</h1>
-      </Container>
-
       <StoryblokStory story={props.story} />
     </div>
   );
