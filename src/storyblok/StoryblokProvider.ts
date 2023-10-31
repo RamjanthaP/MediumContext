@@ -11,6 +11,7 @@ import HeaderMenu from "@/components/Menu/HeaderMenu";
 import MenuLink from "@/components/Menu/MenuLink";
 import Hero from "./components/Hero";
 import LogoCardSb from "./components/LogoCard";
+import Placholder from "@/components/DevUtils/Placeholder";
 
 const components = {
   feature: Feature,
@@ -27,6 +28,8 @@ storyblokInit({
   accessToken: "isvrOVvrEDwbKVLqsr0E7wtt",
   use: [apiPlugin],
   components,
+  customFallbackComponent: Placholder,
+  enableFallbackComponent: process.env.NODE_ENV === "development",
 });
 
 export default function StoryblokProvider({ children }: any) {
