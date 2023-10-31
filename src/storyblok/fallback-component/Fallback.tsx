@@ -1,5 +1,3 @@
-import { BaseProps } from "@/types/props";
-
 interface FallbackBlokProps {
   title?: string;
   name?: string;

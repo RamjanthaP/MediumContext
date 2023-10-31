@@ -11,7 +11,7 @@ import HeaderMenu from "@/components/Menu/HeaderMenu";
 import MenuLink from "@/components/Menu/MenuLink";
 import Hero from "./components/Hero";
 import LogoCardSb from "./components/LogoCard";
-import Placholder from "@/components/DevUtils/Placeholder";
+import Placholder from "@/storyblok/fallback-component/Fallback";
 
 const components = {
   feature: Feature,
