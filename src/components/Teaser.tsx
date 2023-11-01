@@ -5,7 +5,8 @@ import Placholder from "../storyblok/fallback-component/Fallback";
 const Teaser = ({ blok }: TeaserStoryblok) => {
   return (
     <div {...storyblokEditable(blok)}>
-      <Placholder name="Teaser" data={blok} />
+      {/* TODO: Implement actual component or remove */}
+      <Placholder blok={blok} />
     </div>
   );
 };
