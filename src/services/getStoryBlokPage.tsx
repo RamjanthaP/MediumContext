@@ -5,11 +5,11 @@ import {
 } from "../../component-types-sb";
 import { notFound, redirect } from "next/navigation";
 
-export async function getStoryblokPage(path = "home") {
+export async function getStoryblokPage(path = ["home"]) {
   let sbParams = { version: "draft" as const };
   const storyblokApi = getStoryblokApi();
   const storyReq = await storyblokApi
-    .get(`cdn/stories/${path}`, sbParams)
+    .get(`cdn/stories/${path.join("/")}`, sbParams)
     .catch((e) => {
       notFound();
     });
