@@ -1,17 +1,23 @@
 /** 1. Tag it as a client component */
-"use client";
-import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
+'use client';
+
+import Placholder from '@/storyblok/fallback-component/Fallback';
+import { apiPlugin, storyblokInit } from '@storyblok/react/rsc';
+
+import Grid from '@/components/Grid';
+import HeaderMenu from '@/components/Menu/HeaderMenu';
+import MenuLink from '@/components/Menu/MenuLink';
 
 /** Import your components */
-import Page from "@/components/Page";
-import Grid from "@/components/Grid";
-import Teaser from "@/components/Teaser";
-import Feature from "./components/Feature";
-import HeaderMenu from "@/components/Menu/HeaderMenu";
-import MenuLink from "@/components/Menu/MenuLink";
-import        Hero from "./components/Hero";
-import LogoCardSb from "./components/LogoCard";
-import Placholder from "@/storyblok/fallback-component/Fallback";
+import Page from '@/components/Page';
+import Teaser from '@/components/Teaser';
+
+import Feature from './components/Feature';
+import Hero from './components/Hero';
+import JumbotronSb from './components/Jumbotron';
+import LogoCardSb from './components/LogoCard';
+
+/** 1. Tag it as a client component */
 
 const components = {
   feature: Feature,
@@ -22,14 +28,15 @@ const components = {
   header_menu: HeaderMenu,
   menu_link: MenuLink,
   logo_card: LogoCardSb,
+  jumbotron: JumbotronSb,
 };
 /** 2. Initialize it as usual */
 storyblokInit({
-  accessToken: "isvrOVvrEDwbKVLqsr0E7wtt",
+  accessToken: 'isvrOVvrEDwbKVLqsr0E7wtt',
   use: [apiPlugin],
   components,
   customFallbackComponent: Placholder,
-  enableFallbackComponent: process.env.NODE_ENV === "development",
+  enableFallbackComponent: process.env.NODE_ENV === 'development',
 });
 
 export default function StoryblokProvider({ children }: any) {

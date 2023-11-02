@@ -3,7 +3,7 @@ export interface BaseLink {
   url: string;
 }
 
-export interface Image {
+export interface ImageProps {
   url: string;
   alt: string;
 }

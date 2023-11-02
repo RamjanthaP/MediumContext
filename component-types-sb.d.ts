@@ -68,6 +68,16 @@ export interface HeroStoryblok {
   [k: string]: any;
 }
 
+export interface JumbotronStoryblok {
+  title: string;
+  layout: "" | "content-left";
+  content?: string;
+  image: AssetStoryblok;
+  _uid: string;
+  component: "jumbotron";
+  [k: string]: any;
+}
+
 export type MultilinkStoryblok =
   | {
       cached_url?: string;
