@@ -5,7 +5,20 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
-  --primary-color: theme("colors.primary.400");
+  --opacity-20-rgb: 255, 255, 255, 0.2;
+  --opacity-40-rgb: 255, 255, 255, 0.4;
+
+  --green-hover-rgb: 47, 171, 9, 0.2;
+
+  --primary-color: theme("colors.primary.500");
+  --primary-hover-color: theme("colors.primary.400");
+  --primary-active-color: theme("colors.primary.600");
+  --primary-transparent-hover: theme("colors.primary.700");
+  --primary-transparent-active: theme("colors.primary.500");
+
+  --white-active-bg-color: theme("colors.secondary.100");
+  --black-active-solid-color:theme("colors.secondary.800");
+
   --themed-discrete-foreground-rgb: 33, 33, 33;
   --themed-discrete-background-rgb: 244, 244, 244;
 
@@ -46,25 +59,71 @@ body {
 .btn {
   @apply text-btn leading-btn tracking-btn text-left;
 }
-/* Default backgrouund button */
-.btn-default {
-  color: var(--themed-default-background);
-  background: var(--themed-default-foreground);
+/* White backgrouund button */
+.btn-white {
+  color: var(--color-base-black, #000);
+  background: white;
 }
-.btn-default-transparent {
-  color: var(--themed-default-foreground);
-  background: var(--themed-default-background);
+.btn-white:hover {
+  border: 1px solid var(--color-base-black, #000);
+}
+.btn-white:active {
+  background: var(--white-active-bg-color);
 }
 
-/* Green Button */
+/* White & default transparent background button */
+.btn-white-transparent, 
+.btn-default-transparent{
+  color: var(--themed-default-foreground);
+  background: var(--foreground-rgb);
+}
+.btn-default-transparent:hover,
+.btn-white-transparent:hover {
+  background: rgba(var(--opacity-20-rgb));
+}
+.btn-default-transparent:active,
+.btn-white-transparent:active {
+  background: rgba(var(--opacity-40-rgb));
+}
+/* Black background button */
+.btn-default {
+  color: var(--color-base-white, #fff);
+  background: var(--color-base-black, #000);
+}
+.btn-default:active {
+  background: var(--black-active-solid-color);
+}
+.btn-default:hover {
+  border: 1px solid var(--color-base-white, #fff);
+}
+
+/* Green Primary Button */
 .btn-primary {
   color: var(--themed-primary-foreground);
   background: var(--themed-primary-background);
 }
 
+.btn-primary:hover {
+  background-color: var(--primary-hover-color);
+}
+.btn-primary:active {
+  background-color: var(--primary-active-color);
+}
+
+/* Transparent Primary Button */
+
 .btn-primary-transparent {
   color: var(--themed-primary-background);
   background: var(--themed-inverted-foreground);
+}
+
+.btn-primary-transparent:hover {
+  background: rgba(var(--green-hover-rgb));
+  color: var(--primary-hover-color);
+}
+.btn-primary-transparent:active {
+  background: rgba(var(--green-hover-rgb));
+  color: var(--primary-transparent-active);
 }
 
 .theme-block-default {

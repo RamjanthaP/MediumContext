@@ -19,6 +19,10 @@ const colorVariants = {
     default: "btn-primary",
     transparent: "btn-primary-transparent",
   },
+  white: {
+    default: "btn-white",
+    transparent: "btn-white-transparent",
+  },
   default: {
     default: "btn-default",
     transparent: "btn-default-transparent",
@@ -40,15 +44,8 @@ const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const baseClasses = `mx-2 rounded-full border-2 uppercase whitespace-pre`;
-  // TODO: Make a pretty solution for this
-  let colorClass = colorVariants.default.default;
-  if (variant === "primary") {
-    colorClass = transparent
-      ? colorVariants.primary.transparent
-      : colorVariants.primary.default;
-  } else {
-    colorClass = colorVariants.default.transparent;
-  }
+  const colorVariant = colorVariants[variant] || colorVariants.default;
+  const colorClass = transparent ? colorVariant.transparent : colorVariant.default;
   const sizeClasses = sizeClass[size];
 
   return (
