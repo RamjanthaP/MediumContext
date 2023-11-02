@@ -22,7 +22,7 @@ export function Jumbotron({
     <div className="bg-white dark:bg-black">
       <div className={`container wrapper flex flex-col ${layoutClass} mx-auto`}>
         <div className={`content w-full flex items-center`}>
-          <div className="px-8  py-8 md:py-0">
+          <div className='px-8  py-8 md:py-0'>
             {title && (
               <>
                 <h1 className="md:text-xl lg:text-2xl xl:text-3xl font-bolder color-black dark:text-white">
