@@ -24,6 +24,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 2. Run `yarn`
 3. Run `yarn dev` and dev server will start running on [http://localhost:3000](http://localhost:3000)
 4. Open a new terminal session and run `yarn dev:proxy` in order to start the proxy server. (Install `local-ssl-proxy` globally if you don't have it already, by running `yarn add -g local-ssl-proxy`). It will now be running on [http://localhost:3010](http://localhost:3010). This is needed to preview changes from Storyblok.
+5. Run `npm run storybook` for storybook. 
 
 ## Good to know:
 
