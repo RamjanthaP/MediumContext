@@ -73,6 +73,8 @@ export interface JumbotronStoryblok {
   layout: "" | "content-left";
   content?: string;
   image: AssetStoryblok;
+  ctaPrimary?: LinkStoryblok[];
+  ctaSecondary?: LinkStoryblok[];
   _uid: string;
   component: "jumbotron";
   [k: string]: any;
@@ -197,6 +199,17 @@ export interface ServiceStoryblok {
   relatedCase?: CaseStoryblok[];
   _uid: string;
   component: "Service";
+  [k: string]: any;
+}
+
+export interface ServiceItemsStoryblok {
+  title?: string;
+  description?: RichtextStoryblok;
+  Image?: string;
+  button_link?: MultilinkStoryblok;
+  button_title?: string;
+  _uid: string;
+  component: "service_items";
   [k: string]: any;
 }
 
