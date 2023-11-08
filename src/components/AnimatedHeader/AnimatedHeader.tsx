@@ -1,29 +1,75 @@
 'use client';
-import { ArrowLeftIcon } from '@heroicons/react/24/solid';
+import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import Button from '../Button/Button';
 import { Container } from '../Layout/Container';
-import Animation from './falling-ball.svg';
+import { BaseProps } from '@/types/props';
+import { RefObject, useEffect, useRef } from 'react';
+import { scrollToTarget } from '@/utilities/helper';
+import { BaseLink } from '@/types/common';
 
-const AnimateHeader = () => {
+interface AnimatedHeaderProps extends BaseProps {
+  title: string;
+  topActionButton?: BaseLink;
+  svgAnimation: {
+    height: number;
+    src: string;
+    width: number;
+  };
+}
+
+const AnimateHeader = ({
+  title,
+  topActionButton,
+  className = '',
+  svgAnimation,
+}: AnimatedHeaderProps) => {
+  const svgContainerRef = useRef<HTMLObjectElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      const target = getSvgaPlayer(svgContainerRef);
+
+      if (target?.svgatorPlayer) {
+        target?.svgatorPlayer.ready(() => {
+          startAnimationAndScrollToTarget(target.svgatorPlayer, titleRef);
+        });
+      } else {
+        throw new Error('The player cannot be found');
+      }
+    }, 100); // TODO; Make less hacky
+  }, [svgContainerRef?.current?.contentDocument]);
+
   return (
-    <div className='bg-primary-100 pb-8'>
-      <div className='h-96  flex justify-center items-center'>
+    <div className={`bg-primary-100 pb-8 ${className}`}>
+      <div className='h-[calc(100vh-300px)] flex justify-center items-center'>
         <object
           type='image/svg+xml'
-          data={Animation.src}
-          className='w-6/12 md:w-4/12 h-full'
+          ref={svgContainerRef}
+          data={svgAnimation.src}
+          className='w-full h-full'
         >
           svg-animation
         </object>
       </div>
       <Container>
-        <div className='w-1/4'>
-          <Button variant='default' transparent size='small' href='/'>
-            <ArrowLeftIcon className='w-4 h-4 mr-2' />
-            Tjänster
-          </Button>
-          <h1 className='text-Jumbo/sm md:text-Jumbo/lg font-bold transition-all mt-4'>
-            Modern applikationsutvekling
+        <div className='w-1/2'>
+          {topActionButton && (
+            <Button
+              variant='default'
+              transparent
+              size='small'
+              href={topActionButton.url}
+            >
+              <ArrowLeftIcon scale='4' className='w-3 h-3 mr-1' />
+              {topActionButton.text}
+            </Button>
+          )}
+          <h1
+            ref={titleRef}
+            className='text-Jumbo/sm md:text-Jumbo/lg font-bold transition-all mt-4'
+          >
+            {title}
           </h1>
         </div>
       </Container>
@@ -32,3 +78,26 @@ const AnimateHeader = () => {
 };
 
 export default AnimateHeader;
+
+const startAnimationAndScrollToTarget = function (
+  player: any,
+  target: RefObject<HTMLElement>
+) {
+  if (!player?.ready) {
+    throw new Error('The player is not ready');
+  }
+  if (!target?.current) {
+    throw new Error('titleRef.current is null');
+  }
+
+  player.restart(); // play() only make sense if the animation has ended
+
+  // TODO: Add a check for if user has scrolled down
+  player.on('end', () => {
+    scrollToTarget(target);
+  });
+};
+
+const getSvgaPlayer = (svgContainerRef: RefObject<HTMLObjectElement>): any => {
+  return svgContainerRef.current?.contentDocument?.querySelector('svg') as any;
+};
