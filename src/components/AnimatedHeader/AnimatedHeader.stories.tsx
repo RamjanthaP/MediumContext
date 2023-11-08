@@ -6,13 +6,18 @@ export default {
   tags: ['autodocs'],
 };
 
-export const Example1 = {
+export const Plain = {
   args: {
     title: 'Animated Header',
   },
 };
-export const Example2 = {
+export const WithButton = {
   args: {
-    title: 'Animated Header example 2',
+    title: 'Animated Header with button',
+    topActionButton: {
+      text: 'Back to home',
+      url: '/',
+    },
+    }
   },
 };
