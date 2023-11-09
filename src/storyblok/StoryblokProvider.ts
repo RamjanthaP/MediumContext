@@ -16,6 +16,7 @@ import Feature from './components/Feature';
 import Hero from './components/Hero';
 import JumbotronSb from './components/Jumbotron';
 import LogoCardSb from './components/LogoCard';
+import ServiceItemSb from './components/ServiceItems';
 
 /** 1. Tag it as a client component */
 
@@ -29,6 +30,7 @@ const components = {
   menu_link: MenuLink,
   logo_card: LogoCardSb,
   jumbotron: JumbotronSb,
+  service_items: ServiceItemSb,
 };
 /** 2. Initialize it as usual */
 storyblokInit({
