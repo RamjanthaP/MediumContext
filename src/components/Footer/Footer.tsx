@@ -1,8 +1,8 @@
-import SectionWrapper from "@/components/Layout/SectionWrapper";
-import { OfficeItem, OfficeItemProps } from "./OfficeItem";
-import { FooterStoryblok, OfficesStoryblok } from "@sb-types";
+import SectionWrapper from '@/components/Layout/SectionWrapper';
+import { OfficeItem, OfficeItemProps } from './OfficeItem';
+import { ContactFooterStoryblok, OfficesStoryblok } from '@sb-types';
 
-function mapOfficeDTOtoData(dto: FooterStoryblok) {
+function mapOfficeDTOtoData(dto: ContactFooterStoryblok) {
   return dto.content.offices.map((office: OfficesStoryblok) => ({
     title: office.city,
     address: {
@@ -13,16 +13,16 @@ function mapOfficeDTOtoData(dto: FooterStoryblok) {
   }));
 }
 
-const Footer = ({ blok }: { blok: FooterStoryblok }) => {
+const Footer = ({ blok }: { blok: ContactFooterStoryblok }) => {
   const offices = mapOfficeDTOtoData(blok);
   return (
-    <SectionWrapper color="default" title="Kontakta oss">
-      <div className="generic-info">
+    <SectionWrapper color='default' title='Kontakta oss'>
+      <div className='generic-info'>
         <div>
-          Email: <a href="mailto:info@amaceit.se">info@amaceit.se</a>
+          Email: <a href='mailto:info@amaceit.se'>info@amaceit.se</a>
         </div>
       </div>
-      <div className="offices w-full mt-4 flex flex-col md:flex-row gap-6">
+      <div className='offices w-full mt-4 flex flex-col md:flex-row gap-6'>
         {offices.map((office: OfficeItemProps) => (
           <OfficeItem
             key={office.title}
