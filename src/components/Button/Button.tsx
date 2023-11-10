@@ -30,7 +30,7 @@ const colorVariants = {
 };
 
 const sizeClass = {
-  small: 'px-4 py-2',
+  small: 'px-2 py-1 text-sm',
   medium: 'px-6 py-3',
   large: 'px-7 py-3',
 };
@@ -43,7 +43,7 @@ const Button: React.FC<ButtonProps> = ({
   icon,
   ...props
 }) => {
-  const baseClasses = `mx-2 rounded-full border-2 uppercase whitespace-pre`;
+  const baseClasses = `mx-2 rounded-full border-2  whitespace-pre`;
   const colorVariant = colorVariants[variant] || colorVariants.default;
   const colorClass = transparent
     ? colorVariant.transparent
@@ -57,7 +57,7 @@ const Button: React.FC<ButtonProps> = ({
     >
       <div className='flex w-full items-center px-2'>
         {children}
-        {icon && <ArrowRightIcon className='ml-3 h-5 w-5' />}
+        {icon && <ArrowRightIcon className='ml-2 h-5 w-5' />}
       </div>
     </button>
   );
