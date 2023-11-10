@@ -33,8 +33,10 @@ const ServiceCard = ({
     className={`flex flex-row-reverse md:flex-col  overflow-hidden ${className}`}
   >
     <div className={`w-24 h-24 lg:w-full lg:h-24 relative lg:my-8 self-start`}>
-      {/* <Image className='object-cover' src={image.url} alt={image.alt} fill /> */}
-      {animation && (
+      {image && (
+        <Image className='object-cover' src={image.url} alt={image.alt} fill />
+      )}
+      {!image && animation && (
         <object
           className='object-fill w-full h-full'
           data={Animation[animation as keyof typeof Animation].src}
