@@ -28,7 +28,7 @@ function mapServiceItemDtoToData(
           url: 'https:' + blok.Image || 'https://via.placeholder.com/150',
           alt: 'Bakgrund',
         }
-      : null,
+      : undefined,
     animation: blok.animation || 'spin1',
     button: {
       text: blok.button_title || 'Button missing', // TODO: Make mandatory in SB
