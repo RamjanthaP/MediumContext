@@ -1,12 +1,7 @@
 import ServiceCard, {
   ServiceCardProps,
 } from '@/components/ServiceItem/ServiceItem';
-import { extractLinkDataFromFirstItem } from '@/utilities/dtoMappers';
-import {
-  HeroStoryblok,
-  RichtextStoryblok,
-  ServiceItemsStoryblok,
-} from '@sb-types';
+import { ServiceItemsStoryblok } from '@sb-types';
 import { storyblokEditable } from '@storyblok/react';
 import { renderRichText } from '@storyblok/react';
 
