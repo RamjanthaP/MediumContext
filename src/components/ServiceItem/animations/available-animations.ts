@@ -3,4 +3,4 @@ export const availableAnimations = [
   { value: 'spin2', name: 'Spin 2' },
   { value: 'bounce', name: 'Bounce' },
 ];
-export interface AvailableAnimations = keyof typeof availableAnimations;
+export type AvailableAnimations = keyof typeof availableAnimations;

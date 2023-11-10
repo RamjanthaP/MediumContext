@@ -11,6 +11,7 @@ export const Plain = {
     title: 'Animated Header',
   },
 };
+
 export const WithButton = {
   args: {
     title: 'Animated Header with button',
@@ -18,6 +19,5 @@ export const WithButton = {
       text: 'Back to home',
       url: '/',
     },
-    }
-  },
+  }
 };
