@@ -281,7 +281,7 @@
       "name": "jumbotron",
       "display_name": "Jumbotron",
       "created_at": "2023-10-31T11:57:43.285Z",
-      "updated_at": "2023-10-31T12:16:37.921Z",
+      "updated_at": "2023-10-31T12:34:39.826Z",
       "id": 4811285,
       "schema": {
         "title": {
@@ -316,6 +316,23 @@
           "required": true,
           "key": "image",
           "pos": 3
+        },
+        "ctaPrimary": {
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "Link"
+          ]
+        },
+        "ctaSecondary": {
+          "type": "bloks",
+          "required": false,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "Link"
+          ]
         }
       },
       "image": null,
@@ -334,7 +351,7 @@
       "name": "Link",
       "display_name": null,
       "created_at": "2023-10-26T12:14:52.785Z",
-      "updated_at": "2023-10-27T19:35:29.475Z",
+      "updated_at": "2023-11-01T11:13:30.360Z",
       "id": 4789751,
       "schema": {
         "text": {
@@ -343,7 +360,8 @@
         },
         "link": {
           "type": "multilink",
-          "required": true
+          "required": true,
+          "link_scope": "services"
         }
       },
       "image": null,
@@ -609,6 +627,42 @@
       "color": "#00b3b0",
       "icon": "block-doc",
       "component_group_name": "Content"
+    },
+    {
+      "name": "service_items",
+      "display_name": null,
+      "created_at": "2023-11-06T13:39:22.263Z",
+      "updated_at": "2023-11-06T13:48:12.936Z",
+      "id": 4841921,
+      "schema": {
+        "title": {
+          "type": "text"
+        },
+        "description": {
+          "type": "richtext"
+        },
+        "Image": {
+          "type": "image"
+        },
+        "button_link": {
+          "type": "multilink"
+        },
+        "button_title": {
+          "type": "text"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "service_items",
+      "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
+      "color": null,
+      "icon": null,
+      "component_group_name": "Blocks"
     },
     {
       "name": "teaser",
