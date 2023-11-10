@@ -20,7 +20,7 @@ export type HeroProps = {
 const Hero = ({ image, title, primaryButton, secondaryButton }: HeroProps) => {
   return (
     <div>
-      <div className='w-full h-[calc(100vh-100px)] relative theme-block-default flex justify-center items-center'>
+      <div className='w-full h-96 relative theme-block-default flex justify-center items-center'>
         <div className='z-20 p-14'>
           <h1 className='text-Jumbo/sm md:text-Jumbo/lg lg:text-Jumbo/xl font-bold mb-8 md:mb-10 transition-all duration-500'>
             {extractLastWord(title).remaining}{' '}
