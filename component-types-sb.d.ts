@@ -1,4 +1,4 @@
-import {StoryblokStory} from 'storyblok-generate-ts'
+import { StoryblokStory } from 'storyblok-generate-ts';
 
 export interface RichtextStoryblok {
   type: string;
@@ -25,14 +25,14 @@ export interface CaseStoryblok {
   Summary?: RichtextStoryblok;
   Image?: AssetStoryblok;
   _uid: string;
-  component: "Case";
+  component: 'Case';
   [k: string]: any;
 }
 
 export interface ContactFooterStoryblok {
   offices?: OfficesStoryblok[];
   _uid: string;
-  component: "contact_footer";
+  component: 'contact_footer';
   [k: string]: any;
 }
 
@@ -42,19 +42,19 @@ export interface FeatureStoryblok {
   body?: string;
   ctaPrimary?: LinkStoryblok[];
   ctaSecondary?: LinkStoryblok[];
-  layout?: "" | "content-left" | "content-right";
-  theme?: "" | "default" | "inverted" | "discrete";
+  layout?: '' | 'content-left' | 'content-right';
+  theme?: '' | 'default' | 'inverted' | 'discrete';
   _uid: string;
-  component: "feature";
+  component: 'feature';
   [k: string]: any;
 }
 
 export interface GridStoryblok {
   title?: string;
   columns?: any[];
-  theme?: "" | "default" | "inverted" | "discrete";
+  theme?: '' | 'default' | 'inverted' | 'discrete';
   _uid: string;
-  component: "grid";
+  component: 'grid';
   [k: string]: any;
 }
 
@@ -64,19 +64,19 @@ export interface HeroStoryblok {
   ctaPrimary?: LinkStoryblok[];
   ctaSecondary?: LinkStoryblok[];
   _uid: string;
-  component: "hero";
+  component: 'hero';
   [k: string]: any;
 }
 
 export interface JumbotronStoryblok {
   title: string;
-  layout: "" | "content-left";
+  layout: '' | 'content-left';
   content?: string;
   image: AssetStoryblok;
   ctaPrimary?: LinkStoryblok[];
   ctaSecondary?: LinkStoryblok[];
   _uid: string;
-  component: "jumbotron";
+  component: 'jumbotron';
   [k: string]: any;
 }
 
@@ -90,7 +90,7 @@ export type MultilinkStoryblok =
       id?: string;
       cached_url?: string;
       anchor?: string;
-      linktype?: "story";
+      linktype?: 'story';
       story?: {
         name: string;
         created_at?: string;
@@ -126,12 +126,12 @@ export type MultilinkStoryblok =
       url?: string;
       cached_url?: string;
       anchor?: string;
-      linktype?: "asset" | "url";
+      linktype?: 'asset' | 'url';
       [k: string]: any;
     }
   | {
       email?: string;
-      linktype?: "email";
+      linktype?: 'email';
       [k: string]: any;
     };
 
@@ -139,23 +139,23 @@ export interface LinkStoryblok {
   text: string;
   link: MultilinkStoryblok;
   _uid: string;
-  component: "Link";
+  component: 'Link';
   [k: string]: any;
 }
 
 export interface LogoCardStoryblok {
   name: string;
   svgLogo: AssetStoryblok;
-  size: "" | "small" | "medium" | "large";
+  size: '' | 'small' | 'medium' | 'large';
   _uid: string;
-  component: "logo_card";
+  component: 'logo_card';
   [k: string]: any;
 }
 
 export interface MenuStoryblok {
   header_menu?: MenuLinkStoryblok[];
   _uid: string;
-  component: "menu";
+  component: 'menu';
   [k: string]: any;
 }
 
@@ -164,7 +164,7 @@ export interface MenuLinkStoryblok {
   title: string;
   subItems?: MenuLinkStoryblok[];
   _uid: string;
-  component: "menu_link";
+  component: 'menu_link';
   [k: string]: any;
 }
 
@@ -173,14 +173,14 @@ export interface OfficesStoryblok {
   zip?: string;
   city: string;
   _uid: string;
-  component: "offices";
+  component: 'offices';
   [k: string]: any;
 }
 
 export interface PageStoryblok {
   body?: any[];
   _uid: string;
-  component: "page";
+  component: 'page';
   uuid?: string;
   [k: string]: any;
 }
@@ -190,7 +190,7 @@ export interface PeopleStoryblok {
   Github?: MultilinkStoryblok;
   Image?: AssetStoryblok;
   _uid: string;
-  component: "People";
+  component: 'People';
   [k: string]: any;
 }
 
@@ -198,7 +198,7 @@ export interface ServiceStoryblok {
   content?: RichtextStoryblok;
   relatedCase?: CaseStoryblok[];
   _uid: string;
-  component: "Service";
+  component: 'Service';
   [k: string]: any;
 }
 
@@ -209,13 +209,13 @@ export interface ServiceItemsStoryblok {
   button_link?: MultilinkStoryblok;
   button_title?: string;
   _uid: string;
-  component: "service_items";
+  component: 'service_items';
   [k: string]: any;
 }
 
 export interface TeaserStoryblok {
   headline?: string;
   _uid: string;
-  component: "teaser";
+  component: 'teaser';
   [k: string]: any;
 }

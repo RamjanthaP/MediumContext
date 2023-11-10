@@ -45,9 +45,7 @@
           "maximum": 3,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "offices"
-          ]
+          "component_whitelist": ["offices"]
         }
       },
       "image": null,
@@ -92,9 +90,7 @@
           "tooltip": false,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "Link"
-          ],
+          "component_whitelist": ["Link"],
           "maximum": 1
         },
         "ctaSecondary": {
@@ -104,9 +100,7 @@
           "pos": 5,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "Link"
-          ],
+          "component_whitelist": ["Link"],
           "maximum": 1
         },
         "layout": {
@@ -238,18 +232,13 @@
         "image": {
           "type": "asset",
           "required": true,
-          "filetypes": [
-            "images",
-            "videos"
-          ]
+          "filetypes": ["images", "videos"]
         },
         "ctaPrimary": {
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "Link"
-          ],
+          "component_whitelist": ["Link"],
           "maximum": 2,
           "required": false
         },
@@ -257,9 +246,7 @@
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "Link"
-          ],
+          "component_whitelist": ["Link"],
           "maximum": 2,
           "minimum": 1
         }
@@ -321,18 +308,14 @@
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "Link"
-          ]
+          "component_whitelist": ["Link"]
         },
         "ctaSecondary": {
           "type": "bloks",
           "required": false,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "Link"
-          ]
+          "component_whitelist": ["Link"]
         }
       },
       "image": null,
@@ -442,9 +425,7 @@
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "menu_link"
-          ]
+          "component_whitelist": ["menu_link"]
         }
       },
       "image": null,
@@ -486,9 +467,7 @@
           "required": false,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "menu_link"
-          ],
+          "component_whitelist": ["menu_link"],
           "component_group_whitelist": []
         }
       },
@@ -610,9 +589,7 @@
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "Case"
-          ]
+          "component_whitelist": ["Case"]
         }
       },
       "image": null,

@@ -4,24 +4,25 @@
 import Placholder from '@/storyblok/fallback-component/Fallback';
 import { apiPlugin, storyblokInit } from '@storyblok/react/rsc';
 
-import Grid from '@/components/Grid';
 import HeaderMenu from '@/components/Menu/HeaderMenu';
 import MenuLink from '@/components/Menu/MenuLink';
 
 /** Import your components */
-import Page from '@/components/Page';
+import Page from '@/storyblok/components/Page';
 import Teaser from '@/components/Teaser';
 
 import Feature from './components/Feature';
 import Hero from './components/Hero';
 import JumbotronSb from './components/Jumbotron';
 import LogoCardSb from './components/LogoCard';
+import ServiceItemSb from './components/ServiceItems';
+import GridSb from './components/Grid';
 
 /** 1. Tag it as a client component */
 
 const components = {
   feature: Feature,
-  grid: Grid,
+  grid: GridSb,
   teaser: Teaser,
   hero: Hero,
   page: Page,
@@ -29,6 +30,7 @@ const components = {
   menu_link: MenuLink,
   logo_card: LogoCardSb,
   jumbotron: JumbotronSb,
+  service_items: ServiceItemSb,
 };
 /** 2. Initialize it as usual */
 storyblokInit({

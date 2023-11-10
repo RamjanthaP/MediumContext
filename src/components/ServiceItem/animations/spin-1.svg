@@ -1,0 +1,37 @@
+<svg cache-id="c69c7c6b096e4178b73f6c3dc0d6a095" id="eF2NuhxHiIo1"
+    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    viewBox="0 0 300 300" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+    <g id="eF2NuhxHiIo2" transform="translate(0 0.000001)">
+        <g id="eF2NuhxHiIo3" transform="translate(0 0.000001)">
+            <ellipse rx="51.36292" ry="51.36292" transform="translate(150 141.400168)"
+                fill="#75bc5c" stroke-width="0" />
+            <ellipse rx="51.36292" ry="51.36292"
+                transform="matrix(.453944 0 0 0.434865 150 119.064232)" fill="#abda9b"
+                stroke-width="0" />
+        </g>
+        <g id="eF2NuhxHiIo6" transform="translate(0 0.000001)">
+            <ellipse rx="51.36292" ry="51.36292" transform="matrix(-1 0 0-1 150 141.400168)"
+                fill="#75bc5c" stroke-width="0" />
+            <ellipse rx="51.36292" ry="51.36292"
+                transform="matrix(.453944 0 0 0.434865 150 119.064232)" fill="#abda9b"
+                stroke-width="0" />
+        </g>
+        <g id="eF2NuhxHiIo9" transform="translate(0 0.000001)">
+            <ellipse rx="51.36292" ry="51.36292" transform="translate(150 141.400168)"
+                fill="#75bc5c" stroke-width="0" />
+            <ellipse rx="51.36292" ry="51.36292"
+                transform="matrix(.453944 0 0 0.434865 150 119.064232)" fill="#abda9b"
+                stroke-width="0" />
+        </g>
+        <g id="eF2NuhxHiIo12" transform="translate(0 0.000001)">
+            <ellipse rx="51.36292" ry="51.36292" transform="translate(150 141.400168)"
+                fill="#75bc5c" stroke-width="0" />
+            <ellipse rx="51.36292" ry="51.36292"
+                transform="matrix(.453944 0 0 0.434865 150 119.064232)" fill="#abda9b"
+                stroke-width="0" />
+        </g>
+    </g>
+    <script><![CDATA[
+(function(s,i,u,o,c,w,d,t,n,x,e,p,a,b){(a=Array.from(d.querySelectorAll('svg#' + i.root)).filter(n=> !n.svgatorPlayer)[0]||{}).svgatorPlayer={ready:(function(a){b=[];return function(c){return c?(b.push(c),a.svgatorPlayer):b}})(a)};w[o]=w[o]||{};w[o][s]=w[o][s]||[];w[o][s].push(i);e=d.createElementNS(n,t);e.async=true;e.setAttributeNS(x,'href',[u,s,'.','j','s','?','v','=',c].join(''));e.setAttributeNS(null,'src',[u,s,'.','j','s','?','v','=',c].join(''));p=d.getElementsByTagName(t)[0];p.parentNode.insertBefore(e,p);})('91c80d77',{"root":"eF2NuhxHiIo1","version":"2022-05-04","animations":[{"elements":{"eF2NuhxHiIo2":{"transform":{"data":{"o":{"x":150,"y":141.40017,"type":"corner"},"t":{"x":-150,"y":-141.400169}},"keys":{"r":[{"t":0,"v":0},{"t":600,"v":360}]}}},"eF2NuhxHiIo3":{"transform":{"data":{"t":{"x":-150,"y":-141.400169}},"keys":{"o":[{"t":0,"v":{"x":150,"y":141.40017,"type":"corner"}},{"t":600,"v":{"x":248.63709,"y":141.856257,"type":"corner"}}],"r":[{"t":0,"v":0},{"t":600,"v":360,"e":[0.25,0.46,0.45,0.94]},{"t":1600,"v":720}]}}},"eF2NuhxHiIo6":{"transform":{"data":{"t":{"x":-150,"y":-141.400169}},"keys":{"o":[{"t":0,"v":{"x":150,"y":141.40017,"type":"corner"}},{"t":600,"v":{"x":150,"y":51.362921,"type":"corner"}}],"r":[{"t":0,"v":0},{"t":600,"v":360,"e":[0.25,0.46,0.45,0.94]},{"t":1600,"v":720}]}}},"eF2NuhxHiIo9":{"transform":{"data":{"t":{"x":-150,"y":-141.400169}},"keys":{"o":[{"t":0,"v":{"x":150,"y":141.40017,"type":"corner"}},{"t":600,"v":{"x":51.362915,"y":145.911229,"type":"corner"}}],"r":[{"t":0,"v":0},{"t":600,"v":360,"e":[0.25,0.46,0.45,0.94]},{"t":1700,"v":720}]}}},"eF2NuhxHiIo12":{"transform":{"data":{"t":{"x":-150,"y":-141.400169}},"keys":{"o":[{"t":0,"v":{"x":150,"y":141.40017,"type":"corner"}},{"t":600,"v":{"x":150,"y":248.637076,"type":"corner"}}],"r":[{"t":0,"v":0},{"t":600,"v":360,"e":[0.25,0.46,0.45,0.94]},{"t":1600,"v":720}]}}}},"s":"MDRA1ZDk4M2Y4MPTkyOGZXN2U5YMTg2OGM4YjNAmNTc0ZTU0NGVQ0ZDQ5WTNmONDE4NjhmODI4OMFc5MTg2OGMB4YjNmNTc0ZTYQ5VjNmODY5MMTgyOGY3ZTkxNODY4YzhiSDkXwM2Y1NzRlWDSQ5M2Y4Mzg2OTDk4OTNmNTc0BZTQ5VjNmN2UH4OTkxODI4ZjVhiN2VHOTE4MFjNmNTc4MzdlTODk5MDgyNDkPzZjkwOGQ4MjQgyODEzZjU3NSGU0OTNmODM4AZDkwM2Y1NzRWlNGQ0ZDlh"}],"options":"MDWAxZTkyMzk4YAThiNzg4OThiNMzk1MTM5OGEE3YTg5ODY4MzUgzMzk0MzM5ORGE3YTg5ODY4OMzgzMzlUNTEE0OTRjOTQ/"},'https://cdn.svgator.com/ply/','__SVGATOR_PLAYER__','2022-05-04',window,document,'script','http://www.w3.org/2000/svg','http://www.w3.org/1999/xlink')
+]]></script>
+</svg>

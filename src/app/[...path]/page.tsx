@@ -6,7 +6,6 @@ import DemoAnimation from '@/components/AnimatedHeader/Demo.svg';
 export default async function Page({ params }: { params: { path: string[] } }) {
   const path = params.path;
   const { props } = await getStoryblokPage(path);
-
   return (
     <div>
       <AnimateHeader svgAnimation={DemoAnimation} title={props.story.name} />
