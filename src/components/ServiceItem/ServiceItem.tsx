@@ -10,7 +10,7 @@ import { BaseProps } from '@/types/props';
 export interface ServiceCardProps extends BaseProps {
   title: string;
   description: string;
-  image: ImageProps;
+  image?: ImageProps;
   animation: string;
   button: BaseLink;
 }

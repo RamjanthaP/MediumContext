@@ -23,10 +23,12 @@ function mapServiceItemDtoToData(
     description: blok.description
       ? renderRichText(blok.description)
       : 'Description missing',
-    image: {
-      url: 'https:' + blok.Image || 'https://via.placeholder.com/150',
-      alt: 'Bakgrund',
-    },
+    image: blok.Image
+      ? {
+          url: 'https:' + blok.Image || 'https://via.placeholder.com/150',
+          alt: 'Bakgrund',
+        }
+      : null,
     animation: blok.animation || 'spin1',
     button: {
       text: blok.button_title || 'Button missing', // TODO: Make mandatory in SB
