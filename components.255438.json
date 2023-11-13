@@ -1,36 +1,6 @@
 {
   "components": [
     {
-      "name": "Case",
-      "display_name": null,
-      "created_at": "2023-10-11T07:41:11.980Z",
-      "updated_at": "2023-10-11T07:44:55.397Z",
-      "id": 4701646,
-      "schema": {
-        "Client": {
-          "type": "text"
-        },
-        "Summary": {
-          "type": "richtext"
-        },
-        "Image": {
-          "type": "asset"
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": true,
-      "preview_tmpl": null,
-      "is_nestable": false,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "Case",
-      "component_group_uuid": "0cfb1da5-aa5d-438d-9d6a-f657e98807d8",
-      "color": "#00b3b0",
-      "icon": "block-doc",
-      "component_group_name": "Content"
-    },
-    {
       "name": "contact_footer",
       "display_name": null,
       "created_at": "2023-10-27T06:43:39.008Z",
@@ -45,7 +15,9 @@
           "maximum": 3,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["offices"]
+          "component_whitelist": [
+            "offices"
+          ]
         }
       },
       "image": null,
@@ -90,7 +62,9 @@
           "tooltip": false,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["Link"],
+          "component_whitelist": [
+            "Link"
+          ],
           "maximum": 1
         },
         "ctaSecondary": {
@@ -100,7 +74,9 @@
           "pos": 5,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["Link"],
+          "component_whitelist": [
+            "Link"
+          ],
           "maximum": 1
         },
         "layout": {
@@ -232,13 +208,18 @@
         "image": {
           "type": "asset",
           "required": true,
-          "filetypes": ["images", "videos"]
+          "filetypes": [
+            "images",
+            "videos"
+          ]
         },
         "ctaPrimary": {
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["Link"],
+          "component_whitelist": [
+            "Link"
+          ],
           "maximum": 2,
           "required": false
         },
@@ -246,7 +227,9 @@
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["Link"],
+          "component_whitelist": [
+            "Link"
+          ],
           "maximum": 2,
           "minimum": 1
         }
@@ -308,14 +291,18 @@
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["Link"]
+          "component_whitelist": [
+            "Link"
+          ]
         },
         "ctaSecondary": {
           "type": "bloks",
           "required": false,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["Link"]
+          "component_whitelist": [
+            "Link"
+          ]
         }
       },
       "image": null,
@@ -425,7 +412,9 @@
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["menu_link"]
+          "component_whitelist": [
+            "menu_link"
+          ]
         }
       },
       "image": null,
@@ -467,7 +456,9 @@
           "required": false,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": ["menu_link"],
+          "component_whitelist": [
+            "menu_link"
+          ],
           "component_group_whitelist": []
         }
       },
@@ -521,96 +512,50 @@
       "icon": "block-buildin"
     },
     {
-      "name": "page",
+      "name": "person",
       "display_name": null,
-      "created_at": "2023-10-05T08:08:49.662Z",
-      "updated_at": "2023-10-27T09:10:31.082Z",
-      "id": 4673134,
+      "created_at": "2023-11-10T07:11:15.694Z",
+      "updated_at": "2023-11-10T08:00:13.855Z",
+      "id": 4863435,
       "schema": {
-        "body": {
-          "type": "bloks"
-        }
-      },
-      "image": null,
-      "preview_field": "body",
-      "is_root": true,
-      "preview_tmpl": null,
-      "is_nestable": false,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "page",
-      "component_group_uuid": "0cfb1da5-aa5d-438d-9d6a-f657e98807d8",
-      "color": "#00b3b0",
-      "icon": "block-doc",
-      "component_group_name": "Content"
-    },
-    {
-      "name": "People",
-      "display_name": null,
-      "created_at": "2023-10-09T13:01:48.416Z",
-      "updated_at": "2023-10-11T07:44:19.472Z",
-      "id": 4690035,
-      "schema": {
-        "Role": {
+        "name": {
           "type": "text",
-          "display_name": "Role"
+          "required": true
         },
-        "Github": {
-          "type": "multilink"
+        "role": {
+          "type": "text"
         },
-        "Image": {
-          "type": "asset"
+        "phone": {
+          "type": "text"
+        },
+        "email": {
+          "type": "text",
+          "required": true
+        },
+        "image": {
+          "type": "asset",
+          "required": true
         }
       },
       "image": null,
-      "preview_field": null,
+      "preview_field": "name",
       "is_root": true,
       "preview_tmpl": null,
       "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "People",
-      "component_group_uuid": "0cfb1da5-aa5d-438d-9d6a-f657e98807d8",
-      "color": "#00b3b0",
-      "icon": "block-doc",
-      "component_group_name": "Content"
+      "real_name": "person",
+      "component_group_uuid": "55506e4d-b972-4ecd-810a-6ff3dd7a86ad",
+      "color": "#395ece",
+      "icon": "block-sticker",
+      "component_group_name": "Global stories"
     },
     {
-      "name": "Service",
+      "name": "quick_contact",
       "display_name": null,
-      "created_at": "2023-10-09T13:08:12.920Z",
-      "updated_at": "2023-10-11T07:48:40.362Z",
-      "id": 4690053,
-      "schema": {
-        "content": {
-          "type": "richtext"
-        },
-        "relatedCase": {
-          "type": "bloks",
-          "restrict_type": "",
-          "restrict_components": true,
-          "component_whitelist": ["Case"]
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": true,
-      "preview_tmpl": null,
-      "is_nestable": false,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "Service",
-      "component_group_uuid": "0cfb1da5-aa5d-438d-9d6a-f657e98807d8",
-      "color": "#00b3b0",
-      "icon": "block-doc",
-      "component_group_name": "Content"
-    },
-    {
-      "name": "service_items",
-      "display_name": null,
-      "created_at": "2023-11-06T13:39:22.263Z",
-      "updated_at": "2023-11-06T13:48:12.936Z",
-      "id": 4841921,
+      "created_at": "2023-11-10T07:13:26.010Z",
+      "updated_at": "2023-11-10T08:44:38.380Z",
+      "id": 4863436,
       "schema": {
         "title": {
           "type": "text"
@@ -618,18 +563,75 @@
         "description": {
           "type": "richtext"
         },
-        "Image": {
-          "type": "image"
-        },
-        "button_link": {
-          "type": "multilink"
-        },
-        "button_title": {
-          "type": "text"
+        "person": {
+          "type": "option",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "person"
+          ],
+          "use_uuid": true,
+          "required": true,
+          "source": "internal_stories",
+          "filter_content_type": [
+            "person"
+          ]
         }
       },
       "image": null,
       "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "quick_contact",
+      "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
+      "color": null,
+      "icon": null,
+      "component_group_name": "Blocks"
+    },
+    {
+      "name": "service_items",
+      "display_name": null,
+      "created_at": "2023-11-06T13:39:22.263Z",
+      "updated_at": "2023-11-10T12:24:51.823Z",
+      "id": 4841921,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "required": true
+        },
+        "description": {
+          "type": "richtext",
+          "pos": 1
+        },
+        "animation": {
+          "type": "option",
+          "use_uuid": true,
+          "tooltip": false,
+          "source": "external",
+          "external_datasource": "https://localhost:3010/api/animation",
+          "exclude_empty_option": false,
+          "pos": 2
+        },
+        "Image": {
+          "type": "image",
+          "pos": 3,
+          "description": "Used as a way to place a temporary image in stead of an animation"
+        },
+        "button_link": {
+          "type": "multilink",
+          "pos": 4
+        },
+        "button_title": {
+          "type": "text",
+          "pos": 5
+        }
+      },
+      "image": null,
+      "preview_field": "title",
       "is_root": false,
       "preview_tmpl": null,
       "is_nestable": true,
@@ -664,6 +666,75 @@
       "color": "#2db47d",
       "icon": "block-text-img-c",
       "component_group_name": "Blocks"
+    },
+    {
+      "name": "template_default",
+      "display_name": null,
+      "created_at": "2023-10-05T08:08:49.662Z",
+      "updated_at": "2023-11-13T06:49:43.286Z",
+      "id": 4673134,
+      "schema": {
+        "body": {
+          "type": "bloks"
+        }
+      },
+      "image": null,
+      "preview_field": "body",
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "template_default",
+      "component_group_uuid": "0cfb1da5-aa5d-438d-9d6a-f657e98807d8",
+      "color": "#00b3b0",
+      "icon": "block-doc",
+      "component_group_name": "Page Templates"
+    },
+    {
+      "name": "template_service",
+      "display_name": null,
+      "created_at": "2023-10-09T13:08:12.920Z",
+      "updated_at": "2023-11-13T06:48:45.955Z",
+      "id": 4690053,
+      "schema": {
+        "content": {
+          "type": "richtext",
+          "pos": 0
+        },
+        "quick_contact": {
+          "type": "bloks",
+          "pos": 1,
+          "required": true,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "quick_contact"
+          ],
+          "maximum": 1
+        },
+        "relatedCase": {
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "template_case"
+          ],
+          "pos": 2
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "template_service",
+      "component_group_uuid": "0cfb1da5-aa5d-438d-9d6a-f657e98807d8",
+      "color": "#00b3b0",
+      "icon": "block-doc",
+      "component_group_name": "Page Templates"
     }
   ]
 }

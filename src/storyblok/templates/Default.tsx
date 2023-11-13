@@ -1,8 +1,8 @@
 import { storyblokEditable, StoryblokComponent } from '@storyblok/react/rsc';
-import { PageStoryblok } from '../../../component-types-sb';
+import { TemplateDefaultStoryblok } from '../../../component-types-sb';
 
 // Used as entry point for all pages in Storyblok
-const Page = ({ blok }: PageStoryblok) => {
+const TemplateDefault = ({ blok }: TemplateDefaultStoryblok) => {
   return (
     <main {...storyblokEditable(blok)}>
       {blok.body?.map((nestedBlok: { _uid: string }) => (
@@ -11,4 +11,4 @@ const Page = ({ blok }: PageStoryblok) => {
     </main>
   );
 };
-export default Page;
+export default TemplateDefault;
