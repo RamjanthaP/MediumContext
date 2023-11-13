@@ -1,53 +1,49 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
-import plugin from "tailwindcss/plugin";
+import plugin from 'tailwindcss/plugin';
 const config: Config = {
-  darkMode: "class", // Trigger darkmode by class, until we got things in 
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  darkMode: 'class', // Trigger darkmode by class, until we got things in
+  content: ['./src/**/*.{tsx,mdx}'],
   safelist: [
     { pattern: /^[wh]-(24|32|44)$/ },
     { pattern: /^(dark:)?bg-(white|black|gray|primary|secondary)(-[1-9]0+)?$/ },
   ],
   theme: {
     colors: {
-      black: "#1C1C1C",
-      white: "#FFFFFF",
+      black: '#1C1C1C',
+      white: '#FFFFFF',
       primary: {
-        default: "#75BC5C", // Logo Green === 400
-        50: "#f5faf3",
-        100: "#e8f6e2",
-        200: "#d1ebc7",
-        300: "#abda9b",
-        400: "#75bc5c",
-        500: "#5ba542",
-        600: "#488732",
-        700: "#3b6b2a",
-        800: "#315526",
-        900: "#284720",
+        default: '#75BC5C', // Logo Green === 400
+        50: '#f5faf3',
+        100: '#e8f6e2',
+        200: '#d1ebc7',
+        300: '#abda9b',
+        400: '#75bc5c',
+        500: '#5ba542',
+        600: '#488732',
+        700: '#3b6b2a',
+        800: '#315526',
+        900: '#284720',
       },
       secondary: {
-        50: "#FFFFFF",
-        100: "#F5F5F5",
-        200: "#E0E0E0",
-        300: "#BDBDBD",
-        400: "#9E9E9E",
-        500: "#7E7E7E",
-        600: "#616161",
-        700: "#424242",
-        800: "#2C2C2C",
-        900: "#121212",
+        50: '#FFFFFF',
+        100: '#F5F5F5',
+        200: '#E0E0E0',
+        300: '#BDBDBD',
+        400: '#9E9E9E',
+        500: '#7E7E7E',
+        600: '#616161',
+        700: '#424242',
+        800: '#2C2C2C',
+        900: '#121212',
       },
-      transparent: "transparent",
-      "btn-green": "#2FAB09",
-      "btn-white": "#FFFFFF",
-      "btn-black": "#1C1C1C",
+      transparent: 'transparent',
+      'btn-green': '#2FAB09',
+      'btn-white': '#FFFFFF',
+      'btn-black': '#1C1C1C',
     },
     fontFamily: {
-      'inter': ['Inter', 'sans-serif'],
+      inter: ['Inter', 'sans-serif'],
     },
     letterSpacing: {
       normal: '-0.01em',
@@ -57,12 +53,12 @@ const config: Config = {
       btn: '-0.01em',
     },
     fontSize: {
-      'xs': ['12px', { lineHeight: '1.5', letterSpacing: '-0.012em' }],
-      'sm': ['14px', { lineHeight: '1.7', letterSpacing: '-0.01em' }],
-      'md': ['16px', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
-      'lg': ['20px', { lineHeight: '1.3', letterSpacing: '-0.0125em' }],
-      'xl': ['24px', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
-      'xxl': ['32px', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+      xs: ['12px', { lineHeight: '1.5', letterSpacing: '-0.012em' }],
+      sm: ['14px', { lineHeight: '1.7', letterSpacing: '-0.01em' }],
+      md: ['16px', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
+      lg: ['20px', { lineHeight: '1.3', letterSpacing: '-0.0125em' }],
+      xl: ['24px', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
+      xxl: ['32px', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
       '3xl': ['48px', { lineHeight: '1.1', letterSpacing: '-0.01em' }],
 
       'Jumbo/sm': ['32px', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
@@ -82,48 +78,48 @@ const config: Config = {
       btn: '24px',
     },
     textAlign: {
-      btn: "left",
+      btn: 'left',
     },
     extend: {
       ringWidth: {
-        3: ".1875rem",
+        3: '.1875rem',
       },
       outlineWidth: {
-        3: ".1875rem",
+        3: '.1875rem',
       },
       outlineOffset: {
-        6: ".375rem",
+        6: '.375rem',
       },
       spacing: {
-        "artical-img": "430px",
+        'artical-img': '430px',
       },
       borderRadius: {
-        "4xl": "2rem",
+        '4xl': '2rem',
       },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
     screens: {
-      md: "668px",
-      lg: "1024px",
-      xl: "1408px",
+      md: '668px',
+      lg: '1024px',
+      xl: '1408px',
     },
     container: {
       center: true,
       screens: {
-        sm: "100%",
-        md: "100%",
-        lg: "100%",
-        xl: "1280px",
+        sm: '100%',
+        md: '100%',
+        lg: '100%',
+        xl: '1280px',
       },
     },
   },
   plugins: [
     plugin(function (utils) {
-      utils.addVariant("hocus", ["&:hover", "&:focus"]);
+      utils.addVariant('hocus', ['&:hover', '&:focus']);
     }),
   ],
 };
