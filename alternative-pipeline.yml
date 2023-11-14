@@ -82,7 +82,8 @@ stages:
                 ls -la $(Agent.BuildDirectory)
           
           - script: | # Replace with build-ci for consistent build
-              STORYBLOK_API_TOKEN=$(STORYBLOK_API_TOKEN) 
+              echo "STORYBLOK_API=$apiValue" >> ./.env
+              echo "The path is $(PWD)"
               npm run build
             displayName: 'build the application and pre-render pages'
 
