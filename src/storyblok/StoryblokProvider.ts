@@ -34,7 +34,7 @@ const components = {
 };
 /** 2. Initialize it as usual */
 storyblokInit({
-  accessToken: 'isvrOVvrEDwbKVLqsr0E7wtt',
+  accessToken: process.env.STORYBLOK_API_TOKEN,
   use: [apiPlugin],
   components,
   customFallbackComponent: Placholder,
