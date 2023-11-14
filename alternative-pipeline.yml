@@ -1,0 +1,109 @@
+# Node.js React Web App to Linux on Azure
+# Build a Node.js React app and deploy it to Azure as a Linux web app.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+  - main
+
+pool:
+  name: Azure Pipelines
+
+variables:
+  # Azure Resource Manager connection created during pipeline creation
+  azureSubscription: 'bb781f30-4924-43cf-bd9a-5d52e8991ea0'
+
+  # Web app name on Azure
+  webAppName: 'amaceitwebstage01'
+
+  # Environment name
+  environmentName: 'stage'
+
+  # Agent VM image name
+  image: 'ubuntu-latest'
+
+stages:
+  - stage: Build
+    displayName: Build stage
+    # TODO: Remove job wrapper later.... :)
+    jobs:
+      - job: Build
+        displayName: Build
+        pool:
+          name: Azure Pipelines
+        steps:
+          # Install Node.js and build
+          - task: NodeTool@0
+            inputs:
+              versionSource: 'spec'
+              versionSpec: '18.x'
+              checkLatest: true
+          - script: | # Replace with build-ci for consistent build
+              npm install
+              npm run build --if-present 
+              npm run test --if-present
+            displayName: 'npm install, build and test'
+
+          # Copy files to: $(Build.ArtifactStagingDirectory)
+          - task: CopyFiles@2
+            displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+            inputs:
+              SourceFolder: '.'
+              Contents: '**'
+              TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+            # Just for som debugging
+          - task: Bash@3
+            displayName: Showing BEFORE compressing
+            inputs:
+              targetType: 'inline'
+              script: |
+                echo $(Build.ArtifactStagingDirectory)
+                ls $(Build.ArtifactStagingDirectory)
+
+          # ZIP files
+          - task: ArchiveFiles@2
+            displayName: 'Archive files'
+            inputs:
+              rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/'
+              includeRootFolder: false
+              archiveType: 'zip'
+              archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+              replaceExistingArchive: true
+
+          # Just for som debugging
+          - task: Bash@3
+            displayName: Showing AFTER compressing
+            inputs:
+              targetType: 'inline'
+              script: |
+                echo "Showing AFTER copying"
+                echo $(Build.ArtifactStagingDirectory)
+                ls $(Build.ArtifactStagingDirectory)
+
+          # Make the files available for the next job # TODO: Remove!
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Artifact: drop'
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+              ArtifactName: 'drop'
+              publishLocation: 'Container'
+
+          # - task: DownloadBuildArtifacts@0
+          #   displayName: "Download Build Artifacts"
+          #   inputs:
+          #     buildType: "current"
+          #     downloadType: "single"
+          #     artifactName: "drop"
+          #     downloadPath: "$(Build.ArtifactStagingDirectory)"
+
+          - task: AzureWebApp@1
+            displayName: Deploy it!
+            inputs:
+              azureSubscription: 'amaceit web (bb781f30-4924-43cf-bd9a-5d52e8991ea0)'
+              appType: 'webAppLinux'
+              appName: 'amaceitwebstage01'
+              package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+              runtimeStack: 'NODE|18-lts'
+              startUpCommand: "pm2 start /home/site/wwwroot/ecosystem.config.cjs --no-daemon --env DEBUG='*'"
+              slotName: 'stage'
