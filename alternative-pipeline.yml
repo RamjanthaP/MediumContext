@@ -51,7 +51,7 @@ stages:
               apiValue=$(echo $Storyblok_STORYBLOK_API_TOKEN)
               imageValue=$(echo $image)
               echo "API Value: $apiValue"
-              echo "Image Value: $agentValue"
+              echo "Image Value: $imageValue"
 
               # Set environment variable for npm script
               echo "STORYBLOK_API=$apiValue" >> $(Agent.BuildDirectory)/.env
