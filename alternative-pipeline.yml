@@ -44,6 +44,7 @@ stages:
               versionFilePath: ".nvmrc"
 
           - task: Npm@1
+            displayName: 'Install dependencies for production'
             inputs:
               command: 'ci'
               workingDir: '.'
@@ -59,6 +60,7 @@ stages:
               # Set environment variable for npm script
               echo "STORYBLOK_API=$apiValue" >> $(Agent.BuildDirectory)/.env
             displayName: 'Set API variable for npm'
+            enabled: false
 
           - script: | # Replace with build-ci for consistent build
               npm ci
@@ -70,6 +72,7 @@ stages:
             inputs:
               key: next | $(Agent.OS) | package-lock.json
               path: '$(System.DefaultWorkingDirectory)/.next/cache'
+            enabled: false
           
           # Just for som debugging
           - task: Bash@3
@@ -82,7 +85,7 @@ stages:
                 ls -la $(Agent.BuildDirectory)
           
           - script: | # Replace with build-ci for consistent build
-              echo "STORYBLOK_API=$apiValue" >> ./.env
+              echo "STORYBLOK_API=$(STORYBLOK_API)" >> ./.env
               echo "The path is $(PWD)"
               npm run build
             displayName: 'build the application and pre-render pages'
