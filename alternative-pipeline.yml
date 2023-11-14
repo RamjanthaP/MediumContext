@@ -71,15 +71,20 @@ stages:
               SourceFolder: '.'
               Contents: '**'
               TargetFolder: '$(Build.ArtifactStagingDirectory)'
+              
+          - bash: |
+              # Set environment variable for npm script
+              echo "STORYBLOK_API=$apiValue" >> $(Build.ArtifactStagingDirectory)/.env
+            displayName: 'Set API to .env for build files'
 
-            # Just for som debugging
+          # Just for som debugging
           - task: Bash@3
             displayName: Showing BEFORE compressing
             inputs:
               targetType: 'inline'
               script: |
                 echo $(Build.ArtifactStagingDirectory)
-                ls $(Build.ArtifactStagingDirectory)
+                ls -la $(Build.ArtifactStagingDirectory)
 
           # ZIP files
           - task: ArchiveFiles@2
@@ -99,7 +104,7 @@ stages:
               script: |
                 echo "Showing AFTER copying"
                 echo $(Build.ArtifactStagingDirectory)
-                ls $(Build.ArtifactStagingDirectory)
+                ls ls -la $(Build.ArtifactStagingDirectory)
 
           # Make the files available for the next job # TODO: Remove!
           - task: PublishBuildArtifacts@1
