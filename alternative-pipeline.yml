@@ -59,8 +59,17 @@ stages:
 
           - script: | # Replace with build-ci for consistent build
               npm ci
+            displayName: 'npm install dependencies for production '
+          
+          - task: Cache@2
+            displayName: 'Caching dependencies for future builds'
+            inputs:
+              key: next | $(Agent.OS) | yarn.lock
+              path: '$(System.DefaultWorkingDirectory)/.next/cache'
+            
+          - script: | # Replace with build-ci for consistent build
               npm run build
-            displayName: 'npm install, build and test'
+            displayName: 'npm install dependencies for production '
 
           # Copy files to: $(Build.ArtifactStagingDirectory)
           - task: CopyFiles@2
@@ -69,11 +78,6 @@ stages:
               SourceFolder: '.'
               Contents: '**'
               TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
-          - bash: |
-              # Set environment variable for npm script
-              echo "STORYBLOK_API=$apiValue" >> $(Build.ArtifactStagingDirectory)/.env
-            displayName: 'Set API to .env for build files'
 
           # Just for som debugging
           - task: Bash@3
