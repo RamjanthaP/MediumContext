@@ -46,7 +46,7 @@ stages:
           - task: Npm@1
             inputs:
               command: 'custom'
-              customCommand: 'STORYBLOK_API_TOKEN=$(STORYBLOK_API_TOKEN) npm ci'
+              customCommand: 'npm ci && echo PWD'
               workingDir: '.'
               verbose: true
 
