@@ -71,9 +71,9 @@ stages:
           # Just for som debugging
           - task: Bash@3
             displayName: Display files in Build directory
-            workingDirectory: $(System.DefaultWorkingDirectory)
             inputs:
               targetType: 'inline'
+              workingDirectory: $(System.DefaultWorkingDirectory)
               script: |
                 echo "Showing AFTER copying"
                 echo $(Agent.BuildDirectory)
@@ -81,9 +81,9 @@ stages:
           
           - task: Bash@3
             displayName: Build the application and pre-render pages
-            workingDirectory: $(System.DefaultWorkingDirectory)
             inputs:
               targetType: 'inline'
+              workingDirectory: $(System.DefaultWorkingDirectory)
               script: |
                 echo "STORYBLOK_API=$(STORYBLOK_API)" >> ./.env
                 echo "TESTNING=MittTest" >> ./.env
