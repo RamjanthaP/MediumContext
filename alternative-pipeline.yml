@@ -78,9 +78,10 @@ stages:
                 ls -la $(Agent.BuildDirectory)
           
           - task: Npm@1
-            displayName: 'Install dependencies for production'
+            displayName: 'Builds application'
             inputs:
               command: 'build'
+              workingDir: '.'
                 
           - task: Cache@2
             displayName: 'Caching dependencies for future builds'
