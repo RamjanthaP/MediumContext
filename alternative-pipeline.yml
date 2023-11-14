@@ -125,4 +125,4 @@ stages:
               appName: 'amaceitwebstage01'
               package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
               runtimeStack: 'NODE|18-lts'
-              startUpCommand: "pm2 start /home/site/wwwroot/ecosystem.config.cjs --no-daemon --env DEBUG='*'"
+              startUpCommand: "pm2 start /home/site/wwwroot/ecosystem.config.js --no-daemon --env DEBUG='*'"
