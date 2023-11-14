@@ -66,10 +66,21 @@ stages:
             inputs:
               key: next | $(Agent.OS) | package-lock.json
               path: '$(System.DefaultWorkingDirectory)/.next/cache'
-            
+          
+          # Just for som debugging
+          - task: Bash@3
+            displayName: Display files in Build directory
+            inputs:
+              targetType: 'inline'
+              script: |
+                echo "Showing AFTER copying"
+                echo $(Agent.BuildDirectory)
+                ls -la $(Agent.BuildDirectory)
+          
           - script: | # Replace with build-ci for consistent build
               npm run build
-            displayName: 'npm install dependencies for production '
+            displayName: 'build the application and pre-render pages'
+            enabled
 
           # Copy files to: $(Build.ArtifactStagingDirectory)
           - task: CopyFiles@2
@@ -97,16 +108,6 @@ stages:
               archiveType: 'zip'
               archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
               replaceExistingArchive: true
-
-          # Just for som debugging
-          - task: Bash@3
-            displayName: Showing AFTER compressing
-            inputs:
-              targetType: 'inline'
-              script: |
-                echo "Showing AFTER copying"
-                echo $(Build.ArtifactStagingDirectory)
-                ls -la $(Build.ArtifactStagingDirectory)
 
           # Make the files available for the next job # TODO: Remove!
           - task: PublishBuildArtifacts@1
