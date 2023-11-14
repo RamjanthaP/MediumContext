@@ -80,7 +80,6 @@ stages:
           - script: | # Replace with build-ci for consistent build
               npm run build
             displayName: 'build the application and pre-render pages'
-            enabled
 
           # Copy files to: $(Build.ArtifactStagingDirectory)
           - task: CopyFiles@2
