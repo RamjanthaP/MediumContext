@@ -48,8 +48,8 @@ stages:
 
           - bash: |
               # Use the API and agent variables from the Storyblok group
-              apiValue=$(echo $STORYBLOK_API_TOKEN)
-              imageValue=$(echo $image)
+              apiValue=$(STORYBLOK_API_TOKEN)
+              imageValue=$(image)
               echo "API Value: $apiValue"
               echo "Image Value: $imageValue"
 
