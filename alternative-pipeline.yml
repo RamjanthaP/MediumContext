@@ -67,12 +67,6 @@ stages:
             displayName: 'npm install dependencies for production'
             enabled: false
           
-          - task: Cache@2
-            displayName: 'Caching dependencies for future builds'
-            inputs:
-              key: next | $(Agent.OS) | package-lock.json
-              path: '$(System.DefaultWorkingDirectory)/.next/cache'
-            enabled: false
           
           # Just for som debugging
           - task: Bash@3
@@ -93,10 +87,16 @@ stages:
               script: |
                 echo "STORYBLOK_API=$(STORYBLOK_API)" >> ./.env
                 echo "TESTNING=MittTest" >> ./.env
-                ls -la $(Agent.BuildDirectory)
                 echo "The path is $(PWD)"
                 npm run build
-          
+                
+          - task: Cache@2
+            displayName: 'Caching dependencies for future builds'
+            inputs:
+              key: next | $(Agent.OS) | package-lock.json
+              path: '$(System.DefaultWorkingDirectory)/.next/cache'
+            enabled: false
+
           # - script: | # Replace with build-ci for consistent build
           #   workingDirectory: '$(System.DefaultWorkingDirectory)'
           #     echo "STORYBLOK_API=$(STORYBLOK_API)" >> ./.env
