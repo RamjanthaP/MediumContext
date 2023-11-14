@@ -7,7 +7,7 @@ trigger:
   - main
 
 pool:
-  name: Azure Pipelines
+  name: Local-Joakim
 
 variables:
   # Make storybook group available.
@@ -35,8 +35,6 @@ stages:
     jobs:
       - job: Build
         displayName: Build
-        pool:
-          name: Azure Pipelines
         steps:
           # Install Node.js and build
           - task: NodeTool@0
@@ -122,14 +120,6 @@ stages:
               PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
               ArtifactName: 'drop'
               publishLocation: 'Container'
-
-          # - task: DownloadBuildArtifacts@0
-          #   displayName: "Download Build Artifacts"
-          #   inputs:
-          #     buildType: "current"
-          #     downloadType: "single"
-          #     artifactName: "drop"
-          #     downloadPath: "$(Build.ArtifactStagingDirectory)"
 
           - task: AzureWebApp@1
             displayName: Deploy it!
