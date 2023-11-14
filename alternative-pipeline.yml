@@ -77,6 +77,7 @@ stages:
           # Just for som debugging
           - task: Bash@3
             displayName: Display files in Build directory
+            workingDirectory: '$(System.DefaultWorkingDirectory)'
             inputs:
               targetType: 'inline'
               script: |
@@ -84,11 +85,25 @@ stages:
                 echo $(Agent.BuildDirectory)
                 ls -la $(Agent.BuildDirectory)
           
-          - script: | # Replace with build-ci for consistent build
-              echo "STORYBLOK_API=$(STORYBLOK_API)" >> ./.env
-              echo "The path is $(PWD)"
-              npm run build
+          - task: Bash@3
             displayName: 'build the application and pre-render pages'
+            workingDirectory: '$(System.DefaultWorkingDirectory)'
+            inputs:
+              targetType: 'inline'
+              script: |
+                echo "STORYBLOK_API=$(STORYBLOK_API)" >> ./.env
+                echo "TESTNING=MittTest" >> ./.env
+                ls -la $(Agent.BuildDirectory)
+                echo "The path is $(PWD)"
+                npm run build
+          
+          # - script: | # Replace with build-ci for consistent build
+          #   workingDirectory: '$(System.DefaultWorkingDirectory)'
+          #     echo "STORYBLOK_API=$(STORYBLOK_API)" >> ./.env
+          #     echo "TESTNING=MittTest" >> ./.env
+          #     echo "The path is $(PWD)"
+          #     npm run build
+            
 
           # Copy files to: $(Build.ArtifactStagingDirectory)
           - task: CopyFiles@2
