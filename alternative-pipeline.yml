@@ -58,7 +58,6 @@ stages:
               # Set environment variable for npm script
               echo "STORYBLOK_API=$apiValue" >> $(Agent.DefaultWorkingDirectory)/.env
             displayName: 'Set API variable for npm'
-            enabled: false
 
           - script: | # Replace with build-ci for consistent build
               npm ci
