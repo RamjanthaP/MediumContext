@@ -7,7 +7,7 @@ trigger:
   - main
 
 pool:
-  name: Local-Joakim
+  name: Azure Pipelines
 
 variables:
   # Make storybook group available.
@@ -20,9 +20,6 @@ variables:
   # Web app name on Azure
   - name: webAppName
     value: 'amaceitwebstage01'
-
-  # Environment name
-  # environmentName: 'stage'
 
   # Agent VM image name
   - name: image
@@ -51,52 +48,24 @@ stages:
           - bash: |
               # Use the API and agent variables from the Storyblok group
               apiValue=$(STORYBLOK_API_TOKEN)
-              imageValue=$(image)
-              echo "API Value: $apiValue"
-              echo "Image Value: $imageValue"
-
               # Set environment variable for npm script
               echo "STORYBLOK_API_TOKEN=$apiValue" >> $(System.DefaultWorkingDirectory)/.env
             displayName: 'Set API variable for npm'
 
-          - script: | # Replace with build-ci for consistent build
-              npm ci
-            displayName: 'npm install dependencies for production'
-            enabled: false
-          
-          
-          # Just for som debugging
-          - task: Bash@3
-            displayName: Display files in Build directory
-            inputs:
-              targetType: 'inline'
-              script: |
-                echo "Showing AFTER copying"
-                echo $(System.DefaultWorkingDirectory)
-                ls -la $(System.DefaultWorkingDirectory)
-          
-          - task: Npm@1
-            inputs:
-              command: 'custom'
-              workingDir: '.'
-              customCommand: 'run build'
-                
           - task: Cache@2
-            displayName: 'Caching dependencies for future builds'
+            displayName: 'Caching dependencies'
             inputs:
               key: next | $(Agent.OS) | package-lock.json
               path: '$(System.DefaultWorkingDirectory)/.next/cache'
             enabled: false
 
-          # - script: | # Replace with build-ci for consistent build
-          #   workingDirectory: '$(System.DefaultWorkingDirectory)'
-          #     echo "STORYBLOK_API=$(STORYBLOK_API)" >> ./.env
-          #     echo "TESTNING=MittTest" >> ./.env
-          #     echo "The path is $(PWD)"
-          #     npm run build
-            
+          - task: Npm@1
+            displayName: Build application
+            inputs:
+              command: 'custom'
+              workingDir: '.'
+              customCommand: 'run build'
 
-          # Copy files to: $(Build.ArtifactStagingDirectory)
           - task: CopyFiles@2
             displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
             inputs:
@@ -104,18 +73,8 @@ stages:
               Contents: '**'
               TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-          # Just for som debugging
-          - task: Bash@3
-            displayName: Showing BEFORE compressing
-            inputs:
-              targetType: 'inline'
-              script: |
-                echo $(Build.ArtifactStagingDirectory)
-                ls -la $(Build.ArtifactStagingDirectory)
-
-          # ZIP files
           - task: ArchiveFiles@2
-            displayName: 'Archive files'
+            displayName: 'Zip files'
             inputs:
               rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/'
               includeRootFolder: false
@@ -123,7 +82,6 @@ stages:
               archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
               replaceExistingArchive: true
 
-          # Make the files available for the next job # TODO: Remove!
           - task: PublishBuildArtifacts@1
             displayName: 'Publish Artifact: drop'
             inputs:
