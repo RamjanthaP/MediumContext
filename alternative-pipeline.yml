@@ -10,17 +10,25 @@ pool:
   name: Azure Pipelines
 
 variables:
+  # Make storybook group available. 
+  - group: 'Storyblok'
+
   # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: 'bb781f30-4924-43cf-bd9a-5d52e8991ea0'
+  - name: azureSubscription
+    value: 'bb781f30-4924-43cf-bd9a-5d52e8991ea0'
 
   # Web app name on Azure
-  webAppName: 'amaceitwebstage01'
+  - name: webAppName
+    value: 'amaceitwebstage01'
 
   # Environment name
   # environmentName: 'stage'
 
   # Agent VM image name
-  image: 'ubuntu-latest'
+  - name: image
+    value: 'ubuntu-latest'
+  
+  
 
 stages:
   - stage: Build
@@ -38,6 +46,18 @@ stages:
               versionSource: 'spec'
               versionSpec: '18.x'
               checkLatest: true
+
+          - bash: |
+              # Use the API and agent variables from the Storyblok group
+              apiValue=$(echo $Storyblok_STORYBLOK_API_TOKEN)
+              imageValue=$(echo $image)
+              echo "API Value: $apiValue"
+              echo "Image Value: $agentValue"
+
+              # Set environment variable for npm script
+              echo "STORYBLOK_API=$apiValue" >> $(Agent.BuildDirectory)/.env
+            displayName: 'Set API variable for npm'
+
           - script: | # Replace with build-ci for consistent build
               npm install
               npm run build --if-present 
