@@ -64,7 +64,7 @@ stages:
           - task: Cache@2
             displayName: 'Caching dependencies for future builds'
             inputs:
-              key: next | $(Agent.OS) | yarn.lock
+              key: next | $(Agent.OS) | package-lock.json
               path: '$(System.DefaultWorkingDirectory)/.next/cache'
             
           - script: | # Replace with build-ci for consistent build
