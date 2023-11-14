@@ -47,8 +47,6 @@ stages:
             displayName: 'Install dependencies for production'
             inputs:
               command: 'ci'
-              workingDir: '.'
-              verbose: true
 
           - bash: |
               # Use the API and agent variables from the Storyblok group
@@ -58,7 +56,7 @@ stages:
               echo "Image Value: $imageValue"
 
               # Set environment variable for npm script
-              echo "STORYBLOK_API=$apiValue" >> $(Agent.BuildDirectory)/.env
+              echo "STORYBLOK_API=$apiValue" >> $(Agent.DefaultWorkingDirectory)/.env
             displayName: 'Set API variable for npm'
             enabled: false
 
@@ -79,16 +77,10 @@ stages:
                 echo $(Agent.BuildDirectory)
                 ls -la $(Agent.BuildDirectory)
           
-          - task: Bash@3
-            displayName: Build the application and pre-render pages
+          - task: Npm@1
+            displayName: 'Install dependencies for production'
             inputs:
-              targetType: 'inline'
-              workingDirectory: $(System.DefaultWorkingDirectory)
-              script: |
-                echo "STORYBLOK_API=$(STORYBLOK_API)" >> ./.env
-                echo "TESTNING=MittTest" >> ./.env
-                echo "The path is $(PWD)"
-                npm run build
+              command: 'build'
                 
           - task: Cache@2
             displayName: 'Caching dependencies for future builds'
