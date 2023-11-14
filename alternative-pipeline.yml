@@ -81,7 +81,7 @@ stages:
             inputs:
               command: 'custom'
               workingDir: '.'
-              customCommand: 'build'
+              customCommand: 'npm run build'
                 
           - task: Cache@2
             displayName: 'Caching dependencies for future builds'
