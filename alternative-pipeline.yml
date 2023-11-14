@@ -40,10 +40,11 @@ stages:
         steps:
           # Install Node.js and build
           - task: NodeTool@0
+            displayName: 'Install Node.js from nvmrc file'
             inputs:
-              versionSource: 'spec'
-              versionSpec: '18.x'
-              checkLatest: true
+              versionSource: "fromFile"
+              versionFilePath: ".nvmrc"
+
 
           - bash: |
               # Use the API and agent variables from the Storyblok group
@@ -57,9 +58,8 @@ stages:
             displayName: 'Set API variable for npm'
 
           - script: | # Replace with build-ci for consistent build
-              npm install
-              npm run build --if-present 
-              npm run test --if-present
+              npm ci
+              npm run build
             displayName: 'npm install, build and test'
 
           # Copy files to: $(Build.ArtifactStagingDirectory)
