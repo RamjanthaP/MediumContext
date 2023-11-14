@@ -45,8 +45,7 @@ stages:
 
           - task: Npm@1
             inputs:
-              command: 'custom'
-              customCommand: 'npm ci && echo PWD'
+              command: 'ci'
               workingDir: '.'
               verbose: true
 
