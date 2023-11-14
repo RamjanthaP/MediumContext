@@ -71,17 +71,16 @@ stages:
             displayName: Display files in Build directory
             inputs:
               targetType: 'inline'
-              workingDirectory: $(System.DefaultWorkingDirectory)
               script: |
                 echo "Showing AFTER copying"
-                echo $(Agent.BuildDirectory)
-                ls -la $(Agent.BuildDirectory)
+                echo $(System.DefaultWorkingDirectory)
+                ls -la $(System.DefaultWorkingDirectory)
           
           - task: Npm@1
             inputs:
               command: 'custom'
               workingDir: '.'
-              customCommand: 'npm run build'
+              customCommand: 'run build'
                 
           - task: Cache@2
             displayName: 'Caching dependencies for future builds'
