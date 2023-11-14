@@ -56,7 +56,7 @@ stages:
               echo "Image Value: $imageValue"
 
               # Set environment variable for npm script
-              echo "STORYBLOK_API=$apiValue" >> $(Agent.DefaultWorkingDirectory)/.env
+              echo "STORYBLOK_API=$apiValue" >> $(System.DefaultWorkingDirectory)/.env
             displayName: 'Set API variable for npm'
 
           - script: | # Replace with build-ci for consistent build
