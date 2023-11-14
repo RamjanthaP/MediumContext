@@ -17,7 +17,7 @@ variables:
   webAppName: 'amaceitwebstage01'
 
   # Environment name
-  environmentName: 'stage'
+  # environmentName: 'stage'
 
   # Agent VM image name
   image: 'ubuntu-latest'
@@ -106,4 +106,3 @@ stages:
               package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
               runtimeStack: 'NODE|18-lts'
               startUpCommand: "pm2 start /home/site/wwwroot/ecosystem.config.cjs --no-daemon --env DEBUG='*'"
-              slotName: 'stage'
