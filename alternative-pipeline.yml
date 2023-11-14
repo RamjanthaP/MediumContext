@@ -44,9 +44,11 @@ stages:
             inputs:
               versionSource: "fromFile"
               versionFilePath: ".nvmrc"
+
           - task: Npm@1
             inputs:
-              command: 'ci'
+              command: 'custom'
+              customCommand: 'STORYBLOK_API_TOKEN=$(STORYBLOK_API_TOKEN) npm ci'
               workingDir: '.'
               verbose: true
 
@@ -62,6 +64,7 @@ stages:
             displayName: 'Set API variable for npm'
 
           - script: | # Replace with build-ci for consistent build
+              STORYBLOK_API_TOKEN=$(STORYBLOK_API_TOKEN) 
               npm ci
             displayName: 'npm install dependencies for production '
           
