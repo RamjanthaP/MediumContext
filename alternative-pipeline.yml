@@ -71,7 +71,7 @@ stages:
           # Just for som debugging
           - task: Bash@3
             displayName: Display files in Build directory
-            workingDirectory: '$(System.DefaultWorkingDirectory)'
+            workingDirectory: $(System.DefaultWorkingDirectory)
             inputs:
               targetType: 'inline'
               script: |
@@ -80,8 +80,8 @@ stages:
                 ls -la $(Agent.BuildDirectory)
           
           - task: Bash@3
-            displayName: 'build the application and pre-render pages'
-            workingDirectory: '$(System.DefaultWorkingDirectory)'
+            displayName: Build the application and pre-render pages
+            workingDirectory: $(System.DefaultWorkingDirectory)
             inputs:
               targetType: 'inline'
               script: |
