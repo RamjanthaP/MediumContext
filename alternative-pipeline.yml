@@ -37,8 +37,8 @@ stages:
           - task: NodeTool@0
             displayName: 'Install Node.js from nvmrc file'
             inputs:
-              versionSource: "fromFile"
-              versionFilePath: ".nvmrc"
+              versionSource: 'fromFile'
+              versionFilePath: '.nvmrc'
 
           - task: Npm@1
             displayName: 'Install dependencies for production'
@@ -88,6 +88,10 @@ stages:
               PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
               ArtifactName: 'drop'
               publishLocation: 'Container'
+
+          - task: ManualValidation@0
+            inputs:
+              notifyUsers: '' # Add user emails for people to notify.
 
           - task: AzureWebApp@1
             displayName: Deploy it!
