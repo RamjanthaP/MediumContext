@@ -24,6 +24,10 @@ variables:
   # Agent VM image name
   - name: image
     value: 'ubuntu-latest'
+  
+  # Agent VM image name
+  - name: artifactName
+    value: 'drop'
 
 stages:
   - stage: Build
@@ -86,7 +90,7 @@ stages:
             displayName: 'Publish Artifact: drop'
             inputs:
               PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-              ArtifactName: 'drop'
+              ArtifactName: $(artifactName)
               publishLocation: 'Container'
 
       - job: waitForValidation
@@ -113,7 +117,7 @@ stages:
               buildType: 'current'
               downloadType: 'single'
               artifactName: $(artifactName)
-              downloadPath: '$(System.ArtifactsDirectory)/drop/$(Build.BuildId).zip'
+              downloadPath: '$(System.ArtifactsDirectory)'
 
           - task: AzureWebApp@1
             displayName: Upload zip to server
