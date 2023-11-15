@@ -188,6 +188,12 @@ export interface QuickContactStoryblok {
   [k: string]: any;
 }
 
+export interface ReUsableSectionStoryblok {
+  _uid: string;
+  component: "reUsableSection";
+  [k: string]: any;
+}
+
 export interface ServiceItemsStoryblok {
   title: string;
   description?: RichtextStoryblok;
@@ -218,6 +224,7 @@ export interface TemplateServiceStoryblok {
   content?: RichtextStoryblok;
   quick_contact: QuickContactStoryblok[];
   relatedCase?: TemplateCaseStoryblok[];
+  contact_person?: StoryblokStory<PersonStoryblok> | string;
   _uid: string;
   component: "template_service";
   [k: string]: any;
