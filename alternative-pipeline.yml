@@ -89,9 +89,11 @@ stages:
               ArtifactName: 'drop'
               publishLocation: 'Container'
 
-          - task: ManualValidation@0
+          - task: ManualIntervention@8
             inputs:
-              notifyUsers: '' # Add user emails for people to notify.
+              instructions: 'Approve deploy to server'
+              emailRecipients: ''''''
+            
 
           - task: AzureWebApp@1
             displayName: Deploy it!
