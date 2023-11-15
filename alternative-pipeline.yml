@@ -113,7 +113,7 @@ stages:
               buildType: 'current'
               downloadType: 'single'
               artifactName: $(artifactName)
-              downloadPath: '$(System.ArtifactsDirectory)'
+              downloadPath: '$(System.ArtifactsDirectory)/drop/$(Build.BuildId).zip'
 
           - task: AzureWebApp@1
             displayName: Upload zip to server
