@@ -6,6 +6,7 @@ import { BaseProps } from '@/types/props';
 import { RefObject, useEffect, useRef } from 'react';
 import { scrollToTarget } from '@/utilities/helper';
 import { BaseLink } from '@/types/common';
+import { useRouter } from 'next/navigation';
 
 interface AnimatedHeaderProps extends BaseProps {
   title: string;
@@ -25,7 +26,11 @@ const AnimateHeader = ({
 }: AnimatedHeaderProps) => {
   const svgContainerRef = useRef<HTMLObjectElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-
+  const router = useRouter();
+  //TODO: Replace with a better button
+  const navigateTo = (url: string) => {
+    router.push(url);
+  };
   useEffect(() => {
     setTimeout(() => {
       const target = getSvgaPlayer(svgContainerRef);
@@ -60,6 +65,7 @@ const AnimateHeader = ({
               transparent
               size='small'
               href={topActionButton.url}
+              onClick={() => navigateTo(topActionButton.url)}
             >
               <ArrowLeftIcon scale='4' className='w-3 h-3 mr-1' />
               {topActionButton.text}
