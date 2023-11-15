@@ -88,13 +88,11 @@ stages:
               PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
               ArtifactName: 'drop'
               publishLocation: 'Container'
-
-          - task: ManualIntervention@8
+          - task: ManualValidation@0
             inputs:
-              instructions: 'Approve deploy to server'
-              emailRecipients: ''''''
+              notifyUsers: 'joakim.nystrom@amaceit.com'
+              instructions: 'Approve deploy'
             
-
           - task: AzureWebApp@1
             displayName: Deploy it!
             inputs:
