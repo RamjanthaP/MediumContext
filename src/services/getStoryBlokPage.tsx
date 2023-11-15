@@ -18,20 +18,15 @@ export async function getStoryblokPage(path = ['home']) {
       notFound();
     });
 
-  // Declare default story open to mods
-  let remappedStory = storyReq.data.story;
-
-  // Overwrite it we have a relation for contact_person
-  if (storyHasRelationForProp(storyReq.data, 'contact_person')) {
-    remappedStory = replaceProperty(
-      storyReq.data.story.content,
-      'contact_person',
-      storyReq.data.rels.at(0)
-    );
-  }
   return {
+    // TODO: This is a hack to get the contact_person to work
     props: {
-      story: remappedStory,
+      story: {
+        ...storyReq.data.story,
+        contact_person: storyReq.data.rels.at(0)
+          ? storyReq.data.rels.at(0)
+          : null,
+      },
     },
     revalidate: 3600,
   };
