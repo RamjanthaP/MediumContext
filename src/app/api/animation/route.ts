@@ -1,5 +1,5 @@
 import { availableAnimations } from '@/components/ServiceItem/animations/available-animations';
-export async function GET(request: Request) {
+export async function GET() {
   return Response.json(availableAnimations, {
     status: 200,
     headers: {
