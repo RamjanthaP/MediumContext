@@ -1,14 +1,20 @@
 import { storyblokEditable, StoryblokComponent } from '@storyblok/react/rsc';
 
 import DemoAnimation from '@/components/AnimatedHeader/Demo.svg';
-import { TemplateServiceStoryblok } from '../../../component-types-sb';
+import {
+  PersonStoryblok,
+  TemplateServiceStoryblok,
+} from '../../../component-types-sb';
 import RichText from '../helpers/RichText';
 import { Container } from '@/components/Layout/Container';
 import AnimateHeader from '@/components/AnimatedHeader/AnimatedHeader';
-import Placholder from '../fallback-component/Fallback';
-
 // Used as entry point for all pages in Storyblok
-const TemplateService = ({ blok, title }: TemplateServiceStoryblok) => {
+const TemplateService = ({
+  blok,
+  title,
+  contactPerson,
+}: TemplateServiceStoryblok) => {
+  const quickContactData = mapContactPersonDtoToQuickContactData(contactPerson);
   return (
     <>
       <AnimateHeader
@@ -29,17 +35,33 @@ const TemplateService = ({ blok, title }: TemplateServiceStoryblok) => {
               </div>
             )}
             <div className='col-span-12 md:col-span-4 md:col-start-9'>
-              <Placholder blok={blok.quick_contact[0]} />
+              {contactPerson ? (
+                <pre>{JSON.stringify(quickContactData, null, 2)}</pre>
+              ) : (
+                <p className='bg-primary-300 p-4 rounded-md '>
+                  No contact_person set
+                </p>
+              )}
             </div>
           </div>
         </Container>
 
         <div className='col-4'></div>
-        {blok.body?.map((nestedBlok: { _uid: string }) => (
-          <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
-        ))}
       </main>
     </>
   );
 };
 export default TemplateService;
+
+function mapContactPersonDtoToQuickContactData(contactPerson: {
+  content: PersonStoryblok;
+}) {
+  if (!contactPerson) return null;
+  return {
+    name: contactPerson.content.name,
+    email: contactPerson.content.email,
+    phone: contactPerson.content.phone,
+    title: contactPerson.content.role,
+    image: contactPerson.content.image.filename,
+  };
+}
