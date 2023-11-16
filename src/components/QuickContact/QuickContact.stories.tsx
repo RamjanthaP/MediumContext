@@ -3,7 +3,7 @@ import QuickContact from "./QuickContact";
 export default {
   title: 'Components/QuickContact',
   component: QuickContact,
-  tags: ['autodics']
+  tags: ['autodocs']
 }
 
 export const Primary = {
