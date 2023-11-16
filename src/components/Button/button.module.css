@@ -1,0 +1,109 @@
+/*
+* TODO: Move all variables to here
+*/
+/* Base button styles */
+.btn {
+  @apply text-btn leading-btn tracking-btn text-left;
+}
+
+/* Black background button */
+.btn-default {
+  color: var(--color-base-white, #fff);
+  background: var(--color-base-black, #000);
+  border: 1px transparent solid;
+}
+.btn-default:hover {
+  border-color: var(--color-base-white, #fff);
+}
+.btn-default:active {
+  background: var(--black-active-solid-color);
+}
+
+/* White backgrouund button */
+.btn-inverted {
+  color: var(--color-base-black, #000);
+  background: theme(colors.white);
+  border: 1px transparent solid;
+}
+.btn-inverted:hover {
+  border-color: var(--color-base-black, #000);
+}
+.btn-inverted:active {
+  background: var(--white-active-bg-color);
+}
+
+/* Green Primary Button */
+.btn-primary {
+  color: theme(colors.white);
+  background: var(--themed-primary-background);
+  border-color: transparent;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover-color);
+}
+.btn-primary:active {
+  background-color: var(--primary-active-color);
+}
+
+/* White & default transparent background button */
+.btn-white-transparent,
+.btn-default-transparent {
+  color: var(--themed-default-foreground);
+  background: var(--foreground-rgb);
+}
+.btn-default-transparent:hover,
+.btn-white-transparent:hover {
+  background: rgba(var(--opacity-20-rgb));
+}
+.btn-default-transparent:active,
+.btn-white-transparent:active {
+  background: rgba(var(--opacity-40-rgb));
+}
+
+/* Transparent Primary Button */
+
+.btn-primary-transparent {
+  color: var(--themed-primary-background);
+  background: transparent;
+}
+
+.btn-primary-transparent:hover {
+  background: rgba(var(--green-hover-rgb));
+  color: var(--primary-hover-color);
+}
+.btn-primary-transparent:active {
+  background: rgba(var(--green-hover-rgb));
+  color: var(--primary-transparent-active);
+}
+
+.theme-block-default {
+  color: var(--themed-default-foreground);
+  background: var(--themed-default-background);
+}
+
+.theme-block-inverted {
+  color: var(--themed-inverted-foreground);
+  background: var(--themed-inverted-background);
+}
+
+.theme-block-discrete {
+  color: var(--themed-discrete-foreground);
+  background: var(--themed-discrete-background);
+}
+
+.bg-default {
+  background: var(--themed-default-background);
+}
+.bg-default-opacity {
+  background: rgba(var(--background-rgb), var(--tw-bg-opacity));
+}
+.bg-inverted {
+  background: var(--themed-inverted-background);
+}
+.bg-inverted-opacity {
+  background: rgba(var(--foreground-rgb), var(--tw-bg-opacity));
+}
+.bg-discrete {
+  background: var(--themed-discrete-background);
+}
