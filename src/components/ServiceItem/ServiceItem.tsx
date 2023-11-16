@@ -6,6 +6,8 @@ import IconForward from '@heroicons/react/24/solid/ArrowRightIcon';
 import Link from 'next/link';
 import { BaseLink, ImageProps } from '@/types/common';
 import { BaseProps } from '@/types/props';
+import Button from '../Button/Button';
+import ButtonWrapper from '../Button/ButtonWrapper';
 
 export interface ServiceCardProps extends BaseProps {
   title: string;
@@ -51,13 +53,10 @@ const ServiceCard = ({
         dangerouslySetInnerHTML={{ __html: description }}
       />
       <div className='mt-4'>
-        <Link
-          href={button.url}
-          className='bg-primary-500 text-white cursor-pointer text-sm px-4 py-2  inline-flex gap-1 items-center flex-grow-0 rounded-full hocus:border-lime-500 hocus:text-lime-500 outline-none'
-        >
+        <Button href={button.url} variant='primary' size='small'>
           <span>{button.text}</span>
           <IconForward className='w-4 h-4' />
-        </Link>
+        </Button>
       </div>
     </div>
   </div>
