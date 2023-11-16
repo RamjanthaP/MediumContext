@@ -1,4 +1,4 @@
-import { ReactElement, RefObject } from 'react';
+import { RefObject } from 'react';
 
 export function extractLastWord(headline: string) {
   const words = headline.split(' ');

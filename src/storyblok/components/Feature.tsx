@@ -1,6 +1,6 @@
-import { storyblokEditable } from "@storyblok/react/rsc";
-import { AssetStoryblok, FeatureStoryblok } from "@sb-types";
-import FeatureSection, { FeatureSectionProps } from "@/components/Feature";
+import { storyblokEditable } from '@storyblok/react/rsc';
+import { AssetStoryblok, FeatureStoryblok } from '@sb-types';
+import FeatureSection, { FeatureSectionProps } from '@/components/Feature';
 
 const FeatureSb = ({ blok }: FeatureStoryblok) => {
   const componentData = mapFeatureDtoToData(blok);
@@ -18,10 +18,10 @@ const mapFeatureDtoToData = (blok: FeatureStoryblok): FeatureSectionProps => {
     title: blok.title,
     imageUrl: image?.filename, // TODO: Refactor to ImageInterface
     imageAlt: image?.alt,
-    bgColor: blok.theme || "default",
+    bgColor: blok.theme || 'default',
     firstButton: blok?.ctaPrimary?.at(0)?.text, // TODO: Refactor to BaseLink
     secondButton: blok?.ctaSecondary?.at(0)?.text,
-    isContentRight: blok?.layout === "content-right",
+    isContentRight: blok?.layout === 'content-right',
     body: blok.body,
   };
 };

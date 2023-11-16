@@ -1,4 +1,4 @@
-import { storyblokEditable, StoryblokComponent } from '@storyblok/react/rsc';
+import { storyblokEditable } from '@storyblok/react/rsc';
 
 import DemoAnimation from '@/components/AnimatedHeader/Demo.svg';
 import {

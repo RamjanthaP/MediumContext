@@ -1,9 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { HeroStoryblok, LinkStoryblok } from '@sb-types';
-import { storyblokEditable } from '@storyblok/react';
-
 import { BaseLink, ImageProps } from '@/types/common';
 
 import { extractLastWord } from '@/utilities/helper';

@@ -3,8 +3,7 @@ import {
   ContactFooterStoryblok,
   MenuStoryblok,
 } from '../../component-types-sb';
-import { notFound, redirect } from 'next/navigation';
-import { storyHasRelationForProp, replaceProperty } from './service-utilities';
+import { notFound } from 'next/navigation';
 
 export async function getStoryblokPage(path = ['home']) {
   let sbParams = {
@@ -15,6 +14,7 @@ export async function getStoryblokPage(path = ['home']) {
   const storyReq = await storyblokApi
     .get(`cdn/stories/${path.join('/')}`, sbParams)
     .catch((e) => {
+      console.error(e);
       notFound();
     });
 
@@ -38,6 +38,7 @@ export async function getStoryblokMenuData(): Promise<MenuStoryblok> {
   const configReq = await storyblokApi
     .get('cdn/stories/settings/menu', sbParams)
     .catch((e) => {
+      console.error(e);
       throw new Error('Hittar inte menyn');
     });
   return configReq.data.story;
@@ -49,6 +50,7 @@ export async function getStoryblokFooterData(): Promise<ContactFooterStoryblok> 
   const configReq = await storyblokApi
     .get('cdn/stories/settings/footer', sbParams)
     .catch((e) => {
+      console.error(e);
       throw new Error('Hittar inte footer');
     });
   return configReq.data.story;

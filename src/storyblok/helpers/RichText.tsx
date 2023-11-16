@@ -1,4 +1,3 @@
-import { BaseProps } from '@/types/props';
 import { RichtextStoryblok } from '@sb-types';
 import { renderRichText } from '@storyblok/react';
 

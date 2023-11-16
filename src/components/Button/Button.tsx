@@ -1,6 +1,5 @@
 import React from 'react';
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
-import { ValueOf } from 'next/dist/shared/lib/constants';
 
 export type ButtonSizes = keyof typeof sizeClass;
 export type ButtonColors = keyof typeof colorVariants;
