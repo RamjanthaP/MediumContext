@@ -8,6 +8,7 @@ import {
 import RichText from '../helpers/RichText';
 import { Container } from '@/components/Layout/Container';
 import AnimateHeader from '@/components/AnimatedHeader/AnimatedHeader';
+import QuickContact from '@/components/QuickContact/QuickContact';
 // Used as entry point for all pages in Storyblok
 const TemplateService = ({
   blok,
@@ -15,6 +16,7 @@ const TemplateService = ({
   contactPerson,
 }: TemplateServiceStoryblok) => {
   const quickContactData = mapContactPersonDtoToQuickContactData(contactPerson);
+  console.log(quickContactData)
   return (
     <>
       <AnimateHeader
@@ -25,7 +27,7 @@ const TemplateService = ({
 
       <main {...storyblokEditable(blok)}>
         <Container className='mt-4 md:mt-8'>
-          <div className='grid md:grid-cols-12 gap-8'>
+          <div className='grid md:grid-cols-12 gap-8 items-center'>
             {blok.content && (
               <div className='col-span-12 md:col-span-6'>
                 <RichText
@@ -34,14 +36,8 @@ const TemplateService = ({
                 />
               </div>
             )}
-            <div className='col-span-12 md:col-span-4 md:col-start-9'>
-              {contactPerson ? (
-                <pre>{JSON.stringify(quickContactData, null, 2)}</pre>
-              ) : (
-                <p className='bg-primary-300 p-4 rounded-md '>
-                  No contact_person set
-                </p>
-              )}
+            <div className='col-span-12 md:col-span-4 md:col-start-7'>
+              {contactPerson && <QuickContact person={quickContactData} />}
             </div>
           </div>
         </Container>
