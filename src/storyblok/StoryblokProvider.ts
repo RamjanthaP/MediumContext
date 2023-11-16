@@ -8,8 +8,8 @@ import HeaderMenu from '@/components/Menu/HeaderMenu';
 import MenuLink from '@/components/Menu/MenuLink';
 
 /** Import your components */
-import Page from '@/storyblok/components/Page';
-import Teaser from '@/components/Teaser';
+import TemplateDefault from '@/storyblok/templates/Default';
+import TemplateService from '@/storyblok/templates/Service';
 
 import Feature from './components/Feature';
 import Hero from './components/Hero';
@@ -21,11 +21,11 @@ import GridSb from './components/Grid';
 /** 1. Tag it as a client component */
 
 const components = {
+  template_default: TemplateDefault,
+  template_service: TemplateService,
   feature: Feature,
   grid: GridSb,
-  teaser: Teaser,
   hero: Hero,
-  page: Page,
   header_menu: HeaderMenu,
   menu_link: MenuLink,
   logo_card: LogoCardSb,
@@ -34,7 +34,7 @@ const components = {
 };
 /** 2. Initialize it as usual */
 storyblokInit({
-  accessToken: 'isvrOVvrEDwbKVLqsr0E7wtt',
+  accessToken: process.env.STORYBLOK_API_TOKEN,
   use: [apiPlugin],
   components,
   customFallbackComponent: Placholder,

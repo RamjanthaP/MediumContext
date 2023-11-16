@@ -1,0 +1,130 @@
+# Node.js React Web App to Linux on Azure
+# Build a Node.js React app and deploy it to Azure as a Linux web app.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+  - main
+
+pool:
+  name: Azure Pipelines
+
+variables:
+  # Make storybook group available.
+  - group: 'Storyblok'
+
+  # Azure Resource Manager connection created during pipeline creation
+  - name: azureSubscription
+    value: 'amaceit web (bb781f30-4924-43cf-bd9a-5d52e8991ea0)'
+
+  # Web app name on Azure
+  - name: webAppName
+    value: 'amaceitwebstage01'
+
+  # Agent VM image name
+  - name: image
+    value: 'ubuntu-latest'
+  
+  # Agent VM image name
+  - name: artifactName
+    value: 'drop'
+
+stages:
+  - stage: Build
+    displayName: Build stage
+    # TODO: Remove job wrapper later.... :)
+    jobs:
+      - job: Build
+        displayName: Build
+        steps:
+          # Install Node.js and build
+          - task: NodeTool@0
+            displayName: 'Install Node.js from nvmrc file'
+            inputs:
+              versionSource: 'fromFile'
+              versionFilePath: '.nvmrc'
+
+          - task: Npm@1
+            displayName: 'Install dependencies for production'
+            inputs:
+              command: 'ci'
+
+          - bash: |
+              # Use the API and agent variables from the Storyblok group
+              apiValue=$(STORYBLOK_API_TOKEN)
+              # Set environment variable for npm script
+              echo "STORYBLOK_API_TOKEN=$apiValue" >> $(System.DefaultWorkingDirectory)/.env
+            displayName: 'Set API variable for npm'
+
+          - task: Cache@2
+            displayName: 'Caching dependencies'
+            inputs:
+              key: next | $(Agent.OS) | package-lock.json
+              path: '$(System.DefaultWorkingDirectory)/.next/cache'
+            enabled: false
+
+          - task: Npm@1
+            displayName: Build application
+            inputs:
+              command: 'custom'
+              workingDir: '.'
+              customCommand: 'run build'
+
+          - task: CopyFiles@2
+            displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+            inputs:
+              SourceFolder: '.'
+              Contents: '**'
+              TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+          - task: ArchiveFiles@2
+            displayName: 'Zip files'
+            inputs:
+              rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/'
+              includeRootFolder: false
+              archiveType: 'zip'
+              archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+              replaceExistingArchive: true
+
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Artifact: drop'
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+              ArtifactName: $(artifactName)
+              publishLocation: 'Container'
+
+      - job: waitForValidation
+        displayName: Wait for Manual approval
+        dependsOn: Build
+        pool: server
+        timeoutInMinutes: 60 # job times out in 1 hour
+        steps:
+          - task: ManualValidation@0
+            timeoutInMinutes: 30
+            inputs:
+              notifyUsers: 'joakim.nystrom@amaceit.com'
+              instructions: 'Approve deploy'
+              onTimeout: 'reject'
+
+      - job: deploy
+        displayName: Deploy to server
+        pool: Azure Pipelines
+        dependsOn: waitForValidation
+        steps:
+          - task: DownloadBuildArtifacts@0
+            displayName: 'Download Build Artifacts'
+            inputs:
+              buildType: 'current'
+              downloadType: 'single'
+              artifactName: $(artifactName)
+              downloadPath: '$(System.ArtifactsDirectory)'
+
+          - task: AzureWebApp@1
+            displayName: Upload zip to server
+            inputs:
+              azureSubscription: $(azureSubscription)
+              appType: 'webAppLinux'
+              appName: $(webAppName)
+              package: '$(System.ArtifactsDirectory)/$(artifactName)/**/*.zip'
+              runtimeStack: 'NODE|18-lts'
+              startUpCommand: "pm2 start /home/site/wwwroot/ecosystem.config.js --no-daemon --env DEBUG='*'"
