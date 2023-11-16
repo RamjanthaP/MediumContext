@@ -19,8 +19,14 @@ const mapFeatureDtoToData = (blok: FeatureStoryblok): FeatureSectionProps => {
     imageUrl: image?.filename, // TODO: Refactor to ImageInterface
     imageAlt: image?.alt,
     bgColor: blok.theme || 'default',
-    firstButton: blok?.ctaPrimary?.at(0)?.text, // TODO: Refactor to BaseLink
-    secondButton: blok?.ctaSecondary?.at(0)?.text,
+    firstButton: {
+      text: blok?.ctaPrimary?.at(0)?.text || 'Text is missing',
+      url: '/' + blok?.ctaPrimary?.at(0)?.link.cached_url,
+    },
+    secondButton: {
+      text: blok?.ctaSecondary?.at(0)?.text || 'Text is missing',
+      url: '/' + blok?.ctaSecondary?.at(0)?.link.cached_url,
+    },
     isContentRight: blok?.layout === 'content-right',
     body: blok.body,
   };
