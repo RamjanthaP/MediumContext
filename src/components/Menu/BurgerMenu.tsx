@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 interface BurgerProps {
-  isOpen: boolean,
+  isOpen: boolean;
   toggleMenu: () => void;
 }
 
@@ -10,27 +10,30 @@ function BurgerMenu({ toggleMenu, isOpen }: BurgerProps) {
 
   return (
     <button
-      className="flex flex-col h-12 w-12 justify-center items-center group"
+      className='flex flex-col h-12 w-12 justify-center items-center group'
       onClick={toggleMenu}
     >
       <div
-        className={`${genericHamburgerLine} ${isOpen
-            ? "rotate-45 translate-y-1.5 opacity-50 group-hover:opacity-100"
-            : "opacity-50 group-hover:opacity-100"
-          }`}
+        className={`${genericHamburgerLine} ${
+          isOpen
+            ? 'rotate-45 translate-y-1.5 opacity-50 group-hover:opacity-100'
+            : 'opacity-50 group-hover:opacity-100'
+        }`}
       />
       <div
-        className={`${genericHamburgerLine} ${isOpen ? "opacity-0" : "opacity-50 group-hover:opacity-100"
-          }`}
+        className={`${genericHamburgerLine} ${
+          isOpen ? 'opacity-0' : 'opacity-50 group-hover:opacity-100'
+        }`}
       />
       <div
-        className={`${genericHamburgerLine} ${isOpen
-            ? "-rotate-45 -translate-y-1.5 opacity-50 group-hover:opacity-100"
-            : "opacity-50 group-hover:opacity-100"
-          }`}
+        className={`${genericHamburgerLine} ${
+          isOpen
+            ? '-rotate-45 -translate-y-1.5 opacity-50 group-hover:opacity-100'
+            : 'opacity-50 group-hover:opacity-100'
+        }`}
       />
     </button>
   );
 }
 
-export default BurgerMenu
+export default BurgerMenu;
