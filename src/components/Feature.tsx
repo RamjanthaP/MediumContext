@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BaseProps } from '../types/props';
 import { Container } from './Layout/Container';
 import Image from 'next/image';
@@ -15,6 +15,7 @@ export interface FeatureSectionProps extends BaseProps {
   imageUrl?: string;
   imageAlt?: string;
   body?: string;
+  expBody?: string;
 }
 
 function FeatureSection({
@@ -27,9 +28,11 @@ function FeatureSection({
   secondButton,
   imageUrl,
   imageAlt = 'decorative image', // Let the linter have this one
+  expBody
 }: FeatureSectionProps) {
   const TitleElement = titleElement || 'div';
   const layout = isContentRight ? 'flex-row-reverse' : 'flex-row';
+  const [expanded, setExpanded] = useState(false);
   return (
     <div className={`bg-${bgColor}`}>
       <Container element='section' className='py-8 lg:py-16'>
@@ -43,7 +46,7 @@ function FeatureSection({
             <p className='mb-4'>{body}</p>
             <div className='flex flex-wrap gap-2'>
               {firstButton && (
-                <Button variant='primary' icon href={firstButton.url}>
+                <Button variant='primary' icon href={firstButton.url} element="button" onClick={() => setExpanded(!expanded)}>
                   {firstButton.text}
                 </Button>
               )}
@@ -72,6 +75,10 @@ function FeatureSection({
             </div>
           </div>
         </div>
+        {expBody && expanded &&
+          <div className='w-ful rounded-md p-4 my-4 transition-all'>
+            <p>{expBody}</p>
+          </div>}
       </Container>
     </div>
   );

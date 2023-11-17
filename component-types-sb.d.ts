@@ -29,6 +29,7 @@ export interface FeatureStoryblok {
   _uid: string;
   component: "feature";
   [k: string]: any;
+  expBody?: string; 
 }
 
 export interface GridStoryblok {

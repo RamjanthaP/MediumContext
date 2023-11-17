@@ -53,7 +53,7 @@ const Button = ({
 
   const sizeClasses = sizeClass[size];
 
-  if (element === 'Link')
+  if (href !== '/undefined')
     return (
       <Link
         className={`${baseClasses} ${colorClass} ${sizeClasses} inline-flex gap-1 items-center`}
