@@ -3,14 +3,15 @@ import { BaseProps } from '../types/props';
 import { Container } from './Layout/Container';
 import Image from 'next/image';
 import Button from './Button/Button';
+import { BaseLink } from '@/types/common';
 
 export interface FeatureSectionProps extends BaseProps {
   title?: string;
   titleElement?: 'h1' | 'h2' | 'h3' | 'span';
   bgColor?: 'default' | 'inverted' | 'discrete';
   isContentRight?: boolean;
-  firstButton?: string;
-  secondButton?: string;
+  firstButton?: BaseLink;
+  secondButton?: BaseLink;
   imageUrl?: string;
   imageAlt?: string;
   body?: string;
@@ -42,13 +43,18 @@ function FeatureSection({
             <p className='mb-4'>{body}</p>
             <div className='flex flex-wrap gap-2'>
               {firstButton && (
-                <Button variant='primary' icon>
-                  {firstButton}
+                <Button variant='primary' icon href={firstButton.url}>
+                  {firstButton.text}
                 </Button>
               )}
               {secondButton && (
-                <Button variant='default' transparent icon>
-                  {secondButton}
+                <Button
+                  variant='default'
+                  transparent
+                  icon
+                  href={secondButton.url}
+                >
+                  {secondButton.text}
                 </Button>
               )}
             </div>

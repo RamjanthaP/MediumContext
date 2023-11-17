@@ -1,30 +1,32 @@
 import React from 'react';
-import { ArrowRightIcon } from '@heroicons/react/24/solid';
+import Link from 'next/link';
+import Styles from './button.module.css';
 
 export type ButtonSizes = keyof typeof sizeClass;
 export type ButtonColors = keyof typeof colorVariants;
 
 type ButtonProps = {
+  element?: 'Link' | 'button';
   variant?: ButtonColors;
   transparent?: boolean;
   children: React.ReactNode;
   size?: ButtonSizes;
   [x: string]: any;
-  icon?: boolean;
+  href?: string; // TODO: Make this required if element is Link
 };
 
 const colorVariants = {
   primary: {
-    default: 'btn-primary',
-    transparent: 'btn-primary-transparent',
+    default: Styles['btn-primary'],
+    transparent: Styles['btn-primary-transparent'],
   },
-  white: {
-    default: 'btn-white',
-    transparent: 'btn-white-transparent',
+  inverted: {
+    default: Styles['btn-inverted'],
+    transparent: Styles['btn-white-transparent'],
   },
   default: {
-    default: 'btn-default',
-    transparent: 'btn-default-transparent',
+    default: Styles['btn-default'],
+    transparent: Styles['btn-default-transparent'],
   },
 };
 
@@ -34,30 +36,39 @@ const sizeClass = {
   large: 'px-7 py-3',
 };
 
-const Button: React.FC<ButtonProps> = ({
-  variant = 'primary',
-  transparent = false,
-  size = 'medium',
+const Button = ({
   children,
-  icon,
+  element = 'Link',
+  href,
+  size = 'medium',
+  transparent,
+  variant = 'default',
   ...props
-}) => {
-  const baseClasses = `mx-2 rounded-full border-2  whitespace-pre`;
+}: ButtonProps) => {
+  const baseClasses = `rounded-full border-2 whitespace-pre `;
   const colorVariant = colorVariants[variant] || colorVariants.default;
   const colorClass = transparent
     ? colorVariant.transparent
     : colorVariant.default;
+
   const sizeClasses = sizeClass[size];
+
+  if (element === 'Link')
+    return (
+      <Link
+        className={`${baseClasses} ${colorClass} ${sizeClasses} inline-flex gap-1 items-center`}
+        href={href || '#'}
+      >
+        {children}
+      </Link>
+    );
 
   return (
     <button
       className={`${baseClasses} ${colorClass} ${sizeClasses}`}
       {...props}
     >
-      <div className='flex w-full items-center px-2'>
-        {children}
-        {icon && <ArrowRightIcon className='ml-2 h-5 w-5' />}
-      </div>
+      {children}
     </button>
   );
 };

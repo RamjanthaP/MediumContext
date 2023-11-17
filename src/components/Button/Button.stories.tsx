@@ -6,9 +6,10 @@ export default {
   tags: ['autodocs'],
 };
 
-export const Primary = {
+const baseButton = {
   args: {
-    variant: 'default',
+    variant: 'primary',
+    element: 'button',
     children: 'Button',
     transparent: false,
     icon: false,
@@ -20,3 +21,52 @@ export const Primary = {
     },
   },
 };
+
+function generateButtonVarition(
+  name: string,
+  variant: 'primary' | 'default' | 'inverted',
+  outlined: boolean
+) {
+  return {
+    ...baseButton,
+    args: {
+      variant: variant,
+      transparent: outlined,
+      children: name,
+    },
+  };
+}
+
+export const DefaultSolid = generateButtonVarition(
+  'Default Solid',
+  'default',
+  false
+);
+export const DefaultOutlined = generateButtonVarition(
+  'Default Outlined',
+  'default',
+  true
+);
+
+export const InvertedSolid = generateButtonVarition(
+  'Default Solid',
+  'inverted',
+  false
+);
+export const InvertedOutlined = generateButtonVarition(
+  'Default Outlined',
+  'inverted',
+  true
+);
+
+export const PrimarySolid = generateButtonVarition(
+  'Primary Solid',
+  'primary',
+  false
+);
+
+export const PrimaryOutlined = generateButtonVarition(
+  'Primary Outlined',
+  'primary',
+  true
+);

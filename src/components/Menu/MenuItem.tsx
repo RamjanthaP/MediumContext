@@ -1,13 +1,12 @@
-"use client";
-import { StoryblokComponent } from "@storyblok/react";
-import Button, { ButtonSizes } from "../Button/Button";
-import { specialItemTitle } from "./AppHeader";
-import { MenuLinkStoryblok } from "@sb-types";
-import Link from "next/link";
+'use client';
+import { StoryblokComponent } from '@storyblok/react';
+import Button, { ButtonSizes } from '../Button/Button';
+import { specialItemTitle } from './AppHeader';
+import { MenuLinkStoryblok } from '@sb-types';
 
 export const MenuItem = ({
   item,
-  size = "medium",
+  size = 'medium',
 }: {
   item: MenuLinkStoryblok;
   size?: ButtonSizes;
@@ -18,11 +17,10 @@ export const MenuItem = ({
   if (item && item.title === specialItemTitle) {
     return (
       // TODO Replace with a link to the contact page. No button needed.
-      <Link href={item.link.cached_url}>
-        <Button size={size} variant="primary">
-          {item.title}
-        </Button>
-      </Link>
+
+      <Button size={size} variant='primary' href={item.link.cached_url}>
+        {item.title}
+      </Button>
     );
   }
   return <StoryblokComponent blok={item} />;

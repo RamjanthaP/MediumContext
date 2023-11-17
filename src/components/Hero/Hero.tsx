@@ -1,11 +1,11 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 import { BaseLink, ImageProps } from '@/types/common';
 
 import { extractLastWord } from '@/utilities/helper';
 
 import Button from '../Button/Button';
+import ButtonWrapper from '../Button/ButtonWrapper';
 
 export type HeroProps = {
   title: string;
@@ -25,16 +25,27 @@ const Hero = ({ image, title, primaryButton, secondaryButton }: HeroProps) => {
               {extractLastWord(title).lastWord}
             </span>
           </h1>
-
-          {primaryButton && (
-            <Link className='inline-block' href={primaryButton.url}>
-              <Button>{primaryButton.text}</Button>
-            </Link>
-          )}
-          {secondaryButton && (
-            <Link className='inline-block' href={secondaryButton.url}>
-              <Button transparent>{secondaryButton.text}</Button>
-            </Link>
+          {(primaryButton || secondaryButton) && (
+            <ButtonWrapper>
+              {primaryButton && (
+                <Button
+                  element='Link'
+                  className='inline-block'
+                  href={primaryButton.url}
+                >
+                  {primaryButton.text}
+                </Button>
+              )}
+              {secondaryButton && (
+                <Button
+                  element='Link'
+                  className='inline-block'
+                  href={secondaryButton.url}
+                >
+                  {secondaryButton.text}
+                </Button>
+              )}
+            </ButtonWrapper>
           )}
         </div>
         <div className='z-10 bg-default-opacity bg-opacity-60 absolute top-0 left-0 right-0 bottom-0'></div>
