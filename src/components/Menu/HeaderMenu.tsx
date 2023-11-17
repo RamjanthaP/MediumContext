@@ -1,8 +1,9 @@
-import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
-import { MenuStoryblok, MenuLinkStoryblok } from "../../../component-types-sb";
+import { storyblokEditable, StoryblokComponent } from '@storyblok/react';
+import { MenuStoryblok, MenuLinkStoryblok } from '@sb-types';
+
 const HeaderMenu = ({ blok }: { blok: MenuStoryblok }) => (
   <div
-    className="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-10"
+    className='hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-10'
     {...storyblokEditable({ blok })}
   >
     {blok.links.map((nestedBlok: MenuLinkStoryblok) => (

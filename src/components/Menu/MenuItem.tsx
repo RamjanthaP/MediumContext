@@ -3,25 +3,28 @@ import { StoryblokComponent } from '@storyblok/react';
 import Button, { ButtonSizes } from '../Button/Button';
 import { specialItemTitle } from './AppHeader';
 import { MenuLinkStoryblok } from '@sb-types';
+interface MenuItemProps {
+  item: MenuLinkStoryblok;
+  size?: ButtonSizes;
+  closeMenu?: () => void;
+}
 
 export const MenuItem = ({
   item,
   size = 'medium',
-}: {
-  item: MenuLinkStoryblok;
-  size?: ButtonSizes;
-}) => {
-  {
-    /* TODO: exchange the title from "tjänster" to "kontakta oss" */
-  }
+  closeMenu,
+}: MenuItemProps) => {
   if (item && item.title === specialItemTitle) {
     return (
-      // TODO Replace with a link to the contact page. No button needed.
-
-      <Button size={size} variant='primary' href={item.link.cached_url}>
+      <Button
+        size={size}
+        variant='primary'
+        href={item.link.cached_url}
+        onClick={closeMenu}
+      >
         {item.title}
       </Button>
     );
   }
-  return <StoryblokComponent blok={item} />;
+  return <StoryblokComponent blok={item} closeMenu={closeMenu} />;
 };
