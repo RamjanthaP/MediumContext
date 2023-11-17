@@ -43,11 +43,11 @@ function QuickContact({ person }: any) {
                   <div className='flex flex-col lg:items-center my-2'>
                     <h5 className="text-xs font-bold px-4">{person.name || 'Default Name'}</h5>
                     <p className='text-xs mb-3 px-4'>{person.title || 'Default Role'}</p>
-                    <div className='flex sm:flex-col'>
+                    <div className='flex sm:flex-col gap-3'>
                       <Button variant="primary" href={`tel:${person.phone}`}>
                         Telefon
                       </Button>
-                      <Button variant="white" transparent href={`mailto:${person.email}`} >
+                      <Button variant="inverted" transparent href={`mailto:${person.email}`} >
                         Email
                       </Button>
                     </div>
