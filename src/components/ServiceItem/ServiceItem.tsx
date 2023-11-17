@@ -3,11 +3,9 @@ import Spin1 from './animations/spin-1.svg';
 import Spin2 from './animations/spin-2.svg';
 import Bounce from './animations/bounce.svg';
 import IconForward from '@heroicons/react/24/solid/ArrowRightIcon';
-import Link from 'next/link';
 import { BaseLink, ImageProps } from '@/types/common';
 import { BaseProps } from '@/types/props';
 import Button from '../Button/Button';
-import ButtonWrapper from '../Button/ButtonWrapper';
 
 export interface ServiceCardProps extends BaseProps {
   title: string;
