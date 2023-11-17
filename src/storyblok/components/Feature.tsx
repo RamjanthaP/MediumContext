@@ -29,5 +29,6 @@ const mapFeatureDtoToData = (blok: FeatureStoryblok): FeatureSectionProps => {
     },
     isContentRight: blok?.layout === 'content-right',
     body: blok.body,
+    expBody: blok?.expandBody,
   };
 };
