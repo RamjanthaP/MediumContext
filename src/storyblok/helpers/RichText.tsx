@@ -1,5 +1,6 @@
 import { RichtextStoryblok } from '@sb-types';
 import { renderRichText } from '@storyblok/react';
+import Styles from './rich-text.module.css'
 
 type RichTextProps = {
   __html: RichtextStoryblok;
@@ -9,7 +10,7 @@ type RichTextProps = {
 const RichText = ({ __html, className = '' }: RichTextProps) => {
   return (
     <div
-      className={className}
+      className={`${className} ${Styles.rt}`}
       dangerouslySetInnerHTML={{ __html: renderRichText(__html) }}
     />
   );
