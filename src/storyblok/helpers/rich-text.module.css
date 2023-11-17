@@ -1,0 +1,12 @@
+
+.rt p {
+  @apply mb-2
+}
+
+.rt ul { 
+ @apply list-disc px-6 py-4
+}
+
+
+
+
