@@ -16,7 +16,7 @@ const mapFeatureDtoToData = (blok: FeatureStoryblok): FeatureSectionProps => {
   const image: AssetStoryblok | undefined = blok.image;
   return {
     title: blok.title,
-    imageUrl: image?.filename, // TODO: Refactor to ImageInterface
+    imageUrl: image?.filename,
     imageAlt: image?.alt,
     bgColor: blok.theme || 'default',
     firstButton: {

@@ -32,7 +32,6 @@ variables:
 stages:
   - stage: Build
     displayName: Build stage
-    # TODO: Remove job wrapper later.... :)
     jobs:
       - job: Build
         displayName: Build
