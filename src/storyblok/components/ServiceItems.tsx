@@ -19,7 +19,7 @@ function mapServiceItemDtoToData(
   blok: ServiceItemsStoryblok
 ): ServiceCardProps {
   return {
-    title: blok.title || 'Title missing', // TODO: Make mandatory in SB
+    title: blok.title || 'Title missing', 
     description: blok.description
       ? renderRichText(blok.description)
       : 'Description missing',
@@ -31,8 +31,8 @@ function mapServiceItemDtoToData(
       : undefined,
     animation: blok.animation || 'spin1',
     button: {
-      text: blok.button_title || 'Button missing', // TODO: Make mandatory in SB
-      url: blok.button_link?.cached_url || '#', // TODO: Make mandatory in SB
+      text: blok.button_title || 'Button missing',
+      url: blok.button_link?.cached_url || '#',
     },
   };
 }

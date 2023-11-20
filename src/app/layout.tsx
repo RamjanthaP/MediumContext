@@ -20,7 +20,6 @@ storyblokInit({
   },
 });
 
-// TODO: Säkerställ att dessa värden är korrekta
 export const metadata: Metadata = {
   title: "Amaceit - Konsulter inom .NET, React, IT management och Vue",
   description:

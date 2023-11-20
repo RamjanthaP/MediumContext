@@ -14,7 +14,6 @@ export default function NotFound() {
               (och vi har slarvat med redirecten. Ber om ursäkt i så fall. 😅).
             </p>
             <div>
-              {/* TODO: Replace with proper button class or similar */}
               <Link
                 className="border-white border px-6 py-3 rounded-full inline-block"
                 href="/"
@@ -25,7 +24,6 @@ export default function NotFound() {
             </div>
           </div>
           <div className="w-1/2 flex justify-center items-center pt-8">
-            {/* TODO: Replace with a funnier or decent illustration */}
             <div className="animate-bounce text-3xl w-5">🦤 oh nooo!!!</div>
           </div>
         </div>
