@@ -1,0 +1,53 @@
+# Node.js React Web App to Linux on Azure
+# Build a Node.js React app and deploy it to Azure as a Linux web app.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+  - main
+
+pool:
+  name: Azure Pipelines
+
+variables:
+  # Make storybook group available.
+  - group: 'Storyblok'
+
+  # Agent VM image name
+  - name: image
+    value: 'ubuntu-latest'
+  
+  # Agent VM image name
+  - name: artifactName
+    value: 'drop'
+
+jobs:
+  - job: installAndLint
+    displayName: Install node and lint repo
+    steps:
+      - task: NodeTool@0
+        displayName: 'Install Node.js from nvmrc file'
+        inputs:
+          versionSource: 'fromFile'
+          versionFilePath: '.nvmrc'
+
+      - task: Npm@1
+        displayName: 'Install dependencies for production'
+        inputs:
+          command: 'ci'
+
+      - bash: |
+          # Use the API and agent variables from the Storyblok group
+          apiValue=$(STORYBLOK_API_TOKEN)
+          # Set environment variable for npm script
+          echo "STORYBLOK_API_TOKEN=$apiValue" >> $(System.DefaultWorkingDirectory)/.env
+        displayName: 'Set API variable for npm'
+
+      - task: Npm@1
+        displayName: Lint application
+        inputs:
+          command: 'custom'
+          workingDir: '.'
+          customCommand: 'run lint'
+
+
