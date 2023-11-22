@@ -74,14 +74,31 @@ stages:
               SourceFolder: '.next/standalone'
               Contents: '**'
               TargetFolder: '$(Build.ArtifactStagingDirectory)'
-              
+
           - task: CopyFiles@2
+            displayName: 'Copy .env and ecoystem to: $(Build.ArtifactStagingDirectory)'
             inputs:
               Contents: |
                 ecosystem.config.js
                 .env
               TargetFolder: '$(Build.ArtifactStagingDirectory)'
-          
+
+          # Needed for standalone build if not using CDN
+          - task: CopyFiles@2
+            displayName: 'Copy .next/static to: $(Build.ArtifactStagingDirectory).next/static'
+            inputs:
+              SourceFolder: '.next/static'
+              Contents: '**'
+              TargetFolder: '$(Build.ArtifactStagingDirectory)/.next/static'
+
+          # Needed for standalone build if not using CDN
+          - task: CopyFiles@2
+            displayName: 'Copy /public to: $(Build.ArtifactStagingDirectory)/public'
+            inputs:
+              SourceFolder: 'public'
+              Contents: '**'
+              TargetFolder: '$(Build.ArtifactStagingDirectory)/public'
+
           - task: ArchiveFiles@2
             displayName: 'Zip files'
             inputs:
@@ -132,4 +149,4 @@ stages:
               appName: $(webAppName)
               package: '$(System.ArtifactsDirectory)/$(artifactName)/**/*.zip'
               runtimeStack: 'NODE|18-lts'
-              startUpCommand: "pm2 start /home/site/wwwroot/server.js --no-daemon --env DEBUG='*'"
+              startUpCommand: "pm2 start /home/site/wwwroot/ecosystem.config.js --no-daemon --env DEBUG='*'"
