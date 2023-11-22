@@ -7,7 +7,7 @@ trigger:
   - '*' # TODO: Update to just run on main if it works
 
 pool:
-  name: Azure Pipelines
+  name: Local-Joakim
 
 variables:
   # Make storybook group available.
@@ -74,7 +74,14 @@ stages:
               SourceFolder: '.next/standalone'
               Contents: '**'
               TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
+              
+          - task: CopyFiles@2
+            inputs:
+              Contents: |
+                ecosystem.config.js
+                .env
+              TargetFolder: '$(Build.ArtifactStagingDirectory)'
+          
           - task: ArchiveFiles@2
             displayName: 'Zip files'
             inputs:
