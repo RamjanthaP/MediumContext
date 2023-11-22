@@ -21,3 +21,19 @@ export const scrollToTarget = (
     target.current?.offsetTop && target.current?.offsetTop - offsetTop;
   window.scrollTo({ top, behavior: 'smooth' });
 };
+
+export const colorDots = (title: string) => {
+  const parts = title.split('.').map((part, index, array) =>
+    index !== array.length - 1 ? (
+      <>
+        <span key={index}>{part}</span>
+        <span className='text-primary-500' key={index}>
+          .
+        </span>
+      </>
+    ) : (
+      <span key={index}>{part}</span>
+    )
+  );
+  return <>{parts}</>;
+}

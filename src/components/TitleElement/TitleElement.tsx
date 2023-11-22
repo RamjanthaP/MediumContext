@@ -1,30 +1,27 @@
 import React from 'react';
+import { colorDots } from '@/utilities/helper';
 
 type TitleElementProps = {
   title: string;
   titleSize?: 'h1' | 'h2' | 'h3' | 'span';
 };
 
-function TitleElement({ title }: TitleElementProps) {
-  function colorDots(title: string) {
-    const parts = title.split('.').map((part, index, array) =>
-      index !== array.length - 1 ? (
-        <>
-          <span key={index}>{part}</span>
-          <span className='text-primary-500' key={index}>
-            .
-          </span>
-        </>
-      ) : (
-        <span key={index}>{part}</span>
-      )
-    );
+function TitleElement({ title, titleSize = 'h1' }: TitleElementProps) {
+  const titleClasses = 'text-xl font-bold mb-4';
+  const sizeClasses = {
+    h1: 'md:text-3xl',
+    h2: 'md:text-xxl',
+    h3: 'md:text-xl',
+    span: 'md:text-lg'
+  };
 
-    return <>{parts}</>;
-  }
+  const TitleTag = titleSize;
+
   return (
     <div>
-      <h1 className='text-xl md:text-3xl font-bold mb-4'>{colorDots(title)}</h1>
+      <TitleTag className={`${titleClasses} ${sizeClasses[titleSize]}`}>
+        {colorDots(title)}
+      </TitleTag>
     </div>
   );
 }
