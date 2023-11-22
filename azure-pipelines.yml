@@ -1,21 +1,53 @@
-# Node.js
-# Build a general Node.js project with npm.
+# Node.js React Web App to Linux on Azure
+# Build a Node.js React app and deploy it to Azure as a Linux web app.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- main
+  - main
 
 pool:
-  vmImage: ubuntu-latest
+  name: Azure Pipelines
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '18.x'
-  displayName: 'Install Node.js'
+variables:
+  # Make storybook group available.
+  - group: 'Storyblok'
 
-- script: |
-    npm ci
-    npm run lint
-  displayName: 'install production dependencies and lint'
+  # Agent VM image name
+  - name: image
+    value: 'ubuntu-latest'
+  
+  # Agent VM image name
+  - name: artifactName
+    value: 'drop'
+
+jobs:
+  - job: install and lint
+    displayName: Install node and lint repo
+    steps:
+      - task: NodeTool@0
+        displayName: 'Install Node.js from nvmrc file'
+        inputs:
+          versionSource: 'fromFile'
+          versionFilePath: '.nvmrc'
+
+      - task: Npm@1
+        displayName: 'Install dependencies for production'
+        inputs:
+          command: 'ci'
+
+      - bash: |
+          # Use the API and agent variables from the Storyblok group
+          apiValue=$(STORYBLOK_API_TOKEN)
+          # Set environment variable for npm script
+          echo "STORYBLOK_API_TOKEN=$apiValue" >> $(System.DefaultWorkingDirectory)/.env
+        displayName: 'Set API variable for npm'
+
+      - task: Npm@1
+        displayName: Lint application
+        inputs:
+          command: 'custom'
+          workingDir: '.'
+          customCommand: 'run lint'
+
+
