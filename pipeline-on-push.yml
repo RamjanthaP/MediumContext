@@ -18,7 +18,7 @@ variables:
   # Agent VM image name
   - name: image
     value: 'ubuntu-latest'
-  
+
   # Agent VM image name
   - name: artifactName
     value: 'drop'
@@ -32,6 +32,12 @@ jobs:
         inputs:
           versionSource: 'fromFile'
           versionFilePath: '.nvmrc'
+
+      - task: Cache@2
+        displayName: 'Retrieving cache for package-lock.json'
+        inputs:
+          key: 'package-lock.json'
+          path: '$(System.DefaultWorkingDirectory)/.next/cache'
 
       - task: Npm@1
         displayName: 'Install dependencies for production'
@@ -51,5 +57,3 @@ jobs:
           command: 'custom'
           workingDir: '.'
           customCommand: 'run lint'
-
-
