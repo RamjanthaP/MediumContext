@@ -6,7 +6,6 @@ export type ButtonSizes = keyof typeof sizeClass;
 export type ButtonColors = keyof typeof colorVariants;
 
 type ButtonProps = {
-  element?: 'Link' | 'button';
   variant?: ButtonColors;
   transparent?: boolean;
   children: React.ReactNode;
@@ -38,7 +37,6 @@ const sizeClass = {
 
 const Button = ({
   children,
-  element = 'Link',
   href,
   size = 'medium',
   transparent,

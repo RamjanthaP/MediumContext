@@ -1,6 +1,6 @@
+import Button from "@/components/Button/Button";
 import { Container } from "@/components/Layout/Container";
 import { ArrowLeftIcon } from "@heroicons/react/20/solid";
-import Link from "next/link";
 
 export default function NotFound() {
   return (
@@ -14,13 +14,13 @@ export default function NotFound() {
               (och vi har slarvat med redirecten. Ber om ursäkt i så fall. 😅).
             </p>
             <div>
-              <Link
-                className="border-white border px-6 py-3 rounded-full inline-block"
+              <Button
+                variant="inverted"
                 href="/"
               >
                 <ArrowLeftIcon className="inline-block h-4 mr-1" />
                 Gå till start
-              </Link>
+              </Button>
             </div>
           </div>
           <div className="w-1/2 flex justify-center items-center pt-8">
