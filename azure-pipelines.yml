@@ -22,7 +22,7 @@ variables:
     value: 'drop'
 
 jobs:
-  - job: install and lint
+  - job: installAndLint
     displayName: Install node and lint repo
     steps:
       - task: NodeTool@0
