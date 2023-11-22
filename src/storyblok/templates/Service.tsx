@@ -16,7 +16,6 @@ const TemplateService = ({
   contactPerson,
 }: TemplateServiceStoryblok) => {
   const quickContactData = mapContactPersonDtoToQuickContactData(contactPerson);
-  console.log(quickContactData)
   return (
     <>
       <AnimateHeader
