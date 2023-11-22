@@ -12,7 +12,7 @@ type ButtonProps = {
   children: React.ReactNode;
   size?: ButtonSizes;
   [x: string]: any;
-  href?: string; // TODO: Make this required if element is Link
+  href?: string;
 };
 
 const colorVariants = {

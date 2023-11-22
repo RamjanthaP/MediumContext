@@ -27,7 +27,6 @@ const AnimateHeader = ({
   const svgContainerRef = useRef<HTMLObjectElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const router = useRouter();
-  //TODO: Replace with a better button
   const navigateTo = (url: string) => {
     router.push(url);
   };
@@ -42,7 +41,7 @@ const AnimateHeader = ({
       } else {
         throw new Error('The player cannot be found');
       }
-    }, 100); // TODO; Make less hacky
+    }, 100); 
   }, [svgContainerRef?.current?.contentDocument]);
 
   return (
@@ -98,7 +97,6 @@ const startAnimationAndScrollToTarget = function (
 
   player.restart(); // play() only make sense if the animation has ended
 
-  // TODO: Add a check for if user has scrolled down
   player.on('end', () => {
     scrollToTarget(target);
   });

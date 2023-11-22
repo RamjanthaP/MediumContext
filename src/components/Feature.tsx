@@ -4,6 +4,7 @@ import { Container } from './Layout/Container';
 import Image from 'next/image';
 import Button from './Button/Button';
 import { BaseLink } from '@/types/common';
+import TitleElement from './TitleElement/TitleElement';
 
 export interface FeatureSectionProps extends BaseProps {
   title?: string;
@@ -20,7 +21,6 @@ export interface FeatureSectionProps extends BaseProps {
 
 function FeatureSection({
   title,
-  titleElement = 'h2',
   isContentRight = false,
   bgColor = 'default',
   body,
@@ -30,9 +30,9 @@ function FeatureSection({
   imageAlt = 'decorative image', // Let the linter have this one
   expBody
 }: FeatureSectionProps) {
-  const TitleElement = titleElement || 'div';
   const layout = isContentRight ? 'flex-row-reverse' : 'flex-row';
   const [expanded, setExpanded] = useState(false);
+
   return (
     <div className={`bg-${bgColor}`}>
       <Container element='section' className='py-8 lg:py-16'>
@@ -40,9 +40,7 @@ function FeatureSection({
           className={`flex flex-col-reverse md:${layout} gap-4 md:gap-12 lg:gap-20 w-full `}
         >
           <div className='flex flex-col md:w-1/2 md:justify-center'>
-            <TitleElement className='text-xl md:text-3xl font-bold mb-4'>
-              {title}
-            </TitleElement>
+            {title && <TitleElement title={title} />}
             <p className='mb-4'>{body}</p>
             <div className='flex flex-wrap gap-2'>
               {firstButton && (

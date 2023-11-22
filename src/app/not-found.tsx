@@ -25,7 +25,6 @@ export default function NotFound() {
             </div>
           </div>
           <div className="w-1/2 flex justify-center items-center pt-8">
-            {/* TODO: Replace with a funnier or decent illustration */}
             <div className="animate-bounce text-3xl w-5">🦤 oh nooo!!!</div>
           </div>
         </div>
