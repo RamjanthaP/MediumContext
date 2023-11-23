@@ -4,7 +4,7 @@ import { Container } from './Layout/Container';
 import Image from 'next/image';
 import Button from './Button/Button';
 import { BaseLink } from '@/types/common';
-import TitleElement from './TitleElement/TitleElement';
+import BrandedTitle from './BrandedTitle/BrandedTitle';
 
 export interface FeatureSectionProps extends BaseProps {
   title?: string;
@@ -39,7 +39,7 @@ function FeatureSection({
           className={`flex flex-col-reverse md:${layout} gap-4 md:gap-12 lg:gap-20 w-full `}
         >
           <div className='flex flex-col md:w-1/2 md:justify-center'>
-            {title && <TitleElement title={title} titleSize='h1' />}
+            {title && <BrandedTitle title={title} titleSize='h1' />}
             <p className='mb-4'>{body}</p>
             <div className='flex flex-wrap gap-2'>
               {firstButton && (

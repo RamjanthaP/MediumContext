@@ -1,12 +1,12 @@
 import React from 'react';
 import { colorDots } from '@/utilities/helper';
 
-type TitleElementProps = {
+type BrandedTitleProps = {
   title: string;
   titleSize?: 'h1' | 'h2' | 'h3' | 'span';
 };
 
-function TitleElement({ title, titleSize = 'h1' }: TitleElementProps) {
+function BrandedTitle({ title, titleSize = 'h1' }: BrandedTitleProps) {
   const titleClasses = 'text-xl font-bold mb-4';
   const sizeClasses = {
     h1: 'md:text-3xl',
@@ -26,4 +26,4 @@ function TitleElement({ title, titleSize = 'h1' }: TitleElementProps) {
   );
 }
 
-export default TitleElement;
+export default BrandedTitle;
