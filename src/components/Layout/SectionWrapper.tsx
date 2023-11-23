@@ -18,7 +18,7 @@ const SectionWrapper: React.FC<SectionWrapperProps> = ({
     <div className={`theme-block-${color} ${className}`}>
       <Container element="section" className="lg:py-7">
         <div>
-          {title && <BrandedTitle title={title} titleSize="h2" />}
+          {title && <BrandedTitle className="text-xxl" element="h2">{title}</BrandedTitle>}
           <div>{children}</div>
         </div>
       </Container>

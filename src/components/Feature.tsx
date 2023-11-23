@@ -39,7 +39,7 @@ function FeatureSection({
           className={`flex flex-col-reverse md:${layout} gap-4 md:gap-12 lg:gap-20 w-full `}
         >
           <div className='flex flex-col md:w-1/2 md:justify-center'>
-            {title && <BrandedTitle title={title} titleSize='h1' />}
+            {title && <BrandedTitle element='h1' className='text-3xl' >{title}</BrandedTitle>}
             <p className='mb-4'>{body}</p>
             <div className='flex flex-wrap gap-2'>
               {firstButton && (

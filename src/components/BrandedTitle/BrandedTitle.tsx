@@ -1,28 +1,18 @@
-import React from 'react';
 import { colorDots } from '@/utilities/helper';
 
 type BrandedTitleProps = {
-  title: string;
-  titleSize?: 'h1' | 'h2' | 'h3' | 'span';
+  children: string;
+  element: 'h1' | 'h2' | 'h3' | 'span';
+  className?: string;
 };
 
-function BrandedTitle({ title, titleSize = 'h1' }: BrandedTitleProps) {
-  const titleClasses = 'text-xl font-bold mb-4';
-  const sizeClasses = {
-    h1: 'md:text-3xl',
-    h2: 'md:text-xxl',
-    h3: 'md:text-xl',
-    span: 'md:text-lg'
-  };
-
-  const TitleTag = titleSize;
+function BrandedTitle({ children, element: Element, className = '' }: BrandedTitleProps) {
+  const titleClasses = `text-xl font-bold mb-4 ${className}`
 
   return (
-    <div>
-      <TitleTag className={`${titleClasses} ${sizeClasses[titleSize]}`}>
-        {colorDots(title)}
-      </TitleTag>
-    </div>
+      <Element className={titleClasses}>
+        {colorDots(children)}
+      </Element>
   );
 }
 
