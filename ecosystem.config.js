@@ -7,7 +7,7 @@ module.exports = {
       autorestart: true,
       env: {
         NODE_ENV: 'production',
-        PORT: 3000,
+        PORT: process.env.PORT || 3000,
         STORYBLOK_API_TOKEN: 'LajGNuE5cdMZfhpS6PhVoQtt', // TODO: change to production token
       },
     },
