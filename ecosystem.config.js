@@ -8,7 +8,7 @@ module.exports = {
       env: {
         NODE_ENV: 'production',
         PORT: process.env.PORT || 3000,
-        STORYBLOK_API_TOKEN: 'LajGNuE5cdMZfhpS6PhVoQtt', // TODO: change to production token
+        STORYBLOK_API_TOKEN: process.env.STORYBLOK_API_TOKEN, // TODO: change to production token
       },
     },
   ],

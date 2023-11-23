@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-  - '*' # TODO: Update to just run on main if it works
+  - 'feature/deploy-standalone' # TODO: Update to just run on main if it works
 
 pool:
   name: Local-Joakim
@@ -150,3 +150,4 @@ stages:
               package: '$(System.ArtifactsDirectory)/$(artifactName)/**/*.zip'
               runtimeStack: 'NODE|18-lts'
               startUpCommand: "pm2 start /home/site/wwwroot/ecosystem.config.js --no-daemon --env DEBUG='*'"
+              appSettings: '-STORYBLOK_API_TOKEN $(STORYBLOK_API_TOKEN)'
