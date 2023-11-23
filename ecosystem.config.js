@@ -1,12 +1,15 @@
-// Using this as referece for deploy: https://itbusinesshub.com/blog/nextjs-node-app-on-azure-app-service/
 module.exports = {
   apps: [
     {
       name: 'amaceitwebstage01',
-      script: './node_modules/next/dist/bin/next',
-      args: 'start -p ' + (process.env.PORT || 3000),
+      script: 'server.js',
       watch: false,
-      autorestart: true
-    }
-  ]
+      autorestart: true,
+      env: {
+        NODE_ENV: 'production',
+        PORT: process.env.PORT || 3000,
+        STORYBLOK_API_TOKEN: process.env.STORYBLOK_API_TOKEN, // TODO: change to production token
+      },
+    },
+  ],
 };
