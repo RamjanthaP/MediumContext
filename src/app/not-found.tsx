@@ -15,7 +15,8 @@ export default function NotFound() {
             </p>
             <div>
               <Button
-                variant="inverted"
+                variant="default"
+                transparent
                 href="/"
                 element="Link"
               >
