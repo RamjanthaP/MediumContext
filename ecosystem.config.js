@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 module.exports = {
   apps: [
     {
@@ -10,7 +8,7 @@ module.exports = {
       env: {
         NODE_ENV: 'production',
         PORT: 3000,
-        STORYBLOK_API_TOKEN: process.env.STORYBLOK_API_TOKEN,
+        STORYBLOK_API_TOKEN: 'LajGNuE5cdMZfhpS6PhVoQtt', // TODO: change to production token
       },
     },
   ],
