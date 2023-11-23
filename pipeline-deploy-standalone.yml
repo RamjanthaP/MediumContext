@@ -1,13 +1,14 @@
-# Node.js React Web App to Linux on Azure
-# Build a Node.js React app and deploy it to Azure as a Linux web app.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+#
+# A standalone build which  includes
+# all the static files and assets
+# needed to run the application.
+#
 
 trigger:
-  - 'feature/deploy-standalone' # TODO: Update to just run on main if it works
+  - 'main'
 
 pool:
-  name: Local-Joakim
+  name: Azure Pipelines
 
 variables:
   # Make storybook group available.
@@ -150,4 +151,4 @@ stages:
               package: '$(System.ArtifactsDirectory)/$(artifactName)/**/*.zip'
               runtimeStack: 'NODE|18-lts'
               startUpCommand: "pm2 start /home/site/wwwroot/ecosystem.config.js --no-daemon --env DEBUG='*'"
-              appSettings: '-STORYBLOK_API_TOKEN $(STORYBLOK_API_TOKEN)'
+              appSettings: '-STORYBLOK_API_TOKEN $(STORYBLOK_API_TOKEN)' #Assigning environment variable
