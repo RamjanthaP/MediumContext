@@ -37,7 +37,7 @@
       "name": "feature",
       "display_name": null,
       "created_at": "2023-10-05T08:08:49.707Z",
-      "updated_at": "2023-10-27T18:20:21.186Z",
+      "updated_at": "2023-11-17T10:03:32.593Z",
       "id": 4673137,
       "schema": {
         "title": {
@@ -120,6 +120,9 @@
             }
           ],
           "default_value": ""
+        },
+        "expandBody": {
+          "type": "textarea"
         }
       },
       "image": null,
@@ -615,7 +618,7 @@
       "name": "service_items",
       "display_name": null,
       "created_at": "2023-11-06T13:39:22.263Z",
-      "updated_at": "2023-11-10T12:24:51.823Z",
+      "updated_at": "2023-11-20T13:07:53.733Z",
       "id": 4841921,
       "schema": {
         "title": {
@@ -647,7 +650,8 @@
         },
         "button_title": {
           "type": "text",
-          "pos": 5
+          "pos": 5,
+          "required": true
         }
       },
       "image": null,
@@ -661,30 +665,6 @@
       "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
       "color": null,
       "icon": null,
-      "component_group_name": "Blocks"
-    },
-    {
-      "name": "teaser",
-      "display_name": null,
-      "created_at": "2023-10-05T08:08:49.679Z",
-      "updated_at": "2023-10-11T07:44:08.658Z",
-      "id": 4673135,
-      "schema": {
-        "headline": {
-          "type": "text"
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "teaser",
-      "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
-      "color": "#2db47d",
-      "icon": "block-text-img-c",
       "component_group_name": "Blocks"
     },
     {
@@ -715,12 +695,13 @@
       "name": "template_service",
       "display_name": null,
       "created_at": "2023-10-09T13:08:12.920Z",
-      "updated_at": "2023-11-15T12:52:29.497Z",
+      "updated_at": "2023-11-15T13:31:33.885Z",
       "id": 4690053,
       "schema": {
         "content": {
           "type": "richtext",
-          "pos": 0
+          "pos": 0,
+          "key": "content"
         },
         "quick_contact": {
           "type": "bloks",
@@ -731,7 +712,8 @@
           "component_whitelist": [
             "quick_contact"
           ],
-          "maximum": 1
+          "maximum": 1,
+          "key": "quick_contact"
         },
         "relatedCase": {
           "type": "bloks",
@@ -740,7 +722,8 @@
           "component_whitelist": [
             "template_case"
           ],
-          "pos": 2
+          "pos": 2,
+          "key": "relatedCase"
         },
         "contact_person": {
           "type": "option",
@@ -748,7 +731,9 @@
           "source": "internal_stories",
           "filter_content_type": [
             "person"
-          ]
+          ],
+          "key": "person",
+          "pos": 3
         }
       },
       "image": null,

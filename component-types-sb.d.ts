@@ -26,10 +26,10 @@ export interface FeatureStoryblok {
   ctaSecondary?: LinkStoryblok[];
   layout?: "" | "content-left" | "content-right";
   theme?: "" | "default" | "inverted" | "discrete";
+  expandBody?: string;
   _uid: string;
   component: "feature";
   [k: string]: any;
-  expBody?: string; 
 }
 
 export interface GridStoryblok {
@@ -201,16 +201,9 @@ export interface ServiceItemsStoryblok {
   animation?: string;
   Image?: string;
   button_link?: MultilinkStoryblok;
-  button_title?: string;
+  button_title: string;
   _uid: string;
   component: "service_items";
-  [k: string]: any;
-}
-
-export interface TeaserStoryblok {
-  headline?: string;
-  _uid: string;
-  component: "teaser";
   [k: string]: any;
 }
 
