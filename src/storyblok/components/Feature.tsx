@@ -16,8 +16,12 @@ const mapFeatureDtoToData = (blok: FeatureStoryblok): FeatureSectionProps => {
   const image: AssetStoryblok | undefined = blok.image;
   return {
     title: blok.title,
-    imageUrl: image?.filename,
-    imageAlt: image?.alt,
+    image: image
+      ? {
+          alt: image.alt || 'Decorative Image', // This is mandatory in SB, but our type converter dont know that
+          url: image.filename,
+        }
+      : undefined,
     bgColor: blok.theme || 'default',
     firstButton: {
       text: blok?.ctaPrimary?.at(0)?.text || 'Text is missing',
