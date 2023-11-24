@@ -3,7 +3,7 @@ import { BaseProps } from '../types/props';
 import { Container } from './Layout/Container';
 import Image from 'next/image';
 import Button from './Button/Button';
-import { BaseLink } from '@/types/common';
+import { BaseLink, ImageProps } from '@/types/common';
 import BrandedTitle from './BrandedTitle/BrandedTitle';
 
 export interface FeatureSectionProps extends BaseProps {
@@ -12,8 +12,7 @@ export interface FeatureSectionProps extends BaseProps {
   isContentRight?: boolean;
   firstButton?: BaseLink;
   secondButton?: BaseLink;
-  imageUrl?: string;
-  imageAlt?: string;
+  image?: ImageProps;
   body?: string;
   expBody?: string;
 }
@@ -25,9 +24,8 @@ function FeatureSection({
   body,
   firstButton,
   secondButton,
-  imageUrl,
-  imageAlt = 'decorative image', // Let the linter have this one
-  expBody
+  image,
+  expBody,
 }: FeatureSectionProps) {
   const layout = isContentRight ? 'flex-row-reverse' : 'flex-row';
   const [expanded, setExpanded] = useState(false);
@@ -39,11 +37,21 @@ function FeatureSection({
           className={`flex flex-col-reverse md:${layout} gap-4 md:gap-12 lg:gap-20 w-full `}
         >
           <div className='flex flex-col md:w-1/2 md:justify-center'>
-            {title && <BrandedTitle element='h1' className='text-3xl' >{title}</BrandedTitle>}
+            {title && (
+              <BrandedTitle element='h1' className='text-3xl'>
+                {title}
+              </BrandedTitle>
+            )}
             <p className='mb-4'>{body}</p>
             <div className='flex flex-wrap gap-2'>
               {firstButton && (
-                <Button variant='primary' icon href={firstButton.url} element="button" onClick={() => setExpanded(!expanded)}>
+                <Button
+                  variant='primary'
+                  icon
+                  href={firstButton.url}
+                  element='button'
+                  onClick={() => setExpanded(!expanded)}
+                >
                   {firstButton.text}
                 </Button>
               )}
@@ -61,10 +69,10 @@ function FeatureSection({
           </div>
           <div className='md:w-1/2 '>
             <div className='bg-discrete rounded-4xl w-full lg:w-50 aspect-square mx-auto relative overflow-hidden'>
-              {imageUrl && (
+              {image && (
                 <Image
-                  src={imageUrl}
-                  alt={imageAlt}
+                  src={image.url}
+                  alt={image.alt}
                   fill
                   className='object-cover'
                 />
@@ -72,10 +80,11 @@ function FeatureSection({
             </div>
           </div>
         </div>
-        {expBody && expanded &&
+        {expBody && expanded && (
           <div className='w-ful rounded-md p-4 my-4 transition-all'>
             <p>{expBody}</p>
-          </div>}
+          </div>
+        )}
       </Container>
     </div>
   );
