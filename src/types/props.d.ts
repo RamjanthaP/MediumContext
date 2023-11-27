@@ -1,4 +1,5 @@
 export interface BaseProps {
-  children?: React.ReactNode;
+  children?: React.ReactNode | string;
   className?: string;
+  id?: string;
 }
