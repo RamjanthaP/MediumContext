@@ -47,7 +47,6 @@ function FeatureSection({
               {firstButton && (
                 <Button
                   variant='primary'
-                  icon
                   href={firstButton.url}
                   element='button'
                   onClick={() => setExpanded(!expanded)}
@@ -56,12 +55,7 @@ function FeatureSection({
                 </Button>
               )}
               {secondButton && (
-                <Button
-                  variant='default'
-                  transparent
-                  icon
-                  href={secondButton.url}
-                >
+                <Button variant='default' transparent href={secondButton.url}>
                   {secondButton.text}
                 </Button>
               )}
