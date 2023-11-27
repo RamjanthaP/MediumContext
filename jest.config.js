@@ -1,21 +1,6 @@
-// module.exports = {
-//   preset: 'next',
-//   testEnvironment: 'jsdom',
-//   moduleNameMapper: {
-//     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
-//   },
-//   testPathIgnorePatterns: ['/node_modules/', '/.next/'],
-//   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
-//   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
-//   transform: {
-//     '^.+\\.(ts|tsx)$': 'ts-jest',
-//   },
-// };
-
 const nextJest = require('next/jest');
 
 const createJestConfig = nextJest({
-  // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
   dir: './',
 });
 
