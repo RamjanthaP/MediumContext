@@ -1,7 +1,6 @@
+import { HeadingElementTag } from '@/types/common';
 import { BaseProps } from '@/types/props';
 import React from 'react';
-
-type HeadingElementTag = 'h1' | 'h2' | 'h3' | 'h4' | 'div';
 
 type BrandedTitleProps = BaseProps & {
   children: string;
