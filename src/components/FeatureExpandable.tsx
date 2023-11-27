@@ -5,31 +5,36 @@ import Image from 'next/image';
 import Button from './Button/Button';
 import { BaseLink, ImageProps } from '@/types/common';
 import BrandedTitle from './BrandedTitle/BrandedTitle';
+import RichText from '@/storyblok/helpers/RichText';
+import { RichtextStoryblok } from '@sb-types';
 
-export interface FeatureSectionProps extends BaseProps {
+export interface FeatureExpandableProps extends BaseProps {
   preTitle?: string;
   title?: string;
   bgColor?: 'default' | 'inverted' | 'discrete';
   isContentRight?: boolean;
-  firstButton?: BaseLink;
-  secondButton?: BaseLink;
+  expandText: string;
   image?: ImageProps;
   body?: string;
-  expBody?: string;
+  expBody?: RichtextStoryblok;
 }
 
-function FeatureSection({
+function FeatureExpandable({
   preTitle,
   title,
   isContentRight = false,
   bgColor = 'default',
   body,
-  firstButton,
-  secondButton,
+  expandText,
   image,
-}: FeatureSectionProps) {
+  expBody,
+}: FeatureExpandableProps) {
   const layout = isContentRight ? 'flex-row-reverse' : 'flex-row';
   const [expanded, setExpanded] = useState(false);
+  const toggleExpanded = (e) => {
+    e.preventDefault();
+    setExpanded(!expanded);
+  };
 
   return (
     <div className={`bg-${bgColor}`}>
@@ -48,18 +53,13 @@ function FeatureSection({
             )}
             <p className='mb-4'>{body}</p>
             <div className='flex flex-wrap gap-2'>
-              {firstButton && (
+              {expBody && !expanded && (
                 <Button
                   variant='primary'
-                  href={firstButton.url}
                   element='button'
+                  onClick={toggleExpanded}
                 >
-                  {firstButton.text}
-                </Button>
-              )}
-              {secondButton && (
-                <Button variant='default' transparent href={secondButton.url}>
-                  {secondButton.text}
+                  {expandText}
                 </Button>
               )}
             </div>
@@ -77,9 +77,27 @@ function FeatureSection({
             </div>
           </div>
         </div>
+        {expBody && expanded && (
+          <div className='w-full rounded-md p-4 my-4 transition-all theme-block-default'>
+            <header className='flex justify-between items-start'>
+              <h2 className='text-xl font-bold mb-4'>Mer om</h2>
+              <Button
+                variant='default'
+                transparent
+                size='small'
+                onClick={toggleExpanded}
+              >
+                Stäng
+              </Button>
+            </header>
+            <div className='columns-3 pb-4'>
+              <RichText __html={expBody} />
+            </div>
+          </div>
+        )}
       </Container>
     </div>
   );
 }
 
-export default FeatureSection;
+export default FeatureExpandable;
