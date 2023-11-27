@@ -28,6 +28,7 @@ export interface RichtextStoryblok {
 }
 
 export interface FeatureStoryblok {
+  pre_title?: string;
   title?: string;
   image?: AssetStoryblok;
   body?: string;
@@ -38,6 +39,13 @@ export interface FeatureStoryblok {
   expandBody?: RichtextStoryblok;
   _uid: string;
   component: "feature";
+  [k: string]: any;
+}
+
+export interface GlobalContentStoryblok {
+  global_content?: "" | "true" | "false";
+  _uid: string;
+  component: "global_content";
   [k: string]: any;
 }
 

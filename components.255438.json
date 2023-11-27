@@ -37,20 +37,24 @@
       "name": "feature",
       "display_name": null,
       "created_at": "2023-10-05T08:08:49.707Z",
-      "updated_at": "2023-11-27T14:11:17.237Z",
+      "updated_at": "2023-11-27T14:24:45.084Z",
       "id": 4673137,
       "schema": {
+        "pre_title": {
+          "type": "text",
+          "pos": 0
+        },
         "title": {
           "type": "text",
           "required": false,
           "display_name": "Title",
           "key": "title",
-          "pos": 0
+          "pos": 1
         },
         "image": {
           "type": "asset",
           "key": "image",
-          "pos": 1
+          "pos": 2
         },
         "body": {
           "type": "textarea",
@@ -65,7 +69,8 @@
           "component_whitelist": [
             "Link"
           ],
-          "maximum": 1
+          "maximum": 1,
+          "pos": 4
         },
         "ctaSecondary": {
           "type": "bloks",
@@ -95,7 +100,8 @@
             }
           ],
           "default_value": "content-right",
-          "display_name": ""
+          "display_name": "",
+          "pos": 6
         },
         "theme": {
           "type": "option",
@@ -119,10 +125,12 @@
               "name": "Discrete"
             }
           ],
-          "default_value": ""
+          "default_value": "",
+          "pos": 7
         },
         "expandBody": {
-          "type": "richtext"
+          "type": "richtext",
+          "pos": 8
         }
       },
       "image": null,
@@ -136,6 +144,44 @@
       "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
       "color": "#2db47d",
       "icon": "block-text-img-c",
+      "component_group_name": "Blocks"
+    },
+    {
+      "name": "global_content",
+      "display_name": null,
+      "created_at": "2023-11-27T14:21:51.310Z",
+      "updated_at": "2023-11-27T14:23:42.199Z",
+      "id": 4943340,
+      "schema": {
+        "global_content": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "_uid": "f1ab523b-9ef0-4966-9ce1-f2c6f51baf40",
+              "name": "Show",
+              "value": "true"
+            },
+            {
+              "_uid": "04374411-1107-4a7a-b7d0-3213037b67c5",
+              "value": "false",
+              "name": "Hide"
+            }
+          ],
+          "default_value": "false"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "global_content",
+      "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
+      "color": null,
+      "icon": null,
       "component_group_name": "Blocks"
     },
     {

@@ -30,6 +30,7 @@ const mapFeatureDtoToFeatureData = (
 ): FeatureSectionProps => {
   const image: AssetStoryblok | undefined = blok.image;
   return {
+    preTitle: blok.pre_title,
     title: blok.title,
     image: image
       ? {
@@ -56,6 +57,7 @@ const mapFeatureDtoToFeatureExpandableData = (
 ): FeatureExpandableProps => {
   const image: AssetStoryblok | undefined = blok.image;
   return {
+    preTitle: blok.pre_title,
     title: blok.title,
     image: image
       ? {
