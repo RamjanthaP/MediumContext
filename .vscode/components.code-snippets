@@ -1,0 +1,45 @@
+{
+  "Bolierplate Functional Component": {
+    "prefix": "bfc",
+    "body": [
+      "import { BaseProps } from '@/types/props';",
+      "interface ${TM_FILENAME_BASE}Props extends BaseProps {",
+      "   $1",
+      "}",
+      "",
+      "export const $TM_FILENAME_BASE = ({",
+      "children,",
+      "className,",
+      "} : ${TM_FILENAME_BASE}Props)=>",
+      "(",
+      "    <div className={`className`}>",
+      "        {children}",
+      "    </div>",
+      ");"
+    ]
+  },
+
+  "Bolierplate Storyblok Component": {
+    "prefix": "sbc",
+    "body": [
+      "import { storyblokEditable } from '@storyblok/react/rsc';",
+      "import { ${1:StoryBookType} } from '@sb-types';",
+      "import $TM_FILENAME_BASE, { ${TM_FILENAME_BASE}Props } from '@/components/$TM_FILENAME_BASE';",
+      "",
+      "const ${TM_FILENAME_BASE}Sb = ({ blok }: $1) => {",
+      "  const componentData = map${TM_FILENAME_BASE}DtoToData(blok);",
+      "  return (",
+      "    <div {...storyblokEditable(blok)}>",
+      "      <$TM_FILENAME_BASE {...componentData} />",
+      "    </div>",
+      "  );",
+      "};",
+      "export default ${TM_FILENAME_BASE}Sb;",
+      "const map${TM_FILENAME_BASE}DtoToData = (blok: $1): ${TM_FILENAME_BASE}Props => {",
+      "  return {",
+      "    $2",
+      "  };",
+      "};"
+    ]
+  }
+}
