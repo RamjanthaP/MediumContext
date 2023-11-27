@@ -96,10 +96,12 @@ const startAnimationAndScrollToTarget = function (
   }
 
   player.restart(); // play() only make sense if the animation has ended
-
-  player.on('end', () => {
-    scrollToTarget(target);
-  });
+  
+  if(!window.scrollY && window.scrollY < target.current.scrollHeight) {
+    player.on('end', () => {
+      scrollToTarget(target);
+    });
+  }
 };
 
 const getSvgaPlayer = (svgContainerRef: RefObject<HTMLObjectElement>): any => {
