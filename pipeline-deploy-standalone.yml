@@ -116,6 +116,9 @@ stages:
               ArtifactName: $(artifactName)
               publishLocation: 'Container'
 
+  - stage: Validation
+    displayName: Validate deploy
+    jobs:
       - job: waitForValidation
         displayName: Wait for Manual approval
         dependsOn: Build
@@ -129,6 +132,9 @@ stages:
               instructions: 'Approve deploy'
               onTimeout: 'reject'
 
+  - stage: Deploy
+    displayName: Deploy to stage
+    jobs:
       - job: deploy
         displayName: Deploy to server
         pool: Azure Pipelines
