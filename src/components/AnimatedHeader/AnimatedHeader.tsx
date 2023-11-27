@@ -46,7 +46,7 @@ const AnimateHeader = ({
   }, [svgContainerRef?.current?.contentDocument]);
 
   return (
-    <div className={`pb-8 ${Styles.background} ${className}`}>
+    <div className={`pb-8 ${Styles.root} ${Styles.background} ${className}`}>
       <div className='h-[calc(100vh-300px)] flex justify-center items-center'>
         <object
           type='image/svg+xml'
