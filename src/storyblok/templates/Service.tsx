@@ -26,16 +26,16 @@ const TemplateService = ({
 
       <main {...storyblokEditable(blok)}>
         <Container className='mt-4 md:mt-8'>
-          <div className='grid md:grid-cols-12 md:gap-8 items-center'>
+          <div className='grid grid-cols-12 md:gap-8 '>
             {blok.content && (
-              <div className='order-2 lg:order-1 col-span-12 lg:col-span-6'>
+              <div className='col-span-12 lg:col-span-6 mb-8 lg:mt-8 md:max-w-[70ch]'>
                 <RichText
                   className='text-md md:text-lg'
                   __html={blok.content}
                 />
               </div>
             )}
-            <div className='order-1 lg:order-2 col-span-12 lg:col-span-5 lg:col-start-8 pb-4'>
+            <div className='col-span-12 lg:col-span-5 lg:col-start-8 pb-4 -order-1 lg:order-1'>
               {contactPerson && <QuickContact person={quickContactData} />}
             </div>
           </div>
