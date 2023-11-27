@@ -1,0 +1,9 @@
+.background {
+  @apply bg-primary-100;
+}
+@media (prefers-color-scheme: dark) {
+  .background {
+    /* background-color: #082700; */
+    background-image: linear-gradient(to top, #082700 75%, #0b3701);
+  }
+}

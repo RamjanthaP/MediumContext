@@ -7,6 +7,7 @@ import { RefObject, useEffect, useRef } from 'react';
 import { scrollToTarget } from '@/utilities/helper';
 import { BaseLink } from '@/types/common';
 import { useRouter } from 'next/navigation';
+import Styles from './animated-header.module.css';
 
 interface AnimatedHeaderProps extends BaseProps {
   title: string;
@@ -41,11 +42,11 @@ const AnimateHeader = ({
       } else {
         throw new Error('The player cannot be found');
       }
-    }, 100); 
+    }, 100);
   }, [svgContainerRef?.current?.contentDocument]);
 
   return (
-    <div className={`bg-primary-100 pb-8 ${className}`}>
+    <div className={`pb-8 ${Styles.background} ${className}`}>
       <div className='h-[calc(100vh-300px)] flex justify-center items-center'>
         <object
           type='image/svg+xml'
@@ -96,12 +97,10 @@ const startAnimationAndScrollToTarget = function (
   }
 
   player.restart(); // play() only make sense if the animation has ended
-  
-  if(!window.scrollY && window.scrollY < target.current.scrollHeight) {
-    player.on('end', () => {
-      scrollToTarget(target);
-    });
-  }
+
+  player.on('end', () => {
+    scrollToTarget(target);
+  });
 };
 
 const getSvgaPlayer = (svgContainerRef: RefObject<HTMLObjectElement>): any => {
