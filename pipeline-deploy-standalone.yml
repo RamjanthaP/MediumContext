@@ -118,10 +118,10 @@ stages:
 
   - stage: Validation
     displayName: Validate deploy
+    dependsOn: Build
     jobs:
       - job: waitForValidation
         displayName: Wait for Manual approval
-        dependsOn: Build
         pool: server
         timeoutInMinutes: 60 # job times out in 1 hour
         steps:
@@ -134,11 +134,11 @@ stages:
 
   - stage: Deploy
     displayName: Deploy to stage
+    dependsOn: Validation
     jobs:
       - job: deploy
         displayName: Deploy to server
         pool: Azure Pipelines
-        dependsOn: waitForValidation
         steps:
           - task: DownloadBuildArtifacts@0
             displayName: 'Download Build Artifacts'
