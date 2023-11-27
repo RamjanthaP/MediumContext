@@ -1,7 +1,7 @@
 /** 1. Tag it as a client component */
 'use client';
 
-import Placholder from '@/storyblok/fallback-component/Fallback';
+import FallbackComponent from '@/storyblok/fallback-component/Fallback';
 import { apiPlugin, storyblokInit } from '@storyblok/react/rsc';
 
 import HeaderMenu from '@/components/Menu/HeaderMenu';
@@ -19,7 +19,6 @@ import ServiceItemSb from './components/ServiceItems';
 import GridSb from './components/Grid';
 
 /** 1. Tag it as a client component */
-
 const components = {
   template_default: TemplateDefault,
   template_service: TemplateService,
@@ -37,7 +36,7 @@ storyblokInit({
   accessToken: process.env.STORYBLOK_API_TOKEN,
   use: [apiPlugin],
   components,
-  customFallbackComponent: Placholder,
+  customFallbackComponent: FallbackComponent,
   enableFallbackComponent: process.env.NODE_ENV === 'development',
 });
 
