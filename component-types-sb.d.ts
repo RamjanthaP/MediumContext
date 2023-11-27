@@ -18,6 +18,15 @@ export interface AssetStoryblok {
   [k: string]: any;
 }
 
+export interface RichtextStoryblok {
+  type: string;
+  content?: RichtextStoryblok[];
+  marks?: RichtextStoryblok[];
+  attrs?: any;
+  text?: string;
+  [k: string]: any;
+}
+
 export interface FeatureStoryblok {
   title?: string;
   image?: AssetStoryblok;
@@ -26,7 +35,7 @@ export interface FeatureStoryblok {
   ctaSecondary?: LinkStoryblok[];
   layout?: "" | "content-left" | "content-right";
   theme?: "" | "default" | "inverted" | "discrete";
-  expandBody?: string;
+  expandBody?: RichtextStoryblok;
   _uid: string;
   component: "feature";
   [k: string]: any;
@@ -171,15 +180,6 @@ export interface PersonStoryblok {
   [k: string]: any;
 }
 
-export interface RichtextStoryblok {
-  type: string;
-  content?: RichtextStoryblok[];
-  marks?: RichtextStoryblok[];
-  attrs?: any;
-  text?: string;
-  [k: string]: any;
-}
-
 export interface QuickContactStoryblok {
   title?: string;
   description?: RichtextStoryblok;
@@ -216,8 +216,7 @@ export interface TemplateDefaultStoryblok {
 
 export interface TemplateServiceStoryblok {
   content?: RichtextStoryblok;
-  quick_contact: QuickContactStoryblok[];
-  relatedCase?: TemplateCaseStoryblok[];
+  relatedCase?: FeatureStoryblok[];
   contact_person?: StoryblokStory<PersonStoryblok> | string;
   _uid: string;
   component: "template_service";

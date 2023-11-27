@@ -37,7 +37,7 @@
       "name": "feature",
       "display_name": null,
       "created_at": "2023-10-05T08:08:49.707Z",
-      "updated_at": "2023-11-17T10:03:32.593Z",
+      "updated_at": "2023-11-27T14:11:17.237Z",
       "id": 4673137,
       "schema": {
         "title": {
@@ -122,7 +122,7 @@
           "default_value": ""
         },
         "expandBody": {
-          "type": "textarea"
+          "type": "richtext"
         }
       },
       "image": null,
@@ -142,7 +142,7 @@
       "name": "grid",
       "display_name": "Grid Section",
       "created_at": "2023-10-05T08:08:49.695Z",
-      "updated_at": "2023-10-27T19:54:08.248Z",
+      "updated_at": "2023-11-27T08:57:42.944Z",
       "id": 4673136,
       "schema": {
         "title": {
@@ -186,7 +186,7 @@
       },
       "image": "//a.storyblok.com/f/255438/x/3b4ee58d9b/section-preview.png",
       "preview_field": "title",
-      "is_root": false,
+      "is_root": true,
       "preview_tmpl": "<div>{{title}}</div>\n<div>{{theme}}</div>\n<div>{{columns.length}} blocks</div>\n",
       "is_nestable": true,
       "all_presets": [],
@@ -695,7 +695,7 @@
       "name": "template_service",
       "display_name": null,
       "created_at": "2023-10-09T13:08:12.920Z",
-      "updated_at": "2023-11-15T13:31:33.885Z",
+      "updated_at": "2023-11-24T18:19:25.132Z",
       "id": 4690053,
       "schema": {
         "content": {
@@ -703,24 +703,12 @@
           "pos": 0,
           "key": "content"
         },
-        "quick_contact": {
-          "type": "bloks",
-          "pos": 1,
-          "required": true,
-          "restrict_type": "",
-          "restrict_components": true,
-          "component_whitelist": [
-            "quick_contact"
-          ],
-          "maximum": 1,
-          "key": "quick_contact"
-        },
         "relatedCase": {
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
           "component_whitelist": [
-            "template_case"
+            "feature"
           ],
           "pos": 2,
           "key": "relatedCase"
