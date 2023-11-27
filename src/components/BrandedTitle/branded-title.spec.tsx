@@ -69,4 +69,16 @@ describe('BrandedHeading', () => {
     );
     expect(containsSpan).toBeFalsy();
   });
+
+  it('ONLY provide ONE span for the last dot', () => {
+    render(
+      <BrandedTitle element='h2' data-testid='test_item'>
+        Detta är en mening. Detta är en till mening.
+      </BrandedTitle>
+    );
+
+    const heading = screen.getByTestId('test_item');
+    expect(heading.children.length).toBe(1);
+    expect(Array.from(heading.children).at(0)?.innerHTML).toBe('.');
+  });
 });

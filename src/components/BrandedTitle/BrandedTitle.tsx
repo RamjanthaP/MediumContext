@@ -3,9 +3,10 @@ import React from 'react';
 
 type HeadingElementTag = 'h1' | 'h2' | 'h3' | 'h4' | 'div';
 
-type BrandedTitleProps = {
+type BrandedTitleProps = BaseProps & {
+  children: string;
   element: HeadingElementTag;
-} & BaseProps;
+};
 
 function BrandedTitle({
   children,
@@ -17,7 +18,7 @@ function BrandedTitle({
 
   return (
     <Element className={titleClasses} {...props}>
-      <ColorDots>{children as string}</ColorDots>
+      <ColorDots>{children}</ColorDots>
     </Element>
   );
 }
@@ -25,11 +26,11 @@ function BrandedTitle({
 export default BrandedTitle;
 
 const ColorDots = ({ children }: { children: string }) => {
-  const fragments = children.split('.');
-  return fragments.length > 1 ? (
+  const dotOnEndPattern = /\.$/;
+  return dotOnEndPattern.test(children) ? (
     <React.Fragment>
-      {fragments.at(0)}
-      <span className='text-primary-500'>{fragments.at(1)}</span>
+      {children.replace(dotOnEndPattern, '')}
+      <span className='text-primary-500'>.</span>
     </React.Fragment>
   ) : (
     children
