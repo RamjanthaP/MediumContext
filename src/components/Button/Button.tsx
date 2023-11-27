@@ -30,7 +30,7 @@ const colorVariants = {
 };
 
 const sizeClass = {
-  small: 'px-2 py-1 text-sm',
+  small: 'px-3 py-1 text-sm',
   medium: 'px-6 py-3',
   large: 'px-7 py-3',
 };
@@ -51,7 +51,7 @@ const Button = ({
 
   const sizeClasses = sizeClass[size];
 
-  if (href !== '/undefined')
+  if (href)
     return (
       <Link
         className={`${baseClasses} ${colorClass} ${sizeClasses} inline-flex gap-1 items-center`}
