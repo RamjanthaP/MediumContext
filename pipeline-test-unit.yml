@@ -21,8 +21,8 @@ variables:
     value: 'drop'
 
 jobs:
-  - job: installAndLint
-    displayName: Install node and lint repo
+  - job: install
+    displayName: Install node
     steps:
       - task: NodeTool@0
         displayName: 'Install Node.js from nvmrc file'
@@ -41,16 +41,21 @@ jobs:
         inputs:
           command: 'install'
 
-      - bash: |
+
+- job: setupEnvs
+  displayName: 'Setup environment variables'
+  - bash: |
           # Use the API and agent variables from the Storyblok group
           apiValue=$(STORYBLOK_API_TOKEN)
           # Set environment variable for npm script
           echo "STORYBLOK_API_TOKEN=$apiValue" >> $(System.DefaultWorkingDirectory)/.env
         displayName: 'Set API variable for npm'
 
+- job: tests
+    displayName: Run unit tests
+    steps:
       - task: Npm@1
-        displayName: Lint application
+        displayName: 'Run unit tests'
         inputs:
           command: 'custom'
-          workingDir: '.'
           customCommand: 'run test:ci'
