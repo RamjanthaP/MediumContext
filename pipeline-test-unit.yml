@@ -53,4 +53,4 @@ jobs:
         inputs:
           command: 'custom'
           workingDir: '.'
-          customCommand: 'run test'
+          customCommand: 'run test:ci'

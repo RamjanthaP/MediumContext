@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "test": "jest --watch",
+    "test:ci": "jest",
     "lint": "next lint",
     "format": "prettier --check --ignore-path .gitignore .",
     "sb-types:fetch": "storyblok pull-components --space 255438",
