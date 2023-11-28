@@ -3,7 +3,7 @@ import { BaseProps } from '../types/props';
 import { Container } from './Layout/Container';
 import Image from 'next/image';
 import Button from './Button/Button';
-import { BaseLink, ImageProps } from '@/types/common';
+import { ImageProps } from '@/types/common';
 import BrandedTitle from './BrandedTitle/BrandedTitle';
 import RichText from '@/storyblok/helpers/RichText';
 import { RichtextStoryblok } from '@sb-types';

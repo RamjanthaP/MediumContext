@@ -1,0 +1,35 @@
+import { BaseProps } from '@/types/props';
+import { Container } from '../Layout/Container';
+import BrandedTitle from '../BrandedTitle/BrandedTitle';
+import { HeadingElementTag } from '@/types/common';
+
+type Theme = 'default' | 'inverted' | 'discrete';
+
+export interface PageSectionProps extends BaseProps {
+  title?: string;
+  titleElement?: HeadingElementTag;
+  theme?: Theme;
+}
+
+export const PageSection = ({
+  theme,
+  title,
+  titleElement = 'h2',
+  children,
+  className,
+}: PageSectionProps) => (
+  <div className={`theme-block-${theme} py-8 md:py-12 ${className}`}>
+    <Container>
+      {title && (
+        <BrandedTitle
+          element={titleElement}
+          className='text-xxl font-bold mb-8'
+        >
+          {title}
+        </BrandedTitle>
+      )}
+      {children}
+    </Container>
+  </div>
+);
+export default PageSection;

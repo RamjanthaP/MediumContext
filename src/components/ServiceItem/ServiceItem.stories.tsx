@@ -1,6 +1,6 @@
 import { StoryFn } from '@storybook/react';
 import ServiceItem, { ServiceCardProps } from './ServiceItem';
-import Grid from '../Grid';
+import Grid from '../Grid/Grid';
 
 export default {
   title: 'Components/ServiceItem',
