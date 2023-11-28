@@ -31,8 +31,7 @@ function FeatureExpandable({
 }: FeatureExpandableProps) {
   const layout = isContentRight ? 'flex-row-reverse' : 'flex-row';
   const [expanded, setExpanded] = useState(false);
-  const toggleExpanded = (e) => {
-    e.preventDefault();
+  const toggleExpanded = () => {
     setExpanded(!expanded);
   };
 
