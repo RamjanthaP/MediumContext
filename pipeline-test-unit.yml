@@ -42,16 +42,17 @@ jobs:
           command: 'install'
 
 
-- job: setupEnvs
-  displayName: 'Setup environment variables'
-  - bash: |
-          # Use the API and agent variables from the Storyblok group
-          apiValue=$(STORYBLOK_API_TOKEN)
-          # Set environment variable for npm script
-          echo "STORYBLOK_API_TOKEN=$apiValue" >> $(System.DefaultWorkingDirectory)/.env
-        displayName: 'Set API variable for npm'
+  - job: setupEnvs
+    displayName: 'Setup environment variables'
+    steps:
+      - bash: |
+              # Use the API and agent variables from the Storyblok group
+              apiValue=$(STORYBLOK_API_TOKEN)
+              # Set environment variable for npm script
+              echo "STORYBLOK_API_TOKEN=$apiValue" >> $(System.DefaultWorkingDirectory)/.env
+        displayName: 'Adds token to .env'
 
-- job: tests
+  - job: tests
     displayName: Run unit tests
     steps:
       - task: Npm@1
