@@ -30,11 +30,9 @@ function FeatureSection({
   const layout = isContentRight ? 'flex-row-reverse' : 'flex-row';
 
   return (
-    <PageSection title={preTitle} theme={bgColor}>
-      <div
-        className={`flex flex-col-reverse md:${layout} gap-4 md:gap-12 lg:gap-20 w-full `}
-      >
-        <div className='flex flex-col md:w-1/2 md:justify-center'>
+    <PageSection theme={bgColor} title={preTitle}>
+      <div className={`flex ${layout} items-center`}>
+        <div className='md:w-1/2'>
           {title && (
             <h3 className='text-xl md:text-xxl font-bold mb-4'>{title}</h3>
           )}
@@ -52,7 +50,7 @@ function FeatureSection({
             )}
           </div>
         </div>
-        <div className='md:w-1/2 '>
+        <div className='md:w-1/2'>
           <div className='bg-discrete rounded-4xl w-full lg:w-50 aspect-square mx-auto relative overflow-hidden'>
             {image && (
               <Image
