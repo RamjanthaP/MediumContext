@@ -20,9 +20,6 @@ variables:
   - name: artifactName
     value: 'drop'
 
-  # - name: cacheFolder
-  #   value: '$(System.DefaultWorkingDirectory)/.next/cache'
-
 jobs:
   - job: install
     displayName: Install node
@@ -37,6 +34,7 @@ jobs:
         displayName: 'Retrieving cache for package-lock.json'
         inputs:
           key: 'package-lock.json'
+          # TODO: Investigate if we should use something else than .next/cache for the other cache
           # path: '$(System.DefaultWorkingDirectory)/.next/cache'
 
       - task: Npm@1
