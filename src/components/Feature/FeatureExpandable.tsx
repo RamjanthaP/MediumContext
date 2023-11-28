@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { BaseProps } from '../types/props';
-import { Container } from './Layout/Container';
 import Image from 'next/image';
-import Button from './Button/Button';
-import { ImageProps } from '@/types/common';
-import BrandedTitle from './BrandedTitle/BrandedTitle';
-import RichText from '@/storyblok/helpers/RichText';
 import { RichtextStoryblok } from '@sb-types';
+import { BaseProps } from '@/types/props';
+import { ImageProps } from '@/types/common';
+import { Container } from '@/components/Layout/Container';
+import Button from '@/components/Button/Button';
+import BrandedTitle from '@/components/BrandedTitle/BrandedTitle';
+import RichText from '@/storyblok/helpers/RichText';
 
 export interface FeatureExpandableProps extends BaseProps {
   preTitle?: string;
