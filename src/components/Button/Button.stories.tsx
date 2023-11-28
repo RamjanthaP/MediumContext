@@ -12,7 +12,6 @@ const baseButton = {
     element: 'button',
     children: 'Button',
     transparent: false,
-    icon: false,
   },
   parameters: {
     design: {
