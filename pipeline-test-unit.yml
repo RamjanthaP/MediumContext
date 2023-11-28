@@ -44,6 +44,7 @@ jobs:
 
   - job: setupEnvs
     displayName: 'Setup environment variables'
+    dependsOn: install
     steps:
       - bash: |
               # Use the API and agent variables from the Storyblok group
@@ -54,6 +55,7 @@ jobs:
 
   - job: tests
     displayName: Run unit tests
+    dependsOn: setupEnvs
     steps:
       - task: Npm@1
         displayName: 'Run unit tests'
