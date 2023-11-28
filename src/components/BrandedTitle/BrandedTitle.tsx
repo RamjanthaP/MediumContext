@@ -1,9 +1,8 @@
 import { HeadingElementTag } from '@/types/common';
 import { BaseProps } from '@/types/props';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 type BrandedTitleProps = BaseProps & {
-  children: string;
   element: HeadingElementTag;
 };
 
@@ -24,7 +23,8 @@ function BrandedTitle({
 
 export default BrandedTitle;
 
-const ColorDots = ({ children }: { children: string }) => {
+const ColorDots = ({ children }: { children: string | ReactNode }) => {
+  if (typeof children !== 'string') return children;
   const dotOnEndPattern = /\.$/;
   return dotOnEndPattern.test(children) ? (
     <React.Fragment>
