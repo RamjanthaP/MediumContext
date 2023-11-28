@@ -40,12 +40,7 @@ jobs:
         displayName: 'Install dependencies for production'
         inputs:
           command: 'install'
-
-
-  - job: setupEnvs
-    displayName: 'Setup environment variables'
-    dependsOn: install
-    steps:
+      
       - bash: |
               # Use the API and agent variables from the Storyblok group
               apiValue=$(STORYBLOK_API_TOKEN)
@@ -53,10 +48,6 @@ jobs:
               echo "STORYBLOK_API_TOKEN=$apiValue" >> $(System.DefaultWorkingDirectory)/.env
         displayName: 'Adds token to .env'
 
-  - job: tests
-    displayName: Run unit tests
-    dependsOn: setupEnvs
-    steps:
       - task: Npm@1
         displayName: 'Run unit tests'
         inputs:
