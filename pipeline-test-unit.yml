@@ -20,6 +20,9 @@ variables:
   - name: artifactName
     value: 'drop'
 
+  # - name: cacheFolder
+  #   value: '$(System.DefaultWorkingDirectory)/.next/cache'
+
 jobs:
   - job: install
     displayName: Install node
@@ -34,18 +37,18 @@ jobs:
         displayName: 'Retrieving cache for package-lock.json'
         inputs:
           key: 'package-lock.json'
-          path: '$(System.DefaultWorkingDirectory)/.next/cache'
+          # path: '$(System.DefaultWorkingDirectory)/.next/cache'
 
       - task: Npm@1
         displayName: 'Install dependencies for production'
         inputs:
           command: 'install'
-      
+
       - bash: |
-              # Use the API and agent variables from the Storyblok group
-              apiValue=$(STORYBLOK_API_TOKEN)
-              # Set environment variable for npm script
-              echo "STORYBLOK_API_TOKEN=$apiValue" >> $(System.DefaultWorkingDirectory)/.env
+          # Use the API and agent variables from the Storyblok group
+          apiValue=$(STORYBLOK_API_TOKEN)
+          # Set environment variable for npm script
+          echo "STORYBLOK_API_TOKEN=$apiValue" >> $(System.DefaultWorkingDirectory)/.env
         displayName: 'Adds token to .env'
 
       - task: Npm@1
