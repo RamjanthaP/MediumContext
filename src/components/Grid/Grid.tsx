@@ -25,9 +25,10 @@ const Grid = ({
         {/* Provides us a way to use it without storyblok */}
         {children}
         {/* Storyblok elements */}
-        {columns?.map((nestedBlok: any) => (
-          <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
-        ))}
+        {!children &&
+          columns?.map((nestedBlok: any) => (
+            <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
+          ))}
       </div>
     </PageSection>
   );
