@@ -5,7 +5,7 @@ import {
 } from '../../component-types-sb';
 import { notFound } from 'next/navigation';
 
-export async function getStoryblokPage(path = ['home']) {
+export async function getStoryblokPage(path: string[]) {
   let sbParams = {
     version: 'draft' as const,
     resolve_relations: ['contact_person'], // TODO: Move to just service specific route
@@ -56,7 +56,7 @@ export async function getStoryblokFooterData(): Promise<ContactFooterStoryblok> 
   return configReq.data.story;
 }
 
-export async function getRelatedItems(): Promise<ContactFooterStoryblok> {
+export async function getGlobalServiceItems(): Promise<ContactFooterStoryblok> {
   let sbParams: ISbStoriesParams = { version: 'draft' };
   const storyblokApi = getStoryblokApi();
   const configReq = await storyblokApi
