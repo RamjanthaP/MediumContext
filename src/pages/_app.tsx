@@ -1,6 +1,6 @@
 import '@/app/globals.css';
 
-import App, { AppProps } from 'next/app';
+import { AppProps } from 'next/app';
 
 import StoryblokProvider from '@/storyblok/StoryblokProvider';
 import {
