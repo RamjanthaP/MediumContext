@@ -44,6 +44,7 @@ const TemplateService = ({
             key={blok.relatedCase?._uid}
           />
         )}
+        {/* TODO: Filter out current item */}
         {relatedItems && <StoryblokComponent blok={relatedItems} />}
       </main>
     </>

@@ -1,6 +1,10 @@
 import StoryblokStory from '@storyblok/react/story';
-import { getStoryblokPage, getRelatedItems } from '@/services/getStoryBlokPage';
+import {
+  getStoryblokPage,
+  getGlobalServiceItems,
+} from '@/services/getStoryBlokPage';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { StoryblokComponent } from '@storyblok/react';
 
 // Return a list of `params` to populate the [slug] dynamic segment
 // TODO: Make a fetch to the Storyblok API to get all the slugs we can forsee
@@ -10,14 +14,19 @@ export default function Page(
 ) {
   return (
     <div>
+      <div className='p-8 h-[400px] flex items-center justify-center bg-primary-100'>
+        Här är en header. Ersätt sen
+      </div>
+      {/* TODO: Se till att vi kan toggla bort titel på blocket */}
+      <StoryblokComponent blok={props.relatedItemRequest.content} />
       <StoryblokStory story={props.pageData.props.story} />
     </div>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const pageData = await getStoryblokPage();
-  const relatedItemRequest = await getRelatedItems();
+  const pageData = await getStoryblokPage(['services']);
+  const relatedItemRequest = await getGlobalServiceItems();
   return {
     props: {
       pageData,
