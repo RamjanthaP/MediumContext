@@ -69,3 +69,18 @@ export async function getGlobalServiceItems(): Promise<ContactFooterStoryblok> {
     });
   return configReq.data.story;
 }
+
+export const getStoryblokPageBySlug = async (slugPattern: string) => {
+  let sbParams: ISbStoriesParams = { version: 'draft' };
+  const storyblokApi = getStoryblokApi();
+  const configReq = await storyblokApi
+    .get('cdn/stories', {
+      ...sbParams,
+      by_slugs: slugPattern,
+    })
+    .catch((e) => {
+      console.error(e);
+      throw new Error('Hittar inte sidor med slug ' + slugPattern);
+    });
+  return configReq.data;
+};
