@@ -1,9 +1,11 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import { AssetStoryblok, FeatureStoryblok } from '@sb-types';
-import FeatureSection, { FeatureSectionProps } from '@/components/Feature';
+import FeatureSection, {
+  FeatureSectionProps,
+} from '@/components/Feature/Feature';
 import FeatureExpandable, {
   FeatureExpandableProps,
-} from '@/components/FeatureExpandable';
+} from '@/components/Feature/FeatureExpandable';
 
 const FeatureSb = ({ blok }: FeatureStoryblok) => {
   // We are using this until we decide to split in to 2 components on the CMS end
