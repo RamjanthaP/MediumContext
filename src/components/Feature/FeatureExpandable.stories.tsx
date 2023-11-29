@@ -1,5 +1,4 @@
-import { RichtextStoryblok } from '@sb-types';
-import Feature, { FeatureExpandableProps} from './FeatureExpandable';
+import Feature, { FeatureExpandableProps } from './FeatureExpandable';
 
 export default {
   title: 'Components/Feature',
@@ -7,7 +6,6 @@ export default {
   tags: ['autodocs'],
 };
 
-  
 const defaultArgs: FeatureExpandableProps = {
   bgColor: 'default',
   expandText: 'Egen text på knappen',
@@ -31,10 +29,9 @@ const defaultArgs: FeatureExpandableProps = {
         ],
       },
     ],
-  }
+  },
 };
 
 export const Expandable = {
   args: defaultArgs,
 };
-
