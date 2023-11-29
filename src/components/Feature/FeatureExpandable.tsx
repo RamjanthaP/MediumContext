@@ -3,9 +3,7 @@ import Image from 'next/image';
 import { RichtextStoryblok } from '@sb-types';
 import { BaseProps } from '@/types/props';
 import { ImageProps } from '@/types/common';
-import { Container } from '@/components/Layout/Container';
 import Button from '@/components/Button/Button';
-import BrandedTitle from '@/components/BrandedTitle/BrandedTitle';
 import RichText from '@/storyblok/helpers/RichText';
 import PageSection from '../PageSection/PageSection';
 
@@ -35,7 +33,6 @@ function FeatureExpandable({
   const toggleExpanded = () => {
     setExpanded(!expanded);
   };
-  console.log(JSON.stringify(expBody));
 
   return (
     <PageSection title={preTitle} theme={bgColor}>
