@@ -11,7 +11,7 @@ const TemplateService = ({
   blok,
   title,
   contactPerson,
-  relatedItem,
+  relatedItems,
 }: TemplateServiceStoryblok) => {
   const quickContactData = mapContactPersonDtoToQuickContactData(contactPerson);
   return (
@@ -21,8 +21,6 @@ const TemplateService = ({
         title={title}
         topActionButton={{ text: 'Tjänster', url: '/services' }}
       />
-
-      {/* <StoryblokComponent blok={relatedItem.content} /> */}
       <main {...storyblokEditable(blok)}>
         <Container className='mt-4 md:mt-8'>
           <div className='grid grid-cols-12 md:gap-8 '>
@@ -46,6 +44,7 @@ const TemplateService = ({
             key={blok.relatedCase?._uid}
           />
         )}
+        {relatedItems && <StoryblokComponent blok={relatedItems} />}
       </main>
     </>
   );
