@@ -8,6 +8,7 @@ import { StoryblokComponent } from '@storyblok/react';
 import AnimateHeader from '@/components/AnimatedHeader/AnimatedHeader';
 import DemoAnimation from '@/components/AnimatedHeader/animations/Demo.svg';
 import { Suspense } from 'react';
+import { getSlugParam } from '@/utilities/helper';
 
 // Return a list of `params` to populate the [slug] dynamic segment
 // TODO: Make a fetch to the Storyblok API to get all the slugs we can forsee
@@ -15,23 +16,29 @@ import { Suspense } from 'react';
 export default function Page(
   props: InferGetStaticPropsType<typeof getStaticProps>
 ) {
-  console.log(props.pageData.props.story)
+  console.log(props.pageData.props.story);
   return (
     <div>
       <Suspense fallback={<div>Loading...</div>}>
-         <StoryblokStory story={props.pageData.props.story} relatedItems={props.relatedItemRequest.content} title={props.pageData.props.story.name} />
-       </Suspense>
+        <StoryblokStory
+          story={props.pageData.props.story}
+          relatedItems={props.relatedItemRequest.content}
+          title={props.pageData.props.story.name}
+        />
+      </Suspense>
     </div>
   );
 }
 
 export const getStaticProps: GetStaticProps = async (props) => {
   const path = props?.params?.slug || '';
-  const trailSlug = Array.isArray(path) && path.length ? path.at(0): path
 
-  const pageData = await getStoryblokPage(['services/', trailSlug ]);
+  const pageData = await getStoryblokPage([
+    'services/',
+    getSlugParam(props?.params?.slug),
+  ]);
   const relatedItemRequest = await getGlobalServiceItems();
-  console.log(path)
+  console.log(path);
   return {
     props: {
       pageData,
@@ -43,9 +50,9 @@ export const getStaticProps: GetStaticProps = async (props) => {
 export const getStaticPaths = (async () => {
   return {
     paths: ['/services/[slug]'],
-    fallback: "blocking", // false or "blocking"
-  }
-}) satisfies GetStaticPaths
+    fallback: 'blocking', // false or "blocking"
+  };
+}) satisfies GetStaticPaths;
 
 /* import { useRouter } from 'next/router';
 import { Suspense } from 'react';
@@ -100,5 +107,3 @@ export async function getStaticProps({ params }) {
     },
   };
 } */
-
-
