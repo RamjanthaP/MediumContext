@@ -56,7 +56,7 @@ export async function getStoryblokFooterData(): Promise<ContactFooterStoryblok> 
   return configReq.data.story;
 }
 
-export async function getGlobalServiceItems(): Promise<ContactFooterStoryblok> {
+export async function getRelatedItems(): Promise<ContactFooterStoryblok> {
   let sbParams: ISbStoriesParams = { version: 'draft' };
   const storyblokApi = getStoryblokApi();
   const configReq = await storyblokApi
