@@ -1,6 +1,6 @@
 import { StoryblokComponent, storyblokEditable } from '@storyblok/react/rsc';
 
-import DemoAnimation from '@/components/AnimatedHeader/Demo.svg';
+import DemoAnimation from '@/components/AnimatedHeader/animations/Demo.svg';
 import { PersonStoryblok, TemplateServiceStoryblok } from '@sb-types';
 import RichText from '../helpers/RichText';
 import { Container } from '@/components/Layout/Container';
@@ -11,6 +11,7 @@ const TemplateService = ({
   blok,
   title,
   contactPerson,
+  relatedItems,
 }: TemplateServiceStoryblok) => {
   const quickContactData = mapContactPersonDtoToQuickContactData(contactPerson);
   return (
@@ -20,7 +21,6 @@ const TemplateService = ({
         title={title}
         topActionButton={{ text: 'Tjänster', url: '/services' }}
       />
-
       <main {...storyblokEditable(blok)}>
         <Container className='mt-4 md:mt-8'>
           <div className='grid grid-cols-12 md:gap-8 '>
@@ -44,6 +44,8 @@ const TemplateService = ({
             key={blok.relatedCase?._uid}
           />
         )}
+        {/* TODO: Filter out current item */}
+        {relatedItems && <StoryblokComponent blok={relatedItems} />}
       </main>
     </>
   );

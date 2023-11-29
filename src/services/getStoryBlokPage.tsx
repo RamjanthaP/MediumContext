@@ -5,7 +5,7 @@ import {
 } from '../../component-types-sb';
 import { notFound } from 'next/navigation';
 
-export async function getStoryblokPage(path = ['home']) {
+export async function getStoryblokPage(path: string[]) {
   let sbParams = {
     version: 'draft' as const,
     resolve_relations: ['contact_person'], // TODO: Move to just service specific route
@@ -55,3 +55,32 @@ export async function getStoryblokFooterData(): Promise<ContactFooterStoryblok> 
     });
   return configReq.data.story;
 }
+
+export async function getGlobalServiceItems(): Promise<ContactFooterStoryblok> {
+  let sbParams: ISbStoriesParams = { version: 'draft' };
+  const storyblokApi = getStoryblokApi();
+  const configReq = await storyblokApi
+    .get('cdn/stories/global-content/related-services', {
+      ...sbParams,
+    })
+    .catch((e) => {
+      console.error(e);
+      throw new Error('Hittar inte footer');
+    });
+  return configReq.data.story;
+}
+
+export const getStoryblokPageBySlug = async (slugPattern: string) => {
+  let sbParams: ISbStoriesParams = { version: 'draft' };
+  const storyblokApi = getStoryblokApi();
+  const configReq = await storyblokApi
+    .get('cdn/stories', {
+      ...sbParams,
+      by_slugs: slugPattern,
+    })
+    .catch((e) => {
+      console.error(e);
+      throw new Error('Hittar inte sidor med slug ' + slugPattern);
+    });
+  return configReq.data;
+};

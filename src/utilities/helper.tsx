@@ -21,3 +21,14 @@ export const scrollToTarget = (
     target.current?.offsetTop && target.current?.offsetTop - offsetTop;
   window.scrollTo({ top, behavior: 'smooth' });
 };
+
+/**
+ *
+ * @param path Returns a string from a string or string array
+ * @returns
+ */
+export function getSlugParam(path: string | string[] | undefined) {
+  if (!path) return '';
+  if (typeof path === 'string') return path;
+  return path.join('/');
+}
