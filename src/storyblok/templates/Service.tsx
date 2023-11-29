@@ -1,10 +1,7 @@
 import { StoryblokComponent, storyblokEditable } from '@storyblok/react/rsc';
 
 import DemoAnimation from '@/components/AnimatedHeader/Demo.svg';
-import {
-  PersonStoryblok,
-  TemplateServiceStoryblok,
-} from '../../../component-types-sb';
+import { PersonStoryblok, TemplateServiceStoryblok } from '@sb-types';
 import RichText from '../helpers/RichText';
 import { Container } from '@/components/Layout/Container';
 import AnimateHeader from '@/components/AnimatedHeader/AnimatedHeader';
@@ -43,7 +40,12 @@ const TemplateService = ({
           </div>
         </Container>
 
-        <div className='col-4'></div>
+        {!!blok.relatedCase?.length && (
+          <StoryblokComponent
+            blok={blok.relatedCase[0]}
+            key={blok.relatedCase?._uid}
+          />
+        )}
       </main>
     </>
   );
@@ -54,11 +56,12 @@ function mapContactPersonDtoToQuickContactData(contactPerson: {
   content: PersonStoryblok;
 }) {
   if (!contactPerson) return null;
+  const { name, email, phone, role, image } = contactPerson.content;
   return {
-    name: contactPerson.content.name,
-    email: contactPerson.content.email,
-    phone: contactPerson.content.phone,
-    title: contactPerson.content.role,
-    image: contactPerson.content.image.filename,
+    name,
+    email,
+    phone,
+    title: role,
+    image,
   };
 }

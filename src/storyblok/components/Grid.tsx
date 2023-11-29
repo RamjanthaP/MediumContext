@@ -1,4 +1,4 @@
-import Grid, { GridProps } from '@/components/Grid';
+import Grid, { GridProps } from '@/components/Grid/Grid';
 import { GridStoryblok } from '@sb-types';
 import { storyblokEditable } from '@storyblok/react';
 

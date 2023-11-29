@@ -1,0 +1,56 @@
+# Node.js React Web App to Linux on Azure
+# Build a Node.js React app and deploy it to Azure as a Linux web app.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger: none
+
+pool:
+  name: Azure Pipelines
+
+variables:
+  # Make storybook group available.
+  - group: 'Storyblok'
+
+  # Agent VM image name
+  - name: image
+    value: 'ubuntu-latest'
+
+  # Agent VM image name
+  - name: artifactName
+    value: 'drop'
+
+jobs:
+  - job: install
+    displayName: Install node
+    steps:
+      - task: NodeTool@0
+        displayName: 'Install Node.js from nvmrc file'
+        inputs:
+          versionSource: 'fromFile'
+          versionFilePath: '.nvmrc'
+
+      - task: Cache@2
+        displayName: 'Retrieving cache for package-lock.json'
+        inputs:
+          key: 'package-lock.json'
+          # TODO: Investigate if we should use something else than .next/cache for the other cache
+          # path: '$(System.DefaultWorkingDirectory)/.next/cache'
+
+      - task: Npm@1
+        displayName: 'Install dependencies for production'
+        inputs:
+          command: 'install'
+
+      - bash: |
+          # Use the API and agent variables from the Storyblok group
+          apiValue=$(STORYBLOK_API_TOKEN)
+          # Set environment variable for npm script
+          echo "STORYBLOK_API_TOKEN=$apiValue" >> $(System.DefaultWorkingDirectory)/.env
+        displayName: 'Adds token to .env'
+
+      - task: Npm@1
+        displayName: 'Run unit tests'
+        inputs:
+          command: 'custom'
+          customCommand: 'run test:ci'

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BaseProps } from '../types/props';
 import { Container } from './Layout/Container';
 import Image from 'next/image';
@@ -29,7 +29,6 @@ function FeatureSection({
   image,
 }: FeatureSectionProps) {
   const layout = isContentRight ? 'flex-row-reverse' : 'flex-row';
-  const [expanded, setExpanded] = useState(false);
 
   return (
     <div className={`bg-${bgColor}`}>
