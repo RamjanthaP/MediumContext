@@ -55,3 +55,17 @@ export async function getStoryblokFooterData(): Promise<ContactFooterStoryblok> 
     });
   return configReq.data.story;
 }
+
+export async function getRelatedItems(): Promise<ContactFooterStoryblok> {
+  let sbParams: ISbStoriesParams = { version: 'draft' };
+  const storyblokApi = getStoryblokApi();
+  const configReq = await storyblokApi
+    .get('cdn/stories/global-content/related-services', {
+      ...sbParams,
+    })
+    .catch((e) => {
+      console.error(e);
+      throw new Error('Hittar inte footer');
+    });
+  return configReq.data.story;
+}

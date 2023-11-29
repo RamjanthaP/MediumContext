@@ -1,4 +1,4 @@
-import { storyblokEditable } from '@storyblok/react/rsc';
+import { StoryblokComponent, storyblokEditable } from '@storyblok/react/rsc';
 
 import DemoAnimation from '@/components/AnimatedHeader/Demo.svg';
 import {
@@ -14,6 +14,7 @@ const TemplateService = ({
   blok,
   title,
   contactPerson,
+  relatedItem
 }: TemplateServiceStoryblok) => {
   const quickContactData = mapContactPersonDtoToQuickContactData(contactPerson);
   return (
@@ -24,6 +25,7 @@ const TemplateService = ({
         topActionButton={{ text: 'Tjänster', url: '/services' }}
       />
 
+      <StoryblokComponent blok={relatedItem.content} />
       <main {...storyblokEditable(blok)}>
         <Container className='mt-4 md:mt-8'>
           <div className='grid grid-cols-12 md:gap-8 '>
