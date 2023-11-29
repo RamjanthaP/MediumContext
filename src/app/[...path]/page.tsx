@@ -26,7 +26,6 @@ export default async function Page({ params }: { params: { path: string[] } }) {
 
   return (
     <div>
-      <h1 className='text-3xl'>Korven</h1>
       <StoryblokStory
         story={props.story}
         contactPerson={props.story.contact_person}
