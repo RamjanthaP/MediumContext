@@ -1,5 +1,3 @@
-import { getStaticProps } from '@/pages/services';
-import { InferGetStaticPropsType } from 'next';
 import { RefObject } from 'react';
 
 export function extractLastWord(headline: string) {
