@@ -1,8 +1,11 @@
 import React from 'react';
-import { BaseProps } from '@/types/props';
+
 import Image from 'next/image';
-import Button from '@/components/Button/Button';
+
 import { BaseLink, ImageProps } from '@/types/common';
+import { BaseProps } from '@/types/props';
+
+import Button from '@/components/Button/Button';
 import PageSection from '@/components/PageSection/PageSection';
 
 export interface FeatureSectionProps extends BaseProps {
@@ -31,8 +34,10 @@ function FeatureSection({
 
   return (
     <PageSection theme={bgColor} title={preTitle}>
-      <div className={`flex ${layout} items-center`}>
-        <div className='md:w-1/2'>
+      <div
+        className={`flex flex-col-reverse md:${layout} items-center gap-8 md:gap-10 lg:gap-20`}
+      >
+        <div className='w-full md:w-1/2'>
           {title && (
             <h3 className='text-xl md:text-xxl font-bold mb-4'>{title}</h3>
           )}
@@ -50,7 +55,7 @@ function FeatureSection({
             )}
           </div>
         </div>
-        <div className='md:w-1/2'>
+        <div className='w-full md:w-1/2'>
           <div className='bg-discrete rounded-4xl w-full lg:w-50 aspect-square mx-auto relative overflow-hidden'>
             {image && (
               <Image
