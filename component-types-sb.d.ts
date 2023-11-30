@@ -1,5 +1,22 @@
 import {StoryblokStory} from 'storyblok-generate-ts'
 
+export interface RichtextStoryblok {
+  type: string;
+  content?: RichtextStoryblok[];
+  marks?: RichtextStoryblok[];
+  attrs?: any;
+  text?: string;
+  [k: string]: any;
+}
+
+export interface BodyStoryblok {
+  intro?: RichtextStoryblok;
+  body: RichtextStoryblok;
+  _uid: string;
+  component: "body";
+  [k: string]: any;
+}
+
 export interface ContactFooterStoryblok {
   offices?: OfficesStoryblok[];
   _uid: string;
@@ -18,15 +35,6 @@ export interface AssetStoryblok {
   [k: string]: any;
 }
 
-export interface RichtextStoryblok {
-  type: string;
-  content?: RichtextStoryblok[];
-  marks?: RichtextStoryblok[];
-  attrs?: any;
-  text?: string;
-  [k: string]: any;
-}
-
 export interface FeatureStoryblok {
   pre_title?: string;
   title?: string;
@@ -42,16 +50,27 @@ export interface FeatureStoryblok {
   [k: string]: any;
 }
 
-export interface GlobalContentStoryblok {
-  global_content?: "" | "true" | "false";
-  _uid: string;
-  component: "global_content";
-  [k: string]: any;
-}
-
 export interface GridStoryblok {
   title?: string;
-  columns?: any[];
+  columns?: (
+    | BodyStoryblok
+    | ContactFooterStoryblok
+    | FeatureStoryblok
+    | GridStoryblok
+    | HeroStoryblok
+    | JumbotronStoryblok
+    | LinkStoryblok
+    | LogoCardStoryblok
+    | MenuStoryblok
+    | MenuLinkStoryblok
+    | OfficesStoryblok
+    | PersonStoryblok
+    | QuickContactStoryblok
+    | ReUsableSectionStoryblok
+    | ServiceItemsStoryblok
+    | TemplateDefaultStoryblok
+    | TemplateServiceStoryblok
+  )[];
   theme?: "" | "default" | "inverted" | "discrete";
   _uid: string;
   component: "grid";
@@ -81,11 +100,6 @@ export interface JumbotronStoryblok {
 }
 
 export type MultilinkStoryblok =
-  | {
-      cached_url?: string;
-      linktype?: string;
-      [k: string]: any;
-    }
   | {
       id?: string;
       cached_url?: string;
@@ -137,7 +151,7 @@ export type MultilinkStoryblok =
 
 export interface LinkStoryblok {
   text: string;
-  link: MultilinkStoryblok;
+  link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   _uid: string;
   component: "Link";
   [k: string]: any;
@@ -160,7 +174,7 @@ export interface MenuStoryblok {
 }
 
 export interface MenuLinkStoryblok {
-  link: MultilinkStoryblok;
+  link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   title: string;
   subItems?: MenuLinkStoryblok[];
   _uid: string;
@@ -198,6 +212,7 @@ export interface QuickContactStoryblok {
 }
 
 export interface ReUsableSectionStoryblok {
+  content: any;
   _uid: string;
   component: "reUsableSection";
   [k: string]: any;
@@ -208,7 +223,7 @@ export interface ServiceItemsStoryblok {
   description?: RichtextStoryblok;
   animation?: string;
   Image?: string;
-  button_link?: MultilinkStoryblok;
+  button_link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
   button_title: string;
   _uid: string;
   component: "service_items";
@@ -216,7 +231,25 @@ export interface ServiceItemsStoryblok {
 }
 
 export interface TemplateDefaultStoryblok {
-  body?: any[];
+  body?: (
+    | BodyStoryblok
+    | ContactFooterStoryblok
+    | FeatureStoryblok
+    | GridStoryblok
+    | HeroStoryblok
+    | JumbotronStoryblok
+    | LinkStoryblok
+    | LogoCardStoryblok
+    | MenuStoryblok
+    | MenuLinkStoryblok
+    | OfficesStoryblok
+    | PersonStoryblok
+    | QuickContactStoryblok
+    | ReUsableSectionStoryblok
+    | ServiceItemsStoryblok
+    | TemplateDefaultStoryblok
+    | TemplateServiceStoryblok
+  )[];
   _uid: string;
   component: "template_default";
   [k: string]: any;
