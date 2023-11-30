@@ -1,12 +1,18 @@
 'use client';
+
+import { RefObject, useEffect, useRef } from 'react';
+
+import { useRouter } from 'next/navigation';
+
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
+
+import { BaseLink } from '@/types/common';
+import { BaseProps } from '@/types/props';
+
+import { scrollToTarget } from '@/utilities/helper';
+
 import Button from '../Button/Button';
 import { Container } from '../Layout/Container';
-import { BaseProps } from '@/types/props';
-import { RefObject, useEffect, useRef } from 'react';
-import { scrollToTarget } from '@/utilities/helper';
-import { BaseLink } from '@/types/common';
-import { useRouter } from 'next/navigation';
 import Styles from './animated-header.module.css';
 
 interface AnimatedHeaderProps extends BaseProps {
@@ -98,9 +104,11 @@ const startAnimationAndScrollToTarget = function (
 
   player.restart(); // play() only make sense if the animation has ended
 
-  player.on('end', () => {
-    scrollToTarget(target);
-  });
+  if (!window.scrollY && window.scrollY < target.current.scrollHeight) {
+    player.on('end', () => {
+      scrollToTarget(target);
+    });
+  }
 };
 
 const getSvgaPlayer = (svgContainerRef: RefObject<HTMLObjectElement>): any => {
