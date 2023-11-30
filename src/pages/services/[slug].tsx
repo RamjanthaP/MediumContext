@@ -7,18 +7,23 @@ import {
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 
 import { Suspense } from 'react';
-import { getSlugParam } from '@/utilities/helper';
+import {  filterRelatedItems, getSlugParam } from '@/utilities/helper';
+import { useRouter } from 'next/router';
 
 export default function Page(
   props: InferGetStaticPropsType<typeof getStaticProps>
 ) {
+  const route = useRouter()
+  const path = route && route?.query?.slug
+  const filteredColumns = filterRelatedItems(path, props.relatedItemRequest)
+
   return (
     <div>
       <Suspense fallback={<div>Loading...</div>}>
         <StoryblokStory
           story={props.pageData.props.story}
           title={props.pageData.props.story.name}
-          relatedItems={props.relatedItemRequest.content}
+          relatedItems={filteredColumns.content}
         />
       </Suspense>
     </div>
