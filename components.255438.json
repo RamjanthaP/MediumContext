@@ -1,6 +1,63 @@
 {
   "components": [
     {
+      "name": "body",
+      "display_name": "body",
+      "created_at": "2023-11-30T07:07:35.556Z",
+      "updated_at": "2023-11-30T09:09:05.517Z",
+      "id": 4958682,
+      "schema": {
+        "intro": {
+          "type": "richtext",
+          "pos": 0,
+          "customize_toolbar": true,
+          "toolbar": [
+            "bold",
+            "link",
+            "paragraph"
+          ]
+        },
+        "body": {
+          "type": "richtext",
+          "required": true,
+          "customize_toolbar": true,
+          "toolbar": [
+            "bold",
+            "list",
+            "code",
+            "cut",
+            "copy",
+            "emoji",
+            "h2",
+            "h3",
+            "h4",
+            "image",
+            "italic",
+            "link",
+            "anchor",
+            "olist",
+            "paragraph",
+            "paste-action",
+            "undo",
+            "redo"
+          ],
+          "pos": 1
+        }
+      },
+      "image": null,
+      "preview_field": "body",
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "body",
+      "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
+      "color": null,
+      "icon": "block-text-l",
+      "component_group_name": "Blocks"
+    },
+    {
       "name": "contact_footer",
       "display_name": null,
       "created_at": "2023-10-27T06:43:39.008Z",
@@ -147,44 +204,6 @@
       "component_group_name": "Blocks"
     },
     {
-      "name": "global_content",
-      "display_name": null,
-      "created_at": "2023-11-27T14:21:51.310Z",
-      "updated_at": "2023-11-27T14:23:42.199Z",
-      "id": 4943340,
-      "schema": {
-        "global_content": {
-          "type": "option",
-          "use_uuid": true,
-          "options": [
-            {
-              "_uid": "f1ab523b-9ef0-4966-9ce1-f2c6f51baf40",
-              "name": "Show",
-              "value": "true"
-            },
-            {
-              "_uid": "04374411-1107-4a7a-b7d0-3213037b67c5",
-              "value": "false",
-              "name": "Hide"
-            }
-          ],
-          "default_value": "false"
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": true,
-      "preview_tmpl": null,
-      "is_nestable": false,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "global_content",
-      "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
-      "color": null,
-      "icon": null,
-      "component_group_name": "Blocks"
-    },
-    {
       "name": "grid",
       "display_name": "Grid Section",
       "created_at": "2023-10-05T08:08:49.695Z",
@@ -247,12 +266,16 @@
       "name": "hero",
       "display_name": null,
       "created_at": "2023-10-26T12:13:01.667Z",
-      "updated_at": "2023-11-14T09:27:02.344Z",
+      "updated_at": "2023-11-28T21:17:15.044Z",
       "id": 4789750,
       "schema": {
         "headLine": {
           "type": "text",
-          "required": true
+          "required": true,
+          "customize_toolbar": true,
+          "toolbar": [
+            "bold"
+          ]
         },
         "image": {
           "type": "asset",
@@ -279,8 +302,7 @@
           "component_whitelist": [
             "Link"
           ],
-          "maximum": 1,
-          "minimum": 1
+          "maximum": 1
         }
       },
       "image": null,
@@ -644,9 +666,17 @@
       "name": "reUsableSection",
       "display_name": null,
       "created_at": "2023-11-13T09:26:08.665Z",
-      "updated_at": "2023-11-13T09:26:08.665Z",
+      "updated_at": "2023-11-28T16:17:03.339Z",
       "id": 4872606,
-      "schema": {},
+      "schema": {
+        "content": {
+          "type": "option",
+          "use_uuid": true,
+          "required": true,
+          "source": "internal_stories",
+          "folder_slug": "global-content"
+        }
+      },
       "image": null,
       "preview_field": null,
       "is_root": false,

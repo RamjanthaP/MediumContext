@@ -32,3 +32,9 @@ export function getSlugParam(path: string | string[] | undefined) {
   if (typeof path === 'string') return path;
   return path.join('/');
 }
+export const convertPath = (path: string | string[] | undefined): string => {
+  if (!path) return '';
+  if (typeof path === 'string') return path.toLowerCase();
+  return Array.isArray(path) && path.length > 0 ? path[0].toLowerCase() : '';
+};
+
