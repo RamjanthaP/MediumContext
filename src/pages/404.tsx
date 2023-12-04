@@ -3,7 +3,7 @@ import { Container } from "@/components/Layout/Container";
 import { getStoryblokPage } from "@/services/getStoryBlokPage";
 import { ArrowLeftIcon } from "@heroicons/react/20/solid";
 
-export default function Custom404() {
+export default function NotFound() {
   return (
     <div className="min-h-[50vh]">
       <Container>
