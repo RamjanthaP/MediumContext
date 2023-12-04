@@ -1,12 +1,13 @@
-import StoryblokStory from '@storyblok/react/story';
+import { Suspense } from 'react';
+
 import {
-  getStoryblokPage,
   getGlobalServiceItems,
+  getStoryblokPage,
   getStoryblokPageBySlug,
 } from '@/services/getStoryBlokPage';
+import StoryblokStory from '@storyblok/react/story';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 
-import { Suspense } from 'react';
 import { getSlugParam } from '@/utilities/helper';
 
 export default function Page(
@@ -19,6 +20,7 @@ export default function Page(
           story={props.pageData.props.story}
           title={props.pageData.props.story.name}
           relatedItems={props.relatedItemRequest.content}
+          contactPerson={props.pageData.props.story.contact_person}
         />
       </Suspense>
     </div>

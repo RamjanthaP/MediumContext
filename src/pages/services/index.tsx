@@ -1,10 +1,10 @@
-import StoryblokStory from '@storyblok/react/story';
 import {
-  getStoryblokPage,
   getGlobalServiceItems,
+  getStoryblokPage,
 } from '@/services/getStoryBlokPage';
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { StoryblokComponent } from '@storyblok/react';
+import StoryblokStory from '@storyblok/react/story';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 
 // Return a list of `params` to populate the [slug] dynamic segment
 // TODO: Make a fetch to the Storyblok API to get all the slugs we can forsee

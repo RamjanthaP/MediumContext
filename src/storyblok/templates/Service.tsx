@@ -1,11 +1,13 @@
+import { PersonStoryblok, TemplateServiceStoryblok } from '@sb-types';
 import { StoryblokComponent, storyblokEditable } from '@storyblok/react/rsc';
 
-import DemoAnimation from '@/components/AnimatedHeader/animations/Demo.svg';
-import { PersonStoryblok, TemplateServiceStoryblok } from '@sb-types';
-import RichText from '../helpers/RichText';
-import { Container } from '@/components/Layout/Container';
 import AnimateHeader from '@/components/AnimatedHeader/AnimatedHeader';
+import DemoAnimation from '@/components/AnimatedHeader/animations/Demo.svg';
+import { Container } from '@/components/Layout/Container';
 import QuickContact from '@/components/QuickContact/QuickContact';
+
+import RichText from '../helpers/RichText';
+
 // Used as entry point for all pages in Storyblok
 const TemplateService = ({
   blok,
@@ -14,6 +16,7 @@ const TemplateService = ({
   relatedItems,
 }: TemplateServiceStoryblok) => {
   const quickContactData = mapContactPersonDtoToQuickContactData(contactPerson);
+  console.log(contactPerson.content);
   return (
     <>
       <AnimateHeader
@@ -33,7 +36,17 @@ const TemplateService = ({
               </div>
             )}
             <div className='col-span-12 lg:col-span-5 lg:col-start-8 pb-4 -order-1 lg:order-1'>
-              {contactPerson && <QuickContact person={quickContactData} />}
+              {contactPerson && (
+                <QuickContact
+                  person={{
+                    name: 'jocke',
+                    email: 'hej@hej.hej',
+                    phone: '12345677889',
+                    title: 'tja',
+                    image: {},
+                  }}
+                />
+              )}
             </div>
           </div>
         </Container>

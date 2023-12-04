@@ -1,63 +1,130 @@
-import Button from '../Button/Button';
+'use client';
+
+import React, { useEffect, useRef, useState } from 'react';
+
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react'
-import { XCircleIcon, PlusCircleIcon } from '@heroicons/react/20/solid';
-import { useMediaQuery } from 'react-responsive';
+
+import { PlusCircleIcon, XCircleIcon } from '@heroicons/react/20/solid';
+
+import Button from '../Button/Button';
 
 function QuickContact({ person }: any) {
-  const isDesktop = useMediaQuery({ minWidth: 1024 });
-  const [open, setOpen] = useState(isDesktop);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const [windowSize, setWindowSize] = useState({ width: 0 });
 
   useEffect(() => {
-    setOpen(isDesktop);
-  }, [isDesktop]);
+    function handleResize() {
+      setWindowSize({ width: window.innerWidth });
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (window.innerWidth > 1024) {
+      setIsDesktop(true);
+    } else {
+      setIsDesktop(false);
+    }
+  }, [windowSize]);
 
   const toggleOpen = () => {
-    if (!isDesktop) {
+    if (window.innerWidth < 1024) {
       setOpen(!open);
+      setIsDesktop(!isDesktop);
     }
   };
+
+  console.log(isDesktop);
+
   //classes for mobile view when open
   const mobileOpenContainerClasses = 'flex';
   const mobileOpenContentClasses = 'flex justify-between h-full';
 
   //classes for desktop or when closed
-  const containerClasses = `bg-discrete rounded-lg overflow-hidden p-4 ${open ? 'sm:w-full flex flex-row-reverse lg:px-16 relative' : 'items-center w-full flex flex-row-reverse py-2 '}`;
-  const contentClasses = `flex w-full ${open ? 'lg:flex-col lg:items-center items-start' : 'items-center'}`;
+  const containerClasses = `bg-discrete rounded-lg overflow-hidden p-4 ${
+    open
+      ? 'sm:w-full flex flex-row-reverse lg:px-16 relative'
+      : 'items-center w-full flex flex-row-reverse py-2 '
+  }`;
+  const contentClasses = `flex w-full ${
+    open ? 'lg:flex-col lg:items-center items-start' : 'items-center'
+  }`;
 
   return (
-      <div className={`${containerClasses} ${!isDesktop && open ? mobileOpenContainerClasses : ''}`}>
-        <button className={`lg:hidden cursor-pointer flex justify-end ${open ? 'absolute top-2 right-2' : ''}`} onClick={toggleOpen} aria-expanded={open} aria-label="toggle-contact-info">
-          {open ? <XCircleIcon className="h-10 text-primary-500" /> : <PlusCircleIcon className="h-10 text-primary-500" />}
-        </button>
-        <div className={`${contentClasses} ${!isDesktop && open ? mobileOpenContentClasses : ''}`}>
-          {person && (
-            <Image src={person.image} alt={person.name} width={`${isDesktop ? "150" : "80"}`} height="150" className="rounded-full" />
-          )}
-          <div className='md:pr-2'>
-            <h2 className='text-lg lg:text-xxl font-bold lg:text-center lg:pt-4 px-4'>Tips & Råd</h2>
-            {open && (
-              <div className="flex flex-col lg:items-center items-start">
-                <p className='text-md mb-4 lg:text-center md:text-start px-4 md:break-words'>Jag går gärna igenom processen ihop med er och hjälper er att formulera era behov</p>
-                {person &&
-                  <div className='flex flex-col lg:items-center my-2'>
-                    <h5 className="text-xs font-bold px-4">{person.name || 'Default Name'}</h5>
-                    <p className='text-xs mb-3 px-4'>{person.title || 'Default Role'}</p>
-                    <div className='flex sm:flex-col gap-3'>
-                      <Button variant="primary" href={`tel:${person.phone}`}>
-                        Telefon
-                      </Button>
-                      <Button variant="inverted" transparent href={`mailto:${person.email}`} >
-                        Email
-                      </Button>
-                    </div>
+    <div
+      className={`${containerClasses} ${
+        !isDesktop && open ? mobileOpenContainerClasses : ''
+      }`}
+    >
+      <button
+        className={`lg:hidden cursor-pointer flex justify-end ${
+          open ? 'absolute top-2 right-2' : ''
+        }`}
+        onClick={toggleOpen}
+        aria-expanded={open}
+        aria-label='toggle-contact-info'
+      >
+        {open ? (
+          <XCircleIcon className='h-10 text-primary-500' />
+        ) : (
+          <PlusCircleIcon className='h-10 text-primary-500' />
+        )}
+      </button>
+      <div
+        className={`${contentClasses} ${
+          !isDesktop && open ? mobileOpenContentClasses : ''
+        }`}
+      >
+        {person && (
+          <Image
+            src={person.image}
+            alt={person.name}
+            width={`${isDesktop ? '150' : '80'}`}
+            height='150'
+            className='rounded-full'
+          />
+        )}
+        <div className='md:pr-2'>
+          <h2 className='text-lg lg:text-xxl font-bold lg:text-center lg:pt-4 px-4'>
+            Tips & Råd
+          </h2>
+          {open && (
+            <div className='flex flex-col lg:items-center items-start'>
+              <p className='text-md mb-4 lg:text-center md:text-start px-4 md:break-words'>
+                Jag går gärna igenom processen ihop med er och hjälper er att
+                formulera era behov
+              </p>
+              {person && (
+                <div className='flex flex-col lg:items-center my-2'>
+                  <h5 className='text-xs font-bold px-4'>
+                    {person.name || 'Default Name'}
+                  </h5>
+                  <p className='text-xs mb-3 px-4'>
+                    {person.title || 'Default Role'}
+                  </p>
+                  <div className='flex sm:flex-col gap-3'>
+                    <Button variant='primary' href={`tel:${person.phone}`}>
+                      Telefon
+                    </Button>
+                    <Button
+                      variant='inverted'
+                      transparent
+                      href={`mailto:${person.email}`}
+                    >
+                      Email
+                    </Button>
                   </div>
-                }
-              </div>
-            )}
-          </div>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
+    </div>
   );
 }
 
