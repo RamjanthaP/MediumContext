@@ -42,17 +42,23 @@ export default function Page(props: InferGetServerSidePropsType<typeof getServer
 }
 
 export const getServerSideProps: GetServerSideProps = async (props) => {
-  const path = props?.params?.path || ['home'];
-  const cleanPath = conformPathParams(path)
-  const isHome = JSON.stringify(cleanPath) === JSON.stringify(['home'])
+  try {
+    const path = props?.params?.path || ['home'];
+    const cleanPath = conformPathParams(path);
+    const isHome = JSON.stringify(cleanPath) === JSON.stringify(['home']);
 
-  const pageData = await getStoryblokPage(cleanPath);
-  const relatedItemRequest = await getGlobalServiceItems();
-  return {
-    props: {
-      isHome,
-      pageData,
-      relatedItemRequest,
-    },
-  };
+    const pageData = await getStoryblokPage(cleanPath);
+    const relatedItemRequest = await getGlobalServiceItems();
+
+    return {
+      props: {
+        isHome,
+        pageData,
+        relatedItemRequest,
+      },
+    };
+  } catch (error) {
+    console.error(error);
+    return { notFound: true };
+  }
 };
