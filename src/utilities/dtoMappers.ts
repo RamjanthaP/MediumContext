@@ -1,4 +1,4 @@
-import { LinkStoryblok } from "@sb-types";
+import { LinkStoryblok } from '@sb-types';
 
 export function extractLinkDataFromFirstItem(
   link: LinkStoryblok[] | undefined
