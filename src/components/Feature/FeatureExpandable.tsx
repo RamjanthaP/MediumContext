@@ -28,7 +28,6 @@ function FeatureExpandable({
   expandText,
   image,
   expBody,
-  firstButton,
 }: FeatureExpandableProps) {
   const layout = isContentRight ? 'flex-row-reverse' : 'flex-row';
   const [expanded, setExpanded] = useState(false);
@@ -46,25 +45,14 @@ function FeatureExpandable({
           )}
           <p className='mb-4'>{body}</p>
           <div className='flex flex-wrap gap-2'>
-            {
-              firstButton && firstButton.component === 'Link' ? (
+            {expBody && !expanded && (
                 <Button
                   variant='primary'
                   element='button'
-                  href={firstButton.url}
+                  onClick={toggleExpanded}
                 >
-                  {firstButton.text}
+                  {expandText}
                 </Button>
-              ) : (
-                expBody && !expanded && (
-                  <Button
-                    variant='primary'
-                    element='button'
-                    onClick={toggleExpanded}
-                  >
-                    {expandText}
-                  </Button>
-                )
               )
             }
           </div>

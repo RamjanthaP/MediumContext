@@ -9,7 +9,8 @@ import FeatureExpandable, {
 
 const FeatureSb = ({ blok }: FeatureStoryblok) => {
   // We are using this until we decide to split in to 2 components on the CMS end
-  if (blok?.expandBody) {
+  const linkInFeature = blok?.ctaPrimary?.at(0)?.component === 'Link'
+  if (!linkInFeature) {
     const componentData = mapFeatureDtoToFeatureExpandableData(blok);
     return (
       <div {...storyblokEditable(blok)}>
@@ -68,11 +69,6 @@ const mapFeatureDtoToFeatureExpandableData = (
         }
       : undefined,
     bgColor: blok.theme || 'default',
-    firstButton: blok.ctaPrimary && {
-      text: blok.ctaPrimary.at(0)?.text as string,
-      url: '/' + blok?.ctaPrimary.at(0)?.link.cached_url,
-      component: blok?.ctaPrimary.at(0)?.component as string,
-    },
     isContentRight: blok?.layout === 'content-right',
     body: blok.body,
     expBody: blok?.expandBody,
