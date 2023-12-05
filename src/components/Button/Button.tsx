@@ -1,5 +1,7 @@
 import React from 'react';
+
 import Link from 'next/link';
+
 import Styles from './button.module.css';
 
 export type ButtonSizes = keyof typeof sizeClass;
@@ -43,7 +45,7 @@ const Button = ({
   variant = 'default',
   ...props
 }: ButtonProps) => {
-  const baseClasses = `rounded-full border-2 whitespace-pre `;
+  const baseClasses = `rounded-full border-2`;
   const colorVariant = colorVariants[variant] || colorVariants.default;
   const colorClass = transparent
     ? colorVariant.transparent
