@@ -68,6 +68,11 @@ const mapFeatureDtoToFeatureExpandableData = (
         }
       : undefined,
     bgColor: blok.theme || 'default',
+    firstButton: blok.ctaPrimary && {
+      text: blok.ctaPrimary.at(0)?.text as string,
+      url: '/' + blok?.ctaPrimary.at(0)?.link.cached_url,
+      component: blok?.ctaPrimary.at(0)?.component as string,
+    },
     isContentRight: blok?.layout === 'content-right',
     body: blok.body,
     expBody: blok?.expandBody,

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { RichtextStoryblok } from '@sb-types';
 import { BaseProps } from '@/types/props';
-import { ImageProps } from '@/types/common';
+import { BaseLink, ImageProps } from '@/types/common';
 import Button from '@/components/Button/Button';
 import RichText from '@/storyblok/helpers/RichText';
 import PageSection from '../PageSection/PageSection';
@@ -15,6 +15,7 @@ export interface FeatureExpandableProps extends BaseProps {
   expandText: string;
   image?: ImageProps;
   body?: string;
+  firstButton?: BaseLink;
   expBody?: RichtextStoryblok;
 }
 
@@ -27,13 +28,14 @@ function FeatureExpandable({
   expandText,
   image,
   expBody,
+  firstButton,
 }: FeatureExpandableProps) {
   const layout = isContentRight ? 'flex-row-reverse' : 'flex-row';
   const [expanded, setExpanded] = useState(false);
   const toggleExpanded = () => {
     setExpanded(!expanded);
   };
-
+  console.log(firstButton)
   return (
     <PageSection title={preTitle} theme={bgColor}>
       <div
@@ -45,15 +47,27 @@ function FeatureExpandable({
           )}
           <p className='mb-4'>{body}</p>
           <div className='flex flex-wrap gap-2'>
-            {expBody && !expanded && (
-              <Button
-                variant='primary'
-                element='button'
-                onClick={toggleExpanded}
-              >
-                {expandText}
-              </Button>
-            )}
+            {
+              firstButton && firstButton.component === 'Link' ? (
+                <Button
+                  variant='primary'
+                  element='button'
+                  href={firstButton.url}
+                >
+                  {firstButton.text}
+                </Button>
+              ) : (
+                expBody && !expanded && (
+                  <Button
+                    variant='primary'
+                    element='button'
+                    onClick={toggleExpanded}
+                  >
+                    {expandText}
+                  </Button>
+                )
+              )
+            }
           </div>
         </div>
         <div className='md:w-1/2 '>

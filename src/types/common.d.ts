@@ -1,6 +1,7 @@
 export interface BaseLink {
   text: string;
   url: string;
+  component?: string,
 }
 
 export interface ImageProps {
