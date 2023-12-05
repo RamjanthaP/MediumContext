@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Image from 'next/image';
 
@@ -12,11 +12,11 @@ function QuickContact({ person }: any) {
   const [isDesktop, setIsDesktop] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const [windowSize, setWindowSize] = useState({ width: 0 });
+  const [windowSize, setWindowSize] = useState(0);
 
   useEffect(() => {
     function handleResize() {
-      setWindowSize({ width: window.innerWidth });
+      setWindowSize(window.innerWidth);
     }
     window.addEventListener('resize', handleResize);
     handleResize();
@@ -24,7 +24,7 @@ function QuickContact({ person }: any) {
   }, []);
 
   useEffect(() => {
-    if (window.innerWidth > 1024) {
+    if (windowSize >= 1024) {
       setIsDesktop(true);
     } else {
       setIsDesktop(false);
@@ -32,13 +32,14 @@ function QuickContact({ person }: any) {
   }, [windowSize]);
 
   const toggleOpen = () => {
-    if (window.innerWidth < 1024) {
+    if (!isDesktop) {
       setOpen(!open);
-      setIsDesktop(!isDesktop);
     }
   };
 
-  console.log(isDesktop);
+  console.log(person);
+  console.log('is desktop ' + isDesktop);
+  console.log('is open: ' + open);
 
   //classes for mobile view when open
   const mobileOpenContainerClasses = 'flex';
@@ -46,12 +47,14 @@ function QuickContact({ person }: any) {
 
   //classes for desktop or when closed
   const containerClasses = `bg-discrete rounded-lg overflow-hidden p-4 ${
-    open
+    isDesktop && open
       ? 'sm:w-full flex flex-row-reverse lg:px-16 relative'
       : 'items-center w-full flex flex-row-reverse py-2 '
   }`;
   const contentClasses = `flex w-full ${
-    open ? 'lg:flex-col lg:items-center items-start' : 'items-center'
+    isDesktop && open
+      ? 'lg:flex-col lg:items-center items-start'
+      : 'items-center'
   }`;
 
   return (
