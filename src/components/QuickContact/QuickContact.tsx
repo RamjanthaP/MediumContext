@@ -4,11 +4,14 @@ import React, { useEffect, useState } from 'react';
 
 import Image from 'next/image';
 
+import { minDesktopScreen } from '@/config';
 import { PlusCircleIcon, XCircleIcon } from '@heroicons/react/20/solid';
+
+import { Person } from '@/types/types';
 
 import Button from '../Button/Button';
 
-function QuickContact({ person }: any) {
+function QuickContact({ person }: Person) {
   const [isDesktop, setIsDesktop] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -24,7 +27,7 @@ function QuickContact({ person }: any) {
   }, []);
 
   useEffect(() => {
-    if (windowSize >= 1024) {
+    if (windowSize >= minDesktopScreen) {
       setIsDesktop(true);
     } else {
       setIsDesktop(false);
@@ -80,10 +83,10 @@ function QuickContact({ person }: any) {
       >
         {person && (
           <Image
-            src={person.filename}
-            alt={person.name}
+            src={person?.image?.filename}
+            alt={person?.image?.name}
             width={`${isDesktop ? '150' : '80'}`}
-            height='150'
+            height={`${isDesktop ? '150' : '80'}`}
             className='rounded-full'
           />
         )}
@@ -100,19 +103,19 @@ function QuickContact({ person }: any) {
               {person && (
                 <div className='flex flex-col lg:items-center my-2'>
                   <h5 className='text-xs font-bold px-4'>
-                    {person.name || 'Default Name'}
+                    {person?.name || 'Default Name'}
                   </h5>
                   <p className='text-xs mb-3 px-4'>
-                    {person.title || 'Default Role'}
+                    {person?.title || 'Default Role'}
                   </p>
                   <div className='flex sm:flex-col gap-3'>
-                    <Button variant='primary' href={`tel:${person.phone}`}>
+                    <Button variant='primary' href={`tel:${person?.phone}`}>
                       Telefon
                     </Button>
                     <Button
                       variant='inverted'
                       transparent
-                      href={`mailto:${person.email}`}
+                      href={`mailto:${person?.email}`}
                     >
                       Email
                     </Button>
