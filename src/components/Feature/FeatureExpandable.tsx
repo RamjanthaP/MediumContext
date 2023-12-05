@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { RichtextStoryblok } from '@sb-types';
 import { BaseProps } from '@/types/props';
-import { BaseLink, ImageProps } from '@/types/common';
+import { ImageProps } from '@/types/common';
 import Button from '@/components/Button/Button';
 import RichText from '@/storyblok/helpers/RichText';
 import PageSection from '../PageSection/PageSection';
@@ -15,7 +15,6 @@ export interface FeatureExpandableProps extends BaseProps {
   expandText: string;
   image?: ImageProps;
   body?: string;
-  firstButton?: BaseLink;
   expBody?: RichtextStoryblok;
 }
 
