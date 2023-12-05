@@ -3,7 +3,6 @@ import {
   ContactFooterStoryblok,
   MenuStoryblok,
 } from '../../component-types-sb';
-import { notFound } from 'next/navigation';
 
 export async function getStoryblokPage(path: string[]) {
   let sbParams = {
@@ -11,25 +10,23 @@ export async function getStoryblokPage(path: string[]) {
     resolve_relations: ['contact_person'], // TODO: Move to just service specific route
   };
   const storyblokApi = getStoryblokApi();
-  const storyReq = await storyblokApi
-    .get(`cdn/stories/${path.join('/')}`, sbParams)
-    .catch((e) => {
-      console.error(e);
-      notFound();
-    });
-
-  return {
-    // TODO: This is a hack to get the contact_person to work
-    props: {
-      story: {
-        ...storyReq.data.story,
-        contact_person: storyReq.data.rels.at(0)
-          ? storyReq.data.rels.at(0)
-          : null,
+  try {
+    const storyReq = await storyblokApi
+      .get(`cdn/stories/${path.join('/')}`, sbParams);
+    return {
+      props: {
+        story: {
+          ...storyReq.data.story,
+          contact_person: storyReq.data.rels.at(0) || null,
+        },
       },
-    },
-    revalidate: 3600,
-  };
+      revalidate: 3600,
+    };
+  } catch (e) {
+    console.error(e);
+    // Throw an error to trigger Next.js's custom 404 page
+    throw new Error('Page not found');
+  }
 }
 
 export async function getStoryblokMenuData(): Promise<MenuStoryblok> {

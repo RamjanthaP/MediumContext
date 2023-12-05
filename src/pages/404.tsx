@@ -1,5 +1,6 @@
 import Button from "@/components/Button/Button";
 import { Container } from "@/components/Layout/Container";
+import { getStoryblokPage } from "@/services/getStoryBlokPage";
 import { ArrowLeftIcon } from "@heroicons/react/20/solid";
 
 export default function NotFound() {
@@ -32,4 +33,14 @@ export default function NotFound() {
       </Container>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  try {
+    const pageData = await getStoryblokPage(['/']);
+    return { props: { pageData } };
+  } catch (error) {
+    console.error(error);
+    return { notFound: true };
+  }
 }
