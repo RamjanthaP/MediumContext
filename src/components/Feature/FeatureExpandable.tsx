@@ -46,15 +46,14 @@ function FeatureExpandable({
           <p className='mb-4'>{body}</p>
           <div className='flex flex-wrap gap-2'>
             {expBody && !expanded && (
-                <Button
-                  variant='primary'
-                  element='button'
-                  onClick={toggleExpanded}
-                >
-                  {expandText}
-                </Button>
-              )
-            }
+              <Button
+                variant='primary'
+                element='button'
+                onClick={toggleExpanded}
+              >
+                {expandText}
+              </Button>
+            )}
           </div>
         </div>
         <div className='md:w-1/2 '>
