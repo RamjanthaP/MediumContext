@@ -16,7 +16,6 @@ const TemplateService = ({
   relatedItems,
 }: TemplateServiceStoryblok) => {
   const quickContactData = mapContactPersonDtoToQuickContactData(contactPerson);
-  console.log(contactPerson.content);
   return (
     <>
       <AnimateHeader
@@ -39,11 +38,11 @@ const TemplateService = ({
               {contactPerson && (
                 <QuickContact
                   person={{
-                    name: 'jocke',
-                    email: 'hej@hej.hej',
-                    phone: '12345677889',
-                    title: 'tja',
-                    image: {},
+                    name: quickContactData?.name,
+                    email: quickContactData?.email,
+                    phone: quickContactData?.phone,
+                    title: quickContactData?.title,
+                    image: quickContactData?.image,
                   }}
                 />
               )}

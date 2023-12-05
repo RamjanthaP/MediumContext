@@ -37,10 +37,6 @@ function QuickContact({ person }: any) {
     }
   };
 
-  console.log(person);
-  console.log('is desktop ' + isDesktop);
-  console.log('is open: ' + open);
-
   //classes for mobile view when open
   const mobileOpenContainerClasses = 'flex';
   const mobileOpenContentClasses = 'flex justify-between h-full';
@@ -84,7 +80,7 @@ function QuickContact({ person }: any) {
       >
         {person && (
           <Image
-            src={person.image}
+            src={person.filename}
             alt={person.name}
             width={`${isDesktop ? '150' : '80'}`}
             height='150'
