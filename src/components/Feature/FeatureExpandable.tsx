@@ -35,7 +35,6 @@ function FeatureExpandable({
   const toggleExpanded = () => {
     setExpanded(!expanded);
   };
-  console.log(firstButton)
   return (
     <PageSection title={preTitle} theme={bgColor}>
       <div
