@@ -51,7 +51,7 @@ const ServiceCard = ({
         dangerouslySetInnerHTML={{ __html: description }}
       />
       <div className='mt-4'>
-        <Button href={button.url} variant='primary' size='small'>
+        <Button href={`/${button.url}`} variant='primary' size='small'>
           <span>{button.text}</span>
           <IconForward className='w-4 h-4' />
         </Button>
