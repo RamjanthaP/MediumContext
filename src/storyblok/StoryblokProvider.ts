@@ -18,6 +18,7 @@ import Hero from './components/Hero';
 import JumbotronSb from './components/Jumbotron';
 import LogoCardSb from './components/LogoCard';
 import ServiceItemSb from './components/ServiceItems';
+import MapSb from './components/MapSb';
 
 /** 1. Tag it as a client component */
 
@@ -28,6 +29,7 @@ const components = {
   body: BodyBlockSb,
   feature: Feature,
   grid: GridSb,
+  map_block: MapSb,
   hero: Hero,
   header_menu: HeaderMenu,
   menu_link: MenuLink,

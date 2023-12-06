@@ -166,6 +166,13 @@ export interface LogoCardStoryblok {
   [k: string]: any;
 }
 
+export interface MapStoryblok {
+  animations: string;
+  _uid: string;
+  component: "map_block";
+  [k: string]: any;
+}
+
 export interface MenuStoryblok {
   header_menu?: MenuLinkStoryblok[];
   _uid: string;
