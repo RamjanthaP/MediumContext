@@ -117,16 +117,20 @@ function QuickContact({ person }: QuickContactProps) {
                     {person?.title || 'Default Role'}
                   </p>
                   <div className='flex sm:flex-col gap-3'>
-                    <Button variant='primary' href={`tel:${person?.phone}`}>
-                      Telefon
-                    </Button>
-                    <Button
-                      variant='inverted'
-                      transparent
-                      href={`mailto:${person?.email}`}
-                    >
-                      Email
-                    </Button>
+                    {person.email && (
+                      <Button variant='primary' href={`mailto:${person.email}`}>
+                        Maila mig
+                      </Button>
+                    )}
+                    {person.phone && (
+                      <Button
+                        variant='inverted'
+                        transparent
+                        href={`tel:${person.phone}`}
+                      >
+                        Ring mig
+                      </Button>
+                    )}
                   </div>
                 </div>
               )}
