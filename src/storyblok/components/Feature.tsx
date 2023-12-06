@@ -72,6 +72,7 @@ const mapFeatureDtoToFeatureExpandableData = (
     bgColor: blok.theme || 'default',
     isContentRight: blok?.layout === 'content-right',
     body: blok.body,
+    expTitle: blok?.expandTitle || 'Mer information',
     expBody: blok?.expandBody,
     expandText: blok?.expandText || 'Läs mer',
   };
