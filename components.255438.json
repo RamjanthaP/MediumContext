@@ -94,7 +94,7 @@
       "name": "feature",
       "display_name": null,
       "created_at": "2023-10-05T08:08:49.707Z",
-      "updated_at": "2023-11-27T14:24:45.084Z",
+      "updated_at": "2023-12-06T09:50:17.739Z",
       "id": 4673137,
       "schema": {
         "pre_title": {
@@ -185,9 +185,13 @@
           "default_value": "",
           "pos": 7
         },
+        "expandText": {
+          "type": "text",
+          "pos": 8
+        },
         "expandBody": {
           "type": "richtext",
-          "pos": 8
+          "pos": 9
         }
       },
       "image": null,
@@ -747,7 +751,7 @@
       "name": "template_default",
       "display_name": null,
       "created_at": "2023-10-05T08:08:49.662Z",
-      "updated_at": "2023-11-13T06:49:43.286Z",
+      "updated_at": "2023-12-06T09:38:48.759Z",
       "id": 4673134,
       "schema": {
         "body": {

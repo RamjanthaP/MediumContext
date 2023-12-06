@@ -1,5 +1,6 @@
-import { storyblokEditable } from '@storyblok/react/rsc';
 import { AssetStoryblok, FeatureStoryblok } from '@sb-types';
+import { storyblokEditable } from '@storyblok/react/rsc';
+
 import FeatureSection, {
   FeatureSectionProps,
 } from '@/components/Feature/Feature';
@@ -9,7 +10,7 @@ import FeatureExpandable, {
 
 const FeatureSb = ({ blok }: FeatureStoryblok) => {
   // We are using this until we decide to split in to 2 components on the CMS end
-  const linkInFeature = blok?.ctaPrimary?.at(0)?.component === 'Link'
+  const linkInFeature = blok?.ctaPrimary?.at(0)?.component === 'Link';
   if (!linkInFeature) {
     const componentData = mapFeatureDtoToFeatureExpandableData(blok);
     return (

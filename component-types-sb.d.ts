@@ -44,6 +44,7 @@ export interface FeatureStoryblok {
   ctaSecondary?: LinkStoryblok[];
   layout?: "" | "content-left" | "content-right";
   theme?: "" | "default" | "inverted" | "discrete";
+  expandText?: string;
   expandBody?: RichtextStoryblok;
   _uid: string;
   component: "feature";
