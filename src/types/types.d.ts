@@ -1,5 +1,5 @@
-export interface QuickContactProps {
-  name?: string;
+export interface Person {
+  name: string;
   email?: string;
   phone?: string;
   title?: string;

@@ -1,6 +1,8 @@
 import { PersonStoryblok, TemplateServiceStoryblok } from '@sb-types';
 import { StoryblokComponent, storyblokEditable } from '@storyblok/react/rsc';
 
+import { Person } from '@/types/types';
+
 import AnimateHeader from '@/components/AnimatedHeader/AnimatedHeader';
 import DemoAnimation from '@/components/AnimatedHeader/animations/Demo.svg';
 import { Container } from '@/components/Layout/Container';
@@ -35,14 +37,10 @@ const TemplateService = ({
               </div>
             )}
             <div className='col-span-12 lg:col-span-5 lg:col-start-8 pb-4 -order-1 lg:order-1'>
-              {contactPerson && (
+              {quickContactData && (
                 <QuickContact
                   person={{
-                    name: quickContactData?.name,
-                    email: quickContactData?.email,
-                    phone: quickContactData?.phone,
-                    title: quickContactData?.title,
-                    image: quickContactData?.image,
+                    ...quickContactData,
                   }}
                 />
               )}
@@ -66,7 +64,7 @@ export default TemplateService;
 
 function mapContactPersonDtoToQuickContactData(contactPerson: {
   content: PersonStoryblok;
-}) {
+}): Person | null {
   if (!contactPerson) return null;
   const { name, email, phone, role, image } = contactPerson.content;
   return {

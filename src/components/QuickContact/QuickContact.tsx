@@ -7,11 +7,16 @@ import Image from 'next/image';
 import { minDesktopScreen } from '@/config';
 import { PlusCircleIcon, XCircleIcon } from '@heroicons/react/20/solid';
 
-import { QuickContactProps } from '@/types/types';
+import { BaseProps } from '@/types/props';
+import { Person } from '@/types/types';
 
 import Button from '../Button/Button';
 
-function QuickContact({ person }: { person: QuickContactProps }) {
+export interface QuickContactProps extends BaseProps {
+  person: Person;
+}
+
+function QuickContact({ person }: QuickContactProps) {
   const [isDesktop, setIsDesktop] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -58,6 +63,8 @@ function QuickContact({ person }: { person: QuickContactProps }) {
       ? 'lg:flex-col lg:items-center items-start'
       : 'items-center'
   }`;
+
+  console.log(person);
 
   return (
     <div
