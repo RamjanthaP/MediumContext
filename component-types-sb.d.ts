@@ -1,17 +1,7 @@
 import {StoryblokStory} from 'storyblok-generate-ts'
 
-export interface RichtextStoryblok {
-  type: string;
-  content?: RichtextStoryblok[];
-  marks?: RichtextStoryblok[];
-  attrs?: any;
-  text?: string;
-  [k: string]: any;
-}
-
 export interface BodyStoryblok {
-  intro?: RichtextStoryblok;
-  body: RichtextStoryblok;
+  animation?: string;
   _uid: string;
   component: "body";
   [k: string]: any;
@@ -35,6 +25,15 @@ export interface AssetStoryblok {
   [k: string]: any;
 }
 
+export interface RichtextStoryblok {
+  type: string;
+  content?: RichtextStoryblok[];
+  marks?: RichtextStoryblok[];
+  attrs?: any;
+  text?: string;
+  [k: string]: any;
+}
+
 export interface FeatureStoryblok {
   pre_title?: string;
   title?: string;
@@ -44,6 +43,8 @@ export interface FeatureStoryblok {
   ctaSecondary?: LinkStoryblok[];
   layout?: "" | "content-left" | "content-right";
   theme?: "" | "default" | "inverted" | "discrete";
+  expandText?: string;
+  expandTitle?: string;
   expandBody?: RichtextStoryblok;
   _uid: string;
   component: "feature";
@@ -61,6 +62,7 @@ export interface GridStoryblok {
     | JumbotronStoryblok
     | LinkStoryblok
     | LogoCardStoryblok
+    | MapBlockStoryblok
     | MenuStoryblok
     | MenuLinkStoryblok
     | OfficesStoryblok
@@ -166,6 +168,13 @@ export interface LogoCardStoryblok {
   [k: string]: any;
 }
 
+export interface MapBlockStoryblok {
+  animations?: string;
+  _uid: string;
+  component: "map_block";
+  [k: string]: any;
+}
+
 export interface MenuStoryblok {
   header_menu?: MenuLinkStoryblok[];
   _uid: string;
@@ -240,6 +249,7 @@ export interface TemplateDefaultStoryblok {
     | JumbotronStoryblok
     | LinkStoryblok
     | LogoCardStoryblok
+    | MapBlockStoryblok
     | MenuStoryblok
     | MenuLinkStoryblok
     | OfficesStoryblok

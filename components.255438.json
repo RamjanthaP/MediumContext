@@ -2,60 +2,29 @@
   "components": [
     {
       "name": "body",
-      "display_name": "body",
-      "created_at": "2023-11-30T07:07:35.556Z",
-      "updated_at": "2023-11-30T09:09:05.517Z",
-      "id": 4958682,
+      "display_name": null,
+      "created_at": "2023-12-06T10:24:48.463Z",
+      "updated_at": "2023-12-06T10:25:49.834Z",
+      "id": 4991518,
       "schema": {
-        "intro": {
-          "type": "richtext",
-          "pos": 0,
-          "customize_toolbar": true,
-          "toolbar": [
-            "bold",
-            "link",
-            "paragraph"
-          ]
-        },
-        "body": {
-          "type": "richtext",
-          "required": true,
-          "customize_toolbar": true,
-          "toolbar": [
-            "bold",
-            "list",
-            "code",
-            "cut",
-            "copy",
-            "emoji",
-            "h2",
-            "h3",
-            "h4",
-            "image",
-            "italic",
-            "link",
-            "anchor",
-            "olist",
-            "paragraph",
-            "paste-action",
-            "undo",
-            "redo"
-          ],
-          "pos": 1
+        "animation": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "external",
+          "external_datasource": "https://localhost:3010/api/animation"
         }
       },
       "image": null,
-      "preview_field": "body",
+      "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
       "real_name": "body",
-      "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
+      "component_group_uuid": null,
       "color": null,
-      "icon": "block-text-l",
-      "component_group_name": "Blocks"
+      "icon": null
     },
     {
       "name": "contact_footer",
@@ -94,7 +63,7 @@
       "name": "feature",
       "display_name": null,
       "created_at": "2023-10-05T08:08:49.707Z",
-      "updated_at": "2023-11-27T14:24:45.084Z",
+      "updated_at": "2023-12-06T10:31:40.285Z",
       "id": 4673137,
       "schema": {
         "pre_title": {
@@ -185,9 +154,17 @@
           "default_value": "",
           "pos": 7
         },
+        "expandText": {
+          "type": "text",
+          "pos": 8
+        },
+        "expandTitle": {
+          "type": "text",
+          "pos": 9
+        },
         "expandBody": {
           "type": "richtext",
-          "pos": 8
+          "pos": 10
         }
       },
       "image": null,
@@ -473,6 +450,33 @@
       "component_group_name": "Blocks"
     },
     {
+      "name": "map_block",
+      "display_name": null,
+      "created_at": "2023-12-06T10:02:16.230Z",
+      "updated_at": "2023-12-06T10:07:01.656Z",
+      "id": 4991174,
+      "schema": {
+        "animations": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "external",
+          "external_datasource": "https://localhost:3010/api/animation"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "map_block",
+      "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
+      "color": null,
+      "icon": null,
+      "component_group_name": "Blocks"
+    },
+    {
       "name": "menu",
       "display_name": null,
       "created_at": "2023-10-06T09:30:14.867Z",
@@ -747,7 +751,7 @@
       "name": "template_default",
       "display_name": null,
       "created_at": "2023-10-05T08:08:49.662Z",
-      "updated_at": "2023-11-13T06:49:43.286Z",
+      "updated_at": "2023-12-06T09:38:48.759Z",
       "id": 4673134,
       "schema": {
         "body": {
