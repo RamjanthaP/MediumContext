@@ -56,6 +56,8 @@ function QuickContact({ person }: { person: QuickContactProps }) {
       : 'items-center'
   }`;
 
+  console.log(person);
+
   return (
     <div
       className={`${containerClasses} ${
