@@ -16,6 +16,7 @@ function QuickContact({ person }: { person: QuickContactProps }) {
   const [open, setOpen] = useState(false);
 
   const [windowSize, setWindowSize] = useState(0);
+  const [imgSize, setImgSize] = useState(0);
 
   useEffect(() => {
     function handleResize() {
@@ -29,8 +30,10 @@ function QuickContact({ person }: { person: QuickContactProps }) {
   useEffect(() => {
     if (windowSize >= minDesktopScreen) {
       setIsDesktop(true);
+      setImgSize(150);
     } else {
       setIsDesktop(false);
+      setImgSize(80);
     }
   }, [windowSize]);
 
@@ -55,8 +58,6 @@ function QuickContact({ person }: { person: QuickContactProps }) {
       ? 'lg:flex-col lg:items-center items-start'
       : 'items-center'
   }`;
-
-  console.log(person);
 
   return (
     <div
@@ -87,8 +88,8 @@ function QuickContact({ person }: { person: QuickContactProps }) {
           <Image
             src={person?.image?.filename}
             alt={person?.image?.name}
-            width={`${isDesktop ? '150' : '80'}`}
-            height={`${isDesktop ? '150' : '80'}`}
+            width={imgSize}
+            height={imgSize}
             className='rounded-full'
           />
         )}
