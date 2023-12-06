@@ -1,11 +1,14 @@
 import Image from 'next/image';
-import Spin1 from './animations/spin-1.svg';
-import Spin2 from './animations/spin-2.svg';
-import Bounce from './animations/bounce.svg';
+
 import IconForward from '@heroicons/react/24/solid/ArrowRightIcon';
+
 import { BaseLink, ImageProps } from '@/types/common';
 import { BaseProps } from '@/types/props';
+
 import Button from '../Button/Button';
+import Bounce from './animations/bounce.svg';
+import Spin1 from './animations/spin-1.svg';
+import Spin2 from './animations/spin-2.svg';
 
 export interface ServiceCardProps extends BaseProps {
   title: string;
@@ -45,13 +48,13 @@ const ServiceCard = ({
       )}
     </div>
     <div className='flex-grow-1 w-full '>
-      <h3 className='text-lg md:text-xl  font-bold'>{title}</h3>
+      <h3 className='text-lg md:text-xl font-bold hyphens-auto'>{title}</h3>
       <div
         className='pt-2 text'
         dangerouslySetInnerHTML={{ __html: description }}
       />
       <div className='mt-4'>
-        <Button href={button.url} variant='primary' size='small'>
+        <Button href={`/${button.url}`} variant='primary' size='small'>
           <span>{button.text}</span>
           <IconForward className='w-4 h-4' />
         </Button>
