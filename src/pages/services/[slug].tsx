@@ -1,37 +1,43 @@
-import StoryblokStory from '@storyblok/react/story';
+import { Suspense } from 'react';
+
+import { useRouter } from 'next/router';
+
 import {
-  getStoryblokPage,
   getGlobalServiceItems,
+  getStoryblokPage,
   getStoryblokPageBySlug,
 } from '@/services/getStoryBlokPage';
+import StoryblokStory from '@storyblok/react/story';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 
-import { Suspense } from 'react';
-import {  convertPath, getSlugParam } from '@/utilities/helper';
-import { useRouter } from 'next/router';
+import { convertPath, getSlugParam } from '@/utilities/helper';
 
 export default function Page(
   props: InferGetStaticPropsType<typeof getStaticProps>
 ) {
-  const route = useRouter()
-  const path = route?.query?.slug
+  const route = useRouter();
+  const path = route?.query?.slug;
 
-  const filterRelatedItems = (path: string | string[] | undefined, relatedItemRequest: InferGetStaticPropsType<typeof getStaticProps>) => {
-    let url = convertPath(path)
-    const filteredColumns = relatedItemRequest.content.columns.filter((column: { title: string; }) =>
-      column.title.toLowerCase() !== url.toLowerCase()
+  const filterRelatedItems = (
+    path: string | string[] | undefined,
+    relatedItemRequest: InferGetStaticPropsType<typeof getStaticProps>
+  ) => {
+    let url = convertPath(path);
+    const filteredColumns = relatedItemRequest.content.columns.filter(
+      (column: { title: string }) =>
+        column.title.toLowerCase() !== url.toLowerCase()
     );
 
     return {
       ...relatedItemRequest,
       content: {
         ...relatedItemRequest.content,
-        columns: filteredColumns
-      }
+        columns: filteredColumns,
+      },
     };
-  }
+  };
 
-  const filteredColumns = filterRelatedItems(path, props.relatedItemRequest)
+  const filteredColumns = filterRelatedItems(path, props.relatedItemRequest);
 
   return (
     <div>
@@ -39,6 +45,7 @@ export default function Page(
         <StoryblokStory
           story={props.pageData.props.story}
           title={props.pageData.props.story.name}
+          contactPerson={props.pageData.props.story.contact_person}
           relatedItems={filteredColumns.content}
         />
       </Suspense>
