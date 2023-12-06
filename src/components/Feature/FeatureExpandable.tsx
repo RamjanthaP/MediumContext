@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
+
 import Image from 'next/image';
-import { RichtextStoryblok } from '@sb-types';
-import { BaseProps } from '@/types/props';
-import { ImageProps } from '@/types/common';
-import Button from '@/components/Button/Button';
+
 import RichText from '@/storyblok/helpers/RichText';
+import { RichtextStoryblok } from '@sb-types';
+
+import { ImageProps } from '@/types/common';
+import { BaseProps } from '@/types/props';
+
+import Button from '@/components/Button/Button';
+
 import PageSection from '../PageSection/PageSection';
 
 export interface FeatureExpandableProps extends BaseProps {
@@ -12,9 +17,10 @@ export interface FeatureExpandableProps extends BaseProps {
   title?: string;
   bgColor?: 'default' | 'inverted' | 'discrete';
   isContentRight?: boolean;
-  expandText: string;
   image?: ImageProps;
   body?: string;
+  expandText: string;
+  expTitle: string;
   expBody?: RichtextStoryblok;
 }
 
@@ -24,8 +30,9 @@ function FeatureExpandable({
   isContentRight = false,
   bgColor = 'default',
   body,
-  expandText,
   image,
+  expandText,
+  expTitle,
   expBody,
 }: FeatureExpandableProps) {
   const layout = isContentRight ? 'flex-row-reverse' : 'flex-row';
@@ -33,7 +40,7 @@ function FeatureExpandable({
   const toggleExpanded = () => {
     setExpanded(!expanded);
   };
-  
+
   return (
     <PageSection title={preTitle} theme={bgColor}>
       <div
@@ -72,7 +79,7 @@ function FeatureExpandable({
       {expBody && expanded && (
         <div className='w-full rounded-md p-4 my-4 transition-all theme-block-default'>
           <header className='flex justify-between items-start'>
-            <h2 className='text-xl font-bold mb-4'>Mer om</h2>
+            <h2 className='text-xl font-bold mb-4'>{expTitle}</h2>
             <Button
               variant='default'
               transparent

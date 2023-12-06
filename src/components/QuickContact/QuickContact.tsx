@@ -35,9 +35,11 @@ function QuickContact({ person }: QuickContactProps) {
   useEffect(() => {
     if (windowSize >= minDesktopScreen) {
       setIsDesktop(true);
+      setOpen(true);
       setImgSize(150);
     } else {
       setIsDesktop(false);
+      setOpen(false);
       setImgSize(80);
     }
   }, [windowSize]);
@@ -50,18 +52,16 @@ function QuickContact({ person }: QuickContactProps) {
 
   //classes for mobile view when open
   const mobileOpenContainerClasses = 'flex';
-  const mobileOpenContentClasses = 'flex justify-between h-full';
+  const mobileOpenContentClasses = 'flex justify-between h-full items-start';
 
   //classes for desktop or when closed
-  const containerClasses = `bg-discrete rounded-lg overflow-hidden p-4 ${
-    isDesktop && open
-      ? 'sm:w-full flex flex-row-reverse lg:px-16 relative'
-      : 'items-center w-full flex flex-row-reverse py-2 '
+  const containerClasses = `bg-discrete rounded-lg overflow-hidden p-4 relative ${
+    open
+      ? 'sm:w-full flex flex-row-reverse lg:px-8'
+      : 'items-center w-full flex flex-row-reverse'
   }`;
   const contentClasses = `flex w-full ${
-    isDesktop && open
-      ? 'lg:flex-col lg:items-center items-start'
-      : 'items-center'
+    open ? 'lg:flex-col lg:items-center items-start' : 'items-center'
   }`;
 
   return (
@@ -72,7 +72,7 @@ function QuickContact({ person }: QuickContactProps) {
     >
       <button
         className={`lg:hidden cursor-pointer flex justify-end ${
-          open ? 'absolute top-2 right-2' : ''
+          !isDesktop ? 'absolute top-2 right-2' : ''
         }`}
         onClick={toggleOpen}
         aria-expanded={open}
@@ -99,12 +99,12 @@ function QuickContact({ person }: QuickContactProps) {
           />
         )}
         <div className='md:pr-2'>
-          <h2 className='text-lg lg:text-xxl font-bold lg:text-center lg:pt-4 px-4'>
+          <h2 className='text-lg lg:text-xxl font-bold lg:text-center py-2 lg:pt-4 px-4'>
             Tips & Råd
           </h2>
           {open && (
             <div className='flex flex-col lg:items-center items-start'>
-              <p className='text-md mb-4 lg:text-center md:text-start px-4 md:break-words'>
+              <p className='text-md mb-2 lg:text-center md:text-start px-4 md:break-words'>
                 Jag går gärna igenom processen ihop med er och hjälper er att
                 formulera era behov
               </p>
@@ -117,16 +117,20 @@ function QuickContact({ person }: QuickContactProps) {
                     {person?.title || 'Default Role'}
                   </p>
                   <div className='flex sm:flex-col gap-3'>
-                    <Button variant='primary' href={`tel:${person?.phone}`}>
-                      Telefon
-                    </Button>
-                    <Button
-                      variant='inverted'
-                      transparent
-                      href={`mailto:${person?.email}`}
-                    >
-                      Email
-                    </Button>
+                    {person.email && (
+                      <Button variant='primary' href={`mailto:${person.email}`}>
+                        Maila mig
+                      </Button>
+                    )}
+                    {person.phone && (
+                      <Button
+                        variant='inverted'
+                        transparent
+                        href={`tel:${person.phone}`}
+                      >
+                        Ring mig
+                      </Button>
+                    )}
                   </div>
                 </div>
               )}
