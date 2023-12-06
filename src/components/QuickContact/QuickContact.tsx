@@ -7,11 +7,11 @@ import Image from 'next/image';
 import { minDesktopScreen } from '@/config';
 import { PlusCircleIcon, XCircleIcon } from '@heroicons/react/20/solid';
 
-import { Person } from '@/types/types';
+import { QuickContactProps } from '@/types/types';
 
 import Button from '../Button/Button';
 
-function QuickContact({ person }: Person) {
+function QuickContact({ person }: { person: QuickContactProps }) {
   const [isDesktop, setIsDesktop] = useState(false);
   const [open, setOpen] = useState(false);
 
