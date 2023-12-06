@@ -8,7 +8,6 @@ export default {
 
 const defaultArgs: FeatureExpandableProps = {
   bgColor: 'default',
-  expandText: 'Egen text på knappen',
   image: {
     url: 'https://via.placeholder.com/500',
     alt: 'Placeholder',
@@ -16,6 +15,8 @@ const defaultArgs: FeatureExpandableProps = {
   preTitle: 'Pretitle.',
   title: 'Title',
   body: 'Here is some body text.',
+  expandText: 'Egen text på knappen',
+  expTitle: 'Custom set Expandable title',
   expBody: {
     type: 'doc',
     content: [
