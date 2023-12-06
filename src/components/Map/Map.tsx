@@ -13,7 +13,7 @@ const Map = ({ animations }: MapProps) => {
     <div>
       {animations && (
         <object
-          className='object-fill w-full h-auto'
+          className='map-svg'
           data={Animation[animations as keyof typeof Animation].src}
           type='image/svg+xml'
         ></object>
