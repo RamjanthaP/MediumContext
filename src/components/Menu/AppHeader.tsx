@@ -1,15 +1,19 @@
 'use client';
-import { storyblokEditable } from '@storyblok/react';
-import Link from 'next/link';
+
 import { useState } from 'react';
-import { MenuStoryblok, MenuLinkStoryblok } from '@sb-types';
+
+import Link from 'next/link';
+
+import { MenuLinkStoryblok, MenuStoryblok } from '@sb-types';
+import { storyblokEditable } from '@storyblok/react';
+import { AnimatePresence, motion } from 'framer-motion';
+
+import { Container } from '../Layout/Container';
 import LogoAmaceit from '../Logo/Amaceit';
-import BurgerMenu from './BurgerMenu';
+import { DesktopMenu } from './DesktopMenu';
+import MenuButton from './MenuButton';
 import { MenuItem } from './MenuItem';
 import { MobileMenu } from './MobileMenu';
-import { DesktopMenu } from './DesktopMenu';
-import { AnimatePresence, motion } from 'framer-motion';
-import { Container } from '../Layout/Container';
 
 export const specialItemTitle = 'Kontakta oss';
 const Menu = ({ blok }: { blok: MenuStoryblok }) => {
@@ -32,19 +36,19 @@ const Menu = ({ blok }: { blok: MenuStoryblok }) => {
       className='bg-default sticky top-0  z-app-header'
     >
       <Container>
-        <div className='flex justify-between items-center py-6'>
+        <div className='flex justify-between items-center py-1 md:py-6 transition-all duration-500'>
           <Link
             href='/'
             className='flex justify-start flex-grow-1 w-3/12 lg:w-2/12'
           >
-            <LogoAmaceit className='-translate-y-2 md:translate-y-0' />
+            <LogoAmaceit className='md:-translate-y-0.5 lg:-translate-y-1 md:translate-y-0' />
           </Link>
           <DesktopMenu menuItems={menuItems} specialItem={specialItem} />
           <div className='flex'>
             <AnimatePresence>
               {!isOpen && (
                 <motion.div
-                  className='md:hidden'
+                  className='md:hidden flex items-center'
                   initial={{ scale: 0, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   exit={{ scale: 0, opacity: 0 }}
@@ -57,8 +61,8 @@ const Menu = ({ blok }: { blok: MenuStoryblok }) => {
                 </motion.div>
               )}
             </AnimatePresence>
-            <div className='flex items-center md:hidden'>
-              <BurgerMenu toggleMenu={toggleMenu} isOpen={isOpen} />
+            <div className='flex items-center md:hidden '>
+              <MenuButton toggleMenu={toggleMenu} isOpen={isOpen} />
             </div>
           </div>
           {isOpen && (
