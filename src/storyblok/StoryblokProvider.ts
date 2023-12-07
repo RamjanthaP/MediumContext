@@ -14,7 +14,7 @@ import MenuLink from '@/components/Menu/MenuLink';
 import BodyBlockSb from './components/BodyBlock';
 import Feature from './components/Feature';
 import GridSb from './components/Grid';
-import Hero from './components/Hero';
+import HeroSb from './components/Hero';
 import JumbotronSb from './components/Jumbotron';
 import LogoCardSb from './components/LogoCard';
 import ServiceItemSb from './components/ServiceItems';
@@ -30,7 +30,7 @@ const components = {
   feature: Feature,
   grid: GridSb,
   map_block: MapSb,
-  hero: Hero,
+  hero: HeroSb,
   header_menu: HeaderMenu,
   menu_link: MenuLink,
   logo_card: LogoCardSb,
