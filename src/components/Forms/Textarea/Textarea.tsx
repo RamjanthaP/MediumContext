@@ -6,7 +6,7 @@ export interface TextareaProps extends BaseProps {
   id: string;
   value: string;
   error?: string;
-  onChange: (newValue: string) => void;
+  onChange: (_newValue: string) => void;
 }
 export interface TextareaProps
   extends Omit<

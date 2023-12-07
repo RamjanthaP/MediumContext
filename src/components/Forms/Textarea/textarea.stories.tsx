@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { StoryFn } from '@storybook/react';
 
-import Textarea, { TextareaProps } from './Textarea';
+import Textarea from './Textarea';
 
 export default {
   title: 'Components/Form Elements/Textarea',

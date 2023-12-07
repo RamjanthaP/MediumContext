@@ -6,7 +6,7 @@ export interface InputTextProps extends BaseProps {
   id: string;
   value: string;
   error?: string;
-  onChange: (newValue: string) => void;
+  onChange: (_newValue: string) => void;
 }
 export interface InputTextProps
   extends Omit<
@@ -34,7 +34,7 @@ const InputText = ({
       </label>
       <input
         {...inputProps}
-        className={`bg-default ${Style.field} ${borderColor} disabled:bg-secondary-200`}
+        className={`bg-default ${Style.field} ${borderColor}`}
         type='text'
         id={id}
         value={value}

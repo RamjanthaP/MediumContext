@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import { StoryFn } from '@storybook/react';
 
-import InputText, { InputTextProps } from './InputText';
+import InputText from './InputText';
 
 export default {
   title: 'Components/Form Elements/InputText',
