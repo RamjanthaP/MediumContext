@@ -1,0 +1,11 @@
+.label {
+  @apply my-1 mx-6 text-md font-semibold;
+}
+.field {
+  @apply border-2 focus:outline-none;
+  @apply py-2 px-6;
+  @apply rounded-full font-bold;
+}
+.errorMessage {
+  @apply text-error text-sm my-1 mx-6 font-semibold;
+}
