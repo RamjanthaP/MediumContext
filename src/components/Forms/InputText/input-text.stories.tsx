@@ -56,3 +56,14 @@ export const HasError = () => {
     </InputText>
   );
 };
+
+export const IsDisabled = () => (
+  <InputText
+    id='story-id'
+    value={"Value you can't change"}
+    onChange={action('onChange')}
+    disabled
+  >
+    Disabled input
+  </InputText>
+);

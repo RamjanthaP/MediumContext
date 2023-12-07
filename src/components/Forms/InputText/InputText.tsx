@@ -34,7 +34,7 @@ const InputText = ({
       </label>
       <input
         {...inputProps}
-        className={`bg-default ${Style.field} ${borderColor}`}
+        className={`bg-default ${Style.field} ${borderColor} disabled:bg-secondary-200`}
         type='text'
         id={id}
         value={value}
