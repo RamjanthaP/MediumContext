@@ -5,7 +5,7 @@ interface BurgerProps {
   toggleMenu: () => void;
 }
 
-function BurgerMenu({ toggleMenu, isOpen }: BurgerProps) {
+function MenuButton({ toggleMenu, isOpen }: BurgerProps) {
   const genericHamburgerLine = `custom-filter h-0.5 w-6 my-0.5 rounded-full bg-black transition ease transform duration-300`;
 
   return (
@@ -36,4 +36,4 @@ function BurgerMenu({ toggleMenu, isOpen }: BurgerProps) {
   );
 }
 
-export default BurgerMenu;
+export default MenuButton;
