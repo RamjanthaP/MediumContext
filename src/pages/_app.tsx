@@ -1,15 +1,15 @@
-import '@/app/globals.css';
-
 import { AppProps } from 'next/app';
 
-import StoryblokProvider from '@/storyblok/StoryblokProvider';
+import '@/app/globals.css';
 import {
   getStoryblokFooterData,
   getStoryblokMenuData,
 } from '@/services/getStoryBlokPage';
-import AppHeader from '@/components/Menu/AppHeader';
-import Footer from '@/components/Footer/Footer';
+import StoryblokProvider from '@/storyblok/StoryblokProvider';
 import { ContactFooterStoryblok, MenuStoryblok } from '@sb-types';
+
+import Footer from '@/components/Footer/Footer';
+import AppHeader from '@/components/Menu/AppHeader';
 
 type OwnInitalProps = Awaited<ReturnType<typeof appsInitialProps>>;
 
