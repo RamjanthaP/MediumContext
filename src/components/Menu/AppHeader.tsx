@@ -19,6 +19,7 @@ export const specialItemTitle = 'Kontakta oss';
 const Menu = ({ blok }: { blok: MenuStoryblok }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [preventBodySroll, setPreventBodyScroll] = useState('');
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     document.body.style.overflow = preventBodySroll;
@@ -28,6 +29,10 @@ const Menu = ({ blok }: { blok: MenuStoryblok }) => {
     setPreventBodyScroll('');
   };
 
+  useEffect(() => {
+    isOpen ? setPreventBodyScroll('') : setPreventBodyScroll('hidden');
+  }, [isOpen]);
+
   const menuItems =
     blok.content?.header_menu?.filter(
       (item: MenuLinkStoryblok) => item.title !== specialItemTitle
@@ -36,10 +41,6 @@ const Menu = ({ blok }: { blok: MenuStoryblok }) => {
   const specialItem = blok.content?.header_menu?.find(
     (item: MenuLinkStoryblok) => item.title === specialItemTitle
   );
-
-  useEffect(() => {
-    isOpen ? setPreventBodyScroll('') : setPreventBodyScroll('hidden');
-  }, [isOpen]);
 
   return (
     <div
