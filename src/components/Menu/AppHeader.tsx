@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Link from 'next/link';
 
@@ -18,8 +18,20 @@ import { MobileMenu } from './MobileMenu';
 export const specialItemTitle = 'Kontakta oss';
 const Menu = ({ blok }: { blok: MenuStoryblok }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = () => setIsOpen(!isOpen);
-  const closeMenu = () => setIsOpen(false);
+  const [preventBodySroll, setPreventBodyScroll] = useState('');
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    document.body.style.overflow = preventBodySroll;
+  };
+  const closeMenu = () => {
+    setIsOpen(false);
+    setPreventBodyScroll('');
+  };
+
+  useEffect(() => {
+    isOpen ? setPreventBodyScroll('') : setPreventBodyScroll('hidden');
+  }, [isOpen]);
 
   const menuItems =
     blok.content?.header_menu?.filter(
