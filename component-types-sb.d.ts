@@ -81,9 +81,10 @@ export interface GridStoryblok {
 
 export interface HeroStoryblok {
   headLine: string;
-  image: AssetStoryblok;
+  image?: AssetStoryblok;
   ctaPrimary?: LinkStoryblok[];
   ctaSecondary?: LinkStoryblok[];
+  bodyText?: RichtextStoryblok;
   _uid: string;
   component: "hero";
   [k: string]: any;

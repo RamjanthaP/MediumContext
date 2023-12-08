@@ -1,6 +1,6 @@
 import type { Config } from 'tailwindcss';
-
 import plugin from 'tailwindcss/plugin';
+
 const config: Config = {
   darkMode: 'class', // Trigger darkmode by class, until we got things in
   content: ['./src/**/*.{tsx,mdx}'],
@@ -37,6 +37,7 @@ const config: Config = {
         800: '#2C2C2C',
         900: '#121212',
       },
+      error: '#FF0000',
       transparent: 'transparent',
       'btn-green': '#2FAB09',
       'btn-white': '#FFFFFF',
@@ -71,6 +72,7 @@ const config: Config = {
     },
     fontWeight: {
       normal: '400',
+      semibold: '600',
       bold: '700',
       black: '900',
     },

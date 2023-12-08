@@ -31,6 +31,7 @@ export function Jumbotron({
         <div className={`content w-full flex items-center pb-8 md:pb-0`}>
           <div className='md:p-8'>
             <h1 className='text-Jumbo/sm md:text-Jumbo/lg font-black mb-8'>
+              {/* TODO: Remove font-black class from tailwind */}
               {title}
             </h1>
             {children && <div className='mb-8'>{children}</div>}
