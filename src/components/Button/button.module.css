@@ -54,11 +54,11 @@
 }
 .btn-default-transparent:hover,
 .btn-white-transparent:hover {
-  background: rgba(var(--opacity-20-dark-rgb));
+  background: rgba(var(--opacity-10-dark-rgb));
 }
 .btn-default-transparent:active,
 .btn-white-transparent:active {
-  background: rgba(var(--opacity-40-dark-rgb));
+  background: rgba(var(--opacity-20-dark-rgb));
 }
 
 @media (prefers-color-scheme: dark) {
