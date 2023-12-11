@@ -7,6 +7,8 @@
   --background-rgb: 255, 255, 255;
   --opacity-20-rgb: 255, 255, 255, 0.2;
   --opacity-40-rgb: 255, 255, 255, 0.4;
+  --opacity-20-dark-rgb: 0, 0, 0, 0.2;
+  --opacity-40-dark-rgb: 0, 0, 0, 0.4;
 
   --green-hover-rgb: 47, 171, 9, 0.2;
 
