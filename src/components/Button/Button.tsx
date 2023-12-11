@@ -53,11 +53,20 @@ const Button = ({
 
   const sizeClasses = sizeClass[size];
 
+  const handleClick = (e: { preventDefault: () => void; }) => {
+    if (href?.startsWith('#')) {
+      e.preventDefault();
+      const id = href.slice(1);
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   if (href)
     return (
       <Link
         className={`${baseClasses} ${colorClass} ${sizeClasses} inline-flex gap-1 items-center`}
         href={href || '#'}
+        onClick={handleClick}
       >
         {children}
       </Link>
