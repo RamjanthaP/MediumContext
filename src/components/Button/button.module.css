@@ -54,11 +54,22 @@
 }
 .btn-default-transparent:hover,
 .btn-white-transparent:hover {
-  background: rgba(var(--opacity-20-rgb));
+  background: rgba(var(--opacity-10-dark-rgb));
 }
 .btn-default-transparent:active,
 .btn-white-transparent:active {
-  background: rgba(var(--opacity-40-rgb));
+  background: rgba(var(--opacity-20-dark-rgb));
+}
+
+@media (prefers-color-scheme: dark) {
+  .btn-default-transparent:hover,
+  .btn-white-transparent:hover {
+    background: rgba(var(--opacity-20-rgb));
+  }
+  .btn-default-transparent:active,
+  .btn-white-transparent:active {
+    background: rgba(var(--opacity-40-rgb));
+  }
 }
 
 /* Transparent Primary Button */
