@@ -32,6 +32,10 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
+    {
+      name: 'firefox',
+      use: { ...devices['iPhone 14 Pro'] },
+    },
   ],
   // Run your local dev server before starting the tests.
   webServer: {
