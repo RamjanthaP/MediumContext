@@ -4,7 +4,7 @@
       "name": "body",
       "display_name": null,
       "created_at": "2023-12-06T10:24:48.463Z",
-      "updated_at": "2023-12-06T10:25:49.834Z",
+      "updated_at": "2023-12-07T10:47:33.574Z",
       "id": 4991518,
       "schema": {
         "animation": {
@@ -12,6 +12,30 @@
           "use_uuid": true,
           "source": "external",
           "external_datasource": "https://localhost:3010/api/animation"
+        },
+        "body": {
+          "type": "richtext",
+          "customize_toolbar": true,
+          "toolbar": [
+            "highlight",
+            "h3",
+            "h4",
+            "h5",
+            "h2",
+            "list",
+            "bold",
+            "emoji",
+            "unset",
+            "image",
+            "italic",
+            "link",
+            "anchor",
+            "olist",
+            "paragraph",
+            "quote",
+            "redo",
+            "undo"
+          ]
         }
       },
       "image": null,
@@ -58,6 +82,30 @@
       "color": null,
       "icon": null,
       "component_group_name": "Blocks"
+    },
+    {
+      "name": "Email",
+      "display_name": null,
+      "created_at": "2023-12-11T10:18:07.567Z",
+      "updated_at": "2023-12-11T10:18:35.135Z",
+      "id": 5016676,
+      "schema": {
+        "errorMessage": {
+          "type": "text"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Email",
+      "component_group_uuid": "c95114ec-be0d-4a7b-8d53-93f1cce845f3",
+      "color": null,
+      "icon": null,
+      "component_group_name": "Validators"
     },
     {
       "name": "feature",
@@ -181,6 +229,91 @@
       "component_group_name": "Blocks"
     },
     {
+      "name": "Form",
+      "display_name": null,
+      "created_at": "2023-12-11T10:46:29.216Z",
+      "updated_at": "2023-12-11T10:47:15.922Z",
+      "id": 5016845,
+      "schema": {
+        "Inputs": {
+          "type": "bloks"
+        },
+        "Endpoint": {
+          "type": "text"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Form",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "Form Inputs",
+      "display_name": null,
+      "created_at": "2023-12-11T10:14:35.098Z",
+      "updated_at": "2023-12-11T10:27:55.370Z",
+      "id": 5016670,
+      "schema": {
+        "Name": {
+          "type": "text"
+        },
+        "Label": {
+          "type": "text"
+        },
+        "Placeholder": {
+          "type": "text"
+        },
+        "Type": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "_uid": "e6c3cbb2-9dd4-4223-ae68-8aedeca57b07",
+              "name": "Name",
+              "value": "text"
+            },
+            {
+              "_uid": "f401c4df-2ef3-475b-98d4-c5c9908e22ac",
+              "value": "email",
+              "name": "Email"
+            },
+            {
+              "_uid": "6e958669-656c-4061-adb3-72cb012ec745",
+              "value": "text",
+              "name": "Text"
+            }
+          ]
+        },
+        "Validators": {
+          "type": "bloks",
+          "restrict_type": "groups",
+          "restrict_components": true,
+          "component_whitelist": [],
+          "component_group_whitelist": [
+            "c95114ec-be0d-4a7b-8d53-93f1cce845f3"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Form Inputs",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
       "name": "grid",
       "display_name": "Grid Section",
       "created_at": "2023-10-05T08:08:49.695Z",
@@ -243,24 +376,30 @@
       "name": "hero",
       "display_name": null,
       "created_at": "2023-10-26T12:13:01.667Z",
-      "updated_at": "2023-11-28T21:17:15.044Z",
+      "updated_at": "2023-12-12T13:50:25.528Z",
       "id": 4789750,
       "schema": {
         "headLine": {
-          "type": "text",
+          "type": "richtext",
           "required": true,
           "customize_toolbar": true,
           "toolbar": [
             "bold"
-          ]
+          ],
+          "pos": 0
         },
         "image": {
           "type": "asset",
-          "required": true,
+          "required": false,
           "filetypes": [
             "images",
             "videos"
-          ]
+          ],
+          "pos": 1
+        },
+        "bodyText": {
+          "type": "richtext",
+          "pos": 2
         },
         "ctaPrimary": {
           "type": "bloks",
@@ -270,7 +409,8 @@
             "Link"
           ],
           "maximum": 2,
-          "required": false
+          "required": false,
+          "pos": 3
         },
         "ctaSecondary": {
           "type": "bloks",
@@ -279,7 +419,8 @@
           "component_whitelist": [
             "Link"
           ],
-          "maximum": 1
+          "maximum": 1,
+          "pos": 4
         }
       },
       "image": null,
@@ -477,6 +618,33 @@
       "component_group_name": "Blocks"
     },
     {
+      "name": "Maximum Length",
+      "display_name": null,
+      "created_at": "2023-12-11T10:21:17.252Z",
+      "updated_at": "2023-12-11T10:21:44.790Z",
+      "id": 5016682,
+      "schema": {
+        "errorMessage": {
+          "type": "text"
+        },
+        "maxLength": {
+          "type": "number"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Maximum Length",
+      "component_group_uuid": "c95114ec-be0d-4a7b-8d53-93f1cce845f3",
+      "color": null,
+      "icon": null,
+      "component_group_name": "Validators"
+    },
+    {
       "name": "menu",
       "display_name": null,
       "created_at": "2023-10-06T09:30:14.867Z",
@@ -548,6 +716,33 @@
       "component_group_uuid": null,
       "color": "#fbce41",
       "icon": "block-tag"
+    },
+    {
+      "name": "Minimum Length",
+      "display_name": null,
+      "created_at": "2023-12-11T10:19:29.980Z",
+      "updated_at": "2023-12-11T10:20:51.229Z",
+      "id": 5016677,
+      "schema": {
+        "errorMessage": {
+          "type": "text"
+        },
+        "minLength": {
+          "type": "number"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Minimum Length",
+      "component_group_uuid": "c95114ec-be0d-4a7b-8d53-93f1cce845f3",
+      "color": null,
+      "icon": null,
+      "component_group_name": "Validators"
     },
     {
       "name": "offices",
@@ -665,6 +860,30 @@
       "color": null,
       "icon": null,
       "component_group_name": "Blocks"
+    },
+    {
+      "name": "Required",
+      "display_name": null,
+      "created_at": "2023-12-12T09:07:29.878Z",
+      "updated_at": "2023-12-12T09:08:35.290Z",
+      "id": 5023459,
+      "schema": {
+        "errorMessage": {
+          "type": "text"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Required",
+      "component_group_uuid": "c95114ec-be0d-4a7b-8d53-93f1cce845f3",
+      "color": null,
+      "icon": null,
+      "component_group_name": "Validators"
     },
     {
       "name": "reUsableSection",
