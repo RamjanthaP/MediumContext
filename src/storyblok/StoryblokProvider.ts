@@ -10,6 +10,7 @@ import { apiPlugin, storyblokInit } from '@storyblok/react/rsc';
 
 import HeaderMenu from '@/components/Menu/HeaderMenu';
 import MenuLink from '@/components/Menu/MenuLink';
+import OfficeCard from '@/components/OfficeCard/OfficeCard';
 
 import BodyBlockSb from './components/BodyBlock';
 import Feature from './components/Feature';
@@ -17,8 +18,12 @@ import GridSb from './components/Grid';
 import HeroSb from './components/Hero';
 import JumbotronSb from './components/Jumbotron';
 import LogoCardSb from './components/LogoCard';
-import ServiceItemSb from './components/ServiceItems';
 import MapSb from './components/MapSb';
+import ServiceItemSb from './components/ServiceItems';
+
+/** 1. Tag it as a client component */
+
+/** 1. Tag it as a client component */
 
 /** 1. Tag it as a client component */
 
@@ -36,6 +41,7 @@ const components = {
   logo_card: LogoCardSb,
   jumbotron: JumbotronSb,
   service_items: ServiceItemSb,
+  offices: OfficeCard,
 };
 /** 2. Initialize it as usual */
 storyblokInit({
