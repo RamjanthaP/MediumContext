@@ -1,9 +1,10 @@
 /**
  * @jest-environment jsdom
  */
-import { render, screen } from '@testing-library/react';
-import BrandedTitle from './BrandedTitle';
 import '@testing-library/jest-dom';
+import { render, screen } from '@testing-library/react';
+
+import BrandedTitle from './BrandedTitle';
 
 const stringBrandedTitle = 'Hej där.';
 const stringNotBranded = 'Hej där';

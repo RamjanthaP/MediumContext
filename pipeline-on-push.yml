@@ -6,7 +6,7 @@
 trigger: none
 
 pr:
-- main
+  - main
 
 pool:
   name: Azure Pipelines
@@ -24,7 +24,7 @@ variables:
     value: 'drop'
 
 jobs:
-  - job: installAndLint
+  - job: install
     displayName: Install node and lint repo
     steps:
       - task: NodeTool@0
@@ -57,3 +57,18 @@ jobs:
           command: 'custom'
           workingDir: '.'
           customCommand: 'run lint'
+
+      - task: Npm@1
+        displayName: 'Run unit tests'
+        inputs:
+          command: 'custom'
+          customCommand: 'run test:ci'
+
+      - script: |
+          npx playwright install --with-deps
+        displayName: 'Prepare E2E tests'
+
+      - script: npx playwright test
+        displayName: 'Run E2E tests'
+        env:
+          CI: true
