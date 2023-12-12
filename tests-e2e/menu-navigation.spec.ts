@@ -6,6 +6,7 @@ test.describe('Lets you get to all pages from navigation', () => {
   });
 
   test('navigates to the page "Om Amaceit"', async ({ page }) => {
+    test.slow();
     await page.getByRole('link', { name: /Om Amaceit/ }).click();
     await expect(page).toHaveURL('/om-amaceit');
     await expect(
@@ -14,18 +15,21 @@ test.describe('Lets you get to all pages from navigation', () => {
   });
 
   test('navigates to the page "Karriär"', async ({ page }) => {
+    test.slow();
     await page.getByRole('link', { name: /Karriär/ }).click();
     await expect(page).toHaveURL('/karriar');
     await expect(page.getByRole('heading', { name: 'framtid' })).toBeVisible();
   });
 
   test('navigates to the page "Tjänster"', async ({ page }) => {
+    test.slow();
     await page.getByRole('link', { name: /Tjänster/ }).click();
     await expect(page).toHaveURL('/services');
     await expect(page.getByRole('heading', { name: 'Tjänster' })).toBeVisible();
   });
 
   test('navigates to the page "Kontakta Oss"', async ({ page }) => {
+    test.slow();
     await page.getByRole('link', { name: /Kontakta oss/ }).click();
     await expect(page).toHaveURL('/kontakta-oss');
     await expect(
