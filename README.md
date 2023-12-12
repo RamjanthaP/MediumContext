@@ -9,6 +9,7 @@ Things to be familiar oneself with when working with this project.
 - Storybook (Component library)
 - Typescript
 - Tailwind (CSS utility framework)
+- [Playwright](https://playwright.dev/) for E2E-testing
 
 ## Setup
 
@@ -48,6 +49,16 @@ In order to get typecomletion and type safety we are using
 If there's an error fetching, try to logout of storyblok cli by `storyblok logout` and then login again with `storyblok login` and enter your credentials.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Tests
+
+### Unit tests
+
+Are written in jest/testing-library syntax and is placed in context with the file it's testing. For a function in `utils/text-helper.ts` the test should be `utils/test-helper.spec.ts`
+
+### End to End tests (E2E)
+
+Are written in playwright and should be placed in `/test-e2e` with a descriptive naming and test a clear scope of functionality, for exemple just navigation or just a contact form.
 
 ## Folder structure
 
