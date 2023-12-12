@@ -24,7 +24,7 @@ variables:
     value: 'drop'
 
 jobs:
-  - job: installAndLint
+  - job: install
     displayName: Install node and lint repo
     steps:
       - task: NodeTool@0
@@ -50,7 +50,22 @@ jobs:
           # Set environment variable for npm script
           echo "STORYBLOK_API_TOKEN=$apiValue" >> $(System.DefaultWorkingDirectory)/.env
         displayName: 'Set API variable for npm'
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          ArtifactName: 'drop'
+          publishLocation: 'Container'
 
+  - job: lintApplication
+    displayName: Unit test
+    dependsOn: install
+    steps:
+      - task: DownloadFileshareArtifacts@1
+        displayName: Download artifact
+        inputs:
+          filesharePath: '$(System.ArtifactsDirectory)'
+          artifactName: 'drop'
+          downloadPath: '$(System.ArtifactsDirectory)'
       - task: Npm@1
         displayName: Lint application
         inputs:
@@ -60,8 +75,14 @@ jobs:
           
   - job: unitTest
     displayName: Unit test
-    dependsOn: installAndLint
+    dependsOn: install
     steps:
+      - task: DownloadFileshareArtifacts@1
+        displayName: Download artifact
+        inputs:
+          filesharePath: '$(System.ArtifactsDirectory)'
+          artifactName: 'drop'
+          downloadPath: '$(System.ArtifactsDirectory)'
       - task: Npm@1
         displayName: 'Run unit tests'
         inputs:
