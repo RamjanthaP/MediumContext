@@ -57,3 +57,13 @@ jobs:
           command: 'custom'
           workingDir: '.'
           customCommand: 'run lint'
+          
+    - job: unitTest
+      displayName: Unit test
+      dependsOn: installAndLint
+      steps:
+        - task: Npm@1
+          displayName: 'Run unit tests'
+          inputs:
+          command: 'custom'
+          customCommand: 'run test:ci'
