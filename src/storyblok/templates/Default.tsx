@@ -1,4 +1,5 @@
-import { storyblokEditable, StoryblokComponent } from '@storyblok/react/rsc';
+import { StoryblokComponent, storyblokEditable } from '@storyblok/react/rsc';
+
 import { TemplateDefaultStoryblok } from '../../../component-types-sb';
 
 // Used as entry point for all pages in Storyblok

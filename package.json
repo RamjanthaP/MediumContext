@@ -11,6 +11,8 @@
     "start:debug": "next start",
     "test": "jest --watch",
     "test:ci": "jest",
+    "test:e2e": "playwright test",
+    "test:e2e:debug": "playwright test --ui",
     "lint": "next lint",
     "format": "prettier --check --ignore-path .gitignore .",
     "sb-types:fetch": "storyblok pull-components --space 255438",
@@ -31,6 +33,7 @@
     "sharp": "^0.33.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.40.1",
     "@storybook/addon-designs": "^7.0.5",
     "@storybook/addon-essentials": "^7.6.1",
     "@storybook/addon-interactions": "^7.6.1",
