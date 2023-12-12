@@ -19,10 +19,6 @@ variables:
   - name: image
     value: 'ubuntu-latest'
 
-  # Agent VM image name
-  - name: artifactName
-    value: 'drop'
-
 jobs:
   - job: install
     displayName: Install node and lint repo
