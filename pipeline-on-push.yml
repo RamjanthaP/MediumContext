@@ -6,10 +6,10 @@
 trigger: none
 
 pr:
-- main
+  - main
 
 pool:
-  name: Azure Pipelines
+  name: Local-Joakim
 
 variables:
   # Make storybook group available.
@@ -72,7 +72,7 @@ jobs:
           command: 'custom'
           workingDir: '.'
           customCommand: 'run lint'
-          
+
   - job: unitTest
     displayName: Unit test
     dependsOn: install
