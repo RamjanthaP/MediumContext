@@ -9,7 +9,7 @@ pr:
   - main
 
 pool:
-  name: Local-Joakim
+  name: Azure Pipelines
 
 variables:
   # Make storybook group available.
@@ -68,6 +68,7 @@ jobs:
           npx playwright install --with-deps
         displayName: 'Prepare E2E tests'
 
-      - script: |
-          CI=true && npx playwright test
+      - script: npx playwright test
         displayName: 'Run E2E tests'
+        env:
+          CI: true
