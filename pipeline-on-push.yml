@@ -51,23 +51,6 @@ jobs:
           echo "STORYBLOK_API_TOKEN=$apiValue" >> $(System.DefaultWorkingDirectory)/.env
         displayName: 'Set API variable for npm'
 
-      - task: PublishBuildArtifacts@1
-        displayName: 'Publish artifact'
-        inputs:
-          PathtoPublish: $(System.DefaultWorkingDirectory)
-          ArtifactName: 'drop'
-          publishLocation: 'Container'
-
-  - job: lintApplication
-    displayName: Unit test
-    dependsOn: install
-    steps:
-      - task: DownloadFileshareArtifacts@1
-        displayName: Download artifact
-        inputs:
-          filesharePath: '$(System.ArtifactsDirectory)'
-          artifactName: 'drop'
-          downloadPath: '$(System.ArtifactsDirectory)'
       - task: Npm@1
         displayName: Lint application
         inputs:
@@ -75,16 +58,6 @@ jobs:
           workingDir: '.'
           customCommand: 'run lint'
 
-  - job: unitTest
-    displayName: Unit test
-    dependsOn: install
-    steps:
-      - task: DownloadFileshareArtifacts@1
-        displayName: Download artifact
-        inputs:
-          filesharePath: '$(System.ArtifactsDirectory)'
-          artifactName: 'drop'
-          downloadPath: '$(System.ArtifactsDirectory)'
       - task: Npm@1
         displayName: 'Run unit tests'
         inputs:
