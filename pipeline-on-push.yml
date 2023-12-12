@@ -64,7 +64,7 @@ jobs:
           command: 'custom'
           customCommand: 'run test:ci'
 
-     - script: |
+      - script: |
           npx playwright install --with-deps
         displayName: "Prepare E2E tests"
 
