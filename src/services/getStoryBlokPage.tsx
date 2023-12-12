@@ -1,4 +1,5 @@
 import { ISbStoriesParams, getStoryblokApi } from '@storyblok/react/rsc';
+
 import {
   ContactFooterStoryblok,
   MenuStoryblok,
@@ -11,8 +12,10 @@ export async function getStoryblokPage(path: string[]) {
   };
   const storyblokApi = getStoryblokApi();
   try {
-    const storyReq = await storyblokApi
-      .get(`cdn/stories/${path.join('/')}`, sbParams);
+    const storyReq = await storyblokApi.get(
+      `cdn/stories/${path.join('/')}`,
+      sbParams
+    );
     return {
       props: {
         story: {
@@ -62,7 +65,7 @@ export async function getGlobalServiceItems(): Promise<ContactFooterStoryblok> {
     })
     .catch((e) => {
       console.error(e);
-      throw new Error('Hittar inte footer');
+      throw new Error('Hittar inte relaterade tjänster');
     });
   return configReq.data.story;
 }
