@@ -54,7 +54,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ### Unit tests
 
-Are written in jest/testing-library syntax and is placed in context with the file it's testing. For a function in `utils/text-helper.ts` the test should be `utils/test-helper.spec.ts`
+Are written in jest/testing-library syntax and is placed in context with the file it's testing.
+Use the suffix `filename.test.tsx` instead of `filename.spec.tsx`. This convention makes it easier to separate unit tests from e2e tests.
+
+#### Exemple
+
+For a function in `utils/text-helper.ts` the test should be `utils/test-helper.test.ts`
 
 ### End to End tests (E2E)
 
