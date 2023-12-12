@@ -4,7 +4,6 @@ import { TemplateDefaultStoryblok } from '../../../component-types-sb';
 
 // Used as entry point for all pages in Storyblok
 const TemplateDefault = ({ blok }: TemplateDefaultStoryblok) => {
-  console.log(blok);
   return (
     <main {...storyblokEditable(blok)}>
       {blok.body?.map((nestedBlok: { _uid: string }) => (
