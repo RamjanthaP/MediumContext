@@ -68,8 +68,6 @@ jobs:
           npx playwright install --with-deps
         displayName: 'Prepare E2E tests'
 
-      - task: Npm@1
+      - script: |
+          CI=true && npx playwright test
         displayName: 'Run E2E tests'
-        inputs:
-          command: 'custom'
-          customCommand: 'CI=true && npx playwright test'
