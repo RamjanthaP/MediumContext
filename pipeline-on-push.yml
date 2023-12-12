@@ -63,3 +63,9 @@ jobs:
         inputs:
           command: 'custom'
           customCommand: 'run test:ci'
+
+      - task: Npm@1
+        displayName: 'Run E2E tests'
+        inputs:
+          command: 'custom'
+          customCommand: 'run test:e2e'
