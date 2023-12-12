@@ -5,6 +5,9 @@
 
 trigger: none
 
+pr:
+  - main
+
 pool:
   name: Azure Pipelines
 
@@ -16,13 +19,9 @@ variables:
   - name: image
     value: 'ubuntu-latest'
 
-  # Agent VM image name
-  - name: artifactName
-    value: 'drop'
-
 jobs:
   - job: install
-    displayName: Install node
+    displayName: Install node and lint repo
     steps:
       - task: NodeTool@0
         displayName: 'Install Node.js from nvmrc file'
@@ -34,23 +33,38 @@ jobs:
         displayName: 'Retrieving cache for package-lock.json'
         inputs:
           key: 'package-lock.json'
-          # TODO: Investigate if we should use something else than .next/cache for the other cache
-          # path: '$(System.DefaultWorkingDirectory)/.next/cache'
+          path: '$(System.DefaultWorkingDirectory)/.next/cache'
 
       - task: Npm@1
         displayName: 'Install dependencies for production'
         inputs:
-          command: 'install'
+          command: 'ci'
 
       - bash: |
           # Use the API and agent variables from the Storyblok group
           apiValue=$(STORYBLOK_API_TOKEN)
           # Set environment variable for npm script
           echo "STORYBLOK_API_TOKEN=$apiValue" >> $(System.DefaultWorkingDirectory)/.env
-        displayName: 'Adds token to .env'
+        displayName: 'Set API variable for npm'
+
+      - task: Npm@1
+        displayName: Lint application
+        inputs:
+          command: 'custom'
+          workingDir: '.'
+          customCommand: 'run lint'
 
       - task: Npm@1
         displayName: 'Run unit tests'
         inputs:
           command: 'custom'
           customCommand: 'run test:ci'
+
+      - script: |
+          npx playwright install --with-deps
+        displayName: 'Prepare E2E tests'
+
+      - script: npx playwright test
+        displayName: 'Run E2E tests'
+        env:
+          CI: true
