@@ -1,4 +1,5 @@
 import { StoryblokComponent } from '@storyblok/react/rsc';
+
 import PageSection, { PageSectionProps } from '../PageSection/PageSection';
 
 // Used for whitelisting classes for css
@@ -21,6 +22,7 @@ const Grid = ({
         className={`grid gap-4 md:gap-12 xl:gap-20 grid-cols-1 md:grid-cols-2 lg:grid-cols-${
           columns?.length || 4
         }`}
+        data-testid='grid-items'
       >
         {/* Provides us a way to use it without storyblok */}
         {children}
