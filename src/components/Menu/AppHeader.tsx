@@ -50,10 +50,11 @@ const Menu = ({ blok }: { blok: MenuStoryblok }) => {
       <Container>
         <div className='flex justify-between items-center py-1 md:py-6 transition-all duration-500'>
           <Link
+            onClick={closeMenu}
             href='/'
             className='flex justify-start flex-grow-1 w-3/12 lg:w-2/12'
           >
-            <LogoAmaceit className='md:-translate-y-0.5 lg:-translate-y-1 md:translate-y-0' />
+            <LogoAmaceit className='md:-translate-y-0.5 lg:-translate-y-1' />
           </Link>
           <DesktopMenu menuItems={menuItems} specialItem={specialItem} />
           <div className='flex'>

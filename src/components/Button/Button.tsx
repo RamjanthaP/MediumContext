@@ -53,12 +53,13 @@ const Button = ({
 
   const sizeClasses = sizeClass[size];
 
-  const handleClick = (e: { preventDefault: () => void; }) => {
+  const handleClick = (e: { preventDefault: () => void }) => {
     if (href?.startsWith('#')) {
       e.preventDefault();
       const id = href.slice(1);
       document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     }
+    if (props.onClick) props.onClick();
   };
 
   if (href)
