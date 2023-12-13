@@ -1,29 +1,15 @@
-import { StoryblokComponent } from '@storyblok/react';
-import StoryblokStory from '@storyblok/react/story';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-
-import { conformPathParams } from '@/utilities/helper';
-
+import { TemplateDefaultStoryblok, TemplateServiceStoryblok } from '@sb-types';
 import {
   getGlobalServiceItems,
   getStoryblokPage,
 } from '../services/getStoryBlokPage';
 
-// Return a list of `params` to populate the [slug] dynamic segment
-// TODO: Make a fetch to the Storyblok API to get all the slugs we can forsee
-export async function generateStaticParams() {
-  const slugs = [
-    'om-amaceit',
-    'karriar',
-    'kontakta-oss',
-    'services',
-    'services/digitalisering',
-  ];
+import { HeadMetadata } from '../utilities/HeadMetadata';
+import { StoryblokComponent } from '@storyblok/react';
+import StoryblokStory from '@storyblok/react/story';
+import { conformPathParams } from '@/utilities/helper';
 
-  return slugs.map((slug) => ({
-    slug,
-  }));
-}
 export default function Page(
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
@@ -32,6 +18,7 @@ export default function Page(
 
   return (
     <div>
+      <HeadMetadata title={props.pageData.props.story.name} />
       {props.isHome && (
         <>
           <div className='p-8 h-[400px] flex items-center justify-center bg-primary-100'>

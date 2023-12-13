@@ -10,6 +10,7 @@ import {
 import StoryblokStory from '@storyblok/react/story';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 
+import { HeadMetadata } from '@/utilities/HeadMetadata';
 import { convertPath, getSlugParam } from '@/utilities/helper';
 
 export default function Page(
@@ -41,6 +42,9 @@ export default function Page(
 
   return (
     <div>
+      <HeadMetadata
+        title={`${props.pageData.props.story.name} - en av alla de IT-tjänster Amaceit erbjuder`}
+      />
       <Suspense fallback={<div>Loading...</div>}>
         <StoryblokStory
           story={props.pageData.props.story}
