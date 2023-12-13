@@ -1,7 +1,17 @@
 import {StoryblokStory} from 'storyblok-generate-ts'
 
+export interface RichtextStoryblok {
+  type: string;
+  content?: RichtextStoryblok[];
+  marks?: RichtextStoryblok[];
+  attrs?: any;
+  text?: string;
+  [k: string]: any;
+}
+
 export interface BodyStoryblok {
   animation?: string;
+  body?: RichtextStoryblok;
   _uid: string;
   component: "body";
   [k: string]: any;
@@ -14,6 +24,13 @@ export interface ContactFooterStoryblok {
   [k: string]: any;
 }
 
+export interface EmailStoryblok {
+  errorMessage?: string;
+  _uid: string;
+  component: "Email";
+  [k: string]: any;
+}
+
 export interface AssetStoryblok {
   alt?: string;
   copyright?: string;
@@ -22,15 +39,6 @@ export interface AssetStoryblok {
   name: string;
   title?: string;
   focus?: string;
-  [k: string]: any;
-}
-
-export interface RichtextStoryblok {
-  type: string;
-  content?: RichtextStoryblok[];
-  marks?: RichtextStoryblok[];
-  attrs?: any;
-  text?: string;
   [k: string]: any;
 }
 
@@ -51,23 +59,73 @@ export interface FeatureStoryblok {
   [k: string]: any;
 }
 
-export interface GridStoryblok {
-  title?: string;
-  columns?: (
+export interface FormStoryblok {
+  Inputs?: (
     | BodyStoryblok
     | ContactFooterStoryblok
+    | EmailStoryblok
     | FeatureStoryblok
+    | FormStoryblok
+    | FormInputsStoryblok
     | GridStoryblok
     | HeroStoryblok
     | JumbotronStoryblok
     | LinkStoryblok
     | LogoCardStoryblok
     | MapBlockStoryblok
+    | MaximumLengthStoryblok
     | MenuStoryblok
     | MenuLinkStoryblok
+    | MinimumLengthStoryblok
     | OfficesStoryblok
     | PersonStoryblok
     | QuickContactStoryblok
+    | RequiredStoryblok
+    | ReUsableSectionStoryblok
+    | ServiceItemsStoryblok
+    | TemplateDefaultStoryblok
+    | TemplateServiceStoryblok
+  )[];
+  Endpoint?: string;
+  _uid: string;
+  component: "Form";
+  [k: string]: any;
+}
+
+export interface FormInputsStoryblok {
+  Name?: string;
+  Label?: string;
+  Placeholder?: string;
+  Type?: "" | "text" | "email";
+  Validators?: (EmailStoryblok | MaximumLengthStoryblok | MinimumLengthStoryblok | RequiredStoryblok)[];
+  _uid: string;
+  component: "Form Inputs";
+  [k: string]: any;
+}
+
+export interface GridStoryblok {
+  title?: string;
+  columns?: (
+    | BodyStoryblok
+    | ContactFooterStoryblok
+    | EmailStoryblok
+    | FeatureStoryblok
+    | FormStoryblok
+    | FormInputsStoryblok
+    | GridStoryblok
+    | HeroStoryblok
+    | JumbotronStoryblok
+    | LinkStoryblok
+    | LogoCardStoryblok
+    | MapBlockStoryblok
+    | MaximumLengthStoryblok
+    | MenuStoryblok
+    | MenuLinkStoryblok
+    | MinimumLengthStoryblok
+    | OfficesStoryblok
+    | PersonStoryblok
+    | QuickContactStoryblok
+    | RequiredStoryblok
     | ReUsableSectionStoryblok
     | ServiceItemsStoryblok
     | TemplateDefaultStoryblok
@@ -80,11 +138,11 @@ export interface GridStoryblok {
 }
 
 export interface HeroStoryblok {
-  headLine: string;
+  headLine: RichtextStoryblok;
   image?: AssetStoryblok;
+  bodyText?: RichtextStoryblok;
   ctaPrimary?: LinkStoryblok[];
   ctaSecondary?: LinkStoryblok[];
-  bodyText?: RichtextStoryblok;
   _uid: string;
   component: "hero";
   [k: string]: any;
@@ -176,6 +234,14 @@ export interface MapBlockStoryblok {
   [k: string]: any;
 }
 
+export interface MaximumLengthStoryblok {
+  errorMessage?: string;
+  maxLength?: string;
+  _uid: string;
+  component: "Maximum Length";
+  [k: string]: any;
+}
+
 export interface MenuStoryblok {
   header_menu?: MenuLinkStoryblok[];
   _uid: string;
@@ -189,6 +255,14 @@ export interface MenuLinkStoryblok {
   subItems?: MenuLinkStoryblok[];
   _uid: string;
   component: "menu_link";
+  [k: string]: any;
+}
+
+export interface MinimumLengthStoryblok {
+  errorMessage?: string;
+  minLength?: string;
+  _uid: string;
+  component: "Minimum Length";
   [k: string]: any;
 }
 
@@ -221,6 +295,13 @@ export interface QuickContactStoryblok {
   [k: string]: any;
 }
 
+export interface RequiredStoryblok {
+  errorMessage?: string;
+  _uid: string;
+  component: "Required";
+  [k: string]: any;
+}
+
 export interface ReUsableSectionStoryblok {
   content: any;
   _uid: string;
@@ -244,18 +325,24 @@ export interface TemplateDefaultStoryblok {
   body?: (
     | BodyStoryblok
     | ContactFooterStoryblok
+    | EmailStoryblok
     | FeatureStoryblok
+    | FormStoryblok
+    | FormInputsStoryblok
     | GridStoryblok
     | HeroStoryblok
     | JumbotronStoryblok
     | LinkStoryblok
     | LogoCardStoryblok
     | MapBlockStoryblok
+    | MaximumLengthStoryblok
     | MenuStoryblok
     | MenuLinkStoryblok
+    | MinimumLengthStoryblok
     | OfficesStoryblok
     | PersonStoryblok
     | QuickContactStoryblok
+    | RequiredStoryblok
     | ReUsableSectionStoryblok
     | ServiceItemsStoryblok
     | TemplateDefaultStoryblok

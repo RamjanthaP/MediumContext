@@ -1,0 +1,23 @@
+.root {
+  @apply bg-primary-100;
+  @apply flex justify-center items-center;
+  @apply py-4 md:py-12;
+  @apply w-full min-h-[400px] lg:min-h-[600px];
+}
+.heroTitle {
+  @apply font-bold;
+  @apply text-xxl md:text-3xl;
+  @apply mb-4 md:mb-8;
+  @apply max-w-5xl;
+  @apply transition-all duration-500;
+}
+.heroTitle b {
+  @apply text-primary-500;
+  font-weight: inherit;
+}
+
+@media (prefers-color-scheme: dark) {
+  .root {
+    @apply bg-secondary-900;
+  }
+}
