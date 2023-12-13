@@ -1,14 +1,14 @@
+import { StoryblokComponent } from '@storyblok/react';
+import StoryblokStory from '@storyblok/react/story';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { TemplateDefaultStoryblok, TemplateServiceStoryblok } from '@sb-types';
+
+import { conformPathParams } from '@/utilities/helper';
+
 import {
   getGlobalServiceItems,
   getStoryblokPage,
 } from '../services/getStoryBlokPage';
-
 import { HeadMetadata } from '../utilities/HeadMetadata';
-import { StoryblokComponent } from '@storyblok/react';
-import StoryblokStory from '@storyblok/react/story';
-import { conformPathParams } from '@/utilities/helper';
 
 export default function Page(
   props: InferGetServerSidePropsType<typeof getServerSideProps>
