@@ -23,11 +23,6 @@ import ServiceItemSb from './components/ServiceItems';
 
 /** 1. Tag it as a client component */
 
-/** 1. Tag it as a client component */
-
-/** 1. Tag it as a client component */
-
-/** 1. Tag it as a client component */
 const components = {
   template_default: TemplateDefault,
   template_service: TemplateService,
