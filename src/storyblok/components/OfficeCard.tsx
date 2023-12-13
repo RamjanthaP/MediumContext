@@ -1,8 +1,9 @@
+import { OfficeCardStoryblok } from '@sb-types';
 import { storyblokEditable } from '@storyblok/react';
 
 import OfficeCard from '../../components/OfficeCard/OfficeCard';
 
-const OfficeCardSb = ({ blok }: any) => {
+const OfficeCardSb = ({ blok }: OfficeCardStoryblok) => {
   const componentData = mapOfficeCard(blok);
   return (
     <div {...storyblokEditable(blok)}>
@@ -12,8 +13,8 @@ const OfficeCardSb = ({ blok }: any) => {
 };
 export default OfficeCardSb;
 
-function mapOfficeCard(blok: any): any {
+function mapOfficeCard(blok: OfficeCardStoryblok) {
   return {
-    animations: blok.animations || 'office',
+    offices: blok || 'office',
   };
 }
