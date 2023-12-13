@@ -24,7 +24,7 @@ const Hero = ({
 }: HeroProps) => {
   return (
     <div className={`relative  ${Styles.root}`}>
-      <div className='flex flex-col text-center'>
+      <div className='flex flex-col text-center px-4 md:px-8 lg:px-0'>
         <h1 className={`${Styles.heroTitle}`}>
           <RichText __html={title} unstyled />
         </h1>
