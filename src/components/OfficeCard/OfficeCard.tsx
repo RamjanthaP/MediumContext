@@ -4,6 +4,8 @@ import Image from 'next/image';
 
 import { OfficeCardStoryblok } from '@sb-types';
 
+import Styles from '@/components/OfficeCard/officecard.module.css';
+
 import PlaceholderImage from '../../../public/hero-images/shape_40.png';
 import Button from '../Button/Button';
 
@@ -15,19 +17,15 @@ export interface OfficeCardProps extends OfficeCardStoryblok {
 const OfficeCard = (componentData: OfficeCardProps) => {
   const office = componentData.blok;
 
-  const imageStyle = {
-    borderRadius: '2rem',
-    width: '100%',
-    height: '100%',
-    maxWidth: '21.25rem',
-    maxHeight: '21.25rem',
-  };
-
   return (
     <div className='pt-12 '>
       <div className='w-full hidden md:block'>
         <a href='/' className='relative flex items-center justify-center'>
-          <Image src={PlaceholderImage} style={imageStyle} alt='' />
+          <Image
+            src={PlaceholderImage}
+            style={Styles['office-card-image']}
+            alt=''
+          />
           <span className='hidden'>Länk till google maps</span>
         </a>
       </div>
