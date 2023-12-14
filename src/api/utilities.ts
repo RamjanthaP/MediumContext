@@ -1,6 +1,7 @@
 /**
  * Replaces a property in an object with a new value
  */
+// TODO: Make this work or remove it
 export function replaceProperty<T, K extends keyof T>(
   obj: T,
   propertyKey: K,
@@ -14,6 +15,7 @@ export function replaceProperty<T, K extends keyof T>(
 /**
  * Checks if a story has a relation for a specific property on content
  */
+// TODO: Make this work or remove it
 export function storyHasRelationForProp(
   storyData: {
     rels: { uuid: string }[];
