@@ -31,7 +31,6 @@ export default function Page(
           <StoryblokComponent blok={relatedItems} />
         </>
       )}
-      <div className='bg-primary-400 h-48 w-48 absolute top-0 right-0 z-50'></div>
       <StoryblokStory story={story} />
     </div>
   );
