@@ -1,6 +1,6 @@
 import { getGlobalServiceItems } from '@/api/blocks';
 import { getPage } from '@/api/pages';
-import { ISbStory, StoryblokComponent } from '@storyblok/react';
+import { ISbStory, ISbStoryData, StoryblokComponent } from '@storyblok/react';
 import StoryblokStory from '@storyblok/react/story';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
@@ -9,6 +9,12 @@ import { conformPathParams } from '@/utilities/helper';
 import { GridProps } from '@/components/Grid/Grid';
 
 import { HeadMetadata } from '../utilities/HeadMetadata';
+
+interface PageProps {
+  isHome: boolean;
+  story: ISbStoryData<'templateDefault'>;
+  relatedItems: GridProps;
+}
 
 export default function Page(
   props: InferGetServerSidePropsType<typeof getServerSideProps>
@@ -30,11 +36,7 @@ export default function Page(
     </div>
   );
 }
-interface PageProps {
-  isHome: boolean;
-  story: ISbStory['data'];
-  relatedItems: GridProps;
-}
+
 export const getServerSideProps: GetServerSideProps<PageProps> = async (
   props
 ) => {
@@ -45,6 +47,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (
 
     const pageData = await getPage(cleanPath);
     const relatedItemRequest = await getGlobalServiceItems();
+    console.log(pageData.data);
     return {
       props: {
         isHome,
