@@ -1,6 +1,6 @@
 import { getGlobalServiceItems } from '@/api/blocks';
 import { getPage } from '@/api/pages';
-import { ISbStory, ISbStoryData, StoryblokComponent } from '@storyblok/react';
+import { ISbStoryData, StoryblokComponent } from '@storyblok/react';
 import StoryblokStory from '@storyblok/react/story';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
@@ -47,7 +47,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (
 
     const pageData = await getPage(cleanPath);
     const relatedItemRequest = await getGlobalServiceItems();
-    console.log(pageData.data);
+
     return {
       props: {
         isHome,
