@@ -26,7 +26,7 @@ export default function Page(
   return (
     <div>
       <HeadMetadata
-        title={`${props.pageData.props.story.name} - en av alla de IT-tjänster Amaceit erbjuder`}
+        title={`${story.name} - en av alla de IT-tjänster Amaceit erbjuder`}
       />
       <Suspense fallback={<div>Loading...</div>}>
         <StoryblokStory
