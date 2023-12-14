@@ -1,8 +1,10 @@
-import SectionWrapper from '@/components/Layout/SectionWrapper';
-import { OfficeItem, OfficeItemProps } from './OfficeItem';
 import { ContactFooterStoryblok, OfficesStoryblok } from '@sb-types';
 
-function mapOfficeDTOtoData(dto: ContactFooterStoryblok) {
+import SectionWrapper from '@/components/Layout/SectionWrapper';
+
+import { OfficeItem, OfficeItemProps } from './OfficeItem';
+
+export function mapOfficeDTOtoData(dto: ContactFooterStoryblok) {
   return dto.content.offices.map((office: OfficesStoryblok) => ({
     title: office.city,
     address: {

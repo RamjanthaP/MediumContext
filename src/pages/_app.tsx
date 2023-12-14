@@ -1,10 +1,7 @@
 import { AppProps } from 'next/app';
 
+import { getFooterData, getMenuData } from '@/api/blocks';
 import '@/app/globals.css';
-import {
-  getStoryblokFooterData,
-  getStoryblokMenuData,
-} from '@/services/getStoryBlokPage';
 import StoryblokProvider from '@/storyblok/StoryblokProvider';
 import { ContactFooterStoryblok, MenuStoryblok } from '@sb-types';
 
@@ -21,19 +18,16 @@ const MyApp = ({
 }: AppProps & OwnInitalProps) => {
   return (
     <StoryblokProvider>
-      <AppHeader blok={menuData} />
+      <AppHeader blok={menuData.data} />
       <Component {...pageProps} />
-      <Footer blok={footerData} />
+      <Footer blok={footerData.data} />
     </StoryblokProvider>
   );
 };
 
-const appsInitialProps = async (): Promise<{
-  footerData: ContactFooterStoryblok;
-  menuData: MenuStoryblok;
-}> => {
-  const footerData = await getStoryblokFooterData();
-  const menuData = await getStoryblokMenuData();
+const appsInitialProps = async () => {
+  const footerData = await getFooterData();
+  const menuData = await getMenuData();
   return { footerData, menuData };
 };
 
