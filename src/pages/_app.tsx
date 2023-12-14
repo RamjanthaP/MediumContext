@@ -3,7 +3,6 @@ import { AppProps } from 'next/app';
 import { getFooterData, getMenuData } from '@/api/blocks';
 import '@/app/globals.css';
 import StoryblokProvider from '@/storyblok/StoryblokProvider';
-import { ContactFooterStoryblok, MenuStoryblok } from '@sb-types';
 
 import Footer from '@/components/Footer/Footer';
 import AppHeader from '@/components/Menu/AppHeader';

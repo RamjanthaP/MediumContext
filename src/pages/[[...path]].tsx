@@ -1,5 +1,3 @@
-import { Suspense } from 'react';
-
 import { getGlobalServiceItems } from '@/api/blocks';
 import { getPage } from '@/api/pages';
 import { ISbStory, StoryblokComponent } from '@storyblok/react';

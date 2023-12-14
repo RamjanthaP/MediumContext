@@ -1,10 +1,5 @@
 import { PersonStoryblok } from '@sb-types';
-import {
-  ISbStories,
-  ISbStory,
-  ISbStoryData,
-  getStoryblokApi,
-} from '@storyblok/react/rsc';
+import { ISbStories, ISbStoryData } from '@storyblok/react/rsc';
 
 import { apiClient } from './apiClient';
 import { storyblockBaseParams } from './apiClient';
