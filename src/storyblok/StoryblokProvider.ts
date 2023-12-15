@@ -1,4 +1,5 @@
 /** 1. Tag it as a client component */
+import { apiKeyPublic } from '@/config';
 import FallbackComponent from '@/storyblok/fallback-component/Fallback';
 
 /** Import your components */
@@ -47,9 +48,7 @@ if (
 
 /** 2. Initialize it as usual */
 storyblokInit({
-  accessToken:
-    process.env.STORYBLOK_API_TOKEN ||
-    'EMPTY_STRING_IN_ORDER_TO_KEEP_ERROR_BE_SILENT',
+  accessToken: process.env.STORYBLOK_API_TOKEN || apiKeyPublic, // This is a workaround in order
   use: [apiPlugin],
   components,
   customFallbackComponent: FallbackComponent,
