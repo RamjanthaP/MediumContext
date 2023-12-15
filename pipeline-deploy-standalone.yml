@@ -5,7 +5,7 @@
 #
 
 trigger:
-  - 'main'
+  - 'develop'
 
 pool:
   name: Azure Pipelines
@@ -129,7 +129,7 @@ stages:
             timeoutInMinutes: 30
             inputs:
               notifyUsers: 'joakim.nystrom@amaceit.com'
-              instructions: 'Approve deploy'
+              instructions: 'Approve deploy to STAGE'
               onTimeout: 'reject'
 
   - stage: Deploy
