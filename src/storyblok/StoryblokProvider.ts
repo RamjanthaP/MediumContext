@@ -1,6 +1,4 @@
 /** 1. Tag it as a client component */
-'use client';
-
 import FallbackComponent from '@/storyblok/fallback-component/Fallback';
 
 /** Import your components */
@@ -38,9 +36,20 @@ const components = {
   service_items: ServiceItemSb,
   offices: OfficeCard,
 };
+
+// Some stort of reminder
+if (
+  typeof window === 'undefined' &&
+  process.env.STORYBLOK_API_TOKEN === undefined
+) {
+  throw new Error('STORYBLOK_API_TOKEN is not defined');
+}
+
 /** 2. Initialize it as usual */
 storyblokInit({
-  accessToken: process.env.STORYBLOK_API_TOKEN,
+  accessToken:
+    process.env.STORYBLOK_API_TOKEN ||
+    'EMPTY_STRING_IN_ORDER_TO_KEEP_ERROR_BE_SILENT',
   use: [apiPlugin],
   components,
   customFallbackComponent: FallbackComponent,
