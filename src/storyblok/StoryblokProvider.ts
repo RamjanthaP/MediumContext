@@ -19,6 +19,12 @@ import JumbotronSb from './components/Jumbotron';
 import LogoCardSb from './components/LogoCard';
 import ServiceItemSb from './components/ServiceItems';
 import MapSb from './components/MapSb';
+import FormBlock from './components/FormBlock';
+import Email from '@/components/Forms/Validators/Email';
+import Required from '@/components/Forms/Validators/Required';
+import MaxLength from '@/components/Forms/Validators/MaximunLength';
+import MinLength from '@/components/Forms/Validators/MinimunLength';
+import FormInputs from '@/components/Forms/Form/FormInput';
 
 /** 1. Tag it as a client component */
 
@@ -36,6 +42,12 @@ const components = {
   logo_card: LogoCardSb,
   jumbotron: JumbotronSb,
   service_items: ServiceItemSb,
+  "Form": FormBlock,
+  "Form Inputs": FormInputs,
+  "Email": Email,
+  "Required": Required,
+  "Maximum Length": MaxLength,
+  "Minimum Length": MinLength,
 };
 /** 2. Initialize it as usual */
 storyblokInit({
