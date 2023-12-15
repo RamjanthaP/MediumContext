@@ -1,4 +1,3 @@
-import { getPage } from '@/api/pages';
 import { ArrowLeftIcon } from '@heroicons/react/20/solid';
 
 import Button from '@/components/Button/Button';
@@ -29,14 +28,4 @@ export default function NotFound() {
       </Container>
     </div>
   );
-}
-// TODO: Remove unless we want this editable by the CMS
-export async function getStaticProps() {
-  try {
-    const pageData = await getPage(['/']);
-    return { props: { pageData } };
-  } catch (error) {
-    console.error(error);
-    return { notFound: true };
-  }
 }
