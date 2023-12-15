@@ -1,9 +1,10 @@
-import { BaseProps } from '@/types/props';
-import { Container } from '../Layout/Container';
-import BrandedTitle from '../BrandedTitle/BrandedTitle';
 import { HeadingElementTag } from '@/types/common';
+import { BaseProps } from '@/types/props';
 
-type Theme = 'default' | 'inverted' | 'discrete';
+import BrandedTitle from '../BrandedTitle/BrandedTitle';
+import { Container } from '../Layout/Container';
+
+type Theme = 'default' | 'inverted' | 'discrete' | '';
 
 export interface PageSectionProps extends BaseProps {
   title?: string;
