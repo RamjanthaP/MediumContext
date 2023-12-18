@@ -5,7 +5,7 @@
 #
 
 trigger:
-  - 'develop'
+  - 'main'
 
 pool:
   name: Azure Pipelines
@@ -20,7 +20,7 @@ variables:
 
   # Web app name on Azure
   - name: webAppName
-    value: 'amaceitwebstage01'
+    value: 'amaceitwebprod01'
 
   # Agent VM image name
   - name: image
@@ -129,7 +129,7 @@ stages:
             timeoutInMinutes: 30
             inputs:
               notifyUsers: 'joakim.nystrom@amaceit.com'
-              instructions: 'Approve deploy to STAGE'
+              instructions: 'Approve deploy to PRODUCTION ✅'
               onTimeout: 'reject'
 
   - stage: Deploy

@@ -1,4 +1,4 @@
-import {StoryblokStory} from 'storyblok-generate-ts'
+import { StoryblokStory } from 'storyblok-generate-ts';
 
 export interface RichtextStoryblok {
   type: string;
@@ -13,14 +13,14 @@ export interface BodyStoryblok {
   animation?: string;
   body?: RichtextStoryblok;
   _uid: string;
-  component: "body";
+  component: 'body';
   [k: string]: any;
 }
 
 export interface ContactFooterStoryblok {
   offices?: OfficesStoryblok[];
   _uid: string;
-  component: "contact_footer";
+  component: 'contact_footer';
   [k: string]: any;
 }
 
@@ -49,13 +49,13 @@ export interface FeatureStoryblok {
   body?: string;
   ctaPrimary?: LinkStoryblok[];
   ctaSecondary?: LinkStoryblok[];
-  layout?: "" | "content-left" | "content-right";
-  theme?: "" | "default" | "inverted" | "discrete";
+  layout?: '' | 'content-left' | 'content-right';
+  theme?: '' | 'default' | 'inverted' | 'discrete';
   expandText?: string;
   expandTitle?: string;
   expandBody?: RichtextStoryblok;
   _uid: string;
-  component: "feature";
+  component: 'feature';
   [k: string]: any;
 }
 
@@ -131,9 +131,9 @@ export interface GridStoryblok {
     | TemplateDefaultStoryblok
     | TemplateServiceStoryblok
   )[];
-  theme?: "" | "default" | "inverted" | "discrete";
+  theme?: '' | 'default' | 'inverted' | 'discrete';
   _uid: string;
-  component: "grid";
+  component: 'grid';
   [k: string]: any;
 }
 
@@ -144,19 +144,19 @@ export interface HeroStoryblok {
   ctaPrimary?: LinkStoryblok[];
   ctaSecondary?: LinkStoryblok[];
   _uid: string;
-  component: "hero";
+  component: 'hero';
   [k: string]: any;
 }
 
 export interface JumbotronStoryblok {
   title: string;
-  layout: "" | "content-left";
+  layout: '' | 'content-left';
   content?: string;
   image: AssetStoryblok;
   ctaPrimary?: LinkStoryblok[];
   ctaSecondary?: LinkStoryblok[];
   _uid: string;
-  component: "jumbotron";
+  component: 'jumbotron';
   [k: string]: any;
 }
 
@@ -165,7 +165,7 @@ export type MultilinkStoryblok =
       id?: string;
       cached_url?: string;
       anchor?: string;
-      linktype?: "story";
+      linktype?: 'story';
       story?: {
         name: string;
         created_at?: string;
@@ -201,36 +201,39 @@ export type MultilinkStoryblok =
       url?: string;
       cached_url?: string;
       anchor?: string;
-      linktype?: "asset" | "url";
+      linktype?: 'asset' | 'url';
       [k: string]: any;
     }
   | {
       email?: string;
-      linktype?: "email";
+      linktype?: 'email';
       [k: string]: any;
     };
 
 export interface LinkStoryblok {
   text: string;
-  link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  link: Exclude<
+    MultilinkStoryblok,
+    { linktype?: 'email' } | { linktype?: 'asset' }
+  >;
   _uid: string;
-  component: "Link";
+  component: 'Link';
   [k: string]: any;
 }
 
 export interface LogoCardStoryblok {
   name: string;
   svgLogo: AssetStoryblok;
-  size: "" | "small" | "medium" | "large";
+  size: '' | 'small' | 'medium' | 'large';
   _uid: string;
-  component: "logo_card";
+  component: 'logo_card';
   [k: string]: any;
 }
 
 export interface MapBlockStoryblok {
   animations?: string;
   _uid: string;
-  component: "map_block";
+  component: 'map_block';
   [k: string]: any;
 }
 
@@ -245,16 +248,19 @@ export interface MaximumLengthStoryblok {
 export interface MenuStoryblok {
   header_menu?: MenuLinkStoryblok[];
   _uid: string;
-  component: "menu";
+  component: 'menu';
   [k: string]: any;
 }
 
 export interface MenuLinkStoryblok {
-  link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  link: Exclude<
+    MultilinkStoryblok,
+    { linktype?: 'email' } | { linktype?: 'asset' }
+  >;
   title: string;
   subItems?: MenuLinkStoryblok[];
   _uid: string;
-  component: "menu_link";
+  component: 'menu_link';
   [k: string]: any;
 }
 
@@ -271,7 +277,7 @@ export interface OfficesStoryblok {
   zip?: string;
   city: string;
   _uid: string;
-  component: "offices";
+  component: 'offices';
   [k: string]: any;
 }
 
@@ -282,7 +288,7 @@ export interface PersonStoryblok {
   email: string;
   image: AssetStoryblok;
   _uid: string;
-  component: "person";
+  component: 'person';
   [k: string]: any;
 }
 
@@ -291,7 +297,7 @@ export interface QuickContactStoryblok {
   description?: RichtextStoryblok;
   person: StoryblokStory<PersonStoryblok> | string;
   _uid: string;
-  component: "quick_contact";
+  component: 'quick_contact';
   [k: string]: any;
 }
 
@@ -305,7 +311,7 @@ export interface RequiredStoryblok {
 export interface ReUsableSectionStoryblok {
   content: any;
   _uid: string;
-  component: "reUsableSection";
+  component: 'reUsableSection';
   [k: string]: any;
 }
 
@@ -314,10 +320,13 @@ export interface ServiceItemsStoryblok {
   description?: RichtextStoryblok;
   animation?: string;
   Image?: string;
-  button_link?: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  button_link?: Exclude<
+    MultilinkStoryblok,
+    { linktype?: 'email' } | { linktype?: 'asset' }
+  >;
   button_title: string;
   _uid: string;
-  component: "service_items";
+  component: 'service_items';
   [k: string]: any;
 }
 
@@ -349,7 +358,7 @@ export interface TemplateDefaultStoryblok {
     | TemplateServiceStoryblok
   )[];
   _uid: string;
-  component: "template_default";
+  component: 'template_default';
   [k: string]: any;
 }
 
@@ -358,6 +367,13 @@ export interface TemplateServiceStoryblok {
   relatedCase?: FeatureStoryblok[];
   contact_person?: StoryblokStory<PersonStoryblok> | string;
   _uid: string;
-  component: "template_service";
+  component: 'template_service';
+  [k: string]: any;
+}
+
+export interface OfficeCardStoryblok {
+  zip?: string;
+  streetadress?: string;
+  city?: string;
   [k: string]: any;
 }

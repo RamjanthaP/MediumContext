@@ -1,79 +1,66 @@
 import { Suspense } from 'react';
 
-import { useRouter } from 'next/router';
-
-import {
-  getGlobalServiceItems,
-  getStoryblokPage,
-  getStoryblokPageBySlug,
-} from '@/services/getStoryBlokPage';
+import { getGlobalServiceItems } from '@/api/blocks';
+import { getServicePage } from '@/api/pages';
+import { GridStoryblok, PersonStoryblok } from '@sb-types';
+import { ISbStoryData } from '@storyblok/react';
 import StoryblokStory from '@storyblok/react/story';
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
-import { convertPath, getSlugParam } from '@/utilities/helper';
+import { HeadMetadata } from '@/utilities/HeadMetadata';
+import { getSlugParam } from '@/utilities/helper';
+import { filterOutItemWithSameUrl } from '@/utilities/relatedItems';
+
+type PageProps = {
+  story: ISbStoryData<'templateService'>;
+  relatedItems: GridStoryblok;
+  contactPerson?: PersonStoryblok;
+};
 
 export default function Page(
-  props: InferGetStaticPropsType<typeof getStaticProps>
+  props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
-  const route = useRouter();
-  const path = route?.query?.slug;
-
-  const filterRelatedItems = (
-    path: string | string[] | undefined,
-    relatedItemRequest: InferGetStaticPropsType<typeof getStaticProps>
-  ) => {
-    let url = convertPath(path);
-    const filteredColumns = relatedItemRequest.content.columns.filter(
-      (column: { title: string }) =>
-        column.title.toLowerCase() !== url.toLowerCase()
-    );
-
-    return {
-      ...relatedItemRequest,
-      content: {
-        ...relatedItemRequest.content,
-        columns: filteredColumns,
-      },
-    };
-  };
-
-  const filteredColumns = filterRelatedItems(path, props.relatedItemRequest);
+  const { relatedItems, story, contactPerson } = props;
+  const title = story.name;
 
   return (
     <div>
+      <HeadMetadata
+        title={`${story.name} - en av alla de IT-tjänster Amaceit erbjuder`}
+      />
       <Suspense fallback={<div>Loading...</div>}>
         <StoryblokStory
-          story={props.pageData.props.story}
-          title={props.pageData.props.story.name}
-          contactPerson={props.pageData.props.story.contact_person}
-          relatedItems={filteredColumns.content}
+          story={story}
+          title={title}
+          contactPerson={contactPerson}
+          relatedItems={relatedItems.content}
         />
       </Suspense>
     </div>
   );
 }
 
-export const getStaticProps: GetStaticProps = async (props) => {
-  const path = props?.params?.slug;
+export const getServerSideProps: GetServerSideProps<PageProps> = async (
+  props
+) => {
+  try {
+    const path = props?.params?.slug;
 
-  const pageData = await getStoryblokPage(['services/', getSlugParam(path)]);
-  const relatedItemRequest = await getGlobalServiceItems();
-  return {
-    props: {
-      pageData,
-      relatedItemRequest,
-    },
-  };
+    const pageData = await getServicePage(getSlugParam(path));
+    const relatedItemRequest = await getGlobalServiceItems();
+    const relatedItems = filterOutItemWithSameUrl(
+      'services/' + getSlugParam(path),
+      relatedItemRequest.data
+    );
+    return {
+      props: {
+        story: pageData.data.story,
+        contactPerson: pageData.data.contact_person,
+        relatedItems,
+      },
+    };
+  } catch (error) {
+    console.error(error);
+    return { notFound: true };
+  }
 };
-
-export const getStaticPaths = (async () => {
-  const paths = await getStoryblokPageBySlug('services/*');
-  const childSlugs = paths?.stories
-    ?.map((story: { slug: string }) => '/services/' + story.slug)
-    .filter((slug: string) => slug !== '/services/services');
-
-  return {
-    paths: childSlugs,
-    fallback: 'blocking', // In order to use Suspense.
-  };
-}) satisfies GetStaticPaths;

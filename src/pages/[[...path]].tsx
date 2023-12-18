@@ -1,60 +1,57 @@
-
-import {
-  getStoryblokPage,
-  getGlobalServiceItems,
-} from '../services/getStoryBlokPage';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { StoryblokComponent } from '@storyblok/react';
-import { conformPathParams } from '@/utilities/helper';
+import { getGlobalServiceItems } from '@/api/blocks';
+import { getPage } from '@/api/pages';
+import { ISbStoryData, StoryblokComponent } from '@storyblok/react';
 import StoryblokStory from '@storyblok/react/story';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
-// Return a list of `params` to populate the [slug] dynamic segment
-// TODO: Make a fetch to the Storyblok API to get all the slugs we can forsee
-export async function generateStaticParams() {
-  const slugs = [
-    'om-amaceit',
-    'karriar',
-    'kontakta-oss',
-    'services',
-    'services/digitalisering',
-  ];
+import { conformPathParams } from '@/utilities/helper';
 
-  return slugs.map((slug) => ({
-    slug,
-  }));
+import { GridProps } from '@/components/Grid/Grid';
+
+import { HeadMetadata } from '../utilities/HeadMetadata';
+
+interface PageProps {
+  isHome: boolean;
+  story: ISbStoryData<'templateDefault'>;
+  relatedItems: GridProps;
 }
-export default function Page(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const relatedItemRequest = props.relatedItemRequest.content
-  const pageData = props.pageData.props.story
 
+export default function Page(
+  props: InferGetServerSidePropsType<typeof getServerSideProps>
+) {
+  const { relatedItems, story, isHome } = props;
   return (
     <div>
-      {props.isHome &&
+      <HeadMetadata title={story.name} />
+      {isHome && (
         <>
           <div className='p-8 h-[400px] flex items-center justify-center bg-primary-100'>
             Här är en header. Ersätt sen
           </div>
-          <StoryblokComponent blok={relatedItemRequest} />
-        </>}
-      <StoryblokStory story={pageData} />
+          <StoryblokComponent blok={relatedItems} />
+        </>
+      )}
+      <StoryblokStory story={story} />
     </div>
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (props) => {
+export const getServerSideProps: GetServerSideProps<PageProps> = async (
+  props
+) => {
   try {
     const path = props?.params?.path || ['home'];
     const cleanPath = conformPathParams(path);
     const isHome = JSON.stringify(cleanPath) === JSON.stringify(['home']);
 
-    const pageData = await getStoryblokPage(cleanPath);
+    const pageData = await getPage(cleanPath);
     const relatedItemRequest = await getGlobalServiceItems();
 
     return {
       props: {
         isHome,
-        pageData,
-        relatedItemRequest,
+        story: pageData.data.story,
+        relatedItems: relatedItemRequest.data.content,
       },
     };
   } catch (error) {
