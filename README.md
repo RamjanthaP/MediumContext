@@ -1,5 +1,27 @@
 # Amaceit.se
 
+## Script
+
+| Script                   | Description                                                                                                                                                                                                                   |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dev`                    | Starts the development server using Next.js.                                                                                                                                                                                  |
+| `dev:proxy`              | Sets up a local SSL proxy to redirect traffic from port 3010 to port 3000 using specified SSL certificates. This is often used for local development with secure connections.                                                 |
+| `build`                  | Builds the Next.js application for production deployment.                                                                                                                                                                     |
+| `build:local`            | Builds the application and then copies static assets and public files to a standalone directory. This can be useful for creating a self-contained build for deployment in certain environments.                               |
+| `start`                  | Prompts the user to provide a Storyblok API token, sets it as an environment variable, and then starts the server for the standalone build of the Next.js application. Requires a Storyblok API token for proper functioning. |
+| `start:debug`            | Starts the Next.js application in debug mode.                                                                                                                                                                                 |
+| `test`                   | Runs Jest tests in watch mode, allowing for interactive test development.                                                                                                                                                     |
+| `test:ci`                | Runs Jest tests for continuous integration without watch mode.                                                                                                                                                                |
+| `test:e2e`               | Runs end-to-end tests using Playwright.                                                                                                                                                                                       |
+| `test:e2e:debug`         | Runs end-to-end tests in debug mode using Playwright's user interface.                                                                                                                                                        |
+| `lint`                   | Lints the Next.js application code using the configured linting rules.                                                                                                                                                        |
+| `format`                 | Checks and formats the code using Prettier, following the rules specified in the project. It respects the `.gitignore` file for file exclusion.                                                                               |
+| `sb-types:fetch`         | Fetches Storyblok components from the specified space (in this case, space ID 255438).                                                                                                                                        |
+| `sb-types:generate`      | Generates TypeScript definitions for Storyblok components based on a JSON file representing the components.                                                                                                                   |
+| `storybook`              | Starts the Storybook development server on port 6006 for interactive component development.                                                                                                                                   |
+| `storybook:static:build` | Builds a static version of the Storybook project.                                                                                                                                                                             |
+| `storybook:static:start` | Serves the statically built Storybook project on port 6006.                                                                                                                                                                   |
+
 ## Stack
 
 Things to be familiar oneself with when working with this project.
