@@ -1,11 +1,13 @@
 import { FormInputsStoryblok } from "@sb-types";
 import { StoryblokComponent, storyblokEditable } from "@storyblok/react";
+import InputText from "../InputText/InputText";
 
 export default function FormInputs({ blok, register, errors }: FormInputsStoryblok) {
   return (
     <div {...storyblokEditable(blok)}>
       <label>{blok.Label}</label>
-      <input
+      <InputText
+        id={blok._uid}
         type={blok.Type}
         placeholder={blok.Placeholder}
         {...register(blok.Name, {
