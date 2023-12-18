@@ -10,6 +10,7 @@ export default function FormInputs({ blok, register, errors }: FormInputsStorybl
         id={blok._uid}
         type={blok.Type}
         placeholder={blok.Placeholder}
+        error={errors[blok.Name]}
         {...register(blok.Name, {
           required: blok.Type === "email" ? false : true,
           pattern:

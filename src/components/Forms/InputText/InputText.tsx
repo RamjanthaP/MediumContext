@@ -31,8 +31,8 @@ const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
           //value={value}
          //onChange={(e) => onChange(e.target.value)}
         />
-        {error && <div className={Style.errorMessage}>{error}</div>}
-      </div>
+{/*         {error && <div className={Style.errorMessage}>{error}</div>}
+ */}      </div>
     );
   }
 );

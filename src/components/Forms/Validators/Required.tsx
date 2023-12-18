@@ -5,13 +5,18 @@ export default function Required({ blok, errors, inputName }: RequiredStoryblok)
   return (
     <div {...storyblokEditable(blok)}>
       {
-        errors.email?.type === "required" &&
-        inputName === "email" &&
+        errors.Name?.type === "required" &&
+        inputName === "Name" &&
         blok.errorMessage
       }
       {
-        errors.text?.type === "required" &&
-        inputName === "text" &&
+        errors.Email?.type === "pattern" &&
+        inputName === "Email" &&
+        blok.errorMessage
+      }
+      {
+        errors.Text?.type === "required" &&
+        inputName === "Text" &&
         blok.errorMessage
       }
     </div>
