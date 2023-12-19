@@ -1,8 +1,14 @@
-import { FormInputsStoryblok } from "@sb-types";
-import { StoryblokComponent, storyblokEditable } from "@storyblok/react";
-import InputText from "../InputText/InputText";
+import { FormInputsStoryblok } from '@sb-types';
+import { StoryblokComponent, storyblokEditable } from '@storyblok/react';
+
+import InputText from '../InputText/InputText';
 import Style from '../InputText/input-text.module.css';
-export default function FormInputs({ blok, register, errors }: FormInputsStoryblok) {
+
+export default function FormInputs({
+  blok,
+  register,
+  errors,
+}: FormInputsStoryblok) {
   return (
     <div {...storyblokEditable(blok)}>
       <InputText
@@ -11,10 +17,10 @@ export default function FormInputs({ blok, register, errors }: FormInputsStorybl
         placeholder={blok.Placeholder}
         error={errors[blok.Name]}
         {...register(blok.Name, {
-          required: true,
+          required: blok.required,
           pattern:
             blok.Type === 'email' &&
-            /^[A-Za-z0-9,_%+-]+@[A-Za-z0-9,-]+\.[a-zA-Z{2,4}$]/,
+            /^[A-Za-z0-9,_%+-]+@[A-Za-z0-9,-]+\.[a-z{2,4}$]/,
           maxLength:
             blok.Type === 'textArea' &&
             blok.Validators.find(
@@ -26,7 +32,6 @@ export default function FormInputs({ blok, register, errors }: FormInputsStorybl
               (findMin: { minLength: Number }) => findMin.minLength
             ).minLength,
         })}
-
       >
         {blok.Label}
       </InputText>
@@ -40,8 +45,6 @@ export default function FormInputs({ blok, register, errors }: FormInputsStorybl
           />
         ))}
       </div>
-
     </div>
-
   );
 }
