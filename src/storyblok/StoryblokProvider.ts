@@ -1,6 +1,5 @@
 /** 1. Tag it as a client component */
-'use client';
-
+import { apiKeyPublic } from '@/config';
 import FallbackComponent from '@/storyblok/fallback-component/Fallback';
 
 /** Import your components */
@@ -38,9 +37,18 @@ const components = {
   service_items: ServiceItemSb,
   offices: OfficeCard,
 };
+
+// Some stort of reminder
+if (
+  typeof window === 'undefined' &&
+  process.env.STORYBLOK_API_TOKEN === undefined
+) {
+  throw new Error('STORYBLOK_API_TOKEN is not defined');
+}
+
 /** 2. Initialize it as usual */
 storyblokInit({
-  accessToken: process.env.STORYBLOK_API_TOKEN,
+  accessToken: process.env.STORYBLOK_API_TOKEN || apiKeyPublic, // This is a workaround in order
   use: [apiPlugin],
   components,
   customFallbackComponent: FallbackComponent,
