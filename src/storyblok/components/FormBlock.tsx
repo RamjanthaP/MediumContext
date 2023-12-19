@@ -3,6 +3,7 @@ import { FormInputsStoryblok, FormStoryblok } from "@sb-types";
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+
 export default function Form({ blok }: FormStoryblok) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const {

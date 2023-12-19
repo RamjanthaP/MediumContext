@@ -15,7 +15,7 @@ const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
     const borderColor = error
       ? 'border-error'
       : 'border-transparent focus:border-primary-500';
-
+ 
     return (
       <div className={`flex flex-col ${className}`}>
         <label className={Style.label} htmlFor={id}>
