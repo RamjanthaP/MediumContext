@@ -1,14 +1,17 @@
-import { FormInputsStoryblok } from '@sb-types';
+import { EmailStoryblok, FormInputsStoryblok, MaximumLengthStoryblok, MinimumLengthStoryblok, RequiredStoryblok } from '@sb-types';
 import { StoryblokComponent, storyblokEditable } from '@storyblok/react';
 
 import InputText from '../InputText/InputText';
 import Style from '../InputText/input-text.module.css';
-
+type ValidatorType = (EmailStoryblok | MaximumLengthStoryblok | MinimumLengthStoryblok | RequiredStoryblok);
 export default function FormInputs({
   blok,
   register,
   errors,
 }: FormInputsStoryblok) {
+  console.log(
+    )
+  );
   return (
     <div {...storyblokEditable(blok)}>
       <InputText
@@ -17,7 +20,7 @@ export default function FormInputs({
         placeholder={blok.Placeholder}
         error={errors[blok.Name]}
         {...register(blok.Name, {
-          required: blok.required,
+          required: blok.Validators.some((validator:ValidatorType) => validator.component === 'Required'),
           pattern:
             blok.Type === 'email' &&
             /^[A-Za-z0-9,_%+-]+@[A-Za-z0-9,-]+\.[a-z{2,4}$]/,
