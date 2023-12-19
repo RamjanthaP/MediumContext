@@ -11,7 +11,7 @@ export default function FormInputs({ blok, register, errors }: FormInputsStorybl
         placeholder={blok.Placeholder}
         error={errors[blok.Name]}
         {...register(blok.Name, {
-          required: blok.Type === "email" ? false : true,
+          required: true,
           pattern:
             (blok.Type === "email" &&
               /^[a-z0-9,_%+-]+@[a-z0-9,-]+\.[a-z{2,4}$]/),

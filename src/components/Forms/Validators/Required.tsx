@@ -10,7 +10,7 @@ export default function Required({ blok, errors, inputName }: RequiredStoryblok)
         blok.errorMessage
       }
       {
-        errors.Email?.type === "pattern" &&
+        errors.Email?.type === "required" &&
         inputName === "Email" &&
         blok.errorMessage
       }
