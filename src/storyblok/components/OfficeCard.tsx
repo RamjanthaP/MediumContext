@@ -1,9 +1,11 @@
-import { OfficeCardStoryblok } from '@sb-types';
+import { OfficesStoryblok } from '@sb-types';
 import { storyblokEditable } from '@storyblok/react';
 
-import OfficeCard from '../../components/OfficeCard/OfficeCard';
+import OfficeCard, {
+  OfficeCardProps,
+} from '../../components/OfficeCard/OfficeCard';
 
-const OfficeCardSb = ({ blok }: OfficeCardStoryblok) => {
+const OfficeCardSb = ({ blok }: OfficesStoryblok) => {
   const componentData = mapOfficeCard(blok);
   return (
     <div {...storyblokEditable(blok)}>
@@ -13,8 +15,10 @@ const OfficeCardSb = ({ blok }: OfficeCardStoryblok) => {
 };
 export default OfficeCardSb;
 
-function mapOfficeCard(blok: OfficeCardStoryblok) {
+function mapOfficeCard(blok: OfficesStoryblok): OfficeCardProps {
+  const { longitude, latitude, zoom, ...officeData } = blok;
   return {
-    offices: blok || 'office',
+    coordinates: { longitude, latitude, zoom },
+    ...officeData,
   };
 }

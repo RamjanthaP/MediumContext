@@ -111,7 +111,7 @@
       "name": "feature",
       "display_name": null,
       "created_at": "2023-10-05T08:08:49.707Z",
-      "updated_at": "2023-12-06T10:31:40.285Z",
+      "updated_at": "2023-12-14T10:23:42.740Z",
       "id": 4673137,
       "schema": {
         "pre_title": {
@@ -144,7 +144,8 @@
             "Link"
           ],
           "maximum": 1,
-          "pos": 4
+          "pos": 4,
+          "description": "Använd endast för länkar på sajt eller till annat innehåll (#target)"
         },
         "ctaSecondary": {
           "type": "bloks",
@@ -156,7 +157,8 @@
           "component_whitelist": [
             "Link"
           ],
-          "maximum": 1
+          "maximum": 1,
+          "description": "Använd endast för länkar på sajt eller till annat innehåll (#target)"
         },
         "layout": {
           "type": "option",
@@ -204,7 +206,8 @@
         },
         "expandText": {
           "type": "text",
-          "pos": 8
+          "pos": 8,
+          "description": "Text på knapp för fälla ut innehåll"
         },
         "expandTitle": {
           "type": "text",
@@ -258,7 +261,7 @@
       "name": "Form Inputs",
       "display_name": null,
       "created_at": "2023-12-11T10:14:35.098Z",
-      "updated_at": "2023-12-11T10:27:55.370Z",
+      "updated_at": "2023-12-12T14:10:18.478Z",
       "id": 5016670,
       "schema": {
         "Name": {
@@ -268,7 +271,9 @@
           "type": "text"
         },
         "Placeholder": {
-          "type": "text"
+          "type": "text",
+          "required": true,
+          "max_length": 200
         },
         "Type": {
           "type": "option",
@@ -286,8 +291,8 @@
             },
             {
               "_uid": "6e958669-656c-4061-adb3-72cb012ec745",
-              "value": "text",
-              "name": "Text"
+              "value": "textArea",
+              "name": "TextArea"
             }
           ]
         },
@@ -298,7 +303,9 @@
           "component_whitelist": [],
           "component_group_whitelist": [
             "c95114ec-be0d-4a7b-8d53-93f1cce845f3"
-          ]
+          ],
+          "minimum": 1,
+          "maximum": 200
         }
       },
       "image": null,
@@ -748,24 +755,46 @@
       "name": "offices",
       "display_name": null,
       "created_at": "2023-10-27T06:34:01.274Z",
-      "updated_at": "2023-10-27T07:00:07.281Z",
+      "updated_at": "2023-12-19T09:11:56.577Z",
       "id": 4793663,
       "schema": {
         "streetadress": {
           "type": "text",
           "key": "Streetadress",
           "pos": 0,
-          "display_name": "Streetaddress"
+          "display_name": "Streetaddress",
+          "required": true
         },
         "zip": {
           "type": "text",
           "key": "zip",
-          "pos": 1
+          "pos": 1,
+          "required": true
         },
         "city": {
           "type": "text",
           "key": "city",
           "pos": 2,
+          "required": true
+        },
+        "coordinates": {
+          "type": "section",
+          "keys": [
+            "zoom",
+            "latitude",
+            "longitude"
+          ]
+        },
+        "longitude": {
+          "type": "text",
+          "required": true
+        },
+        "latitude": {
+          "type": "text",
+          "required": true
+        },
+        "zoom": {
+          "type": "text",
           "required": true
         }
       },
