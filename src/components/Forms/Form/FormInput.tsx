@@ -13,10 +13,18 @@ export default function FormInputs({ blok, register, errors }: FormInputsStorybl
         {...register(blok.Name, {
           required: true,
           pattern:
-            (blok.Type === "email" &&
-              /^[a-z0-9,_%+-]+@[a-z0-9,-]+\.[a-z{2,4}$]/),
-          maxLength: blok.Type === "textArea" && blok.Validators.find((findMax: { maxLength: Number; }) => findMax.maxLength).maxLength,
-          minLength: blok.Type === "textArea" && blok.Validators.find((findMin: { minLength: Number; }) => findMin.minLength).minLength,
+            blok.Type === 'email' &&
+            /^[A-Za-z0-9,_%+-]+@[A-Za-z0-9,-]+\.[a-zA-Z{2,4}$]/,
+          maxLength:
+            blok.Type === 'textArea' &&
+            blok.Validators.find(
+              (findMax: { maxLength: Number }) => findMax.maxLength
+            ).maxLength,
+          minLength:
+            blok.Type === 'textArea' &&
+            blok.Validators.find(
+              (findMin: { minLength: Number }) => findMin.minLength
+            ).minLength,
         })}
 
       >
