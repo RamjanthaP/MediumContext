@@ -24,8 +24,8 @@ export default function Form({ blok }: FormStoryblok) {
     setIsSubmitted(true);
   }
   return (
-    <div className="container mx-auto w-1/2">
-      <form {...storyblokEditable(blok)} onSubmit={handleSubmit(submitForm)}>
+    <div className=" mx-auto py-4 bg-discrete">
+      <form {...storyblokEditable(blok)} onSubmit={handleSubmit(submitForm)} className="lg:w-1/3 mx-auto my-2">
         {blok.Inputs.map((nestedBlok: FormInputsStoryblok) => (
           <StoryblokComponent
             blok={nestedBlok}
@@ -40,9 +40,9 @@ export default function Form({ blok }: FormStoryblok) {
           value="checked"
           className="inline-grid border-transparent"
         />
-        <div className="my-2">
+        <div className="mt-4 flex justify-end">
         <Button variant="primary" type="submit">
-          {isSubmitted ? 'Skickat' : 'Sänd'}
+          {isSubmitted ? 'Skickat' : 'Skicka'}
           </Button>
         </div>
         <p>{isSubmitted && 'Vi har tagit emot ditt meddelande'}</p>

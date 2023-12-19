@@ -1,11 +1,10 @@
 import { FormInputsStoryblok } from "@sb-types";
 import { StoryblokComponent, storyblokEditable } from "@storyblok/react";
 import InputText from "../InputText/InputText";
-
+import Style from '../InputText/input-text.module.css';
 export default function FormInputs({ blok, register, errors }: FormInputsStoryblok) {
   return (
     <div {...storyblokEditable(blok)}>
-      <label>{blok.Label}</label>
       <InputText
         id={blok._uid}
         type={blok.Type}
@@ -19,16 +18,22 @@ export default function FormInputs({ blok, register, errors }: FormInputsStorybl
           maxLength: blok.Type === "textArea" && blok.Validators.find((findMax: { maxLength: Number; }) => findMax.maxLength).maxLength,
           minLength: blok.Type === "textArea" && blok.Validators.find((findMin: { minLength: Number; }) => findMin.minLength).minLength,
         })}
-      />
-      {blok.Validators.map((nestedBlok: FormInputsStoryblok) => (
-        <StoryblokComponent
-          blok={nestedBlok}
-          key={nestedBlok._uid}
-          errors={errors}
-          inputName={blok.Name}
-        />
-      ))}
+
+      >
+        {blok.Label}
+      </InputText>
+      <div className={Style.errorMessage}>
+        {blok.Validators.map((nestedBlok: FormInputsStoryblok) => (
+          <StoryblokComponent
+            blok={nestedBlok}
+            key={nestedBlok._uid}
+            errors={errors}
+            inputName={blok.Name}
+          />
+        ))}
+      </div>
+
     </div>
-  
+
   );
 }
