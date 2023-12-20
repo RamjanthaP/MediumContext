@@ -5,7 +5,8 @@ import {
 } from '@storyblok/react/rsc';
 
 export let storyblockBaseParams = {
-  version: 'draft' as const,
+  version:
+    process.env.NODE_ENV === 'production' ? 'published' : ('draft' as const), // TODO: Move all things like this to config
 } satisfies ISbStoriesParams;
 
 export const revalidateTime = 10;
