@@ -51,6 +51,33 @@
       "icon": null
     },
     {
+      "name": "Carousel",
+      "display_name": null,
+      "created_at": "2023-12-19T12:36:03.607Z",
+      "updated_at": "2023-12-19T12:36:45.307Z",
+      "id": 5061654,
+      "schema": {
+        "Title": {
+          "type": "text"
+        },
+        "items": {
+          "type": "bloks"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Carousel",
+      "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
+      "color": null,
+      "icon": null,
+      "component_group_name": "Blocks"
+    },
+    {
       "name": "contact_footer",
       "display_name": null,
       "created_at": "2023-10-27T06:43:39.008Z",
@@ -87,11 +114,12 @@
       "name": "Email",
       "display_name": null,
       "created_at": "2023-12-11T10:18:07.567Z",
-      "updated_at": "2023-12-11T10:18:35.135Z",
+      "updated_at": "2023-12-19T09:55:07.111Z",
       "id": 5016676,
       "schema": {
         "errorMessage": {
-          "type": "text"
+          "type": "text",
+          "required": true
         }
       },
       "image": null,
@@ -111,7 +139,7 @@
       "name": "feature",
       "display_name": null,
       "created_at": "2023-10-05T08:08:49.707Z",
-      "updated_at": "2023-12-06T10:31:40.285Z",
+      "updated_at": "2023-12-14T10:23:42.740Z",
       "id": 4673137,
       "schema": {
         "pre_title": {
@@ -144,7 +172,8 @@
             "Link"
           ],
           "maximum": 1,
-          "pos": 4
+          "pos": 4,
+          "description": "Använd endast för länkar på sajt eller till annat innehåll (#target)"
         },
         "ctaSecondary": {
           "type": "bloks",
@@ -156,7 +185,8 @@
           "component_whitelist": [
             "Link"
           ],
-          "maximum": 1
+          "maximum": 1,
+          "description": "Använd endast för länkar på sajt eller till annat innehåll (#target)"
         },
         "layout": {
           "type": "option",
@@ -204,7 +234,8 @@
         },
         "expandText": {
           "type": "text",
-          "pos": 8
+          "pos": 8,
+          "description": "Text på knapp för fälla ut innehåll"
         },
         "expandTitle": {
           "type": "text",
@@ -258,7 +289,7 @@
       "name": "Form Inputs",
       "display_name": null,
       "created_at": "2023-12-11T10:14:35.098Z",
-      "updated_at": "2023-12-11T10:27:55.370Z",
+      "updated_at": "2023-12-12T14:10:18.478Z",
       "id": 5016670,
       "schema": {
         "Name": {
@@ -268,7 +299,9 @@
           "type": "text"
         },
         "Placeholder": {
-          "type": "text"
+          "type": "text",
+          "required": true,
+          "max_length": 200
         },
         "Type": {
           "type": "option",
@@ -286,8 +319,8 @@
             },
             {
               "_uid": "6e958669-656c-4061-adb3-72cb012ec745",
-              "value": "text",
-              "name": "Text"
+              "value": "textArea",
+              "name": "TextArea"
             }
           ]
         },
@@ -298,7 +331,9 @@
           "component_whitelist": [],
           "component_group_whitelist": [
             "c95114ec-be0d-4a7b-8d53-93f1cce845f3"
-          ]
+          ],
+          "minimum": 1,
+          "maximum": 200
         }
       },
       "image": null,
@@ -621,14 +656,15 @@
       "name": "Maximum Length",
       "display_name": null,
       "created_at": "2023-12-11T10:21:17.252Z",
-      "updated_at": "2023-12-11T10:21:44.790Z",
+      "updated_at": "2023-12-19T09:55:15.635Z",
       "id": 5016682,
       "schema": {
         "errorMessage": {
           "type": "text"
         },
         "maxLength": {
-          "type": "number"
+          "type": "number",
+          "required": true
         }
       },
       "image": null,
@@ -721,14 +757,15 @@
       "name": "Minimum Length",
       "display_name": null,
       "created_at": "2023-12-11T10:19:29.980Z",
-      "updated_at": "2023-12-11T10:20:51.229Z",
+      "updated_at": "2023-12-19T09:55:23.504Z",
       "id": 5016677,
       "schema": {
         "errorMessage": {
           "type": "text"
         },
         "minLength": {
-          "type": "number"
+          "type": "number",
+          "required": true
         }
       },
       "image": null,
@@ -748,24 +785,46 @@
       "name": "offices",
       "display_name": null,
       "created_at": "2023-10-27T06:34:01.274Z",
-      "updated_at": "2023-10-27T07:00:07.281Z",
+      "updated_at": "2023-12-19T13:15:21.039Z",
       "id": 4793663,
       "schema": {
         "streetadress": {
           "type": "text",
           "key": "Streetadress",
           "pos": 0,
-          "display_name": "Streetaddress"
+          "display_name": "Streetaddress",
+          "required": true
         },
         "zip": {
           "type": "text",
           "key": "zip",
-          "pos": 1
+          "pos": 1,
+          "required": true
         },
         "city": {
           "type": "text",
           "key": "city",
           "pos": 2,
+          "required": true
+        },
+        "coordinates": {
+          "type": "section",
+          "keys": [
+            "longitude",
+            "latitude",
+            "zoom"
+          ]
+        },
+        "longitude": {
+          "type": "text",
+          "required": true
+        },
+        "latitude": {
+          "type": "text",
+          "required": true
+        },
+        "zoom": {
+          "type": "text",
           "required": true
         }
       },
@@ -865,11 +924,12 @@
       "name": "Required",
       "display_name": null,
       "created_at": "2023-12-12T09:07:29.878Z",
-      "updated_at": "2023-12-12T09:08:35.290Z",
+      "updated_at": "2023-12-19T09:55:29.149Z",
       "id": 5023459,
       "schema": {
         "errorMessage": {
-          "type": "text"
+          "type": "text",
+          "required": true
         }
       },
       "image": null,
@@ -1035,6 +1095,38 @@
       "color": "#00b3b0",
       "icon": "block-doc",
       "component_group_name": "Page Templates"
+    },
+    {
+      "name": "Testimonal",
+      "display_name": null,
+      "created_at": "2023-12-19T12:25:13.639Z",
+      "updated_at": "2023-12-19T12:25:48.168Z",
+      "id": 5061645,
+      "schema": {
+        "Image": {
+          "type": "image"
+        },
+        "Name": {
+          "type": "text"
+        },
+        "Title": {
+          "type": "text"
+        },
+        "Quotes": {
+          "type": "textarea"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Testimonal",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     }
   ]
 }

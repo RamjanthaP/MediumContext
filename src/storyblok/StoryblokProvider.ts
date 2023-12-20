@@ -9,7 +9,6 @@ import { apiPlugin, storyblokInit } from '@storyblok/react/rsc';
 
 import HeaderMenu from '@/components/Menu/HeaderMenu';
 import MenuLink from '@/components/Menu/MenuLink';
-import OfficeCard from '@/components/OfficeCard/OfficeCard';
 
 import FormBlock from './components//Forms/FormBlock';
 import BodyBlockSb from './components/BodyBlock';
@@ -20,6 +19,7 @@ import HeroSb from './components/Hero';
 import JumbotronSb from './components/Jumbotron';
 import LogoCardSb from './components/LogoCard';
 import MapSb from './components/MapSb';
+import OfficeCard from './components/OfficeCard';
 import ServiceItemSb from './components/ServiceItems';
 import CarouselSb from './components/Carousel';
 
