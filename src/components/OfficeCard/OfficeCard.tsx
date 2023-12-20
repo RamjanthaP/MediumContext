@@ -2,6 +2,8 @@ import React from 'react';
 
 import { BaseProps } from '@/types/props';
 
+import { handleUrlForGoogleMaps } from '@/utilities/helper';
+
 import Button from '../Button/Button';
 import OfficeCardMap from './OfficeCardMap';
 
@@ -31,11 +33,20 @@ const OfficeCard = ({
         <p className='text-lg'>{city}</p>
       </div>
       <div className='w-full hidden md:block'>
-        <a href='/' className='relative flex items-center'>
+        <a
+          href={handleUrlForGoogleMaps({
+            city,
+            streetadress,
+            zip,
+            coordinates,
+          })}
+          target='_blank'
+          className='relative flex items-center'
+          aria-label={`Länk till google maps för kontoret i ${city}`}
+        >
           <div className='w-full h-full max-w-xs max-h-80 relative'>
             <OfficeCardMap address={streetadress} city={city} />
           </div>
-          <span className='hidden'>Länk till google maps</span>
         </a>
       </div>
       <div className='block md:hidden'>

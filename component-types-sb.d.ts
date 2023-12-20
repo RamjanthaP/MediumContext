@@ -17,6 +17,41 @@ export interface BodyStoryblok {
   [k: string]: any;
 }
 
+export interface CarouselStoryblok {
+  Title?: string;
+  items?: (
+    | BodyStoryblok
+    | CarouselStoryblok
+    | ContactFooterStoryblok
+    | EmailStoryblok
+    | FeatureStoryblok
+    | FormStoryblok
+    | FormInputsStoryblok
+    | GridStoryblok
+    | HeroStoryblok
+    | JumbotronStoryblok
+    | LinkStoryblok
+    | LogoCardStoryblok
+    | MapBlockStoryblok
+    | MaximumLengthStoryblok
+    | MenuStoryblok
+    | MenuLinkStoryblok
+    | MinimumLengthStoryblok
+    | OfficesStoryblok
+    | PersonStoryblok
+    | QuickContactStoryblok
+    | RequiredStoryblok
+    | ReUsableSectionStoryblok
+    | ServiceItemsStoryblok
+    | TemplateDefaultStoryblok
+    | TemplateServiceStoryblok
+    | TestimonalStoryblok
+  )[];
+  _uid: string;
+  component: "Carousel";
+  [k: string]: any;
+}
+
 export interface ContactFooterStoryblok {
   offices?: OfficesStoryblok[];
   _uid: string;
@@ -25,7 +60,7 @@ export interface ContactFooterStoryblok {
 }
 
 export interface EmailStoryblok {
-  errorMessage?: string;
+  errorMessage: string;
   _uid: string;
   component: "Email";
   [k: string]: any;
@@ -62,6 +97,7 @@ export interface FeatureStoryblok {
 export interface FormStoryblok {
   Inputs?: (
     | BodyStoryblok
+    | CarouselStoryblok
     | ContactFooterStoryblok
     | EmailStoryblok
     | FeatureStoryblok
@@ -85,6 +121,7 @@ export interface FormStoryblok {
     | ServiceItemsStoryblok
     | TemplateDefaultStoryblok
     | TemplateServiceStoryblok
+    | TestimonalStoryblok
   )[];
   Endpoint?: string;
   _uid: string;
@@ -107,6 +144,7 @@ export interface GridStoryblok {
   title?: string;
   columns?: (
     | BodyStoryblok
+    | CarouselStoryblok
     | ContactFooterStoryblok
     | EmailStoryblok
     | FeatureStoryblok
@@ -130,6 +168,7 @@ export interface GridStoryblok {
     | ServiceItemsStoryblok
     | TemplateDefaultStoryblok
     | TemplateServiceStoryblok
+    | TestimonalStoryblok
   )[];
   theme?: "" | "default" | "inverted" | "discrete";
   _uid: string;
@@ -236,7 +275,7 @@ export interface MapBlockStoryblok {
 
 export interface MaximumLengthStoryblok {
   errorMessage?: string;
-  maxLength?: string;
+  maxLength: string;
   _uid: string;
   component: "Maximum Length";
   [k: string]: any;
@@ -260,7 +299,7 @@ export interface MenuLinkStoryblok {
 
 export interface MinimumLengthStoryblok {
   errorMessage?: string;
-  minLength?: string;
+  minLength: string;
   _uid: string;
   component: "Minimum Length";
   [k: string]: any;
@@ -300,7 +339,7 @@ export interface QuickContactStoryblok {
 }
 
 export interface RequiredStoryblok {
-  errorMessage?: string;
+  errorMessage: string;
   _uid: string;
   component: "Required";
   [k: string]: any;
@@ -328,6 +367,7 @@ export interface ServiceItemsStoryblok {
 export interface TemplateDefaultStoryblok {
   body?: (
     | BodyStoryblok
+    | CarouselStoryblok
     | ContactFooterStoryblok
     | EmailStoryblok
     | FeatureStoryblok
@@ -351,6 +391,7 @@ export interface TemplateDefaultStoryblok {
     | ServiceItemsStoryblok
     | TemplateDefaultStoryblok
     | TemplateServiceStoryblok
+    | TestimonalStoryblok
   )[];
   _uid: string;
   component: "template_default";
@@ -363,5 +404,15 @@ export interface TemplateServiceStoryblok {
   contact_person?: StoryblokStory<PersonStoryblok> | string;
   _uid: string;
   component: "template_service";
+  [k: string]: any;
+}
+
+export interface TestimonalStoryblok {
+  Image?: string;
+  Name?: string;
+  Title?: string;
+  Quotes?: string;
+  _uid: string;
+  component: "Testimonal";
   [k: string]: any;
 }
