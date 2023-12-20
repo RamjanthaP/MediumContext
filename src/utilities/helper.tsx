@@ -1,6 +1,7 @@
 import { RefObject } from 'react';
 
 import { GridProps } from '@/components/Grid/Grid';
+import { OfficeCardProps } from '@/components/OfficeCard/OfficeCard';
 
 /**
  * Scrolls to the ref target element with an offset
@@ -53,3 +54,19 @@ export function stripTitleFromGrid(grid: GridProps) {
     title: '',
   };
 }
+
+/**
+ *
+ * @param path Returns url to google maps that leads to clicked office on contact page
+ * @returns
+ */
+
+export const handleUrlForGoogleMaps = ({
+  city,
+  streetadress,
+  zip,
+  coordinates,
+}: OfficeCardProps) => {
+  const googleMapsUrl = `https://www.google.com/maps/place/${streetadress},+${zip}+${city}/${coordinates.longitude},${coordinates.latitude},${coordinates.zoom}`;
+  return googleMapsUrl;
+};
