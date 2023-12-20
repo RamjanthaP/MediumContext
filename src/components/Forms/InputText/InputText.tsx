@@ -11,6 +11,12 @@ export interface InputTextProps extends BaseProps {
   onChange?: (_e: React.FormEvent<HTMLInputElement>) => void;
 }
 
+export interface InputTextProps
+  extends Omit<
+    Partial<React.InputHTMLAttributes<HTMLInputElement>>,
+    'onChange' | 'value' // Ommitting this in order to make it required for the component
+  > {}
+
 const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
   ({ children, className, id, error, ...inputProps }, ref) => {
     InputText.displayName = 'InputText';
