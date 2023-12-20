@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEventHandler } from 'react';
 
 import { BaseProps } from '@/types/props';
 
@@ -7,14 +7,11 @@ import Style from './textarea.module.css';
 export interface TextareaProps extends BaseProps {
   id: string;
   value: string;
-  error?: boolean;
-  onChange?: (_e: React.FormEvent<HTMLInputElement>) => void;
+  error?: string;
+  onChange?: ChangeEventHandler<HTMLTextAreaElement> | undefined;
+  disabled?: boolean;
+  rows?: number;
 }
-export interface TextareaProps
-  extends Omit<
-    Partial<React.TextareaHTMLAttributes<HTMLTextAreaElement>>,
-    'onChange' | 'value' // Ommitting this in order to make it required for the component
-  > {}
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ children, className, id, error, rows = 4, ...inputProps }, ref) => {

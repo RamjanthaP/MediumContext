@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 import { action } from '@storybook/addon-actions';
 import { StoryFn } from '@storybook/react';
@@ -25,7 +25,9 @@ export const Default = () => {
     <Textarea
       id='story-id'
       value={formValue}
-      onChange={(newValue) => setFormValue(newValue)}
+      onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
+        setFormValue(e.currentTarget.value)
+      }
     >
       Label for textarea
     </Textarea>
@@ -42,13 +44,17 @@ export const HasError = () => {
   };
 
   const [error, setError] = useState(validateLength(formValue));
-  const onChange = (newValue: string) => {
-    setFormValue(newValue);
-    setError(validateLength(newValue));
-  };
 
   return (
-    <Textarea id='story-id' error={error} value={formValue} onChange={onChange}>
+    <Textarea
+      id='story-id'
+      error={error}
+      value={formValue}
+      onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
+        setFormValue(e.currentTarget.value);
+        setError(validateLength(e.currentTarget.value));
+      }}
+    >
       Maximum 20 characterss test
     </Textarea>
   );
