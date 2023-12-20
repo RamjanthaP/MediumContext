@@ -1,6 +1,10 @@
+import PageSection from '@/components/PageSection/PageSection';
 import TestimonialCard from '@/components/TestimonialCard/TestimonialCard';
 import { storyblokEditable } from '@storyblok/react';
 import React from 'react'
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 interface CarouselSbProps {
   _uid: string,
@@ -18,11 +22,27 @@ interface CarouselSbProps {
 }
 
 const CarouselSb = ({ blok }: { blok: CarouselSbProps }) => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    swipeToSlide: true,
+    swipe: true,
+    touchMove: true,
+  };
   return (
-    <div {...storyblokEditable(blok)}>
-   { blok.items && blok.items.map((blok) => (
-     <TestimonialCard key={blok._uid} image={blok.Image} name={blok.Name} title={blok.Title} quote={blok.Quotes} />
-   ))}  
+    <div {...storyblokEditable(blok)} className='bg-discrete'>
+      <div className='container'>
+        <PageSection title={blok.Title} theme="discrete">
+          <Slider {...settings}>
+            {blok.items && blok.items.map((blok) => (
+              <TestimonialCard key={blok._uid} image={blok.Image} name={blok.Name} title={blok.Title} quote={blok.Quotes} />
+            ))}
+          </Slider>
+        </PageSection>
+      </div>
     </div>
   );
 };

@@ -111,3 +111,7 @@ body {
 .z-app-header {
   z-index: 90;
 }
+
+.slick-dots li button:before {
+  font-size: 20px !important;
+}
