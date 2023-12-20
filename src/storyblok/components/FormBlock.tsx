@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
+import mockFormData from '@/../tests-e2e/data-mocks/form-data';
 import { FormInputsStoryblok, FormStoryblok } from '@sb-types';
 import { StoryblokComponent, storyblokEditable } from '@storyblok/react';
 import { useForm } from 'react-hook-form';
@@ -33,7 +34,8 @@ export default function Form({ blok }: FormStoryblok) {
     reset();
     setIsSubmitted(true);
   }
-
+  const mockFields = mockFormData.story.content.body[1]
+    .Inputs as FormInputsStoryblok[];
   return (
     <div className='mx-auto py-4 bg-discrete'>
       <form
@@ -41,8 +43,16 @@ export default function Form({ blok }: FormStoryblok) {
         onSubmit={handleSubmit(submitForm)}
         className='mx-4 md:mx-8 lg:w-1/3 lg:mx-auto  my-2'
       >
-        <pre>{JSON.stringify(formValues, null, 2)}</pre>
-        {blok.Inputs.map((nestedBlok: FormInputsStoryblok) => (
+        {/* <pre>{JSON.stringify(formValues, null, 2)}</pre> */}
+        {/* {blok.Inputs.map((nestedBlok: FormInputsStoryblok) => (
+          <StoryblokComponent
+            blok={nestedBlok}
+            key={nestedBlok._uid}
+            register={register}
+            errors={errors}
+          />
+        ))} */}
+        {mockFields.map((nestedBlok: FormInputsStoryblok) => (
           <StoryblokComponent
             blok={nestedBlok}
             key={nestedBlok._uid}

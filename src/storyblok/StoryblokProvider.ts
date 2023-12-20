@@ -7,23 +7,23 @@ import TemplateDefault from '@/storyblok/templates/Default';
 import TemplateService from '@/storyblok/templates/Service';
 import { apiPlugin, storyblokInit } from '@storyblok/react/rsc';
 
+import Email from '@/components/Forms/Validators/Email';
+import MaxLength from '@/components/Forms/Validators/MaximunLength';
+import MinLength from '@/components/Forms/Validators/MinimunLength';
+import Required from '@/components/Forms/Validators/Required';
 import HeaderMenu from '@/components/Menu/HeaderMenu';
 import MenuLink from '@/components/Menu/MenuLink';
 import OfficeCard from '@/components/OfficeCard/OfficeCard';
 
 import BodyBlockSb from './components/BodyBlock';
 import Feature from './components/Feature';
+import FormBlock from './components/FormBlock';
+import FormInputs from './components/FormFields/FormInput';
 import GridSb from './components/Grid';
 import HeroSb from './components/Hero';
 import JumbotronSb from './components/Jumbotron';
 import LogoCardSb from './components/LogoCard';
 import MapSb from './components/MapSb';
-import FormBlock from './components/FormBlock';
-import Email from '@/components/Forms/Validators/Email';
-import Required from '@/components/Forms/Validators/Required';
-import MaxLength from '@/components/Forms/Validators/MaximunLength';
-import MinLength from '@/components/Forms/Validators/MinimunLength';
-import FormInputs from '@/components/Forms/Form/FormInput';
 import ServiceItemSb from './components/ServiceItems';
 
 /** 1. Tag it as a client component */
@@ -41,12 +41,12 @@ const components = {
   logo_card: LogoCardSb,
   jumbotron: JumbotronSb,
   service_items: ServiceItemSb,
-  "Form": FormBlock,
-  "Form Inputs": FormInputs,
-  "Email": Email,
-  "Required": Required,
-  "Maximum Length": MaxLength,
-  "Minimum Length": MinLength,
+  Form: FormBlock,
+  'Form Inputs': FormInputs,
+  Email: Email,
+  Required: Required,
+  'Maximum Length': MaxLength,
+  'Minimum Length': MinLength,
   offices: OfficeCard,
 };
 

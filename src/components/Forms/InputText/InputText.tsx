@@ -7,7 +7,7 @@ import Style from './input-text.module.css';
 export interface InputTextProps extends BaseProps {
   id: string;
   value?: string;
-  error?: true;
+  error?: string;
 }
 
 const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
