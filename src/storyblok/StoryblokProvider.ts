@@ -21,6 +21,7 @@ import JumbotronSb from './components/Jumbotron';
 import LogoCardSb from './components/LogoCard';
 import MapSb from './components/MapSb';
 import ServiceItemSb from './components/ServiceItems';
+import CarouselSb from './components/Carousel';
 
 /** 1. Tag it as a client component */
 
@@ -40,6 +41,7 @@ const components = {
   Form: FormBlock,
   'Form Inputs': FormField,
   offices: OfficeCard,
+  Carousel: CarouselSb,
 };
 
 // Some stort of reminder
