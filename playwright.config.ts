@@ -17,7 +17,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
 
   // Reporter to use
-  reporter: 'line',
+  reporter: 'list',
 
   use: {
     // Base URL to use in actions like `await page.goto('/')`.
@@ -39,7 +39,7 @@ export default defineConfig({
   ],
   // Run your local dev server before starting the tests.
   webServer: {
-    command: 'npm run dev',
+    command: process.env.CI ? 'npm run dev' : 'npm run dev',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
   },

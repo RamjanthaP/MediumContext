@@ -1,6 +1,12 @@
+import dotenv from 'dotenv';
+import nodemailer from 'nodemailer';
+
 import { FormData } from './route';
 
-const nodemailer = require('nodemailer');
+dotenv.config({
+  path: process.env.CI ? '.env' : '.env.local',
+});
+
 var transport = nodemailer.createTransport({
   host: 'sandbox.smtp.mailtrap.io',
   port: 2525,

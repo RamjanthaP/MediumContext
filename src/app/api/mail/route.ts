@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { NextResponse } from 'next/server';
 
 import { getBodyFromRequest } from '../helpers/getBodyFromRequest';
 import { sendTestMail } from './mailtrap';
@@ -9,12 +9,11 @@ export interface FormData {
   subject: string;
 }
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
+export async function POST(req: Request) {
   const data = await getBodyFromRequest<FormData>(req);
-  if (process.env.NODE_ENV === 'development') {
-    const success = await sendTestMail(data).catch((err) => {
-      return res.status(500).end(err.toString());
-    });
-    return Response.json(success);
-  }
+  // return Response.json({ message: 'Not implemented' });
+  const success = await sendTestMail(data).catch((err) => {
+    throw new Error(err);
+  });
+  return Response.json(success);
 }
