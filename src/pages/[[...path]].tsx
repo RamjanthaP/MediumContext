@@ -23,14 +23,7 @@ export default function Page(
   return (
     <div>
       <HeadMetadata title={story.name} />
-      {isHome && (
-        <>
-          <div className='p-8 h-[400px] flex items-center justify-center bg-primary-100'>
-            Här är en header. Ersätt sen
-          </div>
-          <StoryblokComponent blok={relatedItems} />
-        </>
-      )}
+
       <StoryblokStory story={story} />
     </div>
   );
