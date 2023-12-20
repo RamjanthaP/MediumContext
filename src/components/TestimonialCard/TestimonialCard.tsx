@@ -14,8 +14,8 @@ function TestimonialCard({  image, name, title, quote }: TestimonialCardProps) {
     <div className='bg-discrete'>
       <div className="container mx-auto">
         <div className="md:flex p-4 justify-center md:flex-col md:items-center lg:flex-row">
-          <div className="h-48 md:h-auto md:w-48 items-center my-auto lg:mr-12 mx-auto mb-8">
-            <Image className="rounded-full" src={`https:${image}`} alt={name ? name : 'Testimonial Image'} height="250" width="250"/>
+          <div className="items-center my-auto mx-auto mb-8">
+            <Image className="rounded-full mx-auto" src={`https:${image}`} alt={name ? name : 'Testimonial Image'} height="250" width="250"/>
           </div>
           <div className="lg:w-2/3 p-8 bg-default rounded-xl">            
             <p className="mt-2 text-xl p-1">{`"${quote}"`}</p>
