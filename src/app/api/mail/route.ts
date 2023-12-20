@@ -1,5 +1,3 @@
-import { NextResponse } from 'next/server';
-
 import { getBodyFromRequest } from '../helpers/getBodyFromRequest';
 import { sendTestMail } from './mailtrap';
 

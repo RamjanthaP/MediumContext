@@ -6,6 +6,7 @@ dotenv.config({
   path: process.env.CI ? '.env' : '.env.local',
 });
 
+// TODO: Enable this test when we have mailtrap setup in CI
 test.describe('Checks email from api ', () => {
   test.skip('Sends a mail if all params are sent"', async ({ request }) => {
     const response = await request.post('/api/mail', {
