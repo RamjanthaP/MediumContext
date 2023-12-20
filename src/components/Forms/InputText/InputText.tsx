@@ -28,7 +28,6 @@ const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
           className={`bg-default ${Style.field} ${borderColor}`}
           type='text'
           id={id}
-          value={value}
         />
         {error && <div className={Style.errorMessage}>{error}</div>}
       </div>
