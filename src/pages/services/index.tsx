@@ -22,10 +22,7 @@ export default function Page(
   return (
     <div>
       <HeadMetadata title={'Tjänster inom .NET, React och Typescript'} />
-      <div className='p-8 h-[400px] flex items-center justify-center bg-primary-100'>
-        Här är en header. Ersätt sen
-      </div>
-      <StoryblokComponent blok={stripTitleFromGrid(relatedItems)} />
+
       <StoryblokStory story={story} />
     </div>
   );
