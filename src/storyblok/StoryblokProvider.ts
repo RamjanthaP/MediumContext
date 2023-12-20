@@ -11,8 +11,10 @@ import HeaderMenu from '@/components/Menu/HeaderMenu';
 import MenuLink from '@/components/Menu/MenuLink';
 import OfficeCard from '@/components/OfficeCard/OfficeCard';
 
+import FormBlock from './components//Forms/FormBlock';
 import BodyBlockSb from './components/BodyBlock';
 import Feature from './components/Feature';
+import FormField from './components/Forms/FormField';
 import GridSb from './components/Grid';
 import HeroSb from './components/Hero';
 import JumbotronSb from './components/Jumbotron';
@@ -35,6 +37,8 @@ const components = {
   logo_card: LogoCardSb,
   jumbotron: JumbotronSb,
   service_items: ServiceItemSb,
+  Form: FormBlock,
+  'Form Inputs': FormField,
   offices: OfficeCard,
 };
 
