@@ -3,6 +3,8 @@ import { AppProps } from 'next/app';
 import { getFooterData, getMenuData } from '@/api/blocks';
 import '@/app/globals.css';
 import StoryblokProvider from '@/storyblok/StoryblokProvider';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import Footer from '@/components/Footer/Footer';
 import AppHeader from '@/components/Menu/AppHeader';
