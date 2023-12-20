@@ -26,8 +26,10 @@ const CarouselSb = ({ blok }: { blok: CarouselSbProps }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    swipeToSlide: true,
+    swipe: true,
+    touchMove: true,
   };
-  
   return (
     <div {...storyblokEditable(blok)} className='bg-discrete'>
       <div className='container'>
