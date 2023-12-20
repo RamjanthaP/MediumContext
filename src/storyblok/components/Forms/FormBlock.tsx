@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-import mockFormData from '@/../tests-e2e/data-mocks/form-data';
 import { FormInputsStoryblok, FormStoryblok } from '@sb-types';
 import { StoryblokComponent, storyblokEditable } from '@storyblok/react';
 import { useForm } from 'react-hook-form';
@@ -9,7 +8,6 @@ import Button from '@/components/Button/Button';
 
 export default function Form({ blok }: FormStoryblok) {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [formValues, setFormValues] = useState({});
 
   const {
     register,
@@ -21,16 +19,14 @@ export default function Form({ blok }: FormStoryblok) {
   } = useForm();
   const invisibleRadioButton = watch('invisibleRadioButton', false);
 
-  watch(() => {
-    setFormValues(getValues());
-  });
-
   function submitForm(data: any) {
-    if (invisibleRadioButton) {
-      console.log('not today satan');
-      return;
+    if (!invisibleRadioButton) {
+      // Send data
+      console.log('Sending data to ' + blok.Endpoint, data);
+    } else {
+      // Honeypot it!
+      console.log('Sending to trash. But make bot think it went through. :D');
     }
-    console.log('Sending data to ' + blok.Endpoint, data);
     reset();
     setIsSubmitted(true);
   }

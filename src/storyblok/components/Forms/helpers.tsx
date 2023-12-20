@@ -6,8 +6,6 @@ import {
   RequiredStoryblok,
 } from '@sb-types';
 
-import { colorConsole } from '@/utilities/dev-utils';
-
 export type ValidatorType =
   | EmailStoryblok
   | MaximumLengthStoryblok

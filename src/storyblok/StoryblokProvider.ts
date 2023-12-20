@@ -7,18 +7,14 @@ import TemplateDefault from '@/storyblok/templates/Default';
 import TemplateService from '@/storyblok/templates/Service';
 import { apiPlugin, storyblokInit } from '@storyblok/react/rsc';
 
-import Email from '@/components/Forms/Validators/Email';
-import MaxLength from '@/components/Forms/Validators/MaximunLength';
-import MinLength from '@/components/Forms/Validators/MinimunLength';
-import Required from '@/components/Forms/Validators/Required';
 import HeaderMenu from '@/components/Menu/HeaderMenu';
 import MenuLink from '@/components/Menu/MenuLink';
 import OfficeCard from '@/components/OfficeCard/OfficeCard';
 
+import FormBlock from './components//Forms/FormBlock';
 import BodyBlockSb from './components/BodyBlock';
 import Feature from './components/Feature';
-import FormBlock from './components/FormBlock';
-import FormInputs from './components/FormFields/FormInput';
+import FormField from './components/Forms/FormField';
 import GridSb from './components/Grid';
 import HeroSb from './components/Hero';
 import JumbotronSb from './components/Jumbotron';
@@ -42,11 +38,7 @@ const components = {
   jumbotron: JumbotronSb,
   service_items: ServiceItemSb,
   Form: FormBlock,
-  'Form Inputs': FormInputs,
-  Email: Email,
-  Required: Required,
-  'Maximum Length': MaxLength,
-  'Minimum Length': MinLength,
+  'Form Inputs': FormField,
   offices: OfficeCard,
 };
 
