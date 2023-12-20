@@ -11,7 +11,7 @@ export interface Address {
   city?: string;
 }
 
-const OfficeCardMap = ({ address, city }: Address) => {
+const OfficeCardMap = ({ city }: Address) => {
   const [hover, setHover] = useState(false);
   let placeholderImage;
   switch (city) {
