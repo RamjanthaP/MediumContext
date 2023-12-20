@@ -15,6 +15,44 @@ type ValidatorType =
   | MaximumLengthStoryblok
   | MinimumLengthStoryblok
   | RequiredStoryblok;
+
+function isEmailValidator(blok: FormInputsStoryblok['blok']) {
+  const emailRegex = /^[A-Za-z0-9,_%+-]+@[A-Za-z0-9,-]+\.[a-z{2,4}$]/;
+  return blok.Validators.some(
+    (validator: ValidatorType) => validator.component === 'Email'
+  )
+    ? emailRegex
+    : null;
+}
+
+function hasValidator(blok: FormInputsStoryblok['blok'], validator: string) {
+  return !!blok.Validators.some(
+    (blok: ValidatorType) => blok.component === validator
+  );
+}
+
+function getValidatorValue(
+  blok: FormInputsStoryblok['blok'],
+  validator: string,
+  valueKey: string
+) {
+  return blok.Validators.find(
+    (blok: ValidatorType) => blok.component === validator
+  )[valueKey];
+}
+
+function setValidators(blok: FormInputsStoryblok['blok']) {
+  return {
+    required: hasValidator(blok, 'Required'),
+    pattern: isEmailValidator(blok),
+    maxLength:
+      hasValidator(blok, 'Maximum Length') &&
+      getValidatorValue(blok, 'Maximum Length', 'maxLength'),
+    minLength:
+      hasValidator(blok, 'Minimum Length') &&
+      getValidatorValue(blok, 'Minimum Length', 'minLength'),
+  };
+}
 export default function FormInputs({
   blok,
   register,
@@ -27,24 +65,7 @@ export default function FormInputs({
         type={blok.Type}
         placeholder={blok.Placeholder}
         error={errors[blok.Name]}
-        {...register(blok.Name, {
-          required: blok.Validators.some(
-            (validator: ValidatorType) => validator.component === 'Required'
-          ),
-          pattern:
-            blok.Type === 'email' &&
-            /^[A-Za-z0-9,_%+-]+@[A-Za-z0-9,-]+\.[a-z{2,4}$]/,
-          maxLength:
-            blok.Type === 'textArea' &&
-            blok.Validators.find(
-              (findMax: { maxLength: Number }) => findMax.maxLength
-            ).maxLength,
-          minLength:
-            blok.Type === 'textArea' &&
-            blok.Validators.find(
-              (findMin: { minLength: Number }) => findMin.minLength
-            ).minLength,
-        })}
+        {...register(blok.Name, setValidators(blok))}
       >
         {blok.Label}
       </InputText>

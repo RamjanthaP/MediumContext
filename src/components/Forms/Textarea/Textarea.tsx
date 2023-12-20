@@ -5,7 +5,7 @@ import Style from './textarea.module.css';
 export interface TextareaProps extends BaseProps {
   id: string;
   value: string;
-  error?: string;
+  error?: boolean;
   onChange: (_newValue: string) => void;
 }
 export interface TextareaProps

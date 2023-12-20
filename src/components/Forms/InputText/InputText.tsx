@@ -1,12 +1,13 @@
+import React from 'react';
+
 import { BaseProps } from '@/types/props';
 
 import Style from './input-text.module.css';
-import React from 'react';
 
 export interface InputTextProps extends BaseProps {
   id: string;
   value?: string;
-  error?: string;
+  error?: true;
 }
 
 const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
@@ -15,7 +16,7 @@ const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
     const borderColor = error
       ? 'border-error'
       : 'border-transparent focus:border-primary-500';
- 
+
     return (
       <div className={`flex flex-col ${className}`}>
         <label className={Style.label} htmlFor={id}>
@@ -33,6 +34,5 @@ const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
     );
   }
 );
-
 
 export default InputText;

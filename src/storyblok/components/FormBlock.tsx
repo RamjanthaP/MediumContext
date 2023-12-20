@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { FormInputsStoryblok, FormStoryblok } from '@sb-types';
 import { StoryblokComponent, storyblokEditable } from '@storyblok/react';
@@ -8,14 +8,21 @@ import Button from '@/components/Button/Button';
 
 export default function Form({ blok }: FormStoryblok) {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formValues, setFormValues] = useState({});
+
   const {
     register,
     reset,
     formState: { errors },
     handleSubmit,
+    getValues,
     watch,
   } = useForm();
   const invisibleRadioButton = watch('invisibleRadioButton', false);
+
+  watch(() => {
+    setFormValues(getValues());
+  });
 
   function submitForm(data: any) {
     if (invisibleRadioButton) {
@@ -26,6 +33,7 @@ export default function Form({ blok }: FormStoryblok) {
     reset();
     setIsSubmitted(true);
   }
+
   return (
     <div className='mx-auto py-4 bg-discrete'>
       <form
@@ -33,6 +41,7 @@ export default function Form({ blok }: FormStoryblok) {
         onSubmit={handleSubmit(submitForm)}
         className='mx-4 md:mx-8 lg:w-1/3 lg:mx-auto  my-2'
       >
+        <pre>{JSON.stringify(formValues, null, 2)}</pre>
         {blok.Inputs.map((nestedBlok: FormInputsStoryblok) => (
           <StoryblokComponent
             blok={nestedBlok}
