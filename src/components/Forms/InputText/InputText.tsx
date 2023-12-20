@@ -30,6 +30,7 @@ const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
           id={id}
           value={value}
         />
+        {error && <div className={Style.errorMessage}>{error}</div>}
       </div>
     );
   }

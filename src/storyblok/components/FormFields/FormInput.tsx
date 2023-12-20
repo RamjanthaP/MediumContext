@@ -1,14 +1,59 @@
 import { FormInputsStoryblok } from '@sb-types';
-import { StoryblokComponent, storyblokEditable } from '@storyblok/react';
+import { storyblokEditable } from '@storyblok/react';
 
 import InputText from '@/components/Forms/InputText/InputText';
-import Style from '@/components/Forms/InputText/input-text.module.css';
+import Textarea from '@/components/Forms/Textarea/Textarea';
 
 import {
+  ValidatorType,
   getValidatorValue,
   hasValidator,
   isEmailValidator,
 } from './hasValidator';
+
+export default function FormInputs({
+  blok,
+  register,
+  errors,
+}: FormInputsStoryblok) {
+  const fieldValidators = blok.Validators;
+  const fieldErrors = { ...errors[blok.Name] };
+  const fieldData = {
+    id: blok._uid,
+    placeholder: blok.Placeholder,
+    error: errorAdapter(fieldErrors, fieldValidators),
+  };
+  switch (blok.Type) {
+    case 'email':
+    case 'text':
+      return (
+        <div {...storyblokEditable(blok)}>
+          <InputText
+            type={blok.Type}
+            {...fieldData}
+            {...register(blok.Name, setValidators(blok))}
+          >
+            {blok.Label}{' '}
+            {!hasValidator(blok, 'Required') && <NotMandatoryLabel />}
+          </InputText>
+        </div>
+      );
+    case 'textArea':
+      return (
+        <div {...storyblokEditable(blok)}>
+          <Textarea
+            {...fieldData}
+            {...register(blok.Name, setValidators(blok))}
+          >
+            {blok.Label}{' '}
+            {!hasValidator(blok, 'Required') && <NotMandatoryLabel />}
+          </Textarea>
+        </div>
+      );
+    default:
+      return 'Unknown input type ' + blok.Type;
+  }
+}
 
 function setValidators(blok: FormInputsStoryblok['blok']) {
   return {
@@ -23,65 +68,36 @@ function setValidators(blok: FormInputsStoryblok['blok']) {
   };
 }
 
-function errorAdapter(fieldErrors?: any[], fieldValidators: any) {
+function errorAdapter(
+  fieldErrors?: { type: 'required' | 'maxLength' | 'minLength' | 'pattern' },
+  fieldValidators?: ValidatorType[]
+) {
   if (!fieldErrors) return null;
+  if (!fieldValidators) return null;
 
+  // These are sorted in priority and will return the first match
   switch (fieldErrors.type) {
     case 'required':
-      return fieldValidators.find((validator: any) => validator.required)
-        ?.errorMessage;
+      return fieldValidators.find(
+        (validator: any) => validator.component === 'Required'
+      )?.errorMessage;
+    case 'pattern':
+      return fieldValidators.find(
+        (validator: any) => validator.component === 'Email'
+      )?.errorMessage;
     case 'maxLength':
-      return fieldValidators.find((validator: any) => validator.maxLength)
-        ?.errorMessage;
+      return fieldValidators.find(
+        (validator: any) => validator.component === 'Maximum Length'
+      )?.errorMessage;
+    case 'minLength':
+      return fieldValidators.find(
+        (validator: any) => validator.component === 'Minimum Length'
+      )?.errorMessage;
+    default:
+      return null;
   }
 }
 
-export default function FormInputs({
-  blok,
-  register,
-  errors,
-}: FormInputsStoryblok) {
-  const fieldValidators = blok.Validators;
-  const fieldErrors = errors[blok.Name];
-  console.log(`------ ${blok.Name} -------`);
-  console.log('validators: ', fieldValidators);
-  console.log('errors: ', fieldErrors);
-  console.log('adapter: ', errorAdapter(fieldErrors, fieldValidators));
-  console.log(`------  -------`);
-
-  return (
-    <div {...storyblokEditable(blok)}>
-      <InputText
-        id={blok._uid}
-        type={blok.Type}
-        placeholder={blok.Placeholder}
-        error={errors[blok.Name]}
-        {...register(blok.Name, setValidators(blok))}
-      >
-        {blok.Label}{' '}
-        {!hasValidator(blok, 'Required') && (
-          <span className='font-normal text-primary-100 text-opacity-50'>
-            (Valfritt)
-          </span>
-        )}
-      </InputText>
-      {/* <pre className='p-4 my-4 bg-default rounded text-xs'>
-        {JSON.stringify(blok.Validators, null, 2)}
-      </pre> */}
-      {/* <pre className='p-4 my-4 bg-default rounded text-xs'>
-        {JSON.stringify(, null, 2)}
-      </pre> */}
-
-      <div className={Style.errorMessage}>
-        {blok.Validators.map((nestedBlok: FormInputsStoryblok) => (
-          <StoryblokComponent
-            blok={nestedBlok}
-            key={nestedBlok._uid}
-            errors={errors}
-            inputName={blok.Name}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
+const NotMandatoryLabel = () => (
+  <span className='font-normal opacity-50'>(Valfritt)</span>
+);

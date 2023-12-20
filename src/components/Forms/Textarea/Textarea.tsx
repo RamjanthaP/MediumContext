@@ -6,7 +6,6 @@ export interface TextareaProps extends BaseProps {
   id: string;
   value: string;
   error?: boolean;
-  onChange: (_newValue: string) => void;
 }
 export interface TextareaProps
   extends Omit<
@@ -20,7 +19,6 @@ const Textarea = ({
   id,
   value,
   error,
-  onChange,
   rows = 4,
   ...inputProps
 }: TextareaProps) => {
@@ -39,7 +37,6 @@ const Textarea = ({
         id={id}
         rows={rows}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
       />
       {error && <div className={Style.errorMessage}>{error}</div>}
     </div>

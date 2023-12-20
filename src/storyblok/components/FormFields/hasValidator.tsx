@@ -6,7 +6,9 @@ import {
   RequiredStoryblok,
 } from '@sb-types';
 
-type ValidatorType =
+import { colorConsole } from '@/utilities/dev-utils';
+
+export type ValidatorType =
   | EmailStoryblok
   | MaximumLengthStoryblok
   | MinimumLengthStoryblok
@@ -23,7 +25,7 @@ export function isEmailValidator(blok: FormInputsStoryblok['blok']) {
 
 export function hasValidator(
   blok: FormInputsStoryblok['blok'],
-  validator: string
+  validator: 'Email' | 'Maximum Length' | 'Minimum Length' | 'Required'
 ) {
   return !!blok.Validators.some(
     (blok: ValidatorType) => blok.component === validator
