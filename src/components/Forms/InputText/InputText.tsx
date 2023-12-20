@@ -8,10 +8,11 @@ export interface InputTextProps extends BaseProps {
   id: string;
   value?: string;
   error?: string;
+  onChange?: (_e: React.FormEvent<HTMLInputElement>) => void;
 }
 
 const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
-  ({ children, className, id, value, error, ...inputProps }, ref) => {
+  ({ children, className, id, error, ...inputProps }, ref) => {
     InputText.displayName = 'InputText';
     const borderColor = error
       ? 'border-error'

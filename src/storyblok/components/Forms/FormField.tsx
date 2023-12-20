@@ -9,7 +9,7 @@ import {
   getValidatorValue,
   hasValidator,
   isEmailValidator,
-} from './hasValidator';
+} from './helpers';
 
 export default function FormInputs({
   blok,

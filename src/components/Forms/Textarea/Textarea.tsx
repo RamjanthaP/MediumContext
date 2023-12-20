@@ -8,6 +8,7 @@ export interface TextareaProps extends BaseProps {
   id: string;
   value: string;
   error?: boolean;
+  onChange?: (_e: React.FormEvent<HTMLInputElement>) => void;
 }
 export interface TextareaProps
   extends Omit<
@@ -16,7 +17,7 @@ export interface TextareaProps
   > {}
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ children, className, id, value, error, rows = 4, ...inputProps }, ref) => {
+  ({ children, className, id, error, rows = 4, ...inputProps }, ref) => {
     const borderColor = error
       ? 'border-error'
       : 'border-transparent focus:border-primary-500';
@@ -38,5 +39,5 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     );
   }
 );
-
+Textarea.displayName = 'Textarea';
 export default Textarea;

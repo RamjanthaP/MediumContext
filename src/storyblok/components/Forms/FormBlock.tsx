@@ -14,7 +14,6 @@ export default function Form({ blok }: FormStoryblok) {
     reset,
     formState: { errors },
     handleSubmit,
-    getValues,
     watch,
   } = useForm();
   const invisibleRadioButton = watch('invisibleRadioButton', false);
@@ -22,9 +21,11 @@ export default function Form({ blok }: FormStoryblok) {
   function submitForm(data: any) {
     if (!invisibleRadioButton) {
       // Send data
+      // eslint-disable-next-line no-console
       console.log('Sending data to ' + blok.Endpoint, data);
     } else {
       // Honeypot it!
+      // eslint-disable-next-line no-console
       console.log('Sending to trash. But make bot think it went through. :D');
     }
     reset();
