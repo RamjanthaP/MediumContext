@@ -36,7 +36,7 @@ const OfficeCardMap = ({ address, city }: Address) => {
         alt={'Karta över kontoret i ' + city}
       />
       <div
-        className='absolute top-0 right-0 left-0 bottom-0'
+        className='absolute top-0 right-0 left-0 bottom-0 hover:bg-[rgba(0,0,0,0.6)]'
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
