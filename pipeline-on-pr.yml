@@ -10,7 +10,8 @@ pr:
   - main
 
 pool:
-  name: Azure Pipelines
+  # name: Azure Pipelines
+  name: Local-Joakim
 
 variables:
   # Make storybook group available.
