@@ -3,7 +3,7 @@
 */
 /* Base button styles */
 .btn {
-  @apply text-btn leading-btn tracking-btn text-left;
+  @apply text-left inline-flex gap-x-0.5 items-center rounded-full border-2;
 }
 
 /* Black background button */

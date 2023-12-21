@@ -45,7 +45,7 @@ const Button = ({
   variant = 'default',
   ...props
 }: ButtonProps) => {
-  const baseClasses = `rounded-full border-2`;
+  const baseClasses = Styles.btn;
   const colorVariant = colorVariants[variant] || colorVariants.default;
   const colorClass = transparent
     ? colorVariant.transparent
@@ -65,7 +65,7 @@ const Button = ({
   if (href)
     return (
       <Link
-        className={`${baseClasses} ${colorClass} ${sizeClasses} inline-flex gap-1 items-center`}
+        className={`${baseClasses} ${colorClass} ${sizeClasses}`}
         href={href || '#'}
         onClick={handleClick}
       >
