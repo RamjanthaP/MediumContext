@@ -49,9 +49,6 @@ jobs:
 
         displayName: 'Set API variable for npm'
 
-      - bash: cat $(envfile)
-        displayName: 'Show API variable'
-
       - task: NodeTool@0
         displayName: 'Install Node.js from nvmrc file'
         inputs:
