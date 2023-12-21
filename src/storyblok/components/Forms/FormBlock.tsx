@@ -80,7 +80,7 @@ export default function Form({ blok }: FormStoryblok) {
         <form
           {...storyblokEditable(blok)}
           onSubmit={handleSubmit(submitForm)}
-          className='w-full gap-4 flex flex-col my-2'
+          className='w-full md:max-w-[600px] md:mx-auto gap-4 flex flex-col my-2'
         >
           {blok.Inputs.map((nestedBlok: FormInputsStoryblok) => (
             <StoryblokComponent
