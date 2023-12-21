@@ -31,9 +31,20 @@ jobs:
     displayName: Install node and lint repo
     steps:
       - bash: |
-          apiValue=$(STORYBLOK_API_TOKEN)
-          echo "STORYBLOK_API_TOKEN=$apiValue" >> $(envfile)
+          echo "STORYBLOK_API_TOKEN=$(STORYBLOK_API_TOKEN)" >> $(envfile)
+
           echo "MAILTRAP_API_USER=$(MAILTRAP_API_USER)" >> $(envfile)
+          echo "MAILTRAP_API_PASSWORD=$(MAILTRAP_API_PASSWORD)" >> $(envfile)
+          echo "MAILTRAP_API_TOKEN=$(MAILTRAP_API_TOKEN)" >> $(envfile)
+          echo "MAILTRAP_INBOX_ID=$(MAILTRAP_INBOX_ID)" >> $(envfile)
+          echo "MAILTRAP_ACCOUNT_ID=$(MAILTRAP_ACCOUNT_ID)" >> $(envfile)
+
+          echo "AZURE_EMAIL_CONNECTION_STRING=$(AZURE_EMAIL_CONNECTION_STRING)" >> $(envfile)
+          echo "AZURE_EMAIL_SENDER_ADDRESS=$(AZURE_EMAIL_SENDER_ADDRESS)" >> $(envfile)
+          echo "AZURE_EMAIL_FORM_RECIEVER_ADDRESS=$(AZURE_EMAIL_FORM_RECIEVER_ADDRESS)" >> $(envfile)
+
+          echo "APP_DOMAIN=$(APP_DOMAIN)" >> $(envfile)
+          echo "APP_URL=$(APP_URL)" >> $(envfile)
 
         displayName: 'Set API variable for npm'
 
