@@ -66,13 +66,6 @@ jobs:
         inputs:
           command: 'ci'
 
-      - bash: |
-          # Use the API and agent variables from the Storyblok group
-          apiValue=$(STORYBLOK_API_TOKEN)
-          # Set environment variable for npm script
-          echo "STORYBLOK_API_TOKEN=$apiValue" >> $(System.DefaultWorkingDirectory)/.env
-        displayName: 'Set API variable for npm'
-
       - task: Npm@1
         displayName: Lint application
         inputs:
