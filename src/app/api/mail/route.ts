@@ -23,7 +23,7 @@ export async function POST(req: Request) {
       });
     } catch (err) {
       return Response.json({
-        message: 'PROBLME sending from azure.',
+        message: 'PROBLEM sending from azure.',
         status: 500,
         data: err,
       });
