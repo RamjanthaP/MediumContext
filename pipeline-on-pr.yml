@@ -25,6 +25,16 @@ jobs:
   - job: install
     displayName: Install node and lint repo
     steps:
+      - bash: |
+          # Use the API and agent variables from the Storyblok group
+          apiValue=$(STORYBLOK_API_TOKEN)
+          # Set environment variable for npm script
+          echo "STORYBLOK_API_TOKEN=$apiValue" >> $(System.DefaultWorkingDirectory)/.env
+        displayName: 'Set API variable for npm'
+
+      - bash: cat $(System.DefaultWorkingDirectory)/.env
+        displayName: 'Show API variable'
+
       - task: NodeTool@0
         displayName: 'Install Node.js from nvmrc file'
         inputs:
