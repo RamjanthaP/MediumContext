@@ -32,6 +32,9 @@ variables:
   # Agent VM image name
   - name: artifactName
     value: 'drop'
+  
+  - name: envfile
+    value: $(System.DefaultWorkingDirectory)/.env
 
 stages:
   - stage: Build
