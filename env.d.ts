@@ -7,6 +7,7 @@ declare namespace NodeJS {
     APP_URL: string;
     AZURE_EMAIL_CONNECTION_STRING: string;
     AZURE_EMAIL_SENDER_ADDRESS: string;
+    AZURE_EMAIL_FORM_RECIEVER_ADDRESS: string;
     STORYBLOK_API_TOKEN: string;
     NEXT_PUBLIC_STORYBLOCK_API_TOKEN: string;
     MAILTRAP_API_USER: string;
