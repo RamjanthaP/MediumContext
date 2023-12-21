@@ -44,8 +44,7 @@ jobs:
           echo "AZURE_EMAIL_SENDER_ADDRESS=$(AZURE_EMAIL_SENDER_ADDRESS)" >> $(envfile)
           echo "AZURE_EMAIL_FORM_RECIEVER_ADDRESS=$(AZURE_EMAIL_FORM_RECIEVER_ADDRESS)" >> $(envfile)
 
-          echo "APP_DOMAIN=$(APP_DOMAIN)" >> $(envfile)
-          echo "APP_URL=$(APP_URL)" >> $(envfile)
+          echo "APP_URL=$(APP_URL_DEV)" >> $(envfile)
 
         displayName: 'Set API variable for npm'
 

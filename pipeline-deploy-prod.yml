@@ -5,7 +5,7 @@
 #
 
 trigger:
-  - 'develop'
+  - 'main'
 
 pool:
   name: Azure Pipelines
@@ -23,7 +23,7 @@ variables:
 
   # Web app name on Azure
   - name: webAppName
-    value: 'amaceitwebstage01'
+    value: 'amaceitwebprod01'
 
   # Agent VM image name
   - name: image
@@ -32,7 +32,7 @@ variables:
   # Agent VM image name
   - name: artifactName
     value: 'drop'
-  
+
   - name: envfile
     value: $(System.DefaultWorkingDirectory)/.env
 
@@ -56,10 +56,10 @@ stages:
               echo "AZURE_EMAIL_SENDER_ADDRESS=$(AZURE_EMAIL_SENDER_ADDRESS)" >> $(envfile)
               echo "AZURE_EMAIL_FORM_RECIEVER_ADDRESS=$(AZURE_EMAIL_FORM_RECIEVER_ADDRESS)" >> $(envfile)
 
-              echo "APP_DOMAIN=$(APP_DOMAIN)" >> $(envfile)
-              echo "APP_URL=$(APP_URL)" >> $(envfile)
+              echo "APP_URL=$(APP_URL_PROD)" >> $(envfile)
 
             displayName: 'Set API variable for npm'
+
           # Install Node.js and build
           - task: NodeTool@0
             displayName: 'Install Node.js from nvmrc file'
@@ -145,7 +145,7 @@ stages:
             timeoutInMinutes: 30
             inputs:
               notifyUsers: 'joakim.nystrom@amaceit.com'
-              instructions: 'Approve deploy to STAGE'
+              instructions: 'Approve deploy to PRODUCTION ✅'
               onTimeout: 'reject'
 
   - stage: Deploy
