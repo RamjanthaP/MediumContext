@@ -18,6 +18,7 @@ variables:
   - group: 'Storyblok'
   - group: 'AzureEmail'
   - group: 'Mailtrap'
+  - group: 'App'
 
   # Agent VM image name
   - name: image
