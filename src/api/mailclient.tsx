@@ -1,4 +1,5 @@
 import { EmailClient } from '@azure/communication-email';
+import type { EmailMessage } from '@azure/communication-email';
 
 const connectionString =
   'endpoint=' + process.env.AZURE_EMAIL_CONNECTION_STRING;
@@ -13,9 +14,12 @@ async function sendMailToAzure(toEmail: string, subject: string, body: string) {
       plainText: body,
     },
     recipients: {
-      to: [{ address: `${toEmail}` }],
+      to: [
+        { address: process.env.AZURE_EMAIL_FORM_RECIEVER_ADDRESS as string },
+      ],
     },
-  };
+    replyTo: [{ address: toEmail }],
+  } satisfies EmailMessage;
 
   const poller = await client.beginSend(emailMessage);
   const result = await poller.pollUntilDone();
