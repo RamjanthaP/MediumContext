@@ -47,7 +47,7 @@ export default function Form({ blok }: FormStoryblok) {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': process.env.APP_URL,
       },
-    }).catch((error) => {
+    }).catch((_error) => {
       setFormError('Ett problem uppstod. Ladda om sidan och försök igen.');
       setIsLoading(false);
       return;
