@@ -10,3 +10,26 @@
 .errorMessage {
   @apply text-error text-sm my-1 mx-6 font-semibold;
 }
+
+.autogrow {
+  @apply grid;
+}
+.autogrow::after {
+  /* Reference: https://css--tricks-com.translate.goog/the-cleanest-trick-for-autogrowing-textareas/?_x_tr_sl=en&_x_tr_tl=sv&_x_tr_hl=sv&_x_tr_pto=sc */
+  content: attr(data-replicated-value) ' ';
+  white-space: pre-wrap;
+  visibility: hidden;
+}
+
+.autogrow > textarea {
+  resize: none;
+  overflow: hidden;
+}
+.autogrow > textarea,
+.autogrow::after {
+  /* Identical styling required!! */
+  @apply border-2 focus:outline-none;
+  @apply py-2 px-6;
+  font: inherit;
+  grid-area: 1 / 1 / 2 / 2;
+}
