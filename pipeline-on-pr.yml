@@ -16,23 +16,28 @@ pool:
 variables:
   # Make storybook group available.
   - group: 'Storyblok'
+  - group: 'AzureEmail'
+  - group: 'Mailtrap'
 
   # Agent VM image name
   - name: image
     value: 'ubuntu-latest'
+
+  - name: envfile
+    value: $(System.DefaultWorkingDirectory)/.env
 
 jobs:
   - job: install
     displayName: Install node and lint repo
     steps:
       - bash: |
-          # Use the API and agent variables from the Storyblok group
           apiValue=$(STORYBLOK_API_TOKEN)
-          # Set environment variable for npm script
-          echo "STORYBLOK_API_TOKEN=$apiValue" >> $(System.DefaultWorkingDirectory)/.env
+          echo "STORYBLOK_API_TOKEN=$apiValue" >> $(envfile)
+          echo "MAILTRAP_API_USER=$(MAILTRAP_API_USER)" >> $(envfile)
+
         displayName: 'Set API variable for npm'
 
-      - bash: cat $(System.DefaultWorkingDirectory)/.env
+      - bash: cat $(envfile)
         displayName: 'Show API variable'
 
       - task: NodeTool@0
