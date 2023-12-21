@@ -20,12 +20,12 @@ export default {
 };
 
 export const Default = () => {
-  const [formValue, setFormValue] = useState('');
+  const [fieldValue, setFieldValue] = useState('');
   return (
     <InputText
       id='story-id'
-      value={formValue}
-      onChange={(newValue) => setFormValue(newValue)}
+      value={fieldValue}
+      onChange={(e) => setFieldValue(e.currentTarget.value)}
     >
       Label for field
     </InputText>
@@ -33,24 +33,16 @@ export const Default = () => {
 };
 
 export const HasError = () => {
-  const [formValue, setFormValue] = useState('bad-email.at.domain.123');
-
-  const validateEmail = (email: string) => {
-    return !email.includes('@') ? 'Email must contain @' : '';
-  };
-
-  const [error, setError] = useState(validateEmail(formValue));
-  const onChange = (newValue: string) => {
-    setFormValue(newValue);
-    setError(validateEmail(newValue));
-  };
+  const [fieldValue, setFieldValue] = useState('');
 
   return (
     <InputText
-      id='story-id'
-      error={error}
-      value={formValue}
-      onChange={onChange}
+      id='errorField'
+      value={fieldValue}
+      onChange={(e) => setFieldValue(e.currentTarget.value)}
+      error={
+        fieldValue.length < 5 ? 'Must be at least 5 characters' : undefined
+      }
     >
       Lazy email test
     </InputText>
