@@ -1,11 +1,10 @@
 import { getGlobalServiceItems } from '@/api/blocks';
 import { getPage } from '@/api/pages';
-import { ISbStoryData, StoryblokComponent } from '@storyblok/react';
+import { ISbStoryData } from '@storyblok/react';
 import StoryblokStory from '@storyblok/react/story';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
 import { HeadMetadata } from '@/utilities/HeadMetadata';
-import { stripTitleFromGrid } from '@/utilities/helper';
 
 import { GridProps } from '@/components/Grid/Grid';
 
@@ -17,7 +16,7 @@ type PageProps = {
 export default function Page(
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
-  const { relatedItems, story } = props;
+  const { story } = props;
 
   return (
     <div>
