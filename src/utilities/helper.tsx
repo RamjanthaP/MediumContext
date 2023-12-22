@@ -59,7 +59,11 @@ export function stripTitleFromGrid(grid: GridProps) {
 
 /**
  *
- * @param path Returns url to google maps that leads to clicked office on contact page
+ * @param city
+ * @param streetadress
+ * @param zip
+ * @param coordinates
+ * Returns url to google maps that leads to clicked office on contact page
  * @returns
  */
 
@@ -72,6 +76,15 @@ export const handleUrlForGoogleMaps = ({
   const googleMapsUrl = `https://www.google.com/maps/place/${streetadress},+${zip}+${city}/${coordinates.longitude},${coordinates.latitude},${coordinates.zoom}`;
   return googleMapsUrl;
 };
+
+/**
+ *
+ * @param minDesktopScreen
+ * @param windowSize
+ * @param setBtnSize
+ * Returns string to handle state depending on the screen size
+ * @returns
+ */
 
 export const handleBtnSize = ({
   minDesktopScreen,
