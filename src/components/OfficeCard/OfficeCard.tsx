@@ -25,7 +25,7 @@ const OfficeCard = ({
   coordinates,
 }: OfficeCardProps) => {
   return (
-    <div className='pt-12 '>
+    <div className='pt-12'>
       <div className='pb-4'>
         <h3 className='font-semibold text-xxl pb-2'>{city}</h3>
         <p className='text-lg'>{streetadress}</p>
@@ -44,7 +44,7 @@ const OfficeCard = ({
           className='relative flex items-center'
           aria-label={`Länk till google maps för kontoret i ${city}`}
         >
-          <div className='w-full h-full max-w-xs max-h-80 relative'>
+          <div className='w-full h-full max-h-80 relative'>
             <OfficeCardMap address={streetadress} city={city} />
           </div>
         </a>
