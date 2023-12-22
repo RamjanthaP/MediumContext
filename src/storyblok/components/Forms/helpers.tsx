@@ -13,7 +13,7 @@ export type ValidatorType =
   | RequiredStoryblok;
 
 export function isEmailValidator(blok: FormInputsStoryblok['blok']) {
-  const emailRegex = /^[A-Za-z0-9,_%+-]+@[A-Za-z0-9,-]+\.[a-z{2,4}$]/;
+  const emailRegex = /^[A-Za-z0-9\._%+-]+@[A-Za-z0-9,-]+\.[a-z{2,4}$]/;
   return blok.Validators.some(
     (validator: ValidatorType) => validator.component === 'Email'
   )

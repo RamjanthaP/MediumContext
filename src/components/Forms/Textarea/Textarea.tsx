@@ -18,19 +18,26 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     const borderColor = error
       ? 'border-error'
       : 'border-transparent focus:border-primary-500';
+    const [localValue, setLocalValue] = React.useState('');
+    const updateLocalValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      setLocalValue(e.target.value);
+    };
 
     return (
       <div className={`flex flex-col ${className}`}>
         <label className={Style.label} htmlFor={id}>
           {children}
         </label>
-        <textarea
-          {...inputProps}
-          className={`bg-default ${Style.field} ${borderColor}`}
-          ref={ref}
-          id={id}
-          rows={rows}
-        />
+        <div className={Style.autogrow} data-replicated-value={localValue}>
+          <textarea
+            {...inputProps}
+            className={`bg-default ${Style.field} ${borderColor}`}
+            ref={ref}
+            id={id}
+            rows={rows}
+            onChange={updateLocalValue}
+          />
+        </div>
         {error && <div className={Style.errorMessage}>{error}</div>}
       </div>
     );

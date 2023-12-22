@@ -13,8 +13,10 @@ export type PageRequest = StoryBlokRequest<{
 export async function getPage(path: string[]): Promise<PageRequest> {
   const request = await apiClient(
     `cdn/stories/${path.join('/')}`,
-    `Hittar inte sidor med slug ${path.join('/')}`
+    `Hittar inte sidor med slug ${path.join('/')}`,
+    { ...storyblockBaseParams, resolve_relations: 'reUsableSection.content' }
   );
+
   return {
     data: {
       story: request.data.story,

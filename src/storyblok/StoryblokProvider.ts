@@ -12,6 +12,7 @@ import MenuLink from '@/components/Menu/MenuLink';
 
 import FormBlock from './components//Forms/FormBlock';
 import BodyBlockSb from './components/BodyBlock';
+import CarouselSb from './components/Carousel';
 import Feature from './components/Feature';
 import FormField from './components/Forms/FormField';
 import GridSb from './components/Grid';
@@ -20,8 +21,8 @@ import JumbotronSb from './components/Jumbotron';
 import LogoCardSb from './components/LogoCard';
 import MapSb from './components/MapSb';
 import OfficeCard from './components/OfficeCard';
+import ReUseableSection from './components/ReUsableSection';
 import ServiceItemSb from './components/ServiceItems';
-import CarouselSb from './components/Carousel';
 
 /** 1. Tag it as a client component */
 
@@ -42,6 +43,7 @@ const components = {
   'Form Inputs': FormField,
   offices: OfficeCard,
   Carousel: CarouselSb,
+  reUsableSection: ReUseableSection,
 };
 
 // Some stort of reminder

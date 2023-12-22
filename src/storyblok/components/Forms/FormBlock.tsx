@@ -1,10 +1,13 @@
 import { useState } from 'react';
 
+import { SparklesIcon } from '@heroicons/react/20/solid';
+import { ArrowPathIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
 import { FormInputsStoryblok, FormStoryblok } from '@sb-types';
 import { StoryblokComponent, storyblokEditable } from '@storyblok/react';
 import { useForm } from 'react-hook-form';
 
 import Button from '@/components/Button/Button';
+import { Container } from '@/components/Layout/Container';
 
 export default function Form({ blok }: FormStoryblok) {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -18,49 +21,109 @@ export default function Form({ blok }: FormStoryblok) {
   } = useForm();
   const invisibleRadioButton = watch('invisibleRadioButton', false);
 
-  function submitForm(data: any) {
-    if (!invisibleRadioButton) {
-      // Send data
-      // eslint-disable-next-line no-console
-      console.log('Sending data to ' + blok.Endpoint, data);
-    } else {
-      // Honeypot it!
-      // eslint-disable-next-line no-console
-      console.log('Sending to trash. But make bot think it went through. :D');
+  const [isLoading, setIsLoading] = useState(false);
+  const [formError, setFormError] = useState<false | string>(false);
+
+  async function submitForm(data: any) {
+    // Exit early and Honeypot it!
+    // Sending to trash. But make bot think it went through.  ¯\_(ツ)_/¯
+    if (invisibleRadioButton) {
+      reset();
+      setIsSubmitted(true);
+      return false;
     }
+
+    const formData = {
+      email: data.Email,
+      subject: 'Mail från ' + data.Name,
+      Body: data.Text,
+    };
+
+    setIsLoading(true);
+    const result = await fetch(blok.Endpoint, {
+      method: 'POST',
+      body: JSON.stringify(formData),
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': process.env.APP_URL,
+      },
+    }).catch((_error) => {
+      setFormError('Ett problem uppstod. Ladda om sidan och försök igen.');
+      setIsLoading(false);
+      return;
+    });
+
+    if (result?.status !== 200) {
+      setFormError('Ett problem uppstod. Ladda om sidan och försök igen.');
+      setIsLoading(false);
+      return;
+    }
+
+    setIsLoading(false);
     reset();
     setIsSubmitted(true);
   }
+  // TODO: Make this configurable from CMS
+  const confirmation = {
+    title: 'Tack för ditt meddelande!',
+    message: 'Vi återkommer så fort vi kan.',
+  };
+
+  const resetAndShowForm = () => {
+    reset();
+    setIsSubmitted(false);
+  };
 
   return (
-    <div className='mx-auto py-4 bg-discrete'>
-      <form
-        {...storyblokEditable(blok)}
-        onSubmit={handleSubmit(submitForm)}
-        className='mx-4 md:mx-8 lg:w-1/3 lg:mx-auto  my-2'
-      >
-        {blok.Inputs.map((nestedBlok: FormInputsStoryblok) => (
-          <StoryblokComponent
-            blok={nestedBlok}
-            key={nestedBlok._uid}
-            register={register}
-            errors={errors}
-          />
-        ))}
+    <div className='py-4 px-4 md:px-8 bg-discrete'>
+      {!isSubmitted && (
+        <form
+          {...storyblokEditable(blok)}
+          onSubmit={handleSubmit(submitForm)}
+          className='w-full md:max-w-[600px] md:mx-auto gap-4 flex flex-col my-2'
+        >
+          {blok.Inputs.map((nestedBlok: FormInputsStoryblok) => (
+            <StoryblokComponent
+              blok={nestedBlok}
+              key={nestedBlok._uid}
+              register={register}
+              errors={errors}
+            />
+          ))}
 
-        <input
-          type='radio'
-          {...register('invisibleRadioButton')}
-          value='checked'
-          className='inline-grid border-transparent'
-        />
-        <div className='mt-4 flex justify-end'>
-          <Button variant='primary' type='submit'>
-            {isSubmitted ? 'Skickat' : 'Skicka'}
+          <input
+            tabIndex={-1}
+            type='radio'
+            {...register('invisibleRadioButton')}
+            value='checked'
+            className='inline-grid border-transparent appearance-none'
+          />
+          {formError && (
+            <p className='text-error p-4 rounded bg-error bg-opacity-10'>
+              {formError}
+            </p>
+          )}
+          <div className='mt-4 flex justify-end'>
+            <Button variant='primary' type='submit'>
+              {!isLoading && <EnvelopeIcon className='h-5 w-5 mr-2' />}
+              {isLoading && (
+                <SparklesIcon className='h-5 w-5 mr-2 animate-spin' />
+              )}
+              {isLoading ? 'Skickar...' : 'Skicka'}
+            </Button>
+          </div>
+        </form>
+      )}
+      {isSubmitted && (
+        <Container className='text-center py-8 min-h-[500px] flex flex-col justify-center items-center gap-4'>
+          <h2 className='text-xxl font-bold'>{confirmation.title}</h2>
+          <p>{confirmation.message}</p>
+          <Button variant='default' transparent onClick={resetAndShowForm}>
+            <ArrowPathIcon className='h-5 w-5 mr-2' />
+            Skicka ett till meddelande?
           </Button>
-        </div>
-        <p>{isSubmitted && 'Vi har tagit emot ditt meddelande'}</p>
-      </form>
+        </Container>
+      )}
     </div>
   );
 }

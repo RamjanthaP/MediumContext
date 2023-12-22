@@ -5,7 +5,7 @@
 #
 
 trigger:
-  - 'main'
+  - 'develop'
 
 pool:
   name: Azure Pipelines
@@ -13,6 +13,9 @@ pool:
 variables:
   # Make storybook group available.
   - group: 'Storyblok'
+  - group: 'AzureEmail'
+  - group: 'Mailtrap'
+  - group: 'App'
 
   # Azure Resource Manager connection created during pipeline creation
   - name: azureSubscription
@@ -20,7 +23,7 @@ variables:
 
   # Web app name on Azure
   - name: webAppName
-    value: 'amaceitwebprod01'
+    value: 'amaceitwebstage01'
 
   # Agent VM image name
   - name: image
@@ -30,6 +33,9 @@ variables:
   - name: artifactName
     value: 'drop'
 
+  - name: envfile
+    value: $(System.DefaultWorkingDirectory)/.env
+
 stages:
   - stage: Build
     displayName: Build stage
@@ -37,6 +43,22 @@ stages:
       - job: Build
         displayName: Build
         steps:
+          - bash: |
+              echo "STORYBLOK_API_TOKEN=$(STORYBLOK_API_TOKEN)" >> $(envfile)
+
+              echo "MAILTRAP_API_USER=$(MAILTRAP_API_USER)" >> $(envfile)
+              echo "MAILTRAP_API_PASSWORD=$(MAILTRAP_API_PASSWORD)" >> $(envfile)
+              echo "MAILTRAP_API_TOKEN=$(MAILTRAP_API_TOKEN)" >> $(envfile)
+              echo "MAILTRAP_INBOX_ID=$(MAILTRAP_INBOX_ID)" >> $(envfile)
+              echo "MAILTRAP_ACCOUNT_ID=$(MAILTRAP_ACCOUNT_ID)" >> $(envfile)
+
+              echo "AZURE_EMAIL_CONNECTION_STRING=$(AZURE_EMAIL_CONNECTION_STRING)" >> $(envfile)
+              echo "AZURE_EMAIL_SENDER_ADDRESS=$(AZURE_EMAIL_SENDER_ADDRESS)" >> $(envfile)
+              echo "AZURE_EMAIL_FORM_RECIEVER_ADDRESS=$(AZURE_EMAIL_FORM_RECIEVER_ADDRESS)" >> $(envfile)
+
+              echo "APP_URL=$(APP_URL_STAGE)" >> $(envfile)
+
+            displayName: 'Set API variable for npm'
           # Install Node.js and build
           - task: NodeTool@0
             displayName: 'Install Node.js from nvmrc file'
@@ -54,13 +76,6 @@ stages:
             displayName: 'Install dependencies for production'
             inputs:
               command: 'ci'
-
-          - bash: |
-              # Use the API and agent variables from the Storyblok group
-              apiValue=$(STORYBLOK_API_TOKEN)
-              # Set environment variable for npm script
-              echo "STORYBLOK_API_TOKEN=$apiValue" >> $(System.DefaultWorkingDirectory)/.env
-            displayName: 'Set API variable for npm'
 
           - task: Npm@1
             displayName: Build application
@@ -129,7 +144,7 @@ stages:
             timeoutInMinutes: 30
             inputs:
               notifyUsers: 'joakim.nystrom@amaceit.com'
-              instructions: 'Approve deploy to PRODUCTION ✅'
+              instructions: 'Approve deploy to STAGE'
               onTimeout: 'reject'
 
   - stage: Deploy
