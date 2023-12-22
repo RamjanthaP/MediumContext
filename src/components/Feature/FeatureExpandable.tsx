@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Image from 'next/image';
 
+import { minDesktopScreen } from '@/config';
 import RichText from '@/storyblok/helpers/RichText';
 import { RichtextStoryblok } from '@sb-types';
 
 import { ImageProps } from '@/types/common';
 import { BaseProps } from '@/types/props';
 
-import Button from '@/components/Button/Button';
+import Button, { ButtonSizes } from '@/components/Button/Button';
 
 import PageSection from '../PageSection/PageSection';
 
@@ -41,6 +42,26 @@ function FeatureExpandable({
     setExpanded(!expanded);
   };
 
+  const [windowSize, setWindowSize] = useState(0);
+  const [btnSize, setBtnSize] = useState<ButtonSizes>('small');
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize(window.innerWidth);
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (windowSize >= minDesktopScreen) {
+      setBtnSize('medium');
+    } else {
+      setBtnSize('small');
+    }
+  }, [windowSize]);
+
   return (
     <PageSection title={preTitle} theme={bgColor}>
       <div
@@ -48,15 +69,16 @@ function FeatureExpandable({
       >
         <div className='flex flex-col md:w-1/2 md:justify-center'>
           {title && (
-            <h3 className='text-xl md:text-xxl font-bold mb-4'>{title}</h3>
+            <h3 className='text-xxl lg:text-3xl font-bold my-4'>{title}</h3>
           )}
-          <p className='mb-4'>{body}</p>
+          <p className='mb-5'>{body}</p>
           <div className='flex flex-wrap gap-2'>
             {expBody && !expanded && (
               <Button
                 variant='primary'
                 element='button'
                 onClick={toggleExpanded}
+                size={btnSize}
               >
                 {expandText}
               </Button>
