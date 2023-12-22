@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 import Image from 'next/image';
 
-import PlaceholderImageLinkoping from '../../../public/assets/linkoping.png';
-import PlaceholderImageLjungby from '../../../public/assets/ljungby.png';
-import PlaceholderImageStockholm from '../../../public/assets/stockholm.png';
+import PlaceholderImageLinkoping from '../../../public/assets/linkoping-maps.png';
+import PlaceholderImageLjungby from '../../../public/assets/ljungby-maps.png';
+import PlaceholderImageStockholm from '../../../public/assets/stockholm-maps.png';
 
 export interface Address {
   address?: string;
@@ -36,12 +36,12 @@ const OfficeCardMap = ({ city }: Address) => {
         alt={'Karta över kontoret i ' + city}
       />
       <div
-        className='absolute top-0 right-0 left-0 bottom-0 hover:bg-[rgba(0,0,0,0.6)]'
+        className='absolute top-0 right-0 left-0 bottom-0 rounded-3xl hover:bg-[rgba(0,0,0,0.6)]'
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
         {hover && (
-          <span className='relative top-1/2 -translate-y-1/2 flex p-4 font-bold text-xl'>
+          <span className='relative top-1/2 -translate-y-1/2 flex p-4 font-bold text-xl text-secondary-50'>
             Öppna karta på google maps
           </span>
         )}
