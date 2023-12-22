@@ -1,5 +1,7 @@
 import { RefObject } from 'react';
 
+import { ButtonHelper } from '@/types/types';
+
 import { GridProps } from '@/components/Grid/Grid';
 import { OfficeCardProps } from '@/components/OfficeCard/OfficeCard';
 
@@ -69,4 +71,16 @@ export const handleUrlForGoogleMaps = ({
 }: OfficeCardProps) => {
   const googleMapsUrl = `https://www.google.com/maps/place/${streetadress},+${zip}+${city}/${coordinates.longitude},${coordinates.latitude},${coordinates.zoom}`;
   return googleMapsUrl;
+};
+
+export const handleBtnSize = ({
+  minDesktopScreen,
+  windowSize,
+  setBtnSize,
+}: ButtonHelper) => {
+  if (windowSize >= minDesktopScreen) {
+    setBtnSize('medium');
+  } else {
+    setBtnSize('small');
+  }
 };

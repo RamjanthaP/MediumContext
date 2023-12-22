@@ -7,6 +7,8 @@ import { minDesktopScreen } from '@/config';
 import { BaseLink, ImageProps } from '@/types/common';
 import { BaseProps } from '@/types/props';
 
+import { handleBtnSize } from '@/utilities/helper';
+
 import Button, { ButtonSizes } from '@/components/Button/Button';
 import PageSection from '@/components/PageSection/PageSection';
 
@@ -34,7 +36,7 @@ function FeatureSection({
 }: FeatureSectionProps) {
   const layout = isContentRight ? 'flex-row-reverse' : 'flex-row';
 
-  const [windowSize, setWindowSize] = useState(0);
+  const [windowSize, setWindowSize] = useState<number>(0);
   const [btnSize, setBtnSize] = useState<ButtonSizes>('small');
 
   useEffect(() => {
@@ -47,11 +49,7 @@ function FeatureSection({
   }, []);
 
   useEffect(() => {
-    if (windowSize >= minDesktopScreen) {
-      setBtnSize('medium');
-    } else {
-      setBtnSize('small');
-    }
+    handleBtnSize({ minDesktopScreen, windowSize, setBtnSize });
   }, [windowSize]);
 
   return (
