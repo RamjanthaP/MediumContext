@@ -10,7 +10,7 @@ import { PlusCircleIcon, XCircleIcon } from '@heroicons/react/20/solid';
 import { BaseProps } from '@/types/props';
 import { Person } from '@/types/types';
 
-import Button from '../Button/Button';
+import Button, { ButtonSizes } from '../Button/Button';
 
 export interface QuickContactProps extends BaseProps {
   person: Person;
@@ -22,6 +22,7 @@ function QuickContact({ person }: QuickContactProps) {
 
   const [windowSize, setWindowSize] = useState(0);
   const [imgSize, setImgSize] = useState(0);
+  const [btnSize, setBtnSize] = useState<ButtonSizes>('small');
 
   useEffect(() => {
     function handleResize() {
@@ -37,10 +38,12 @@ function QuickContact({ person }: QuickContactProps) {
       setIsDesktop(true);
       setOpen(true);
       setImgSize(150);
+      setBtnSize('medium');
     } else {
       setIsDesktop(false);
       setOpen(false);
       setImgSize(80);
+      setBtnSize('small');
     }
   }, [windowSize]);
 
@@ -55,7 +58,7 @@ function QuickContact({ person }: QuickContactProps) {
   const mobileOpenContentClasses = 'flex justify-between h-full items-start';
 
   //classes for desktop or when closed
-  const containerClasses = `bg-discrete rounded-lg overflow-hidden p-4 relative ${
+  const containerClasses = `bg-discrete rounded-lg overflow-hidden p-2 lg:p-8 relative ${
     open
       ? 'sm:w-full flex flex-row-reverse lg:px-8'
       : 'items-center w-full flex flex-row-reverse'
@@ -71,9 +74,7 @@ function QuickContact({ person }: QuickContactProps) {
       }`}
     >
       <button
-        className={`lg:hidden cursor-pointer flex justify-end ${
-          !isDesktop ? 'absolute top-2 right-2' : ''
-        }`}
+        className={`lg:hidden cursor-pointer flex justify-end`}
         onClick={toggleOpen}
         aria-expanded={open}
         aria-label='toggle-contact-info'
@@ -104,7 +105,7 @@ function QuickContact({ person }: QuickContactProps) {
           </h2>
           {open && (
             <div className='flex flex-col lg:items-center items-start'>
-              <p className='text-md mb-2 lg:text-center md:text-start px-4 md:break-words'>
+              <p className='text-sm mb-2 lg:text-center md:text-start px-4 md:break-words'>
                 Jag går gärna igenom processen ihop med er och hjälper er att
                 formulera era behov
               </p>
@@ -113,12 +114,16 @@ function QuickContact({ person }: QuickContactProps) {
                   <h5 className='text-xs font-bold px-4'>
                     {person?.name || 'Default Name'}
                   </h5>
-                  <p className='text-xs mb-3 px-4'>
+                  <p className='text-xs mb-4 px-4'>
                     {person?.title || 'Default Role'}
                   </p>
                   <div className='flex sm:flex-col gap-3'>
                     {person.email && (
-                      <Button variant='primary' href={`mailto:${person.email}`}>
+                      <Button
+                        variant='primary'
+                        href={`mailto:${person.email}`}
+                        size={btnSize}
+                      >
                         Maila mig
                       </Button>
                     )}
@@ -127,6 +132,7 @@ function QuickContact({ person }: QuickContactProps) {
                         variant='inverted'
                         transparent
                         href={`tel:${person.phone}`}
+                        size={btnSize}
                       >
                         Ring mig
                       </Button>
