@@ -8,7 +8,7 @@ import OfficeCard, {
 const OfficeCardSb = ({ blok }: OfficesStoryblok) => {
   const componentData = mapOfficeCard(blok);
   return (
-    <div {...storyblokEditable(blok)}>
+    <div className='max-w-xs' {...storyblokEditable(blok)}>
       <OfficeCard {...componentData} />
     </div>
   );
