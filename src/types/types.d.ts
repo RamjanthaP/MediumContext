@@ -5,3 +5,9 @@ export interface Person {
   title?: string;
   image: ImageProps;
 }
+
+export interface ButtonHelper {
+  minDesktopScreen: number;
+  windowSize: number;
+  setBtnSize: ButtonSizes;
+}
