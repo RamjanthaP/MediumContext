@@ -12,6 +12,7 @@ const config: Config = {
     colors: {
       black: '#1C1C1C',
       white: '#FFFFFF',
+      green: '#47812C',
       primary: {
         default: '#75BC5C', // Logo Green === 400
         50: '#f5faf3',
