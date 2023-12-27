@@ -69,7 +69,7 @@ function FeatureExpandable({
           {title && (
             <h3 className='text-xxl lg:text-3xl font-bold my-4'>{title}</h3>
           )}
-          <p className='mb-5'>{body}</p>
+          <p className='mb-5 text-md lg:text-lg'>{body}</p>
           <div className='flex flex-wrap gap-2'>
             {expBody && !expanded && (
               <Button
