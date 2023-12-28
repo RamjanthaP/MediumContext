@@ -18,22 +18,24 @@ export function mapOfficeDTOtoData(dto: ContactFooterStoryblok) {
 const Footer = ({ blok }: { blok: ContactFooterStoryblok }) => {
   const offices = mapOfficeDTOtoData(blok);
   return (
-    <SectionWrapper color='default' title='Kontakta oss'>
-      <div className='generic-info'>
-        <div>
-          Email: <a href='mailto:info@amaceit.se'>info@amaceit.se</a>
+    <footer>
+      <SectionWrapper color='default' title='Kontakta oss'>
+        <div className='generic-info'>
+          <div>
+            Email: <a href='mailto:info@amaceit.se'>info@amaceit.se</a>
+          </div>
         </div>
-      </div>
-      <div className='offices w-full mt-4 flex flex-col md:flex-row gap-6'>
-        {offices.map((office: OfficeItemProps) => (
-          <OfficeItem
-            key={office.title}
-            title={office.title}
-            address={office.address}
-          />
-        ))}
-      </div>
-    </SectionWrapper>
+        <div className='offices w-full mt-4 flex flex-col md:flex-row gap-6'>
+          {offices.map((office: OfficeItemProps) => (
+            <OfficeItem
+              key={office.title}
+              title={office.title}
+              address={office.address}
+            />
+          ))}
+        </div>
+      </SectionWrapper>
+    </footer>
   );
 };
 
