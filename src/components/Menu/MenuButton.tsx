@@ -12,6 +12,7 @@ function MenuButton({ toggleMenu, isOpen }: BurgerProps) {
     <button
       className='flex flex-col h-12 w-12 justify-center items-center group'
       onClick={toggleMenu}
+      aria-label={`${isOpen ? 'Stäng menyn' : 'Öppna menyn'}`}
     >
       <div
         className={`${genericHamburgerLine} ${

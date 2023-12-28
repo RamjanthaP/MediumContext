@@ -51,6 +51,7 @@ const Menu = ({ blok }: { blok: MenuStoryblok }) => {
             onClick={closeMenu}
             href='/'
             className='flex justify-start flex-grow-1 w-3/12 lg:w-2/12'
+            aria-label='Länk till startsidan'
           >
             <LogoAmaceit className='md:-translate-y-0.5 lg:-translate-y-1' />
           </Link>
