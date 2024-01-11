@@ -23,6 +23,7 @@ interface CarouselSbProps {
 
 const CarouselSb = ({ blok }: { blok: CarouselSbProps }) => {
   const settings = {
+    arrows: false,
     dots: true,
     infinite: true,
     speed: 500,

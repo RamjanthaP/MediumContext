@@ -113,5 +113,6 @@ body {
 }
 
 .slick-dots li button:before {
+  color:var(--themed-inverted-background) !important;
   font-size: 20px !important;
 }
