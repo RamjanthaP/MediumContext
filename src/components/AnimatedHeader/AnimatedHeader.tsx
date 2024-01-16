@@ -38,7 +38,7 @@ const AnimateHeader = ({
     router.push(url);
   };
   useEffect(() => {
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       const target = getSvgaPlayer(svgContainerRef);
 
       if (target?.svgatorPlayer) {
@@ -49,7 +49,9 @@ const AnimateHeader = ({
         throw new Error('The player cannot be found');
       }
     }, 100);
-  }, [svgContainerRef?.current?.contentDocument]);
+
+    return () => clearTimeout(timeoutId);
+  }, [svgContainerRef?.current?.contentDocument, titleRef]);
 
   return (
     <div className={`pb-8 ${Styles.root} ${Styles.background} ${className}`}>
