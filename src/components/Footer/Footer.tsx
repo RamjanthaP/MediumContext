@@ -2,6 +2,8 @@ import { ContactFooterStoryblok, OfficesStoryblok } from '@sb-types';
 
 import SectionWrapper from '@/components/Layout/SectionWrapper';
 
+import Link from '../../../node_modules/next/link';
+import LogoAmaceit from '../Logo/Amaceit';
 import { OfficeItem, OfficeItemProps } from './OfficeItem';
 
 export function mapOfficeDTOtoData(dto: ContactFooterStoryblok) {
@@ -19,11 +21,20 @@ const Footer = ({ blok }: { blok: ContactFooterStoryblok }) => {
   const offices = mapOfficeDTOtoData(blok);
   return (
     <footer>
-      <SectionWrapper color='default' title='Kontakta oss'>
-        <div className='generic-info'>
-          <div>
-            Email: <a href='mailto:info@amaceit.se'>info@amaceit.se</a>
+      <SectionWrapper color='default' title='Kontakta oss.'>
+        <div className='flex flex-col items-center mb-8'>
+          <div className='flex justify-center mb-4 '>
+            <Link
+              href='/'
+              aria-label='Länk till startsidan'
+              className='flex-grow-1 w-8/12 lg:w-8/12'
+            >
+              <LogoAmaceit className='md:-translate-y-0.5 lg:-translate-y-1' />
+            </Link>
           </div>
+          <a href='mailto:info@amaceit.se' className='email-class text-xl'>
+            E-post: info@amaceit.se
+          </a>
         </div>
         <div className='offices w-full mt-4 flex flex-col md:flex-row gap-6'>
           {offices.map((office: OfficeItemProps) => (
