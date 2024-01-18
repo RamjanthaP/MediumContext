@@ -32,9 +32,9 @@ const Footer = ({ blok }: { blok: ContactFooterStoryblok }) => {
               <LogoAmaceit className='md:-translate-y-0.5 lg:-translate-y-1' />
             </Link>
           </div>
-          <a href='mailto:info@amaceit.se' className='email-class text-xl'>
+          <Link href='mailto:info@amaceit.se' className='email-class text-xl'>
             E-post: info@amaceit.se
-          </a>
+          </Link>
         </div>
         <div className='offices w-full mt-4 flex flex-col md:flex-row gap-6'>
           {offices.map((office: OfficeItemProps) => (
