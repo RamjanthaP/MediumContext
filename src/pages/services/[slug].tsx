@@ -61,6 +61,11 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (
     };
   } catch (error) {
     console.error(error);
-    return { notFound: true };
+    return {
+      redirect: {
+        destination: '/not-found',
+        permanent: false,
+      },
+};
   }
 };
