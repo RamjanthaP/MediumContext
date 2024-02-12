@@ -20,6 +20,7 @@ import HeroSb from './components/Hero';
 import JumbotronSb from './components/Jumbotron';
 import LogoCardSb from './components/LogoCard';
 import MapSb from './components/MapSb';
+import NewsSb from './components/News';
 import OfficeCard from './components/OfficeCard';
 import ReUseableSection from './components/ReUsableSection';
 import ServiceItemSb from './components/ServiceItems';
@@ -43,6 +44,7 @@ const components = {
   'Form Inputs': FormField,
   offices: OfficeCard,
   Carousel: CarouselSb,
+  News: NewsSb,
   reUsableSection: ReUseableSection,
 };
 

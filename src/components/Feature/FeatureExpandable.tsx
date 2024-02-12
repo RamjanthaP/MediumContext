@@ -22,9 +22,10 @@ export interface FeatureExpandableProps extends BaseProps {
   isContentRight?: boolean;
   image?: ImageProps;
   body?: string;
-  expandText: string;
-  expTitle: string;
+  expandText?: string;
+  expTitle?: string;
   expBody?: RichtextStoryblok;
+  caption?: string
 }
 
 function FeatureExpandable({
@@ -37,6 +38,7 @@ function FeatureExpandable({
   expandText,
   expTitle,
   expBody,
+  caption,
 }: FeatureExpandableProps) {
   const layout = isContentRight ? 'flex-row-reverse' : 'flex-row';
   const [expanded, setExpanded] = useState(false);
@@ -110,7 +112,7 @@ function FeatureExpandable({
             </Button>
           </header>
           <div className='columns-3 pb-4'>
-            <RichText __html={expBody} />
+            {expBody ? <RichText __html={expBody} /> : <p>{caption}</p>}
           </div>
         </div>
       )}
