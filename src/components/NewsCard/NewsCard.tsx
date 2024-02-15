@@ -20,7 +20,7 @@ const NewsCard = ({
 }: NewsCardProps) => {
   return (
     <PageSection className="flex gap-4 md:gap-12 lg:gap-20 w-full">
-      <div className='flex -w-full'>
+      <div className='md:flex -w-full sm:flex sm:flex-col sm:w-full'>
       {image && (
         <div className='md:w-1/3 bg-discrete rounded-4xl w-full lg:w-50 aspect-square mx-auto relative overflow-hidden'>
           <Image
