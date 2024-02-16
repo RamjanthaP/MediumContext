@@ -30,6 +30,7 @@ import ServiceItemSb from './components/ServiceItems';
 const components = {
   template_default: TemplateDefault,
   template_service: TemplateService,
+  template_news: NewsSb,
   body: BodyBlockSb,
   feature: Feature,
   grid: GridSb,
@@ -44,7 +45,6 @@ const components = {
   'Form Inputs': FormField,
   offices: OfficeCard,
   Carousel: CarouselSb,
-  News: NewsSb,
   reUsableSection: ReUseableSection,
 };
 
