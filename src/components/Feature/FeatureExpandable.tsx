@@ -23,8 +23,9 @@ export interface FeatureExpandableProps extends BaseProps {
   image?: ImageProps;
   body?: string;
   expandText?: string;
-  expTitle: string;
-  expBody: RichtextStoryblok;
+  expTitle?: string;
+  expBody?: RichtextStoryblok;
+  caption?: string;
 }
 
 function FeatureExpandable({
@@ -111,7 +112,7 @@ function FeatureExpandable({
             </Button>
           </header>
           <div className='columns-3 pb-4'>
-            <RichText __html={expBody} />{' '}
+            {expBody ? <RichText __html={expBody} /> : <p>{caption}</p>}
           </div>
         </div>
       )}
