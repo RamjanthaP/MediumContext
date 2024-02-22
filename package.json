@@ -25,6 +25,7 @@
     "@azure/communication-email": "^1.0.0",
     "@heroicons/react": "^2.0.18",
     "@storyblok/react": "^2.4.7",
+    "@types/axios": "^0.14.0",
     "axios": "^1.6.7",
     "dompurify": "^3.0.6",
     "express-session": "^1.17.3",
