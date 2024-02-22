@@ -263,14 +263,19 @@
       "name": "Form",
       "display_name": null,
       "created_at": "2023-12-11T10:46:29.216Z",
-      "updated_at": "2023-12-11T10:47:15.922Z",
+      "updated_at": "2023-12-20T19:42:47.749Z",
       "id": 5016845,
       "schema": {
         "Inputs": {
-          "type": "bloks"
+          "type": "bloks",
+          "required": true,
+          "minimum": 1
         },
         "Endpoint": {
-          "type": "text"
+          "type": "text",
+          "required": false,
+          "description": "Url dit formuläret skickas. T ex doman.se/api/mailform",
+          "regex": ""
         }
       },
       "image": null,
@@ -281,15 +286,16 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "Form",
-      "component_group_uuid": null,
+      "component_group_uuid": "5af643aa-512c-4bb5-8fe0-2ae6bfb9bf8f",
       "color": null,
-      "icon": null
+      "icon": null,
+      "component_group_name": "Forms"
     },
     {
       "name": "Form Inputs",
       "display_name": null,
       "created_at": "2023-12-11T10:14:35.098Z",
-      "updated_at": "2023-12-12T14:10:18.478Z",
+      "updated_at": "2023-12-20T19:43:06.376Z",
       "id": 5016670,
       "schema": {
         "Name": {
@@ -300,7 +306,7 @@
         },
         "Placeholder": {
           "type": "text",
-          "required": true,
+          "required": false,
           "max_length": 200
         },
         "Type": {
@@ -344,9 +350,10 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "Form Inputs",
-      "component_group_uuid": null,
+      "component_group_uuid": "5af643aa-512c-4bb5-8fe0-2ae6bfb9bf8f",
       "color": null,
-      "icon": null
+      "icon": null,
+      "component_group_name": "Forms"
     },
     {
       "name": "grid",
@@ -782,6 +789,66 @@
       "component_group_name": "Validators"
     },
     {
+      "name": "News",
+      "display_name": null,
+      "created_at": "2024-02-09T11:33:47.046Z",
+      "updated_at": "2024-02-15T10:42:14.319Z",
+      "id": 5316695,
+      "schema": {
+        "title": {
+          "type": "text"
+        },
+        "image": {
+          "type": "asset",
+          "required": true,
+          "display_name": "image",
+          "filetypes": [
+            "images"
+          ],
+          "asset_folder_id": null
+        },
+        "caption": {
+          "type": "textarea"
+        },
+        "link": {
+          "type": "multilink",
+          "required": true,
+          "allow_target_blank": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "News",
+      "component_group_uuid": null,
+      "color": "#395ece",
+      "icon": "block-add"
+    },
+    {
+      "name": "no_validation",
+      "display_name": null,
+      "created_at": "2023-12-21T10:18:19.224Z",
+      "updated_at": "2023-12-21T10:18:19.224Z",
+      "id": 5074408,
+      "schema": {},
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "no_validation",
+      "component_group_uuid": "c95114ec-be0d-4a7b-8d53-93f1cce845f3",
+      "color": null,
+      "icon": null,
+      "component_group_name": "Validators"
+    },
+    {
       "name": "offices",
       "display_name": null,
       "created_at": "2023-10-27T06:34:01.274Z",
@@ -924,12 +991,13 @@
       "name": "Required",
       "display_name": null,
       "created_at": "2023-12-12T09:07:29.878Z",
-      "updated_at": "2023-12-19T09:55:29.149Z",
+      "updated_at": "2023-12-20T19:40:39.051Z",
       "id": 5023459,
       "schema": {
         "errorMessage": {
           "type": "text",
-          "required": true
+          "required": true,
+          "default_value": "Obligatoriskt fält"
         }
       },
       "image": null,
@@ -1051,6 +1119,30 @@
       "component_group_name": "Page Templates"
     },
     {
+      "name": "template_news",
+      "display_name": null,
+      "created_at": "2024-02-12T14:31:21.029Z",
+      "updated_at": "2024-02-12T14:32:06.321Z",
+      "id": 5329315,
+      "schema": {
+        "block": {
+          "type": "bloks"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "template_news",
+      "component_group_uuid": "0cfb1da5-aa5d-438d-9d6a-f657e98807d8",
+      "color": "#00b3b0",
+      "icon": "block-doc",
+      "component_group_name": "Page Templates"
+    },
+    {
       "name": "template_service",
       "display_name": null,
       "created_at": "2023-10-09T13:08:12.920Z",
@@ -1097,6 +1189,26 @@
       "component_group_name": "Page Templates"
     },
     {
+      "name": "Test",
+      "display_name": null,
+      "created_at": "2024-02-12T14:28:34.970Z",
+      "updated_at": "2024-02-12T14:28:34.970Z",
+      "id": 5329279,
+      "schema": {},
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Test",
+      "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
+      "color": null,
+      "icon": null,
+      "component_group_name": "Blocks"
+    },
+    {
       "name": "Testimonal",
       "display_name": null,
       "created_at": "2023-12-19T12:25:13.639Z",
@@ -1127,6 +1239,26 @@
       "component_group_uuid": null,
       "color": null,
       "icon": null
+    },
+    {
+      "name": "Url",
+      "display_name": null,
+      "created_at": "2023-12-21T10:20:02.906Z",
+      "updated_at": "2023-12-21T10:20:02.906Z",
+      "id": 5074432,
+      "schema": {},
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Url",
+      "component_group_uuid": "c95114ec-be0d-4a7b-8d53-93f1cce845f3",
+      "color": null,
+      "icon": null,
+      "component_group_name": "Validators"
     }
   ]
 }
