@@ -6,9 +6,9 @@ const NewsSb = ({ blok }: FeatureStoryblok) => {
   const componentData = mapNewsToData(blok);
 
   return (
-    <div {...storyblokEditable(blok)}>
-      {componentData.map((item) => (
-        <NewsCard key={item.uid} {...item} />
+    <div {...storyblokEditable(blok)} className='py-20'>
+      {componentData.toReversed().map((item, index) => (
+        <NewsCard key={item.uid} {...item} index={index} />
       ))}
       </div>
     );

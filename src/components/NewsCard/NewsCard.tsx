@@ -6,6 +6,7 @@ import Link from 'next/link';
 import PageSection from '../PageSection/PageSection';
 
 interface NewsCardProps extends BaseProps {
+  uid: any;
   title?: string;
   image?: ImageProps;
   caption?: string;
@@ -17,6 +18,7 @@ interface NewsCardProps extends BaseProps {
     fieldtype: string
     cached_url: string
   }
+   index: number,
 }
 
 const NewsCard = ({
@@ -24,12 +26,15 @@ const NewsCard = ({
   image,
   caption,
   link,
+  uid,
+  index
 }: NewsCardProps) => {
+  const isLayoutReversed = index % 2 !== 0;
   return (
-    <PageSection className="flex gap-4 md:gap-12 lg:gap-20 w-full">
-      <div className='md:flex -w-full sm:flex sm:flex-col sm:w-full'>
+    <PageSection className={`flex gap-4 md:gap-12 lg:gap-20 w-full ${isLayoutReversed ? 'flex-row-reverse bg-discrete' : 'bg-default'}`}>
+      <div className={`md:flex -w-full sm:flex sm:flex-col  justify-between sm:w-full ${isLayoutReversed ? 'flex-row-reverse bg-discrete' : 'bg-default'}`}>
         {image && (
-          <div className='md:w-1/3 bg-discrete rounded-4xl w-full lg:w-50 aspect-square mx-auto relative overflow-hidden'>
+          <div className='md:w-5/12 bg-discrete rounded-4xl w-full lg:w-50 aspect-square relative overflow-hidden'>
             <Image
               src={image.url}
               alt={image.alt || 'image'}
