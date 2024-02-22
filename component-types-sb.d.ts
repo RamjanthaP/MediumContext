@@ -37,6 +37,8 @@ export interface CarouselStoryblok {
     | MenuStoryblok
     | MenuLinkStoryblok
     | MinimumLengthStoryblok
+    | NewsStoryblok
+    | NoValidationStoryblok
     | OfficesStoryblok
     | PersonStoryblok
     | QuickContactStoryblok
@@ -44,8 +46,11 @@ export interface CarouselStoryblok {
     | ReUsableSectionStoryblok
     | ServiceItemsStoryblok
     | TemplateDefaultStoryblok
+    | TemplateNewsStoryblok
     | TemplateServiceStoryblok
+    | TestStoryblok
     | TestimonalStoryblok
+    | UrlStoryblok
   )[];
   _uid: string;
   component: "Carousel";
@@ -95,7 +100,7 @@ export interface FeatureStoryblok {
 }
 
 export interface FormStoryblok {
-  Inputs?: (
+  Inputs: (
     | BodyStoryblok
     | CarouselStoryblok
     | ContactFooterStoryblok
@@ -113,6 +118,8 @@ export interface FormStoryblok {
     | MenuStoryblok
     | MenuLinkStoryblok
     | MinimumLengthStoryblok
+    | NewsStoryblok
+    | NoValidationStoryblok
     | OfficesStoryblok
     | PersonStoryblok
     | QuickContactStoryblok
@@ -120,8 +127,11 @@ export interface FormStoryblok {
     | ReUsableSectionStoryblok
     | ServiceItemsStoryblok
     | TemplateDefaultStoryblok
+    | TemplateNewsStoryblok
     | TemplateServiceStoryblok
+    | TestStoryblok
     | TestimonalStoryblok
+    | UrlStoryblok
   )[];
   Endpoint?: string;
   _uid: string;
@@ -132,9 +142,16 @@ export interface FormStoryblok {
 export interface FormInputsStoryblok {
   Name?: string;
   Label?: string;
-  Placeholder: string;
+  Placeholder?: string;
   Type?: "" | "text" | "email" | "textArea";
-  Validators?: (EmailStoryblok | MaximumLengthStoryblok | MinimumLengthStoryblok | RequiredStoryblok)[];
+  Validators?: (
+    | EmailStoryblok
+    | MaximumLengthStoryblok
+    | MinimumLengthStoryblok
+    | NoValidationStoryblok
+    | RequiredStoryblok
+    | UrlStoryblok
+  )[];
   _uid: string;
   component: "Form Inputs";
   [k: string]: any;
@@ -160,6 +177,8 @@ export interface GridStoryblok {
     | MenuStoryblok
     | MenuLinkStoryblok
     | MinimumLengthStoryblok
+    | NewsStoryblok
+    | NoValidationStoryblok
     | OfficesStoryblok
     | PersonStoryblok
     | QuickContactStoryblok
@@ -167,8 +186,11 @@ export interface GridStoryblok {
     | ReUsableSectionStoryblok
     | ServiceItemsStoryblok
     | TemplateDefaultStoryblok
+    | TemplateNewsStoryblok
     | TemplateServiceStoryblok
+    | TestStoryblok
     | TestimonalStoryblok
+    | UrlStoryblok
   )[];
   theme?: "" | "default" | "inverted" | "discrete";
   _uid: string;
@@ -305,6 +327,22 @@ export interface MinimumLengthStoryblok {
   [k: string]: any;
 }
 
+export interface NewsStoryblok {
+  title?: string;
+  image: AssetStoryblok;
+  caption?: string;
+  link: Exclude<MultilinkStoryblok, {linktype?: "email"} | {linktype?: "asset"}>;
+  _uid: string;
+  component: "News";
+  [k: string]: any;
+}
+
+export interface NoValidationStoryblok {
+  _uid: string;
+  component: "no_validation";
+  [k: string]: any;
+}
+
 export interface OfficesStoryblok {
   streetadress: string;
   zip: string;
@@ -383,6 +421,8 @@ export interface TemplateDefaultStoryblok {
     | MenuStoryblok
     | MenuLinkStoryblok
     | MinimumLengthStoryblok
+    | NewsStoryblok
+    | NoValidationStoryblok
     | OfficesStoryblok
     | PersonStoryblok
     | QuickContactStoryblok
@@ -390,11 +430,53 @@ export interface TemplateDefaultStoryblok {
     | ReUsableSectionStoryblok
     | ServiceItemsStoryblok
     | TemplateDefaultStoryblok
+    | TemplateNewsStoryblok
     | TemplateServiceStoryblok
+    | TestStoryblok
     | TestimonalStoryblok
+    | UrlStoryblok
   )[];
   _uid: string;
   component: "template_default";
+  [k: string]: any;
+}
+
+export interface TemplateNewsStoryblok {
+  block?: (
+    | BodyStoryblok
+    | CarouselStoryblok
+    | ContactFooterStoryblok
+    | EmailStoryblok
+    | FeatureStoryblok
+    | FormStoryblok
+    | FormInputsStoryblok
+    | GridStoryblok
+    | HeroStoryblok
+    | JumbotronStoryblok
+    | LinkStoryblok
+    | LogoCardStoryblok
+    | MapBlockStoryblok
+    | MaximumLengthStoryblok
+    | MenuStoryblok
+    | MenuLinkStoryblok
+    | MinimumLengthStoryblok
+    | NewsStoryblok
+    | NoValidationStoryblok
+    | OfficesStoryblok
+    | PersonStoryblok
+    | QuickContactStoryblok
+    | RequiredStoryblok
+    | ReUsableSectionStoryblok
+    | ServiceItemsStoryblok
+    | TemplateDefaultStoryblok
+    | TemplateNewsStoryblok
+    | TemplateServiceStoryblok
+    | TestStoryblok
+    | TestimonalStoryblok
+    | UrlStoryblok
+  )[];
+  _uid: string;
+  component: "template_news";
   [k: string]: any;
 }
 
@@ -407,6 +489,12 @@ export interface TemplateServiceStoryblok {
   [k: string]: any;
 }
 
+export interface TestStoryblok {
+  _uid: string;
+  component: "Test";
+  [k: string]: any;
+}
+
 export interface TestimonalStoryblok {
   Image?: string;
   Name?: string;
@@ -414,5 +502,11 @@ export interface TestimonalStoryblok {
   Quotes?: string;
   _uid: string;
   component: "Testimonal";
+  [k: string]: any;
+}
+
+export interface UrlStoryblok {
+  _uid: string;
+  component: "Url";
   [k: string]: any;
 }
