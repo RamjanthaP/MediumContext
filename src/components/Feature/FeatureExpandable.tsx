@@ -25,7 +25,7 @@ export interface FeatureExpandableProps extends BaseProps {
   expandText?: string;
   expTitle?: string;
   expBody?: RichtextStoryblok;
-  caption?: string
+  caption?: string;
 }
 
 function FeatureExpandable({
