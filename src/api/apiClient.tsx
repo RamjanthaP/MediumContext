@@ -6,7 +6,7 @@ import {
 
 export let storyblockBaseParams = {
   version:
-    process.env.NODE_ENV === 'production' ? 'published' : ('draft' as const), // TODO: Move all things like this to config
+    process.env.STORYBLOK_API_ENVIRONMENT as 'draft' | 'published'
 } satisfies ISbStoriesParams;
 
 export const revalidateTime = 10;
