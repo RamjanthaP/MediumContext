@@ -44,7 +44,7 @@ test.describe('Checks related services', () => {
     ).toBeVisible();
     await expect(
       relatedServices.getByRole('heading', {
-        name: 'Modern applikationsutveckling',
+        name: 'Applikationsutveckling',
       })
     ).toBeVisible();
     await expect(
