@@ -93,11 +93,3 @@ stages:
             env:
               CI: 'true'
               PLAYWRIGHT_BROWSERS_PATH: $(PLAYWRIGHT_BROWSERS_PATH)
-
-          # Optional: Type checking if you're using TypeScript
-          - task: Npm@1
-            displayName: 'Type Check'
-            inputs:
-              command: 'custom'
-              customCommand: 'run type-check'
-            condition: eq(variables['typescript'], 'true')

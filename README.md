@@ -87,6 +87,18 @@ For a function in `utils/text-helper.ts` the test should be `utils/test-helper.t
 
 Are written in playwright and should be placed in `/test-e2e` with a descriptive naming and test a clear scope of functionality, for exemple just navigation or just a contact form.
 
+## Integrations
+
+### Storyblok to Linkedin posting (Currently not working)
+
+The integration from Storyblok to Linkedin is designed so when a post is published, changed or unpublished, it will create, updated or remove a Linkedin-post.
+The post will take the image and an excerpt of the text and publish it to Linkedin with a link to the post on the site.
+
+The mechanics behind it is.
+
+1. A user publish a post
+2. A webhook in Storyblok will call amaceit.com/api/storyblokToLinkedInWebhook (located under src/pages/api/storyblokToLinkedInWebhook.tsx) which in turn will
+
 ## Folder structure
 
 - TODO: fill in this part
