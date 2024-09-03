@@ -1,89 +1,102 @@
-# Node.js React Web App to Linux on Azure
-# Build a Node.js React app and deploy it to Azure as a Linux web app.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
-
-trigger: none
+trigger: none # We don't want this to run on pushes
 
 pr:
-  - develop
   - main
+  - develop
 
 pool:
-  name: Azure Pipelines
-  # name: Local-Joakim
+  vmImage: 'ubuntu-latest'
 
 variables:
-  # Make storybook group available.
   - group: 'Storyblok'
   - group: 'AzureEmail'
   - group: 'Mailtrap'
   - group: 'App'
+  - name: NEXT_CACHE_FOLDER
+    value: $(Pipeline.Workspace)/.next/cache
+  - name: PLAYWRIGHT_BROWSERS_PATH
+    value: $(Pipeline.Workspace)/playwright-browsers
 
-  # Agent VM image name
-  - name: image
-    value: 'ubuntu-latest'
+stages:
+  - stage: Verify
+    jobs:
+      - job: TestAndLint
+        steps:
+          - task: NodeTool@0
+            displayName: 'Install Node.js from .nvmrc'
+            inputs:
+              versionSource: 'fromFile'
+              versionFilePath: '.nvmrc'
 
-  - name: envfile
-    value: $(System.DefaultWorkingDirectory)/.env
+          - task: Bash@3
+            displayName: 'Create .env file'
+            inputs:
+              targetType: 'inline'
+              script: |
+                cat << EOF > .env
+                STORYBLOK_API_ENVIRONMENT=$(STORYBLOK_API_ENVIRONMENT)
+                STORYBLOK_API_TOKEN=$(STORYBLOK_API_TOKEN)
+                MAILTRAP_API_USER=$(MAILTRAP_API_USER)
+                MAILTRAP_API_PASSWORD=$(MAILTRAP_API_PASSWORD)
+                MAILTRAP_API_TOKEN=$(MAILTRAP_API_TOKEN)
+                MAILTRAP_INBOX_ID=$(MAILTRAP_INBOX_ID)
+                MAILTRAP_ACCOUNT_ID=$(MAILTRAP_ACCOUNT_ID)
+                AZURE_EMAIL_CONNECTION_STRING=$(AZURE_EMAIL_CONNECTION_STRING)
+                AZURE_EMAIL_SENDER_ADDRESS=$(AZURE_EMAIL_SENDER_ADDRESS)
+                AZURE_EMAIL_FORM_RECIEVER_ADDRESS=$(AZURE_EMAIL_FORM_RECIEVER_ADDRESS)
+                APP_URL=$(APP_URL_DEV)
+                EOF
 
-jobs:
-  - job: install
-    displayName: Install node and lint repo
-    steps:
-      - bash: |
-          echo "STORYBLOK_API_ENVIRONMENT=$(STORYBLOK_API_ENVIRONMENT)" >> $(envfile)
-          echo "STORYBLOK_API_TOKEN=$(STORYBLOK_API_TOKEN)" >> $(envfile)
+          - task: Cache@2
+            displayName: 'Cache npm packages'
+            inputs:
+              key: 'npm | "$(Agent.OS)" | package-lock.json'
+              restoreKeys: |
+                npm | "$(Agent.OS)"
+              path: $(NEXT_CACHE_FOLDER)
 
-          echo "MAILTRAP_API_USER=$(MAILTRAP_API_USER)" >> $(envfile)
-          echo "MAILTRAP_API_PASSWORD=$(MAILTRAP_API_PASSWORD)" >> $(envfile)
-          echo "MAILTRAP_API_TOKEN=$(MAILTRAP_API_TOKEN)" >> $(envfile)
-          echo "MAILTRAP_INBOX_ID=$(MAILTRAP_INBOX_ID)" >> $(envfile)
-          echo "MAILTRAP_ACCOUNT_ID=$(MAILTRAP_ACCOUNT_ID)" >> $(envfile)
+          - task: Cache@2
+            displayName: 'Cache Playwright browsers'
+            inputs:
+              key: 'playwright-browsers | "$(Agent.OS)" | package-lock.json'
+              restoreKeys: |
+                playwright-browsers | "$(Agent.OS)"
+              path: $(PLAYWRIGHT_BROWSERS_PATH)
 
-          echo "AZURE_EMAIL_CONNECTION_STRING=$(AZURE_EMAIL_CONNECTION_STRING)" >> $(envfile)
-          echo "AZURE_EMAIL_SENDER_ADDRESS=$(AZURE_EMAIL_SENDER_ADDRESS)" >> $(envfile)
-          echo "AZURE_EMAIL_FORM_RECIEVER_ADDRESS=$(AZURE_EMAIL_FORM_RECIEVER_ADDRESS)" >> $(envfile)
+          - task: Npm@1
+            displayName: 'npm ci'
+            inputs:
+              command: 'ci'
 
-          echo "APP_URL=$(APP_URL_DEV)" >> $(envfile)
+          - task: Npm@1
+            displayName: 'Lint'
+            inputs:
+              command: 'custom'
+              customCommand: 'run lint'
 
-        displayName: 'Set API variable for npm'
+          - task: Npm@1
+            displayName: 'Unit Tests'
+            inputs:
+              command: 'custom'
+              customCommand: 'run test:ci'
 
-      - task: NodeTool@0
-        displayName: 'Install Node.js from nvmrc file'
-        inputs:
-          versionSource: 'fromFile'
-          versionFilePath: '.nvmrc'
+          - script: |
+              npx playwright install --with-deps
+            displayName: 'Install Playwright'
 
-      - task: Cache@2
-        displayName: 'Retrieving cache for package-lock.json'
-        inputs:
-          key: 'package-lock.json'
-          path: '$(System.DefaultWorkingDirectory)/.next/cache'
+          - task: Npm@1
+            displayName: 'E2E Tests'
+            inputs:
+              command: 'custom'
+              customCommand: 'run test:e2e'
+            env:
+              CI: 'true'
+              PLAYWRIGHT_BROWSERS_PATH: $(PLAYWRIGHT_BROWSERS_PATH)
 
-      - task: Npm@1
-        displayName: 'Install dependencies for production'
-        inputs:
-          command: 'ci'
-
-      - task: Npm@1
-        displayName: Lint application
-        inputs:
-          command: 'custom'
-          workingDir: '.'
-          customCommand: 'run lint'
-
-      - task: Npm@1
-        displayName: 'Run unit tests'
-        inputs:
-          command: 'custom'
-          customCommand: 'run test:ci'
-
-      - script: |
-          npx playwright install --with-deps
-        displayName: 'Prepare E2E tests'
-
-      - script: npx playwright test
-        displayName: 'Run E2E tests'
-        env:
-          CI: true
+          # Optional: Type checking if you're using TypeScript
+          - task: Npm@1
+            displayName: 'Type Check'
+            inputs:
+              command: 'custom'
+              customCommand: 'run type-check'
+            condition: eq(variables['typescript'], 'true')
