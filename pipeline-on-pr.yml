@@ -13,7 +13,8 @@ variables:
   - group: 'Mailtrap'
   - group: 'App'
   - name: NEXT_CACHE_FOLDER
-    value: $(Pipeline.Workspace)/.next/cache
+    value: $(System.DefaultWorkingDirectory)/.next/cache
+    #value: $(Pipeline.Workspace)/.next/cache
   - name: PLAYWRIGHT_BROWSERS_PATH
     value: $(Pipeline.Workspace)/playwright-browsers
 
