@@ -1,12 +1,3 @@
-parameters:
-  - name: environment
-    type: string
-    default: 'development'
-    values:
-      - development
-      - stage
-      - production
-
 trigger: none # We don't want this to run on pushes
 
 pr:
@@ -17,7 +8,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  - template: "ci/parts/variables.yml"
+  - template: 'ci/parts/variables.yml'
   - name: NPM_CACHE_FOLDER
     value: $(Pipeline.Workspace)/.npm
   - name: NEXT_CACHE_FOLDER
