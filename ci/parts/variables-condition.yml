@@ -32,3 +32,10 @@ variables:
       value: $(STORYBLOK_API_TOKEN_PRODUCTION)
     ${{ else }}:
       value: $(STORYBLOK_API_TOKEN_PREVIEW)
+
+  # Web app name on Azure
+  - name: AZURE_WEB_APP_NAME
+    ${{ if eq(variables.isMain, true) }}:
+      value: 'amaceitwebprod01'
+    ${{ else }}:
+      value: 'amaceitwebstage01'

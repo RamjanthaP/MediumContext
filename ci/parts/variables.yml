@@ -3,3 +3,9 @@ variables:
   - group: 'AzureEmail'
   - group: 'Mailtrap'
   - group: 'App'
+
+  - name: ARTIFACT_NAME
+    value: 'drop'
+
+  - name: AZURE_SUBSCRIPTION
+    value: 'amaceit web (bb781f30-4924-43cf-bd9a-5d52e8991ea0)'
