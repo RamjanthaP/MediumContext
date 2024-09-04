@@ -1,0 +1,5 @@
+variables:
+  - group: 'Storyblok'
+  - group: 'AzureEmail'
+  - group: 'Mailtrap'
+  - group: 'App'

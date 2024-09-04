@@ -17,10 +17,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  - group: 'Storyblok'
-  - group: 'AzureEmail'
-  - group: 'Mailtrap'
-  - group: 'App'
+  temaplate: ci/parts/variables.yml
   - name: NPM_CACHE_FOLDER
     value: $(Pipeline.Workspace)/.npm
   - name: NEXT_CACHE_FOLDER
