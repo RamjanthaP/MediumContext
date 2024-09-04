@@ -2,7 +2,7 @@ steps:
   - task: Cache@2
     displayName: 'Retrieve Cache npm packages'
     inputs:
-      key: 'npm | "$(Agent.OS)" | package-lock.json'
+      key: 'npm | "$(Agent.OS)" | $(System.DefaultWorkingDirectory)/package-lock.json'
       restoreKeys: |
         npm | "$(Agent.OS)"
       path: $(NPM_CACHE_FOLDER)
@@ -11,7 +11,19 @@ steps:
   - task: Cache@2
     displayName: 'Retrieve Cache next build'
     inputs:
-      key: 'nextjs | "$(Agent.OS)" | package-lock.json'
+      key: 'nextjs | "$(Agent.OS)" | $(System.DefaultWorkingDirectory)/package-lock.json'
       restoreKeys: |
         nextjs | "$(Agent.OS)"
       path: $(NEXT_CACHE_FOLDER)
+
+  - script: |
+      mkdir -p $(NPM_CACHE_FOLDER)
+      mkdir -p $(NEXT_CACHE_FOLDER)
+    displayName: 'Create cache directories'
+
+  - script: |
+      echo "NPM_CACHE_FOLDER: $(NPM_CACHE_FOLDER)"
+      echo "NEXT_CACHE_FOLDER: $(NEXT_CACHE_FOLDER)"
+      ls -la $(Pipeline.Workspace)
+      ls -la $(System.DefaultWorkingDirectory)
+    displayName: 'Debug cache paths'
