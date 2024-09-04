@@ -17,39 +17,8 @@ stages:
     jobs:
       - job: TestAndLint
         steps:
-          - task: NodeTool@0
-            displayName: 'Install Node.js from .nvmrc'
-            inputs:
-              versionSource: 'fromFile'
-              versionFilePath: '.nvmrc'
-
-          - task: Bash@3
-            displayName: 'Create .env file'
-            inputs:
-              targetType: 'inline'
-              script: |
-                cat << EOF > .env
-                STORYBLOK_API_ENVIRONMENT=$(STORYBLOK_API_ENVIRONMENT)
-                STORYBLOK_API_TOKEN=$(STORYBLOK_API_TOKEN)
-                MAILTRAP_API_USER=$(MAILTRAP_API_USER)
-                MAILTRAP_API_PASSWORD=$(MAILTRAP_API_PASSWORD)
-                MAILTRAP_API_TOKEN=$(MAILTRAP_API_TOKEN)
-                MAILTRAP_INBOX_ID=$(MAILTRAP_INBOX_ID)
-                MAILTRAP_ACCOUNT_ID=$(MAILTRAP_ACCOUNT_ID)
-                AZURE_EMAIL_CONNECTION_STRING=$(AZURE_EMAIL_CONNECTION_STRING)
-                AZURE_EMAIL_SENDER_ADDRESS=$(AZURE_EMAIL_SENDER_ADDRESS)
-                AZURE_EMAIL_FORM_RECIEVER_ADDRESS=$(AZURE_EMAIL_FORM_RECIEVER_ADDRESS)
-                APP_URL=$(APP_URL_DEV)
-                EOF
-
-          - task: Cache@2
-            displayName: 'Retrieve Cache npm packages'
-            inputs:
-              key: 'npm | "$(Agent.OS)" | package-lock.json'
-              restoreKeys: |
-                npm | "$(Agent.OS)"
-              path: $(NPM_CACHE_FOLDER)
-            condition: always()
+          - template: ci/parts/setup-environment.yml
+          - template: ci/parts/retrieve-cache.yml
 
           - task: Cache@2
             displayName: 'Retrieve Cache Playwright browsers'
@@ -58,14 +27,6 @@ stages:
               restoreKeys: |
                 playwright-browsers | "$(Agent.OS)"
               path: $(PLAYWRIGHT_BROWSERS_PATH)
-
-          - task: Cache@2
-            displayName: 'Retrieve Cache next build'
-            inputs:
-              key: 'nextjs | "$(Agent.OS)" | package-lock.json'
-              restoreKeys: |
-                nextjs | "$(Agent.OS)"
-              path: $(NEXT_CACHE_FOLDER)
 
           - task: Npm@1
             displayName: 'npm ci'

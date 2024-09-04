@@ -1,0 +1,17 @@
+steps:
+  - task: Cache@2
+    displayName: 'Retrieve Cache npm packages'
+    inputs:
+      key: 'npm | "$(Agent.OS)" | package-lock.json'
+      restoreKeys: |
+        npm | "$(Agent.OS)"
+      path: $(NPM_CACHE_FOLDER)
+    condition: always()
+
+  - task: Cache@2
+    displayName: 'Retrieve Cache next build'
+    inputs:
+      key: 'nextjs | "$(Agent.OS)" | package-lock.json'
+      restoreKeys: |
+        nextjs | "$(Agent.OS)"
+      path: $(NEXT_CACHE_FOLDER)
