@@ -56,7 +56,7 @@ stages:
                 EOF
 
           - task: Cache@2
-            displayName: 'Cache npm packages'
+            displayName: 'Retrieve Cache npm packages'
             inputs:
               key: 'npm | "$(Agent.OS)" | package-lock.json'
               restoreKeys: |
@@ -65,26 +65,25 @@ stages:
             condition: always()
 
           - task: Cache@2
-            displayName: 'Cache Playwright browsers'
+            displayName: 'Retrieve Cache Playwright browsers'
             inputs:
               key: 'playwright-browsers | "$(Agent.OS)" | package-lock.json'
               restoreKeys: |
                 playwright-browsers | "$(Agent.OS)"
               path: $(PLAYWRIGHT_BROWSERS_PATH)
 
+          - task: Cache@2
+            displayName: 'Retrieve Cache next build'
+            inputs:
+              key: 'nextjs | "$(Agent.OS)" | package-lock.json'
+              restoreKeys: |
+                nextjs | "$(Agent.OS)"
+              path: $(NEXT_CACHE_FOLDER)
+
           - task: Npm@1
             displayName: 'npm ci'
             inputs:
               command: 'ci'
-
-          - task: Cache@2
-            displayName: 'Cache next build'
-            inputs:
-              key: 'nextjs | "$(Agent.OS)" | package-lock.json'
-              restoreKeys: |
-                npm | "$(Agent.OS)"
-              path: $(NEXT_CACHE_FOLDER)
-            condition: always()
 
           - task: Npm@1
             displayName: 'Lint'
