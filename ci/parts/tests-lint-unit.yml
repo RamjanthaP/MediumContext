@@ -1,0 +1,12 @@
+steps:
+  - task: Npm@1
+    displayName: 'Lint'
+    inputs:
+      command: 'custom'
+      customCommand: 'run lint'
+
+  - task: Npm@1
+    displayName: 'Unit Tests'
+    inputs:
+      command: 'custom'
+      customCommand: 'run test:ci'

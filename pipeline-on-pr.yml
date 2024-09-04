@@ -20,42 +20,11 @@ stages:
           - template: ci/parts/setup-environment.yml
           - template: ci/parts/retrieve-cache.yml
 
-          - task: Cache@2
-            displayName: 'Retrieve Cache Playwright browsers'
-            inputs:
-              key: 'playwright-browsers | "$(Agent.OS)" | package-lock.json'
-              restoreKeys: |
-                playwright-browsers | "$(Agent.OS)"
-              path: $(PLAYWRIGHT_BROWSERS_PATH)
-
           - task: Npm@1
             displayName: 'npm ci'
             inputs:
               command: 'ci'
 
-          - task: Npm@1
-            displayName: 'Lint'
-            inputs:
-              command: 'custom'
-              customCommand: 'run lint'
+          - template: ci/parts/tests-lint-unit.yml
 
-          - task: Npm@1
-            displayName: 'Unit Tests'
-            inputs:
-              command: 'custom'
-              customCommand: 'run test:ci'
-
-          - script: |
-              npx playwright install --with-deps
-            displayName: 'Install Playwright'
-            env:
-              PLAYWRIGHT_BROWSERS_PATH: $(PLAYWRIGHT_BROWSERS_PATH)
-
-          - task: Npm@1
-            displayName: 'E2E Tests'
-            inputs:
-              command: 'custom'
-              customCommand: 'run test:e2e'
-            env:
-              CI: 'true'
-              PLAYWRIGHT_BROWSERS_PATH: $(PLAYWRIGHT_BROWSERS_PATH)
+          - template: ci/parts/tests-e2e.yml
