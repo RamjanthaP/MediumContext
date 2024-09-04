@@ -16,10 +16,15 @@ steps:
         nextjs | "$(Agent.OS)"
       path: $(NEXT_CACHE_FOLDER)
 
-  - script: |
+  - bash: |
       mkdir -p $(NPM_CACHE_FOLDER)
       mkdir -p $(NEXT_CACHE_FOLDER)
     displayName: 'Create cache directories'
+
+  # - script: |
+  #     mkdir -p $(NPM_CACHE_FOLDER)
+  #     mkdir -p $(NEXT_CACHE_FOLDER)
+  #   displayName: 'Create cache directories'
 
   - script: |
       echo "NPM_CACHE_FOLDER: $(NPM_CACHE_FOLDER)"
