@@ -61,7 +61,7 @@ stages:
     jobs:
       - deployment: DeployWebApp
         displayName: Deploy Web App
-        environment: 'stage'
+        environment: 'staging'
         pool:
           vmImage: 'ubuntu-latest'
         strategy:
