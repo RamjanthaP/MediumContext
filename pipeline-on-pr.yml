@@ -8,7 +8,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  - template: 'ci/parts/variables.yml'
+  - template: ci/parts/variables.yml
   - name: NPM_CACHE_FOLDER
     value: $(Pipeline.Workspace)/.npm
   - name: NEXT_CACHE_FOLDER
