@@ -8,9 +8,9 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  - template: 'ci/parts/variables.yml'
-  - template: 'ci/parts/variables-condition.yml'
-  - template: 'ci/parts/variables-path.yml'
+  - template: ci/parts/variables.yml
+  - template: ci/parts/variables-condition.yml
+  - template: ci/parts/variables-path.yml
 
 stages:
   - stage: Verify
