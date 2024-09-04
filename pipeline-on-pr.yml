@@ -5,8 +5,8 @@ parameters:
     values:
       - development
       - stage
-      - prod 
-      
+      - production
+
 trigger: none # We don't want this to run on pushes
 
 pr:
