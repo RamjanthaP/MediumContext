@@ -23,7 +23,7 @@ stages:
         displayName: Build
         steps:
           - template: ci/parts/setup-environment.yml
-          - template: ci/parts/retrieve-cache.yml
+          - template: ci/parts/cache.yml
 
           - task: Npm@1
             displayName: 'Install dependencies for production'
