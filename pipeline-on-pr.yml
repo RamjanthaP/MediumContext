@@ -8,13 +8,9 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  - template: ci/parts/variables.yml
-  - name: NPM_CACHE_FOLDER
-    value: $(Pipeline.Workspace)/.npm
-  - name: NEXT_CACHE_FOLDER
-    value: $(System.DefaultWorkingDirectory)/.next/cache
-  - name: PLAYWRIGHT_BROWSERS_PATH
-    value: $(Pipeline.Workspace)/playwright-browsers
+  - template: 'ci/parts/variables.yml'
+  - template: 'ci/parts/variables-condition.yml'
+  - template: 'ci/parts/variables-path.yml'
 
 stages:
   - stage: Verify

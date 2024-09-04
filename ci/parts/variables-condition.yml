@@ -1,0 +1,34 @@
+variables:
+  # Conditional variables
+  - name: isPR
+    value: $[eq(variables['Build.Reason'], 'PullRequest')]
+  - name: isMain
+    value: $[eq(variables['Build.SourceBranch'], 'refs/heads/main')]
+  - name: isDevelop
+    value: $[eq(variables['Build.SourceBranch'], 'refs/heads/develop')]
+
+  # App url
+  - name: APP_URL
+    ${{ if eq(variables.isPR, true) }}:
+      value: $(APP_URL_DEV)
+    ${{ elseif eq(variables.isMain, true) }}:
+      value: $(APP_URL_PROD)
+    ${{ else }}:
+      value: $(APP_URL_STAGE)
+
+    # Storybook conditioned variables
+  - name: STORYBLOK_API_ENVIRONMENT
+    ${{ if eq(variables.isPR, true) }}:
+      value: $(STORYBLOK_API_ENVIRONMENT_PREVIEW)
+    ${{ elseif eq(variables.isMain, true) }}:
+      value: $(STORYBLOK_API_ENVIRONMENT_PRODUCTION)
+    ${{ else }}:
+      value: $(STORYBLOK_API_ENVIRONMENT_PREVIEW)
+
+  - name: STORYBLOK_API_TOKEN
+    ${{ if eq(variables.isPR, true) }}:
+      value: $(STORYBLOK_API_TOKEN_PREVIEW)
+    ${{ elseif eq(variables.isMain, true) }}:
+      value: $(STORYBLOK_API_TOKEN_PRODUCTION)
+    ${{ else }}:
+      value: $(STORYBLOK_API_TOKEN_PREVIEW)
