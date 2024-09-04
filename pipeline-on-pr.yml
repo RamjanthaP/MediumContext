@@ -12,9 +12,10 @@ variables:
   - group: 'AzureEmail'
   - group: 'Mailtrap'
   - group: 'App'
+  - name: NPM_CACHE_FOLDER
+    value: $(Pipeline.Workspace)/.npm
   - name: NEXT_CACHE_FOLDER
     value: $(System.DefaultWorkingDirectory)/.next/cache
-    #value: $(Pipeline.Workspace)/.next/cache
   - name: PLAYWRIGHT_BROWSERS_PATH
     value: $(Pipeline.Workspace)/playwright-browsers
 
@@ -54,7 +55,8 @@ stages:
               key: 'npm | "$(Agent.OS)" | package-lock.json'
               restoreKeys: |
                 npm | "$(Agent.OS)"
-              path: $(NEXT_CACHE_FOLDER)
+              path: $(NPM_CACHE_FOLDER)
+            condition: always()
 
           - task: Cache@2
             displayName: 'Cache Playwright browsers'
@@ -68,6 +70,15 @@ stages:
             displayName: 'npm ci'
             inputs:
               command: 'ci'
+
+          - task: Cache@2
+            displayName: 'Cache next build'
+            inputs:
+              key: 'nextjs | "$(Agent.OS)" | package-lock.json'
+              restoreKeys: |
+                npm | "$(Agent.OS)"
+              path: $(NEXT_CACHE_FOLDER)
+            condition: always()
 
           - task: Npm@1
             displayName: 'Lint'
