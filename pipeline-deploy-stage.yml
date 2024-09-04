@@ -25,6 +25,13 @@ stages:
           - template: ci/parts/setup-environment.yml
           - template: ci/parts/cache.yml
 
+          - script: |
+              echo "NPM_CACHE_FOLDER: $(NPM_CACHE_FOLDER)"
+              echo "NEXT_CACHE_FOLDER: $(NEXT_CACHE_FOLDER)"
+              ls -la $(Pipeline.Workspace)
+              ls -la $(System.DefaultWorkingDirectory)
+            displayName: 'Debug cache paths'
+
           - task: Npm@1
             displayName: 'Install dependencies for production'
             inputs:
