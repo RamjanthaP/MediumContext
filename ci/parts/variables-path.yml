@@ -2,6 +2,6 @@ variables:
   - name: NPM_CACHE_FOLDER
     value: $(Pipeline.Workspace)/.npm
   - name: NEXT_CACHE_FOLDER
-    value: $(System.DefaultWorkingDirectory)/.next/cache
+    value: $(System.Workspace)/.next/cache
   - name: PLAYWRIGHT_BROWSERS_PATH
     value: $(Pipeline.Workspace)/playwright-browsers
