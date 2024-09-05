@@ -24,7 +24,7 @@ stages:
         steps:
           - template: ci/parts/setup-environment.yml
           - template: ci/parts/cache.yml
-          
+
           - task: Npm@1
             displayName: 'Install dependencies for production'
             inputs:
@@ -37,30 +37,7 @@ stages:
               workingDir: '.'
               customCommand: 'run build'
 
-          - task: CopyFiles@2
-            displayName: 'Copy build files'
-            inputs:
-              Contents: |
-                .next/standalone/**
-                .next/static/** 
-                public/**
-                ecosystem.config.js
-                .env
-              TargetFolder: '$(Build.ArtifactStagingDirectory)'
-              flattenFolders: false
-
-          - task: ArchiveFiles@2
-            displayName: 'Create deployment package'
-            inputs:
-              rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
-              includeRootFolder: false
-              archiveType: 'zip'
-              archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-              replaceExistingArchive: true
-
-          - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-            artifact: $(ARTIFACT_NAME)
-
+          - template: ci/parts/create-artifact.yml
 
   - stage: Validation
     displayName: Validate deploy
@@ -101,6 +78,6 @@ stages:
                     appName: $(AZURE_WEB_APP_NAME)
                     appType: 'webAppLinux'
                     package: '$(Pipeline.Workspace)/$(ARTIFACT_NAME)/$(Build.BuildId).zip'
-                    runtimeStack: 'NODE|18-lts'
+                    runtimeStack: 'NODE|20-lts'
                     startUpCommand: "pm2 start /home/site/wwwroot/ecosystem.config.js --no-daemon --env DEBUG='*'"
                     appSettings: '-STORYBLOK_API_TOKEN $(STORYBLOK_API_TOKEN)'
