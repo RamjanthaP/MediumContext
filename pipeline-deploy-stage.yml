@@ -39,8 +39,8 @@ stages:
 
           - template: ci/parts/create-artifact.yml
 
-  - stage: Validation
-    displayName: Validate deploy
+  - stage: Approval
+    displayName: Approve deploy
     dependsOn: Build
     jobs:
       - job: waitForValidation
@@ -57,7 +57,7 @@ stages:
 
   - stage: Deploy
     displayName: Deploy to Stage
-    dependsOn: Validation
+    dependsOn: Approval
     jobs:
       - deployment: DeployWebApp
         displayName: Deploy Web App
@@ -82,22 +82,25 @@ stages:
                     startUpCommand: "pm2 start /home/site/wwwroot/ecosystem.config.js --no-daemon --env DEBUG='*'"
                     appSettings: '-STORYBLOK_API_TOKEN $(STORYBLOK_API_TOKEN)'
 
-                #Smoke tests
-                - task: Npm@1
-                  displayName: 'Install dependencies for smoke test'
-                  inputs:
-                    command: 'install'
-                    workingDir: '$(System.DefaultWorkingDirectory)/ci/tests'
+  - stage: Validation
+    displayName: Validation of deploy
+    dependsOn: Deploy
+    jobs:
+      - task: Npm@1
+        displayName: 'Install dependencies for smoke test'
+        inputs:
+          command: 'install'
+          workingDir: '$(System.DefaultWorkingDirectory)/ci/tests'
 
-                - task: NodeTool@0
-                  inputs:
-                    versionSpec: '20.x'
-                  displayName: 'Install Node.js 20.x'
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '20.x'
+        displayName: 'Install Node.js 20.x'
 
-                - script: |
-                    echo "Running smoke test..."
-                    APP_HOSTNAME=$(AZURE_WEB_APP_NAME).azurewebsites.net node smoke-test.js
-                  workingDirectory: '$(System.DefaultWorkingDirectory)/ci/tests'
-                  displayName: 'Run smoke test'
-                  env:
-                    APP_HOSTNAME: $(AZURE_WEB_APP_NAME).azurewebsites.net
+      - script: |
+          echo "Running smoke test..."
+          APP_HOSTNAME=$(AZURE_WEB_APP_NAME).azurewebsites.net node smoke-test.js
+        workingDirectory: '$(System.DefaultWorkingDirectory)/ci/tests'
+        displayName: 'Run smoke test'
+        env:
+          APP_HOSTNAME: $(AZURE_WEB_APP_NAME).azurewebsites.net
