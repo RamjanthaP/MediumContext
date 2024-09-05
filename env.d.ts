@@ -9,7 +9,7 @@ declare namespace NodeJS {
     AZURE_EMAIL_SENDER_ADDRESS: string;
     AZURE_EMAIL_FORM_RECIEVER_ADDRESS: string;
     STORYBLOK_API_TOKEN: string;
-    STORYBLOK_API_ENVIRONMENT: string;
+    STORYBLOK_API_ENVIRONMENT: 'draft' | 'published';
     NEXT_PUBLIC_STORYBLOCK_API_TOKEN: string;
     MAILTRAP_API_USER: string;
     MAILTRAP_API_PASSWORD: string;

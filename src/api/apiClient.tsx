@@ -5,8 +5,7 @@ import {
 } from '@storyblok/react/rsc';
 
 export let storyblockBaseParams = {
-  version:
-    process.env.STORYBLOK_API_ENVIRONMENT as 'draft' | 'published'
+  version: process.env.STORYBLOK_API_ENVIRONMENT,
 } satisfies ISbStoriesParams;
 
 export const revalidateTime = 10;
