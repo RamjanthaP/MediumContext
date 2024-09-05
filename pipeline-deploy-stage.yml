@@ -86,16 +86,16 @@ stages:
     displayName: Validation of deploy
     dependsOn: Deploy
     jobs:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '20.x'
+        displayName: 'Install Node.js 20.x'
+
       - task: Npm@1
         displayName: 'Install dependencies for smoke test'
         inputs:
           command: 'install'
           workingDir: '$(System.DefaultWorkingDirectory)/ci/tests'
-
-      - task: NodeTool@0
-        inputs:
-          versionSpec: '20.x'
-        displayName: 'Install Node.js 20.x'
 
       - script: |
           echo "Running smoke test..."
