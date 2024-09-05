@@ -1,6 +1,10 @@
 steps:
+ - script: |
+      mkdir -p $(NEXT_CACHE_FOLDER)
+    displayName: 'Create Next.js cache directory'
+
   - task: Cache@2
-    displayName: 'Retrieve Cache npm packages'
+    displayName: 'Cache npm packages'
     inputs:
       key: 'npm | "$(Agent.OS)" | $(System.DefaultWorkingDirectory)/package-lock.json'
       restoreKeys: |
@@ -9,9 +13,14 @@ steps:
     condition: always()
 
   - task: Cache@2
-    displayName: 'Retrieve Cache next build'
+    displayName: 'Cache next build'
     inputs:
       key: 'nextjs | "$(Agent.OS)" | $(System.DefaultWorkingDirectory)/package-lock.json'
       restoreKeys: |
         nextjs | "$(Agent.OS)"
       path: $(NEXT_CACHE_FOLDER)
+  
+  - script: |
+      echo "NEXT_CACHE_FOLDER: $(NEXT_CACHE_FOLDER)"
+      ls -la $(NEXT_CACHE_FOLDER)
+    displayName: 'Debug Next.js cache path'
