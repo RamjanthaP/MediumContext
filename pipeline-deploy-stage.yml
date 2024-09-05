@@ -14,7 +14,7 @@ pool:
 variables:
   - name: image
     value: 'ubuntu-latest'
-    
+
   - template: ci/parts/variables.yml
   - template: ci/parts/variables-condition.yml
   - template: ci/parts/variables-path.yml
@@ -40,6 +40,8 @@ stages:
             displayName: 'Install dependencies for production'
             inputs:
               command: 'ci'
+              customRegistry: 'useFeed'
+              cacheDirectory: $(NPM_CACHE_FOLDER)
 
           - task: Npm@1
             displayName: Build application
