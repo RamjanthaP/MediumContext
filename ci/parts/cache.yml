@@ -27,3 +27,4 @@ steps:
       ls -la $(NPM_CACHE_FOLDER)
       ls -la $(NEXT_CACHE_FOLDER)
     displayName: 'Debug Next.js cache path'
+    enabled: false
