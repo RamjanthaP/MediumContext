@@ -1,3 +1,4 @@
+import packageJson from '@/../../package.json';
 import { ContactFooterStoryblok, OfficesStoryblok } from '@sb-types';
 
 import SectionWrapper from '@/components/Layout/SectionWrapper';
@@ -5,6 +6,8 @@ import SectionWrapper from '@/components/Layout/SectionWrapper';
 import Link from '../../../node_modules/next/link';
 import LogoAmaceit from '../Logo/Amaceit';
 import { OfficeItem, OfficeItemProps } from './OfficeItem';
+
+const version = packageJson.version;
 
 export function mapOfficeDTOtoData(dto: ContactFooterStoryblok) {
   return dto.content.offices.map((office: OfficesStoryblok) => ({
@@ -46,6 +49,7 @@ const Footer = ({ blok }: { blok: ContactFooterStoryblok }) => {
           ))}
         </div>
       </SectionWrapper>
+      <div>{version}</div>
     </footer>
   );
 };
