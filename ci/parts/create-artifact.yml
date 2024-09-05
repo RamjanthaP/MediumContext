@@ -30,18 +30,6 @@ steps:
       Contents: '**'
       TargetFolder: '$(Build.ArtifactStagingDirectory)/public'
 
-  # - task: CopyFiles@2
-  #   displayName: 'Copy build files'
-  #   inputs:
-  #     Contents: |
-  #       .next/standalone/**
-  #       .next/static/**
-  #       public/**
-  #       ecosystem.config.js
-  #       .env
-  #     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-  #     flattenFolders: false
-
   - task: ArchiveFiles@2
     displayName: 'Create deployment package'
     inputs:
