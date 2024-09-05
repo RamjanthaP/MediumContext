@@ -39,6 +39,7 @@ stages:
               
       - job: CreateArtifact
         displayName: Create Artifact
+        dependsOn: Build
         steps:
           - template: parts/create-artifact.yml
 
