@@ -1,15 +1,46 @@
 steps:
   - task: CopyFiles@2
-    displayName: 'Copy build files'
+    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+    inputs:
+      SourceFolder: '.next/standalone'
+      Contents: '**'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+  - task: CopyFiles@2
+    displayName: 'Copy .env and ecoystem to: $(Build.ArtifactStagingDirectory)'
     inputs:
       Contents: |
-        .next/standalone/**
-        .next/static/** 
-        public/**
         ecosystem.config.js
         .env
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
-      flattenFolders: false
+
+  # Needed for standalone build if not using CDN
+  - task: CopyFiles@2
+    displayName: 'Copy .next/static to: $(Build.ArtifactStagingDirectory).next/static'
+    inputs:
+      SourceFolder: '.next/static'
+      Contents: '**'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)/.next/static'
+
+  # Needed for standalone build if not using CDN
+  - task: CopyFiles@2
+    displayName: 'Copy /public to: $(Build.ArtifactStagingDirectory)/public'
+    inputs:
+      SourceFolder: 'public'
+      Contents: '**'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)/public'
+
+  # - task: CopyFiles@2
+  #   displayName: 'Copy build files'
+  #   inputs:
+  #     Contents: |
+  #       .next/standalone/**
+  #       .next/static/**
+  #       public/**
+  #       ecosystem.config.js
+  #       .env
+  #     TargetFolder: '$(Build.ArtifactStagingDirectory)'
+  #     flattenFolders: false
 
   - task: ArchiveFiles@2
     displayName: 'Create deployment package'
