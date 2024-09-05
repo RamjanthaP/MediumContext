@@ -97,7 +97,7 @@ The post will take the image and an excerpt of the text and publish it to Linked
 The mechanics behind it is.
 
 1. A user publish a post
-2. A webhook in Storyblok will call amaceit.com/api/storyblokToLinkedInWebhook (located under src/pages/api/storyblokToLinkedInWebhook.tsx) which in turn will
+2. A webhook in Storyblok will call amaceit.com/api/storyblokToLinkedInWebhook (located under src/pages/api/storyblokToLinkedInWebhook.tsx) which in turn will.... TODO: Investigate and documentate
 
 ## Folder structure
 
