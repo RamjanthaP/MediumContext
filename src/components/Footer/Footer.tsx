@@ -46,7 +46,6 @@ const Footer = ({ blok }: { blok: ContactFooterStoryblok }) => {
           ))}
         </div>
       </SectionWrapper>
-      <div>TODO: Remove me</div>
     </footer>
   );
 };
