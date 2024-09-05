@@ -1,5 +1,5 @@
 steps:
- - script: |
+  - script: |
       mkdir -p $(NEXT_CACHE_FOLDER)
     displayName: 'Create Next.js cache directory'
 
@@ -19,7 +19,7 @@ steps:
       restoreKeys: |
         nextjs | "$(Agent.OS)"
       path: $(NEXT_CACHE_FOLDER)
-  
+
   - script: |
       echo "NEXT_CACHE_FOLDER: $(NEXT_CACHE_FOLDER)"
       ls -la $(NEXT_CACHE_FOLDER)
