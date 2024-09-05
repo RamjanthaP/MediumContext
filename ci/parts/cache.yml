@@ -1,5 +1,6 @@
 steps:
   - script: |
+      mkdir -p $(NPM_CACHE_FOLDER)
       mkdir -p $(NEXT_CACHE_FOLDER)
     displayName: 'Create Next.js cache directory'
 
@@ -21,6 +22,8 @@ steps:
       path: $(NEXT_CACHE_FOLDER)
 
   - script: |
+      echo "NPM_CACHE_FOLDER: $(NPM_CACHE_FOLDER)"
       echo "NEXT_CACHE_FOLDER: $(NEXT_CACHE_FOLDER)"
+      ls -la $(NPM_CACHE_FOLDER)
       ls -la $(NEXT_CACHE_FOLDER)
     displayName: 'Debug Next.js cache path'
