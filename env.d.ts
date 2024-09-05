@@ -11,10 +11,8 @@ declare namespace NodeJS {
     STORYBLOK_API_TOKEN: string;
     STORYBLOK_API_ENVIRONMENT: 'draft' | 'published';
     NEXT_PUBLIC_STORYBLOCK_API_TOKEN: string;
-    MAILTRAP_API_USER: string;
-    MAILTRAP_API_PASSWORD: string;
-    MAILTRAP_INBOX_ID: string;
+    MAILTRAP_INBOX_ID: number;
     MAILTRAP_API_TOKEN: string;
-    MAILTRAP_ACCOUNT_ID: string;
+    MAILTRAP_ACCOUNT_ID: number;
   }
 }

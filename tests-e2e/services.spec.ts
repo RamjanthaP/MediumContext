@@ -10,9 +10,7 @@ test.describe('Makes sure all service pages are available', () => {
     await expect(page).toHaveURL(`/services/digitalisering`);
   });
 
-  test('navigates to the page "Applikationsutveckling"', async ({
-    page,
-  }) => {
+  test('navigates to the page "Applikationsutveckling"', async ({ page }) => {
     await page
       .getByText('Applikationsutveckling')
       .locator('..')

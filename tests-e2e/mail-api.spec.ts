@@ -8,23 +8,21 @@ dotenv.config({
 
 // TODO: Enable this test when we have mailtrap setup in CI
 test.describe('Checks email from api ', () => {
-  test.skip('Sends a mail if all params are sent"', async ({ request }) => {
+  test('Sends a mail if all params are sent"', async ({ request }) => {
     const response = await request.post('/api/mail', {
       data: { email: 'test@test.com', subject: 'test', Body: 'test' },
     });
     expect(response.status()).toBe(200);
   });
 
-  test.skip('Fails to send a mail if params are missing"', async ({
-    request,
-  }) => {
+  test('Fails to send a mail if params are missing"', async ({ request }) => {
     const response = await request.post('/api/mail', {
       data: { subject: 'test', Body: 'test' },
     });
     expect(response.status()).toBe(500);
   });
 
-  test.skip('Can get an email with correct subject from mailhog', async ({
+  test('Can get an email with correct subject from mailtrap', async ({
     request,
   }) => {
     const timestampedSubject = 'Ämne ' + Date.now().toString();

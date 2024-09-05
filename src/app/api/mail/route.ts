@@ -12,6 +12,21 @@ export interface FormData {
 export async function POST(req: Request) {
   const data = await getBodyFromRequest<FormData>(req);
 
+  if (!data.email || !data.Body || !data.subject) {
+    const missingParamStack = [];
+    if (!data.email) missingParamStack.push('email');
+    if (!data.Body) missingParamStack.push('Body');
+    if (!data.subject) missingParamStack.push('subject');
+
+    return Response.json(
+      {
+        message: `No ${missingParamStack.join(', ')} provided.`,
+        data: { missing_params: missingParamStack },
+      },
+      { status: 500 }
+    );
+  }
+
   /** PRODUCTION */
   if (process.env.NODE_ENV === 'production') {
     try {
@@ -22,11 +37,13 @@ export async function POST(req: Request) {
         data: result,
       });
     } catch (err) {
-      return Response.json({
-        message: 'PROBLEM sending from azure.',
-        status: 500,
-        data: err,
-      });
+      return Response.json(
+        {
+          message: 'PROBLEM sending from azure.',
+          data: err,
+        },
+        { status: 500 }
+      );
     }
   }
   /** TEST  */
