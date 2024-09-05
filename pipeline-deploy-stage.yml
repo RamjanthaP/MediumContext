@@ -86,21 +86,24 @@ stages:
     displayName: Validation of deploy
     dependsOn: Deploy
     jobs:
-      - task: NodeTool@0
-        inputs:
-          versionSpec: '20.x'
-        displayName: 'Install Node.js 20.x'
+      - job: 
+        displayName: 'Smoke test'
+        steps: 
+        - task: NodeTool@0
+          inputs:
+            versionSpec: '20.x'
+          displayName: 'Install Node.js 20.x'
 
-      - task: Npm@1
-        displayName: 'Install dependencies for smoke test'
-        inputs:
-          command: 'install'
-          workingDir: '$(System.DefaultWorkingDirectory)/ci/tests'
+        - task: Npm@1
+          displayName: 'Install dependencies for smoke test'
+          inputs:
+            command: 'install'
+            workingDir: '$(System.DefaultWorkingDirectory)/ci/tests'
 
-      - script: |
-          echo "Running smoke test..."
-          APP_HOSTNAME=$(AZURE_WEB_APP_NAME).azurewebsites.net node smoke-test.js
-        workingDirectory: '$(System.DefaultWorkingDirectory)/ci/tests'
-        displayName: 'Run smoke test'
-        env:
-          APP_HOSTNAME: $(AZURE_WEB_APP_NAME).azurewebsites.net
+        - script: |
+            echo "Running smoke test..."
+            APP_HOSTNAME=$(AZURE_WEB_APP_NAME).azurewebsites.net node smoke-test.js
+          workingDirectory: '$(System.DefaultWorkingDirectory)/ci/tests'
+          displayName: 'Run smoke test'
+          env:
+            APP_HOSTNAME: $(AZURE_WEB_APP_NAME).azurewebsites.net
