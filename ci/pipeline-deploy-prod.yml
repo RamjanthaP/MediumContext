@@ -37,6 +37,9 @@ stages:
               workingDir: '.'
               customCommand: 'run build'
 
+        - job: CreateArtifacts
+          displayName: Create Artifacts
+          steps:
           - template: parts/create-artifact.yml
 
   - stage: Approval
@@ -61,7 +64,7 @@ stages:
     jobs:
       - deployment: DeployWebApp
         displayName: Deploy Web App
-        environment: 'staging'
+        environment: 'production'
         pool:
           vmImage: 'ubuntu-latest'
         strategy:
