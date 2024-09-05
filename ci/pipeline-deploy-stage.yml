@@ -11,9 +11,9 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  - template: ci/parts/variables.yml
-  - template: ci/parts/variables-condition.yml
-  - template: ci/parts/variables-path.yml
+  - template: parts/variables.yml
+  - template: parts/variables-condition.yml
+  - template: parts/variables-path.yml
 
 stages:
   - stage: Build
@@ -22,8 +22,8 @@ stages:
       - job: Build
         displayName: Build
         steps:
-          - template: ci/parts/setup-environment.yml
-          - template: ci/parts/cache.yml
+          - template: parts/setup-environment.yml
+          - template: parts/cache.yml
 
           - task: Npm@1
             displayName: 'Install dependencies for production'
@@ -37,7 +37,7 @@ stages:
               workingDir: '.'
               customCommand: 'run build'
 
-          - template: ci/parts/create-artifact.yml
+          - template: parts/create-artifact.yml
 
   - stage: Approval
     displayName: Approve deploy

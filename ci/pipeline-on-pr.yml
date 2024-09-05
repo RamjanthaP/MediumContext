@@ -8,23 +8,23 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  - template: ci/parts/variables.yml
-  - template: ci/parts/variables-condition.yml
-  - template: ci/parts/variables-path.yml
+  - template: parts/variables.yml
+  - template: parts/variables-condition.yml
+  - template: parts/variables-path.yml
 
 stages:
   - stage: Verify
     jobs:
       - job: TestAndLint
         steps:
-          - template: ci/parts/setup-environment.yml
-          - template: ci/parts/cache.yml
+          - template: parts/setup-environment.yml
+          - template: parts/cache.yml
 
           - task: Npm@1
             displayName: 'npm ci'
             inputs:
               command: 'ci'
 
-          - template: ci/parts/tests-lint-unit.yml
+          - template: parts/tests-lint-unit.yml
 
-          - template: ci/parts/tests-e2e.yml
+          - template: parts/tests-e2e.yml
