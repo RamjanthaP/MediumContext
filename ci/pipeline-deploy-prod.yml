@@ -37,9 +37,6 @@ stages:
               workingDir: '.'
               customCommand: 'run build'
 
-      - job: CreateArtifacts
-        displayName: Create Artifacts
-        steps:
           - template: parts/create-artifact.yml
 
   - stage: Approval
