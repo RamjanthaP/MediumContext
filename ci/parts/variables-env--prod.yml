@@ -1,0 +1,12 @@
+variables:
+  - name: APP_URL
+    value: $(APP_URL_PROD)
+
+  - name: STORYBLOK_API_ENVIRONMENT
+    value: $(STORYBLOK_API_ENVIRONMENT_PRODUCTION)
+
+  - name: STORYBLOK_API_TOKEN
+    value: $(STORYBLOK_API_TOKEN_PRODUCTION)
+
+  - name: AZURE_WEB_APP_NAME
+    value: 'amaceitwebprod01'

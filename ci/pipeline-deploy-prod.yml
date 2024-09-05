@@ -8,33 +8,12 @@ trigger:
   - 'main'
 
 pool:
-  name: Azure Pipelines
+  vmImage: 'ubuntu-latest'
 
 variables:
-  # Make storybook group available.
-  - group: 'Storyblok'
-  - group: 'AzureEmail'
-  - group: 'Mailtrap'
-  - group: 'App'
-
-  # Azure Resource Manager connection created during pipeline creation
-  - name: azureSubscription
-    value: 'amaceit web (bb781f30-4924-43cf-bd9a-5d52e8991ea0)'
-
-  # Web app name on Azure
-  - name: webAppName
-    value: 'amaceitwebprod01'
-
-  # Agent VM image name
-  - name: image
-    value: 'ubuntu-latest'
-
-  # Agent VM image name
-  - name: artifactName
-    value: 'drop'
-
-  - name: envfile
-    value: $(System.DefaultWorkingDirectory)/.env
+  - template: parts/variables.yml
+  - template: parts/variables-env--prod.yml
+  - template: parts/variables-path.yml
 
 stages:
   - stage: Build
@@ -43,36 +22,8 @@ stages:
       - job: Build
         displayName: Build
         steps:
-          - bash: |
-              echo "STORYBLOK_API_ENVIRONMENT=$(STORYBLOK_API_ENVIRONMENT)" >> $(envfile)
-              echo "STORYBLOK_API_TOKEN=$(STORYBLOK_API_TOKEN)" >> $(envfile)
-
-              echo "MAILTRAP_API_USER=$(MAILTRAP_API_USER)" >> $(envfile)
-              echo "MAILTRAP_API_PASSWORD=$(MAILTRAP_API_PASSWORD)" >> $(envfile)
-              echo "MAILTRAP_API_TOKEN=$(MAILTRAP_API_TOKEN)" >> $(envfile)
-              echo "MAILTRAP_INBOX_ID=$(MAILTRAP_INBOX_ID)" >> $(envfile)
-              echo "MAILTRAP_ACCOUNT_ID=$(MAILTRAP_ACCOUNT_ID)" >> $(envfile)
-
-              echo "AZURE_EMAIL_CONNECTION_STRING=$(AZURE_EMAIL_CONNECTION_STRING)" >> $(envfile)
-              echo "AZURE_EMAIL_SENDER_ADDRESS=$(AZURE_EMAIL_SENDER_ADDRESS)" >> $(envfile)
-              echo "AZURE_EMAIL_FORM_RECIEVER_ADDRESS=$(AZURE_EMAIL_FORM_RECIEVER_ADDRESS)" >> $(envfile)
-
-              echo "APP_URL=$(APP_URL_PROD)" >> $(envfile)
-
-            displayName: 'Set API variable for npm'
-
-          # Install Node.js and build
-          - task: NodeTool@0
-            displayName: 'Install Node.js from nvmrc file'
-            inputs:
-              versionSource: 'fromFile'
-              versionFilePath: '.nvmrc'
-
-          - task: Cache@2
-            displayName: 'Retrieving cache for package-lock.json'
-            inputs:
-              key: 'package-lock.json'
-              path: '$(System.DefaultWorkingDirectory)/.next/cache'
+          - template: parts/setup-environment.yml
+          - template: parts/cache.yml
 
           - task: Npm@1
             displayName: 'Install dependencies for production'
@@ -86,55 +37,10 @@ stages:
               workingDir: '.'
               customCommand: 'run build'
 
-          - task: CopyFiles@2
-            displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
-            inputs:
-              SourceFolder: '.next/standalone'
-              Contents: '**'
-              TargetFolder: '$(Build.ArtifactStagingDirectory)'
+          - template: parts/create-artifact.yml
 
-          - task: CopyFiles@2
-            displayName: 'Copy .env and ecoystem to: $(Build.ArtifactStagingDirectory)'
-            inputs:
-              Contents: |
-                ecosystem.config.js
-                .env
-              TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
-          # Needed for standalone build if not using CDN
-          - task: CopyFiles@2
-            displayName: 'Copy .next/static to: $(Build.ArtifactStagingDirectory).next/static'
-            inputs:
-              SourceFolder: '.next/static'
-              Contents: '**'
-              TargetFolder: '$(Build.ArtifactStagingDirectory)/.next/static'
-
-          # Needed for standalone build if not using CDN
-          - task: CopyFiles@2
-            displayName: 'Copy /public to: $(Build.ArtifactStagingDirectory)/public'
-            inputs:
-              SourceFolder: 'public'
-              Contents: '**'
-              TargetFolder: '$(Build.ArtifactStagingDirectory)/public'
-
-          - task: ArchiveFiles@2
-            displayName: 'Zip files'
-            inputs:
-              rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/'
-              includeRootFolder: false
-              archiveType: 'zip'
-              archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-              replaceExistingArchive: true
-
-          - task: PublishBuildArtifacts@1
-            displayName: 'Publish Artifact: drop'
-            inputs:
-              PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-              ArtifactName: $(artifactName)
-              publishLocation: 'Container'
-
-  - stage: Validation
-    displayName: Validate deploy
+  - stage: Approval
+    displayName: Approve deploy
     dependsOn: Build
     jobs:
       - job: waitForValidation
@@ -145,33 +51,60 @@ stages:
           - task: ManualValidation@0
             timeoutInMinutes: 30
             inputs:
-              notifyUsers: 'joakim.nystrom@amaceit.com'
-              instructions: 'Approve deploy to PRODUCTION ✅'
+              notifyUsers: 'joakim.nystrom@amaceit.com' ## TODO make this a variable
+              instructions: 'Approve deploy to STAGE' ## TODO make this dynamic
               onTimeout: 'reject'
 
   - stage: Deploy
-    displayName: Deploy to stage
-    dependsOn: Validation
+    displayName: Deploy to Stage
+    dependsOn: Approval
     jobs:
-      - job: deploy
-        displayName: Deploy to server
-        pool: Azure Pipelines
-        steps:
-          - task: DownloadBuildArtifacts@0
-            displayName: 'Download Build Artifacts'
-            inputs:
-              buildType: 'current'
-              downloadType: 'single'
-              artifactName: $(artifactName)
-              downloadPath: '$(System.ArtifactsDirectory)'
+      - deployment: DeployWebApp
+        displayName: Deploy Web App
+        environment: 'staging'
+        pool:
+          vmImage: 'ubuntu-latest'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - download: current
+                  artifact: $(ARTIFACT_NAME)
 
-          - task: AzureWebApp@1
-            displayName: Upload zip to server
-            inputs:
-              azureSubscription: $(azureSubscription)
-              appType: 'webAppLinux'
-              appName: $(webAppName)
-              package: '$(System.ArtifactsDirectory)/$(artifactName)/**/*.zip'
-              runtimeStack: 'NODE|18-lts'
-              startUpCommand: "pm2 start /home/site/wwwroot/ecosystem.config.js --no-daemon --env DEBUG='*'"
-              appSettings: '-STORYBLOK_API_TOKEN $(STORYBLOK_API_TOKEN)' #Assigning environment variable
+                - task: AzureWebApp@1
+                  displayName: 'Deploy to Azure Web App'
+                  inputs:
+                    azureSubscription: $(AZURE_SUBSCRIPTION)
+                    appName: $(AZURE_WEB_APP_NAME)
+                    appType: 'webAppLinux'
+                    package: '$(Pipeline.Workspace)/$(ARTIFACT_NAME)/$(Build.BuildId).zip'
+                    runtimeStack: 'NODE|20-lts'
+                    startUpCommand: "pm2 start /home/site/wwwroot/ecosystem.config.js --no-daemon --env DEBUG='*'"
+                    appSettings: '-STORYBLOK_API_TOKEN $(STORYBLOK_API_TOKEN)'
+# Disabled due to IAM access restrictions
+
+# - stage: Validation
+#   displayName: Validation of deploy
+#   dependsOn: Deploy
+#   jobs:
+#     - job:
+#       displayName: 'Smoke test'
+#       steps:
+#       - task: NodeTool@0
+#         inputs:
+#           versionSpec: '20.x'
+#         displayName: 'Install Node.js 20.x'
+
+#       - task: Npm@1
+#         displayName: 'Install dependencies for smoke test'
+#         inputs:
+#           command: 'install'
+#           workingDir: '$(System.DefaultWorkingDirectory)/ci/tests'
+
+#       - script: |
+#           echo "Running smoke test..."
+#           APP_HOSTNAME=$(AZURE_WEB_APP_NAME).azurewebsites.net node smoke-test.js
+#         workingDirectory: '$(System.DefaultWorkingDirectory)/ci/tests'
+#         displayName: 'Run smoke test'
+#         env:
+#           APP_HOSTNAME: $(AZURE_WEB_APP_NAME).azurewebsites.net

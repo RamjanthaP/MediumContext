@@ -9,7 +9,7 @@ pool:
 
 variables:
   - template: parts/variables.yml
-  - template: parts/variables-condition.yml
+  - template: parts/variables-env--dev.yml
   - template: parts/variables-path.yml
 
 stages:

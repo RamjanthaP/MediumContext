@@ -1,0 +1,12 @@
+variables:
+  - name: APP_URL
+    value: $(APP_URL_STAGE)
+
+  - name: STORYBLOK_API_ENVIRONMENT
+    value: $(STORYBLOK_API_ENVIRONMENT_PREVIEW)
+
+  - name: STORYBLOK_API_TOKEN
+    value: $(STORYBLOK_API_TOKEN_PREVIEW)
+
+  - name: AZURE_WEB_APP_NAME
+    value: 'amaceitwebstage01'

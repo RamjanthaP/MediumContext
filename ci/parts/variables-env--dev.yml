@@ -1,0 +1,9 @@
+variables:
+  - name: APP_URL
+    value: $(APP_URL_DEV)
+
+  - name: STORYBLOK_API_ENVIRONMENT
+    value: $(STORYBLOK_API_ENVIRONMENT_PREVIEW)
+
+  - name: STORYBLOK_API_TOKEN
+    value: $(STORYBLOK_API_TOKEN_PREVIEW)
