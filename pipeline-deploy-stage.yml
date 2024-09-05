@@ -87,7 +87,7 @@ stages:
                   displayName: 'Install dependencies for smoke test'
                   inputs:
                     command: 'install'
-                    workingDir: '$(System.DefaultWorkingDirectory)/tests'
+                    workingDir: '$(System.DefaultWorkingDirectory)/ci/tests'
 
                 - task: NodeTool@0
                   inputs:
