@@ -8,13 +8,9 @@ trigger:
   - 'develop'
 
 pool:
-  # vmImage: 'ubuntu-latest'
-  name: Local-Joakim
+  vmImage: 'ubuntu-latest'
 
 variables:
-  - name: image
-    value: 'ubuntu-latest'
-
   - template: ci/parts/variables.yml
   - template: ci/parts/variables-condition.yml
   - template: ci/parts/variables-path.yml
