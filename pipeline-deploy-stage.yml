@@ -37,7 +37,30 @@ stages:
               workingDir: '.'
               customCommand: 'run build'
 
-          - template: ci/parts/create-artifact.yml
+          - task: CopyFiles@2
+            displayName: 'Copy build files'
+            inputs:
+              Contents: |
+                .next/standalone/**
+                .next/static/** 
+                public/**
+                ecosystem.config.js
+                .env
+              TargetFolder: '$(Build.ArtifactStagingDirectory)'
+              flattenFolders: false
+
+          - task: ArchiveFiles@2
+            displayName: 'Create deployment package'
+            inputs:
+              rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+              includeRootFolder: false
+              archiveType: 'zip'
+              archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+              replaceExistingArchive: true
+
+          - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+            artifact: $(ARTIFACT_NAME)
+
 
   - stage: Validation
     displayName: Validate deploy
