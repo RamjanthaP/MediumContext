@@ -21,4 +21,4 @@ steps:
       replaceExistingArchive: true
 
   - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-    artifact: $(artifactName)
+    artifact: $(ARTIFACT_NAME)
