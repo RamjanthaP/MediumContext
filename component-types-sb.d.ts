@@ -193,6 +193,7 @@ export interface GridStoryblok {
     | UrlStoryblok
   )[];
   theme?: "" | "default" | "inverted" | "discrete";
+  target_name?: string;
   _uid: string;
   component: "grid";
   [k: string]: any;

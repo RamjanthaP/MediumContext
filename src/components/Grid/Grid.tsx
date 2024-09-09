@@ -7,17 +7,25 @@ const possibleCols = ['lg:grid-cols-3', 'lg:grid-cols-4'];
 
 export interface GridProps extends PageSectionProps {
   columns?: any[];
+  target_name?: string;
 }
 
 const Grid = ({
   title,
   theme = 'default',
   columns,
+  target_name,
   className,
   children,
 }: GridProps) => {
   return (
-    <PageSection title={title} className={className} theme={theme}>
+    <PageSection
+      title={title}
+      className={className}
+      theme={theme}
+      id={target_name && target_name}
+      data-component='grid'
+    >
       <div
         className={`grid gap-4 md:gap-12 xl:gap-20 grid-cols-1 md:grid-cols-2 lg:grid-cols-${
           columns?.length || 4

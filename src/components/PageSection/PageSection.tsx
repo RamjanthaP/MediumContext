@@ -17,9 +17,10 @@ export const PageSection = ({
   title,
   titleElement = 'h2',
   children,
-  className,
+  className = '',
+  ...rest
 }: PageSectionProps) => (
-  <div className={`theme-block-${theme} py-8 md:py-12 ${className}`}>
+  <div className={`theme-block-${theme} py-8 md:py-12 ${className}`} {...rest}>
     <Container>
       {title && (
         <BrandedTitle

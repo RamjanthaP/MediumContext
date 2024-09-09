@@ -1,6 +1,7 @@
-import Grid, { GridProps } from '@/components/Grid/Grid';
 import { GridStoryblok } from '@sb-types';
 import { storyblokEditable } from '@storyblok/react';
+
+import Grid, { GridProps } from '@/components/Grid/Grid';
 
 const GridSb = ({ blok }: GridStoryblok) => {
   const componentData = mapGridDTOtoData(blok);
@@ -17,5 +18,6 @@ function mapGridDTOtoData(dto: GridStoryblok): GridProps {
     title: dto.title,
     theme: dto.theme || undefined,
     columns: dto.columns,
+    target_name: dto.target_name,
   };
 }

@@ -48,7 +48,10 @@
       "real_name": "body",
       "component_group_uuid": null,
       "color": null,
-      "icon": null
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "Carousel",
@@ -75,13 +78,16 @@
       "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
       "color": null,
       "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Blocks"
     },
     {
       "name": "contact_footer",
       "display_name": null,
       "created_at": "2023-10-27T06:43:39.008Z",
-      "updated_at": "2023-10-27T06:44:49.747Z",
+      "updated_at": "2024-03-01T12:49:31.717Z",
       "id": 4793670,
       "schema": {
         "offices": {
@@ -105,10 +111,12 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "contact_footer",
-      "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
+      "component_group_uuid": null,
       "color": null,
       "icon": null,
-      "component_group_name": "Blocks"
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "Email",
@@ -133,13 +141,16 @@
       "component_group_uuid": "c95114ec-be0d-4a7b-8d53-93f1cce845f3",
       "color": null,
       "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Validators"
     },
     {
       "name": "feature",
       "display_name": null,
       "created_at": "2023-10-05T08:08:49.707Z",
-      "updated_at": "2023-12-14T10:23:42.740Z",
+      "updated_at": "2024-02-29T13:15:22.496Z",
       "id": 4673137,
       "schema": {
         "pre_title": {
@@ -161,7 +172,8 @@
         "body": {
           "type": "textarea",
           "key": "body",
-          "pos": 3
+          "pos": 3,
+          "description": ""
         },
         "ctaPrimary": {
           "type": "bloks",
@@ -257,6 +269,9 @@
       "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
       "color": "#2db47d",
       "icon": "block-text-img-c",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Blocks"
     },
     {
@@ -289,6 +304,9 @@
       "component_group_uuid": "5af643aa-512c-4bb5-8fe0-2ae6bfb9bf8f",
       "color": null,
       "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Forms"
     },
     {
@@ -353,13 +371,16 @@
       "component_group_uuid": "5af643aa-512c-4bb5-8fe0-2ae6bfb9bf8f",
       "color": null,
       "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Forms"
     },
     {
       "name": "grid",
       "display_name": "Grid Section",
       "created_at": "2023-10-05T08:08:49.695Z",
-      "updated_at": "2023-11-27T08:57:42.944Z",
+      "updated_at": "2024-09-09T12:49:51.653Z",
       "id": 4673136,
       "schema": {
         "title": {
@@ -399,6 +420,11 @@
             }
           ],
           "default_value": "default"
+        },
+        "target_name": {
+          "type": "text",
+          "pos": 3,
+          "description": "This is a field we rarely use. It's when we have links within a page to a certain section of the page"
         }
       },
       "image": "//a.storyblok.com/f/255438/x/3b4ee58d9b/section-preview.png",
@@ -412,6 +438,9 @@
       "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
       "color": "#2db47d",
       "icon": "block-text-img-r-l",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Blocks"
     },
     {
@@ -476,6 +505,9 @@
       "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
       "color": "#2db47d",
       "icon": "block-text-img-c",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Blocks"
     },
     {
@@ -546,7 +578,10 @@
       "real_name": "Jumbotron",
       "component_group_uuid": null,
       "color": "#2db47d",
-      "icon": "block-monitor"
+      "icon": "block-monitor",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "Link",
@@ -576,6 +611,9 @@
       "component_group_uuid": "7ecc464e-3f49-423f-8178-0bfddf627095",
       "color": "#2db47d",
       "icon": "block-tag",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Elements"
     },
     {
@@ -630,6 +668,9 @@
       "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
       "color": "#2db47d",
       "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Blocks"
     },
     {
@@ -657,6 +698,9 @@
       "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
       "color": null,
       "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Blocks"
     },
     {
@@ -685,6 +729,9 @@
       "component_group_uuid": "c95114ec-be0d-4a7b-8d53-93f1cce845f3",
       "color": null,
       "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Validators"
     },
     {
@@ -713,7 +760,10 @@
       "real_name": "menu",
       "component_group_uuid": null,
       "color": "#fbce41",
-      "icon": "block-block"
+      "icon": "block-block",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "menu_link",
@@ -758,7 +808,10 @@
       "real_name": "menu_link",
       "component_group_uuid": null,
       "color": "#fbce41",
-      "icon": "block-tag"
+      "icon": "block-tag",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "Minimum Length",
@@ -786,6 +839,9 @@
       "component_group_uuid": "c95114ec-be0d-4a7b-8d53-93f1cce845f3",
       "color": null,
       "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Validators"
     },
     {
@@ -826,7 +882,10 @@
       "real_name": "News",
       "component_group_uuid": null,
       "color": "#395ece",
-      "icon": "block-add"
+      "icon": "block-add",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "no_validation",
@@ -846,6 +905,9 @@
       "component_group_uuid": "c95114ec-be0d-4a7b-8d53-93f1cce845f3",
       "color": null,
       "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Validators"
     },
     {
@@ -905,7 +967,10 @@
       "real_name": "offices",
       "component_group_uuid": null,
       "color": "#fbce41",
-      "icon": "block-buildin"
+      "icon": "block-buildin",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "person",
@@ -944,6 +1009,9 @@
       "component_group_uuid": "55506e4d-b972-4ecd-810a-6ff3dd7a86ad",
       "color": "#395ece",
       "icon": "block-sticker",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Global stories"
     },
     {
@@ -985,6 +1053,9 @@
       "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
       "color": null,
       "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Blocks"
     },
     {
@@ -1011,6 +1082,9 @@
       "component_group_uuid": "c95114ec-be0d-4a7b-8d53-93f1cce845f3",
       "color": null,
       "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Validators"
     },
     {
@@ -1039,6 +1113,9 @@
       "component_group_uuid": "55506e4d-b972-4ecd-810a-6ff3dd7a86ad",
       "color": null,
       "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Global stories"
     },
     {
@@ -1092,6 +1169,9 @@
       "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
       "color": null,
       "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Blocks"
     },
     {
@@ -1116,6 +1196,9 @@
       "component_group_uuid": "0cfb1da5-aa5d-438d-9d6a-f657e98807d8",
       "color": "#00b3b0",
       "icon": "block-doc",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Page Templates"
     },
     {
@@ -1140,6 +1223,9 @@
       "component_group_uuid": "0cfb1da5-aa5d-438d-9d6a-f657e98807d8",
       "color": "#00b3b0",
       "icon": "block-doc",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Page Templates"
     },
     {
@@ -1186,6 +1272,9 @@
       "component_group_uuid": "0cfb1da5-aa5d-438d-9d6a-f657e98807d8",
       "color": "#00b3b0",
       "icon": "block-doc",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Page Templates"
     },
     {
@@ -1206,6 +1295,9 @@
       "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
       "color": null,
       "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Blocks"
     },
     {
@@ -1238,7 +1330,10 @@
       "real_name": "Testimonal",
       "component_group_uuid": null,
       "color": null,
-      "icon": null
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
     },
     {
       "name": "Url",
@@ -1258,6 +1353,9 @@
       "component_group_uuid": "c95114ec-be0d-4a7b-8d53-93f1cce845f3",
       "color": null,
       "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
       "component_group_name": "Validators"
     }
   ]
