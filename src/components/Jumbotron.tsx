@@ -26,12 +26,11 @@ export function Jumbotron({
   const layoutClass =
     layout === 'content-right' ? 'md:flex-row-reverse' : 'md:flex-row';
   return (
-    <div className={`content-block-default ${className}`}>
+    <div data-component='hero' className={`content-block-default ${className}`}>
       <Container className={`flex flex-col-reverse md:gap-8 ${layoutClass}`}>
         <div className={`content w-full flex items-center pb-8 md:pb-0`}>
           <div className='md:p-8'>
-            <h1 className='text-Jumbo/sm md:text-Jumbo/lg font-black mb-8'>
-              {/* TODO: Remove font-black class from tailwind */}
+            <h1 className='text-Jumbo/sm lg:text-Jumbo/lg font-black mb-8'>
               {title}
             </h1>
             {children && <div className='mb-8'>{children}</div>}
@@ -49,7 +48,7 @@ export function Jumbotron({
             </div>
           </div>
         </div>
-        <div className='flex justify-center w-full md:py-8 h-72 md:h-screen  relative'>
+        <div className='flex justify-center w-full md:py-8 h-72 md:h-screen lg:h-splash-img xl:py-28  relative'>
           {image && (
             <Image
               src={image.url}

@@ -64,6 +64,7 @@ const config: Config = {
       '3xl': ['48px', { lineHeight: '1.1', letterSpacing: '-0.01em' }],
 
       'Jumbo/sm': ['32px', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+      'Jumbo/md': ['44px', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
       'Jumbo/lg': ['56px', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
       'Jumbo/xl': ['75px', { lineHeight: 'normal', letterSpacing: '-0.75px' }],
 
@@ -95,6 +96,7 @@ const config: Config = {
       },
       spacing: {
         'artical-img': '430px',
+        'splash-img': '800px',
       },
       borderRadius: {
         '4xl': '2rem',
