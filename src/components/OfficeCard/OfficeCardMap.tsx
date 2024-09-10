@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 
 import Image from 'next/image';
 
+import { ArrowRightIcon as ButtonIcon } from '@heroicons/react/24/outline';
+
 import PlaceholderImageLinkoping from '../../../public/assets/linkoping-maps.png';
 import PlaceholderImageLjungby from '../../../public/assets/ljungby-maps.png';
 import PlaceholderImageStockholm from '../../../public/assets/stockholm-maps.png';
+import styles from './office-card-map.module.css';
 
 export interface Address {
   address?: string;
@@ -36,15 +39,14 @@ const OfficeCardMap = ({ city }: Address) => {
         alt={'Karta över kontoret i ' + city}
       />
       <div
-        className='absolute top-0 right-0 left-0 bottom-0 rounded-3xl hover:bg-[rgba(0,0,0,0.6)]'
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
+        className={`absolute top-0 right-0 left-0 bottom-0 rounded-3xl  ${styles.mapCtaWrapper}`}
       >
-        {hover && (
-          <span className='relative top-1/2 -translate-y-1/2 flex p-4 font-bold text-xl text-secondary-50'>
-            Öppna karta på google maps
-          </span>
-        )}
+        <span
+          className={`relative top-1/2 -translate-y-1/2 flex flex-row p-4 font-bold text-xl text-secondary-50 ${styles.mapCta}`}
+        >
+          Öppna i google maps
+          <ButtonIcon className='w-5 h-5 ml-2  -rotate-45 inline-block' />
+        </span>
       </div>
     </>
   );

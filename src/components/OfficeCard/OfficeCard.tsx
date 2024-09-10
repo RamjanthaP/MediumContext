@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { ArrowRightIcon as ButtonIcon } from '@heroicons/react/24/outline';
+
 import { BaseProps } from '@/types/props';
 
 import { handleUrlForGoogleMaps } from '@/utilities/helper';
@@ -59,6 +61,7 @@ const OfficeCard = ({
           href='/'
         >
           Öppna i Google Maps
+          <ButtonIcon className='w-4 h-4 ml-1  -rotate-45 inline-block' />
         </Button>
       </div>
     </div>
