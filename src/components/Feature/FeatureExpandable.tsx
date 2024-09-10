@@ -73,12 +73,13 @@ function FeatureExpandable({
           )}
           <p className='mb-5 text-md lg:text-lg'>{body}</p>
           <div className='flex flex-wrap gap-2'>
-            {expBody && !expanded && (
+            {expBody && (
               <Button
                 variant='primary'
                 element='button'
                 onClick={toggleExpanded}
                 size={btnSize}
+                style={{ visibility: expanded ? 'hidden' : 'visible' }}
               >
                 {expandText}
               </Button>
@@ -111,7 +112,7 @@ function FeatureExpandable({
               Stäng
             </Button>
           </header>
-          <div className='columns-3 pb-4'>
+          <div className='columns-1 lg:columns-2 xl:columns-3 lg:gap-8 xl:gap-12 pb-4'>
             {expBody ? <RichText __html={expBody} /> : <p>{caption}</p>}
           </div>
         </div>
