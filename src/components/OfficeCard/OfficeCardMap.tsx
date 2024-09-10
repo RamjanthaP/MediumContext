@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Image from 'next/image';
 
@@ -15,7 +15,6 @@ export interface Address {
 }
 
 const OfficeCardMap = ({ city }: Address) => {
-  const [hover, setHover] = useState(false);
   let placeholderImage;
   switch (city) {
     case 'Ljungby':
