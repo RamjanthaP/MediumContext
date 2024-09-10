@@ -9,6 +9,7 @@
     "build:local": "npm run build && cp -r ./.next/static ./.next/standalone/.next/static && cp -r ./public ./.next/standalone/public",
     "start": "echo 'Provide the STORYBLOK_API_TOKEN' && read token && STORYBLOK_API_TOKEN=$token node ./.next/standalone/server",
     "start:debug": "next start",
+    "clean:nextCach": "npx rimraf .next",
     "test": "jest --watch",
     "test:ci": "jest",
     "test:e2e": "playwright test",
