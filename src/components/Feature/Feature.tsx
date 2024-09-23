@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 import Image from 'next/image';
 
-import { minDesktopScreen } from '@/config';
+import { useScreenSize } from '@/hooks/useScreenSize';
 
 import { BaseLink, ImageProps } from '@/types/common';
 import { BaseProps } from '@/types/props';
-
-import { handleBtnSize } from '@/utilities/helper';
 
 import Button, { ButtonSizes } from '@/components/Button/Button';
 import PageSection from '@/components/PageSection/PageSection';
@@ -36,21 +34,12 @@ function FeatureSection({
 }: FeatureSectionProps) {
   const layout = isContentRight ? 'flex-row-reverse' : 'flex-row';
 
-  const [windowSize, setWindowSize] = useState<number>(0);
   const [btnSize, setBtnSize] = useState<ButtonSizes>('small');
+  const { isDesktop } = useScreenSize();
 
   useEffect(() => {
-    function handleResize() {
-      setWindowSize(window.innerWidth);
-    }
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
-    handleBtnSize({ minDesktopScreen, windowSize, setBtnSize });
-  }, [windowSize]);
+    setBtnSize(isDesktop ? 'medium' : 'small');
+  }, [isDesktop]);
 
   return (
     <PageSection theme={bgColor} title={preTitle}>

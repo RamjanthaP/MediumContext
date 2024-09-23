@@ -2,14 +2,12 @@ import React, { useEffect, useState } from 'react';
 
 import Image from 'next/image';
 
-import { minDesktopScreen } from '@/config';
+import { useScreenSize } from '@/hooks/useScreenSize';
 import RichText from '@/storyblok/helpers/RichText';
 import { RichtextStoryblok } from '@sb-types';
 
 import { ImageProps } from '@/types/common';
 import { BaseProps } from '@/types/props';
-
-import { handleBtnSize } from '@/utilities/helper';
 
 import Button, { ButtonSizes } from '@/components/Button/Button';
 
@@ -46,22 +44,13 @@ function FeatureExpandable({
     setExpanded(!expanded);
   };
 
-  const [windowSize, setWindowSize] = useState<number>(0);
   const [btnSize, setBtnSize] = useState<ButtonSizes>('small');
 
-  useEffect(() => {
-    function handleResize() {
-      setWindowSize(window.innerWidth);
-    }
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const { isDesktop } = useScreenSize();
 
   useEffect(() => {
-    handleBtnSize({ minDesktopScreen, windowSize, setBtnSize });
-  }, [windowSize]);
-
+    setBtnSize(isDesktop ? 'medium' : 'small');
+  }, [isDesktop]);
   return (
     <PageSection title={preTitle} theme={bgColor}>
       <div

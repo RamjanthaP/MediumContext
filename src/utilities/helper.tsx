@@ -1,7 +1,5 @@
 import { RefObject } from 'react';
 
-import { ButtonHelper } from '@/types/types';
-
 import { GridProps } from '@/components/Grid/Grid';
 import { OfficeCardProps } from '@/components/OfficeCard/OfficeCard';
 
@@ -77,23 +75,15 @@ export const handleUrlForGoogleMaps = ({
   return googleMapsUrl;
 };
 
-/**
- *
- * @param minDesktopScreen
- * @param windowSize
- * @param setBtnSize
- * Returns string to handle state depending on the screen size
- * @returns
- */
-
-export const handleBtnSize = ({
-  minDesktopScreen,
-  windowSize,
-  setBtnSize,
-}: ButtonHelper) => {
-  if (windowSize >= minDesktopScreen) {
-    setBtnSize('medium');
-  } else {
-    setBtnSize('small');
+export function getRandomInInterval(min: number, max: number): number {
+  // Ensure min is less than max
+  if (min > max) {
+    [min, max] = [max, min];
   }
-};
+
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+export function getRandomArrayKeys(array: string | number[]): string {
+  return `${array[Math.floor(Math.random() * array.length)]}`;
+}

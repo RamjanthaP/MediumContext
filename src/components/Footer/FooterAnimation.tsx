@@ -4,6 +4,10 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import { motion, useAnimation } from 'framer-motion';
 
+import { getRandomArrayKeys, getRandomInInterval } from '@/utilities/helper';
+
+const DOTS_COUNT = 15;
+
 const useBoundedAnimation = (
   containerWidth: number,
   containerHeight: number,
@@ -41,14 +45,6 @@ const useBoundedAnimation = (
 
   return controls;
 };
-function getRandomInInterval(min: number, max: number): number {
-  // Ensure min is less than max
-  if (min > max) {
-    [min, max] = [max, min];
-  }
-
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
 const Dot = ({
   containerWidth,
@@ -61,9 +57,10 @@ const Dot = ({
 }) => {
   const controls = useBoundedAnimation(containerWidth, containerHeight, index);
   const randomSize = getRandomInInterval(12, 96);
+  const randomOpacityClass = 'opacity-' + getRandomArrayKeys([40, 50, 80]);
   return (
     <motion.div
-      className='absolute bg-primary-100 opacity-70'
+      className={`absolute bg-primary-100 ${randomOpacityClass}`}
       style={{
         width: `${randomSize}px`,
         height: `${randomSize}px`,
@@ -111,7 +108,7 @@ export default function Component(
         className={`relative w-full h-64 rounded-lg`}
         aria-label='Container with bouncing green dots'
       >
-        {[...Array(5)].map((_, index) => (
+        {[...Array(DOTS_COUNT)].map((_, index) => (
           <Dot
             key={index}
             containerWidth={containerSize.width}
