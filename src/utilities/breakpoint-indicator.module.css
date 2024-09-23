@@ -1,0 +1,28 @@
+.breakpointIndicator {
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.breakpointIndicatorItem {
+  padding: 8px 16px;
+  width: 100%;
+  color: black;
+}
+.breakpointIndicatorItem:nth-child(1) {
+  background-color: skyblue;
+}
+.breakpointIndicatorItem:nth-child(1)::after {
+  content: theme(screens.md);
+}
+.breakpointIndicatorItem:nth-child(2) {
+  background-color: peachpuff;
+}
+.breakpointIndicatorItem:nth-child(3) {
+  background-color: sandybrown;
+}
+.breakpointIndicatorItem:nth-child(4) {
+  background-color: palegreen;
+}
