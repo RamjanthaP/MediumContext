@@ -1,6 +1,5 @@
+import { TemplateDefaultStoryblok } from '@sb-types';
 import { StoryblokComponent, storyblokEditable } from '@storyblok/react/rsc';
-
-import { TemplateDefaultStoryblok } from '../../../component-types-sb';
 
 // Used as entry point for all pages in Storyblok
 const TemplateDefault = ({ blok }: TemplateDefaultStoryblok) => {

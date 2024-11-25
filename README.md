@@ -1,61 +1,55 @@
 # Amaceit.se
 
-## Script
+## Summary
 
-| Script                   | Description                                                                                                                                                                                                                   |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `dev`                    | Starts the development server using Next.js.                                                                                                                                                                                  |
-| `dev:proxy`              | Sets up a local SSL proxy to redirect traffic from port 3010 to port 3000 using specified SSL certificates. This is often used for local development with secure connections.                                                 |
-| `build`                  | Builds the Next.js application for production deployment.                                                                                                                                                                     |
-| `build:local`            | Builds the application and then copies static assets and public files to a standalone directory. This can be useful for creating a self-contained build for deployment in certain environments.                               |
-| `start`                  | Prompts the user to provide a Storyblok API token, sets it as an environment variable, and then starts the server for the standalone build of the Next.js application. Requires a Storyblok API token for proper functioning. |
-| `start:debug`            | Starts the Next.js application in debug mode.                                                                                                                                                                                 |
-| `test`                   | Runs Jest tests in watch mode, allowing for interactive test development.                                                                                                                                                     |
-| `test:ci`                | Runs Jest tests for continuous integration without watch mode.                                                                                                                                                                |
-| `test:e2e`               | Runs end-to-end tests using Playwright.                                                                                                                                                                                       |
-| `test:e2e:debug`         | Runs end-to-end tests in debug mode using Playwright's user interface.                                                                                                                                                        |
-| `lint`                   | Lints the Next.js application code using the configured linting rules.                                                                                                                                                        |
-| `format`                 | Checks and formats the code using Prettier, following the rules specified in the project. It respects the `.gitignore` file for file exclusion.                                                                               |
-| `sb-types:fetch`         | Fetches Storyblok components from the specified space (in this case, space ID 255438).                                                                                                                                        |
-| `sb-types:generate`      | Generates TypeScript definitions for Storyblok components based on a JSON file representing the components.                                                                                                                   |
-| `storybook`              | Starts the Storybook development server on port 6006 for interactive component development.                                                                                                                                   |
-| `storybook:static:build` | Builds a static version of the Storybook project.                                                                                                                                                                             |
-| `storybook:static:start` | Serves the statically built Storybook project on port 6006.                                                                                                                                                                   |
+This project is built in Next.js with Storyblok as CMS.
 
-## Stack
+## Table of content
 
-Things to be familiar oneself with when working with this project.
+- [Amaceit.se](#amaceitse)
+  - [Summary](#summary)
+  - [Table of content](#table-of-content)
+- [Get started](#get-started)
+  - [Setup](#setup)
+- [Start developing](#start-developing)
+  - [Proxy for Preview in Storyblok](#proxy-for-preview-in-storyblok)
+  - [Get types for storyblock](#get-types-for-storyblock)
+    - [Trouble shooting](#trouble-shooting)
+  - [Run Storybook (Our component library)](#run-storybook-our-component-library)
+  - [Conventions](#conventions)
+    - [Styling](#styling)
+      - [Dark Mode](#dark-mode)
+  - [Tests](#tests)
+    - [Unit tests](#unit-tests)
+      - [Exemple](#exemple)
+    - [End to End tests (E2E)](#end-to-end-tests-e2e)
+  - [Integrations](#integrations)
+    - [Storyblok to Linkedin posting (Currently not working)](#storyblok-to-linkedin-posting-currently-not-working)
+- [References](#references)
+  - [Stack](#stack)
+  - [Script reference](#script-reference)
+  - [Folder structure](#folder-structure)
 
-- Next (Application framework)
-- [Storyblok](https://storyblok.com) (CMS, headless, SaaS )
-- Storybook (Component library)
-- Typescript
-- Tailwind (CSS utility framework)
-- [Playwright](https://playwright.dev/) for E2E-testing
+# Get started
 
 ## Setup
 
-### Develop locally
+1. Clone repository and cd into the folder
+2. Make a copy of `EXEMPLE.env.local` and name it `.env.local` in the root directory. Get the API key from the link in the comment or ask a college.
+3. Run `npm i`
+4. Run `npm run dev`
+5. Open `http://localhost:3000`
 
-1. Make a copy of `EXEMPLE.env.local` and name it `.env.local` in the root directory. Get the API key from the link in the comment.
-2. Run `npm i`
-3. Run `npm run dev` and dev server will start running on [http://localhost:3000](http://localhost:3000)
+# Start developing
 
-### Develop in order to preview in Storyblok
+## Proxy for Preview in Storyblok
 
 In order preview things in Storyblok we need a HTTPS connection which we easily can't get with our dev server. Therefor we need a proxy.
 
-1. Setup a local certificate for localhost by running `brew install mkcert` (on mac).
-2. `cd` to your project folder and run `mkcert -install`
-3. Run `mkcert localhost`. A `localhost.pem` and a `localhost-key.pem` should appear in your directory. (These are ignored by git)
-4. Run `npm i -g local-ssl-proxy`.
-5. Open a new terminal session in the working directory and run `npm dev:proxy` in order to start the proxy server.
-
-### Run Storybook
-
-Our components are made available in our Storybook for review and testing purposes. In order to start storybook.
-
-- Run `npm run storybook` for storybook.
+1. Run `npm i -g local-ssl-proxy` to globally install the local-ssl-proxy package
+2. Start your server by running `npm run dev`
+3. Open a new terminal session in the working directory and run `npm run dev:proxy` in order to start the proxy server.
+4. Visit `https://localhost:3010` in order verify that the proxy is working and looks the same as `https://localhost:3000`
 
 ## Get types for storyblock
 
@@ -71,6 +65,22 @@ In order to get typecomletion and type safety we are using
 If there's an error fetching, try to logout of storyblok cli by `storyblok logout` and then login again with `storyblok login` and enter your credentials.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Run Storybook (Our component library)
+
+Our components are made available in our Storybook for review and testing purposes. In order to start storybook.
+
+- Run `npm run storybook` for see all components in our storybook.
+
+## Conventions
+
+- TODO: fill in this part
+
+### Styling
+
+#### Dark Mode
+
+- TODO: fill in this part
 
 ## Tests
 
@@ -99,31 +109,127 @@ The mechanics behind it is.
 1. A user publish a post
 2. A webhook in Storyblok will call amaceit.com/api/storyblokToLinkedInWebhook (located under src/pages/api/storyblokToLinkedInWebhook.tsx) which in turn will.... TODO: Investigate and documentate
 
+# References
+
+## Stack
+
+Things to be familiar oneself with when working with this project.
+
+- Next (Application framework)
+- [Storyblok](https://storyblok.com) (CMS, headless, SaaS )
+- Storybook (Component library)
+- Typescript
+- Tailwind (CSS utility framework)
+- [Playwright](https://playwright.dev/) for E2E-testing
+
+## Script reference
+
+| Script                   | Description                                                                                                                                                                                                                   |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dev`                    | Starts the development server using Next.js.                                                                                                                                                                                  |
+| `dev:proxy`              | Sets up a local SSL proxy to redirect traffic from port 3010 to port 3000 using specified SSL certificates. This is often used for local development with secure connections.                                                 |
+| `build`                  | Builds the Next.js application for production deployment.                                                                                                                                                                     |
+| `build:local`            | Builds the application and then copies static assets and public files to a standalone directory. This can be useful for creating a self-contained build for deployment in certain environments.                               |
+| `start`                  | Prompts the user to provide a Storyblok API token, sets it as an environment variable, and then starts the server for the standalone build of the Next.js application. Requires a Storyblok API token for proper functioning. |
+| `start:debug`            | Starts the Next.js application in debug mode.                                                                                                                                                                                 |
+| `test`                   | Runs Jest tests in watch mode, allowing for interactive test development.                                                                                                                                                     |
+| `test:ci`                | Runs Jest tests for continuous integration without watch mode.                                                                                                                                                                |
+| `test:e2e`               | Runs end-to-end tests using Playwright.                                                                                                                                                                                       |
+| `test:e2e:debug`         | Runs end-to-end tests in debug mode using Playwright's user interface.                                                                                                                                                        |
+| `lint`                   | Lints the Next.js application code using the configured linting rules.                                                                                                                                                        |
+| `format`                 | Checks and formats the code using Prettier, following the rules specified in the project. It respects the `.gitignore` file for file exclusion.                                                                               |
+| `sb-types:fetch`         | Fetches Storyblok components from the specified space (in this case, space ID 255438).                                                                                                                                        |
+| `sb-types:generate`      | Generates TypeScript definitions for Storyblok components based on a JSON file representing the components.                                                                                                                   |
+| `storybook`              | Starts the Storybook development server on port 6006 for interactive component development.                                                                                                                                   |
+| `storybook:static:build` | Builds a static version of the Storybook project.                                                                                                                                                                             |
+| `storybook:static:start` | Serves the statically built Storybook project on port 6006.                                                                                                                                                                   |
+
 ## Folder structure
 
-- TODO: fill in this part
-
-## Conventions
-
-- TODO: fill in this part
-
-## Styling
-
-### Dark Mode
-
-- TODO: fill in this part
-
----
-
-## Good to know:
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```sh
+├── EXEMPLE.env.local # Exemple of the env file, witch sensitive info removed
+├── README.md # The file you currently reading.
+├── certificates # Certificates for proxy
+│   ├── localhost-key.pem
+│   └── localhost.pem
+│
+├── ci # Used for testing, building and deploying on azure devops.
+│   ├── parts # include parts to the different pipelines
+│   │   ├── cache.yml
+│   │   └── ...
+│   │
+│   ├── pipeline-deploy-full.yml
+│   ├── pipeline-deploy-prod.yml
+│   ├── pipeline-deploy-stage.yml
+│   ├── pipeline-on-pr.yml
+│   └── tests # Tests to run after deploy to verify we're up and running
+│       └── ...
+│
+├── component-types-sb.d.ts     # Generated type from Storyblok
+├── components.255438.json      # Representation of the components on Storyblok
+├── ecosystem.config.js         # Used for running the app on Azure
+├── env.d.ts                    # Provides type completion for process.env.?
+├── jest.config.js
+├── jest.setup.js
+├── next-env.d.ts               # Added by Next. Don't edit, since it will be overwritten
+├── next.config.js
+├── package-lock.json
+├── package.json
+├── playwright.config.ts
+├── postcss.config.js
+├── public                      # Arbitrary assets like images, that should be available from the site
+│   └── assets/...
+│
+├── src
+│   ├── api                     # Api clients and helpers for data fetching and posting
+│   │   ├── apiClient.tsx       # Generic data fetcher used for blocks and pages
+│   │   ├── blocks.tsx          # Retrieve data for certain blocks
+│   │   ├── mailclient.tsx      # Used for sending mail
+│   │   ├── pages.tsx           # Data fetching for pages
+│   │   └── types.d.ts          # Helper type for data fetching
+│   │  
+│   ├── app
+│   │   ├── api
+│   │   ├── favicon.ico
+│   │   └── globals.css
+│   │  
+│   ├── components/...            # Our (pure) UI components
+│   │  
+│   ├── config.tsx                # Some configuration values
+│   ├── pages                     # All routes for the app
+│   │   ├── [[...path]].tsx       # Generic route for everything that comes from Storyblok
+│   │   ├── _app.tsx
+│   │   ├── api/...               # TODO: Move this to app/api.
+│   │   ├── not-found.tsx
+│   │   └── services              # All stuff under the route /services
+│   ├── storyblok                 # Bridge between storyblok data and our UI components
+│   │   ├── StoryblokProvider.ts  # Where to register new components from Storyblok
+│   │   ├── components/...        # Components that map our storyblok data against our UI components
+│   │   ├── fallback-component    # A component that is shown if a component isn't regiestered in StoryblokProvider.
+│   │   ├── helpers               # Storyblok related helpers
+│   │   ├── templates             # The page templates created in Storyblok
+│   │   └── utilities.ts          # Helpers for Storyblok
+│   ├── types                     # Types
+│   │   ├── common.d.ts
+│   │   ├── props.d.ts
+│   │   └── types.d.ts
+│   └── utilities                 # Arbitrary helpers
+│       ├── HeadMetadata.tsx
+│       ├── dev-utils.tsx
+│       ├── dtoMappers.ts
+│       ├── helper.tsx
+│       ├── linkedinPoster.ts     # Related to posting to Linkedin
+│       ├── relatedItems.test.tsx
+│       ├── relatedItems.tsx
+│       └── storyblokService.ts   # Gets story for Linkedin posting
+├── tailwind.config.ts            # Configuration of CSS framework: Colors, sizes etc.
+├── test-results
+├── tests-e2e                     # End to end tests
+│   ├── data-mocks
+│   │   └── form-data.ts
+│   ├── mail-api.spec.ts
+│   ├── menu-navigation.spec.ts
+│   └── services.spec.ts
+├── tsconfig.json
+└── tsconfig.tsbuildinfo
+```

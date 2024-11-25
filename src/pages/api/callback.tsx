@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// TODO: Move to src/app/api
 export default async function callback(req: any, res: any) {
   const { code } = req.query;
   const clientId = process.env.LINKEDIN_CLIENT_ID;

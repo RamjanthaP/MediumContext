@@ -82,7 +82,7 @@ stages:
                     startUpCommand: "pm2 start /home/site/wwwroot/ecosystem.config.js --no-daemon --env DEBUG='*'"
                     appSettings: '-STORYBLOK_API_TOKEN $(STORYBLOK_API_TOKEN)'
 # Disabled due to IAM access restrictions
-
+# TODO: Fix or Remove
 # - stage: Validation
 #   displayName: Validation of deploy
 #   dependsOn: Deploy

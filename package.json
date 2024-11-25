@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev:proxy": "local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem",
+    "dev:proxy": "local-ssl-proxy --source 3010 --target 3000 --cert certificates/localhost.pem --key certificates/localhost-key.pem",
     "build": "next build",
     "build:local": "npm run build && cp -r ./.next/static ./.next/standalone/.next/static && cp -r ./public ./.next/standalone/public",
     "start": "echo 'Provide the STORYBLOK_API_TOKEN' && read token && STORYBLOK_API_TOKEN=$token node ./.next/standalone/server",

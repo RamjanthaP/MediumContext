@@ -3,6 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { postContentToLinkedIn } from '@/utilities/linkedinPoster';
 import { fetchStoryDetails } from '@/utilities/storyblokService';
 
+// TODO: Move to src/app/api
 export default async function storyblokToLinkedInWebhook(
   req: NextApiRequest,
   res: NextApiResponse

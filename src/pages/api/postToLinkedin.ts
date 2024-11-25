@@ -1,6 +1,7 @@
 import axios from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
+// TODO: Move to src/app/api
 export default async function postToLinkedIn(
   req: NextApiRequest,
   res: NextApiResponse
