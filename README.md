@@ -53,7 +53,7 @@ In order preview things in Storyblok we need a HTTPS connection which we easily 
 
 ## Get types for storyblock
 
-In order to get typecomletion and type safety we are using
+In order to get typecomletion and type safety we are using `storyblok-generate-ts` that will translate our CMS data to types. In order to keep the codebase up to date with what we do on Storyblok we need to fetch an updated representation of the CMS data and then translate it to type definitions.
 
 1. Install Storyblok CLI by running `npm i -g storyblok`
 2. Login `storyblok login` (Use your credentials)
