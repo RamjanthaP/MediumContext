@@ -40,6 +40,12 @@ This project is built in Next.js with Storyblok as CMS.
 4. Run `npm run dev`
 5. Open `http://localhost:3000`
 
+## VsCode extenstions
+
+These extensions are highly recommended when working with this repo: 
+- esbenp.prettier-vscode 
+- bradlc.vscode-tailwindcss 
+
 # Start developing
 
 ## Proxy for Preview in Storyblok
