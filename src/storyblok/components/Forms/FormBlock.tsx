@@ -75,7 +75,7 @@ export default function Form({ blok }: FormStoryblok) {
   };
 
   return (
-    <div className='py-4 px-4 md:px-8 bg-discrete'>
+    <div className='py-4 px-4 md:px-8 bg-discrete rounded-4xl h-fit'>
       {!isSubmitted && (
         <form
           {...storyblokEditable(blok)}
