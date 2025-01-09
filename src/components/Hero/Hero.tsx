@@ -1,3 +1,6 @@
+import React from 'react';
+
+import { useScreenSize } from '@/hooks/useScreenSize';
 import RichText from '@/storyblok/helpers/RichText';
 import { RichtextStoryblok } from '@sb-types';
 
@@ -22,13 +25,17 @@ const Hero = ({
   secondaryButton,
   bodyText,
 }: HeroProps) => {
+  const { isDesktop } = useScreenSize();
+
   return (
-    <div className={`relative  ${Styles.root}`}>
+    <div className={`relative ${Styles.root}`}>
       <div className='flex flex-col text-center px-4 md:px-8 lg:px-0'>
-        <h1 className={`${Styles.heroTitle}`}>
+        <h1 className={`${Styles.heroText}`}>
           <RichText __html={title} unstyled />
         </h1>
-        <span className='text-md md:text-lg mb-4 max-w-sm lg:max-w-3xl mx-auto'>
+        <span
+          className={`mb-4 max-w-sm lg:max-w-3xl mx-auto ${Styles.heroText}`}
+        >
           {bodyText && <RichText __html={bodyText} />}
         </span>
         <div className='mx-auto'>
@@ -36,9 +43,10 @@ const Hero = ({
             <ButtonWrapper>
               {primaryButton && (
                 <Button
+                  size={isDesktop ? 'medium' : 'small'}
                   element='Link'
                   variant='primary'
-                  className='inline-block'
+                  className='inline-block lg:px-6 py-3'
                   href={primaryButton.url}
                 >
                   {primaryButton.text}
