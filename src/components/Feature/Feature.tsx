@@ -7,7 +7,7 @@ import { useScreenSize } from '@/hooks/useScreenSize';
 import { BaseLink, ImageProps } from '@/types/common';
 import { BaseProps } from '@/types/props';
 
-import Button, { ButtonSizes } from '@/components/Button/Button';
+import Button from '@/components/Button/Button';
 import PageSection from '@/components/PageSection/PageSection';
 
 export interface FeatureSectionProps extends BaseProps {
