@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { useScreenSize } from '@/hooks/useScreenSize';
 import { SparklesIcon } from '@heroicons/react/20/solid';
 import { ArrowPathIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
 import { FormInputsStoryblok, FormStoryblok } from '@sb-types';
@@ -23,6 +24,7 @@ export default function Form({ blok }: FormStoryblok) {
 
   const [isLoading, setIsLoading] = useState(false);
   const [formError, setFormError] = useState<false | string>(false);
+  const { isDesktop } = useScreenSize();
 
   async function submitForm(data: any) {
     // Exit early and Honeypot it!
@@ -75,9 +77,10 @@ export default function Form({ blok }: FormStoryblok) {
   };
 
   return (
-    <div className='py-4 px-4 md:px-8 bg-discrete'>
+    <div className='py-4 px-4 md:px-8 bg-discrete rounded-4xl h-fit'>
       {!isSubmitted && (
         <form
+          id='applicationForm'
           {...storyblokEditable(blok)}
           onSubmit={handleSubmit(submitForm)}
           className='w-full md:max-w-[600px] md:mx-auto gap-4 flex flex-col my-2'
@@ -104,12 +107,16 @@ export default function Form({ blok }: FormStoryblok) {
             </p>
           )}
           <div className='mt-4 flex justify-end'>
-            <Button variant='primary' type='submit'>
+            <Button
+              variant='primary'
+              type='submit'
+              size={isDesktop ? 'medium' : 'small'}
+            >
               {!isLoading && <EnvelopeIcon className='h-5 w-5 mr-2' />}
               {isLoading && (
                 <SparklesIcon className='h-5 w-5 mr-2 animate-spin' />
               )}
-              {isLoading ? 'Skickar...' : 'Skicka'}
+              {isLoading ? 'Skickar...' : 'Skicka ansökan'}
             </Button>
           </div>
         </form>

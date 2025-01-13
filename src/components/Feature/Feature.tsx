@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import Image from 'next/image';
 
@@ -7,7 +7,7 @@ import { useScreenSize } from '@/hooks/useScreenSize';
 import { BaseLink, ImageProps } from '@/types/common';
 import { BaseProps } from '@/types/props';
 
-import Button, { ButtonSizes } from '@/components/Button/Button';
+import Button from '@/components/Button/Button';
 import PageSection from '@/components/PageSection/PageSection';
 
 export interface FeatureSectionProps extends BaseProps {
@@ -34,12 +34,7 @@ function FeatureSection({
 }: FeatureSectionProps) {
   const layout = isContentRight ? 'flex-row-reverse' : 'flex-row';
 
-  const [btnSize, setBtnSize] = useState<ButtonSizes>('small');
   const { isDesktop } = useScreenSize();
-
-  useEffect(() => {
-    setBtnSize(isDesktop ? 'medium' : 'small');
-  }, [isDesktop]);
 
   return (
     <PageSection theme={bgColor} title={preTitle}>
@@ -56,7 +51,7 @@ function FeatureSection({
               <Button
                 variant='primary'
                 href={firstButton.url}
-                size={btnSize}
+                size={isDesktop ? 'medium' : 'small'}
                 element='button'
               >
                 {firstButton.text}
@@ -67,7 +62,7 @@ function FeatureSection({
                 variant='default'
                 transparent
                 href={secondButton.url}
-                size={btnSize}
+                size={isDesktop ? 'medium' : 'small'}
               >
                 {secondButton.text}
               </Button>

@@ -3,6 +3,7 @@
     {
       "name": "body",
       "display_name": null,
+      "description": null,
       "created_at": "2023-12-06T10:24:48.463Z",
       "updated_at": "2023-12-07T10:47:33.574Z",
       "id": 4991518,
@@ -56,6 +57,7 @@
     {
       "name": "Carousel",
       "display_name": null,
+      "description": null,
       "created_at": "2023-12-19T12:36:03.607Z",
       "updated_at": "2023-12-19T12:36:45.307Z",
       "id": 5061654,
@@ -86,6 +88,7 @@
     {
       "name": "contact_footer",
       "display_name": null,
+      "description": null,
       "created_at": "2023-10-27T06:43:39.008Z",
       "updated_at": "2024-03-01T12:49:31.717Z",
       "id": 4793670,
@@ -121,6 +124,7 @@
     {
       "name": "Email",
       "display_name": null,
+      "description": null,
       "created_at": "2023-12-11T10:18:07.567Z",
       "updated_at": "2023-12-19T09:55:07.111Z",
       "id": 5016676,
@@ -149,6 +153,7 @@
     {
       "name": "feature",
       "display_name": null,
+      "description": null,
       "created_at": "2023-10-05T08:08:49.707Z",
       "updated_at": "2024-02-29T13:15:22.496Z",
       "id": 4673137,
@@ -277,6 +282,7 @@
     {
       "name": "Form",
       "display_name": null,
+      "description": null,
       "created_at": "2023-12-11T10:46:29.216Z",
       "updated_at": "2023-12-20T19:42:47.749Z",
       "id": 5016845,
@@ -312,6 +318,7 @@
     {
       "name": "Form Inputs",
       "display_name": null,
+      "description": null,
       "created_at": "2023-12-11T10:14:35.098Z",
       "updated_at": "2023-12-20T19:43:06.376Z",
       "id": 5016670,
@@ -379,6 +386,7 @@
     {
       "name": "grid",
       "display_name": "Grid Section",
+      "description": null,
       "created_at": "2023-10-05T08:08:49.695Z",
       "updated_at": "2024-09-09T12:49:51.653Z",
       "id": 4673136,
@@ -446,18 +454,26 @@
     {
       "name": "hero",
       "display_name": null,
+      "description": null,
       "created_at": "2023-10-26T12:13:01.667Z",
-      "updated_at": "2023-12-12T13:50:25.528Z",
+      "updated_at": "2025-01-08T09:43:51.323Z",
       "id": 4789750,
       "schema": {
         "headLine": {
-          "type": "richtext",
+          "type": "textarea",
           "required": true,
           "customize_toolbar": true,
           "toolbar": [
-            "bold"
+            "bold",
+            "h6",
+            "h5",
+            "h4",
+            "h1",
+            "h2",
+            "h3"
           ],
-          "pos": 0
+          "pos": 0,
+          "id": "6d8KZ2UWRd6TsW_Q-CTpQQ"
         },
         "image": {
           "type": "asset",
@@ -466,11 +482,86 @@
             "images",
             "videos"
           ],
-          "pos": 1
+          "pos": 1,
+          "id": "n3BSO8a1Sc-0EW6kJcI9RQ"
         },
         "bodyText": {
           "type": "richtext",
-          "pos": 2
+          "pos": 2,
+          "id": "3vu487OMSrSo2Hp4KgOKBA"
+        },
+        "ctaPrimary": {
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "Link"
+          ],
+          "maximum": 2,
+          "required": false,
+          "pos": 3,
+          "id": "uB6xVtviQECKOSvcfZ4jaQ"
+        },
+        "ctaSecondary": {
+          "type": "bloks",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "Link"
+          ],
+          "maximum": 1,
+          "pos": 4,
+          "id": "t7JA3trpS8Cwq4wt0pstig"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "hero",
+      "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
+      "color": "#2db47d",
+      "icon": "block-text-img-c",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "Blocks"
+    },
+    {
+      "name": "hero_start",
+      "display_name": null,
+      "description": null,
+      "created_at": "2024-11-25T17:04:31.854Z",
+      "updated_at": "2024-11-29T11:29:00.616Z",
+      "id": 6606385,
+      "schema": {
+        "video": {
+          "type": "asset",
+          "required": true,
+          "filetypes": [
+            "images",
+            "videos"
+          ],
+          "pos": 1,
+          "display_name": "Video Background",
+          "asset_folder_id": 400102
+        },
+        "animated_texts": {
+          "type": "bloks",
+          "pos": 2,
+          "display_name": "Animated texts",
+          "required": true,
+          "minimum": 2,
+          "maximum": 7,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "OnelineText"
+          ],
+          "component_group_whitelist": []
         },
         "ctaPrimary": {
           "type": "bloks",
@@ -495,13 +586,13 @@
         }
       },
       "image": null,
-      "preview_field": null,
+      "preview_field": "video",
       "is_root": false,
       "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "hero",
+      "real_name": "hero_start",
       "component_group_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
       "color": "#2db47d",
       "icon": "block-text-img-c",
@@ -513,6 +604,7 @@
     {
       "name": "jumbotron",
       "display_name": "Jumbotron",
+      "description": null,
       "created_at": "2023-10-31T11:57:43.285Z",
       "updated_at": "2023-10-31T12:34:39.826Z",
       "id": 4811285,
@@ -586,18 +678,23 @@
     {
       "name": "Link",
       "display_name": null,
+      "description": null,
       "created_at": "2023-10-26T12:14:52.785Z",
-      "updated_at": "2023-11-01T11:13:30.360Z",
+      "updated_at": "2024-11-29T11:36:06.482Z",
       "id": 4789751,
       "schema": {
         "text": {
           "type": "text",
-          "required": true
+          "required": true,
+          "pos": 0
         },
         "link": {
           "type": "multilink",
           "required": true,
-          "link_scope": "services"
+          "link_scope": "services",
+          "show_anchor": false,
+          "allow_custom_attributes": false,
+          "pos": 1
         }
       },
       "image": null,
@@ -619,6 +716,7 @@
     {
       "name": "logo_card",
       "display_name": "Logo Card",
+      "description": null,
       "created_at": "2023-10-27T20:02:25.763Z",
       "updated_at": "2023-10-30T20:31:53.121Z",
       "id": 4797844,
@@ -676,6 +774,7 @@
     {
       "name": "map_block",
       "display_name": null,
+      "description": null,
       "created_at": "2023-12-06T10:02:16.230Z",
       "updated_at": "2023-12-06T10:07:01.656Z",
       "id": 4991174,
@@ -706,6 +805,7 @@
     {
       "name": "Maximum Length",
       "display_name": null,
+      "description": null,
       "created_at": "2023-12-11T10:21:17.252Z",
       "updated_at": "2023-12-19T09:55:15.635Z",
       "id": 5016682,
@@ -737,6 +837,7 @@
     {
       "name": "menu",
       "display_name": null,
+      "description": null,
       "created_at": "2023-10-06T09:30:14.867Z",
       "updated_at": "2023-10-18T14:24:19.497Z",
       "id": 4680284,
@@ -768,6 +869,7 @@
     {
       "name": "menu_link",
       "display_name": null,
+      "description": null,
       "created_at": "2023-10-06T09:32:02.270Z",
       "updated_at": "2023-10-27T06:33:05.291Z",
       "id": 4680287,
@@ -816,6 +918,7 @@
     {
       "name": "Minimum Length",
       "display_name": null,
+      "description": null,
       "created_at": "2023-12-11T10:19:29.980Z",
       "updated_at": "2023-12-19T09:55:23.504Z",
       "id": 5016677,
@@ -847,6 +950,7 @@
     {
       "name": "News",
       "display_name": null,
+      "description": null,
       "created_at": "2024-02-09T11:33:47.046Z",
       "updated_at": "2024-02-15T10:42:14.319Z",
       "id": 5316695,
@@ -890,6 +994,7 @@
     {
       "name": "no_validation",
       "display_name": null,
+      "description": null,
       "created_at": "2023-12-21T10:18:19.224Z",
       "updated_at": "2023-12-21T10:18:19.224Z",
       "id": 5074408,
@@ -913,6 +1018,7 @@
     {
       "name": "offices",
       "display_name": null,
+      "description": null,
       "created_at": "2023-10-27T06:34:01.274Z",
       "updated_at": "2023-12-19T13:15:21.039Z",
       "id": 4793663,
@@ -973,8 +1079,39 @@
       "content_type_asset_preview": null
     },
     {
+      "name": "OnelineText",
+      "display_name": "Oneline text",
+      "description": "Text - oneliner",
+      "created_at": "2024-11-25T17:10:35.286Z",
+      "updated_at": "2024-11-25T17:12:52.873Z",
+      "id": 6606393,
+      "schema": {
+        "Text": {
+          "type": "text",
+          "pos": 0,
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Oneline text",
+      "component_group_uuid": "7ecc464e-3f49-423f-8178-0bfddf627095",
+      "color": "#2DB47D",
+      "icon": "block-keyboard",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "Elements"
+    },
+    {
       "name": "person",
       "display_name": null,
+      "description": null,
       "created_at": "2023-11-10T07:11:15.694Z",
       "updated_at": "2023-11-10T08:00:13.855Z",
       "id": 4863435,
@@ -1017,6 +1154,7 @@
     {
       "name": "quick_contact",
       "display_name": null,
+      "description": null,
       "created_at": "2023-11-10T07:13:26.010Z",
       "updated_at": "2023-11-10T08:44:38.380Z",
       "id": 4863436,
@@ -1061,6 +1199,7 @@
     {
       "name": "Required",
       "display_name": null,
+      "description": null,
       "created_at": "2023-12-12T09:07:29.878Z",
       "updated_at": "2023-12-20T19:40:39.051Z",
       "id": 5023459,
@@ -1090,6 +1229,7 @@
     {
       "name": "reUsableSection",
       "display_name": null,
+      "description": null,
       "created_at": "2023-11-13T09:26:08.665Z",
       "updated_at": "2023-11-28T16:17:03.339Z",
       "id": 4872606,
@@ -1121,6 +1261,7 @@
     {
       "name": "service_items",
       "display_name": null,
+      "description": null,
       "created_at": "2023-11-06T13:39:22.263Z",
       "updated_at": "2023-11-20T13:07:53.733Z",
       "id": 4841921,
@@ -1177,6 +1318,7 @@
     {
       "name": "template_default",
       "display_name": null,
+      "description": null,
       "created_at": "2023-10-05T08:08:49.662Z",
       "updated_at": "2023-12-06T09:38:48.759Z",
       "id": 4673134,
@@ -1204,6 +1346,7 @@
     {
       "name": "template_news",
       "display_name": null,
+      "description": null,
       "created_at": "2024-02-12T14:31:21.029Z",
       "updated_at": "2024-02-12T14:32:06.321Z",
       "id": 5329315,
@@ -1231,6 +1374,7 @@
     {
       "name": "template_service",
       "display_name": null,
+      "description": null,
       "created_at": "2023-10-09T13:08:12.920Z",
       "updated_at": "2023-11-24T18:19:25.132Z",
       "id": 4690053,
@@ -1278,8 +1422,48 @@
       "component_group_name": "Page Templates"
     },
     {
+      "name": "template_start",
+      "display_name": "Template Start",
+      "description": null,
+      "created_at": "2024-11-25T17:01:04.597Z",
+      "updated_at": "2024-11-25T17:20:02.521Z",
+      "id": 6606383,
+      "schema": {
+        "StartHero": {
+          "type": "bloks",
+          "pos": 0,
+          "required": true,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "hero_start"
+          ]
+        },
+        "body": {
+          "type": "bloks",
+          "pos": 1
+        }
+      },
+      "image": null,
+      "preview_field": "body",
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Template Start",
+      "component_group_uuid": "0cfb1da5-aa5d-438d-9d6a-f657e98807d8",
+      "color": "#00b3b0",
+      "icon": "block-doc",
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "Page Templates"
+    },
+    {
       "name": "Test",
       "display_name": null,
+      "description": null,
       "created_at": "2024-02-12T14:28:34.970Z",
       "updated_at": "2024-02-12T14:28:34.970Z",
       "id": 5329279,
@@ -1303,6 +1487,7 @@
     {
       "name": "Testimonal",
       "display_name": null,
+      "description": null,
       "created_at": "2023-12-19T12:25:13.639Z",
       "updated_at": "2023-12-19T12:25:48.168Z",
       "id": 5061645,
@@ -1338,6 +1523,7 @@
     {
       "name": "Url",
       "display_name": null,
+      "description": null,
       "created_at": "2023-12-21T10:20:02.906Z",
       "updated_at": "2023-12-21T10:20:02.906Z",
       "id": 5074432,
@@ -1357,6 +1543,50 @@
       "internal_tag_ids": [],
       "content_type_asset_preview": null,
       "component_group_name": "Validators"
+    }
+  ],
+  "component_groups": [
+    {
+      "name": "Blocks",
+      "id": 217227,
+      "uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0",
+      "parent_id": null,
+      "parent_uuid": "ff36f636-5cec-402b-ba01-3b99dd6067e0"
+    },
+    {
+      "name": "Elements",
+      "id": 224572,
+      "uuid": "7ecc464e-3f49-423f-8178-0bfddf627095",
+      "parent_id": null,
+      "parent_uuid": "7ecc464e-3f49-423f-8178-0bfddf627095"
+    },
+    {
+      "name": "Forms",
+      "id": 253154,
+      "uuid": "5af643aa-512c-4bb5-8fe0-2ae6bfb9bf8f",
+      "parent_id": null,
+      "parent_uuid": "5af643aa-512c-4bb5-8fe0-2ae6bfb9bf8f"
+    },
+    {
+      "name": "Global stories",
+      "id": 231311,
+      "uuid": "55506e4d-b972-4ecd-810a-6ff3dd7a86ad",
+      "parent_id": null,
+      "parent_uuid": "55506e4d-b972-4ecd-810a-6ff3dd7a86ad"
+    },
+    {
+      "name": "Page Templates",
+      "id": 217226,
+      "uuid": "0cfb1da5-aa5d-438d-9d6a-f657e98807d8",
+      "parent_id": null,
+      "parent_uuid": "0cfb1da5-aa5d-438d-9d6a-f657e98807d8"
+    },
+    {
+      "name": "Validators",
+      "id": 246761,
+      "uuid": "c95114ec-be0d-4a7b-8d53-93f1cce845f3",
+      "parent_id": null,
+      "parent_uuid": "c95114ec-be0d-4a7b-8d53-93f1cce845f3"
     }
   ]
 }
