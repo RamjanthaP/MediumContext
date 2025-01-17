@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { BaseLink, ImageProps } from '@/types/common';
+import { AssetProp, BaseLink } from '@/types/common';
 import { BaseProps } from '@/types/props';
 
 import Button from './Button/Button';
@@ -9,7 +9,7 @@ import { Container } from './Layout/Container';
 export interface JumbotronProps extends BaseProps {
   layout?: 'content-right' | 'content-left';
   title: string;
-  image: ImageProps;
+  image: AssetProp;
   primaryButton?: BaseLink;
   secondaryButton?: BaseLink;
 }

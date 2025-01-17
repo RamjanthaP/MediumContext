@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 import IconForward from '@heroicons/react/24/solid/ArrowRightIcon';
 
-import { BaseLink, ImageProps } from '@/types/common';
+import { AssetProp, BaseLink } from '@/types/common';
 import { BaseProps } from '@/types/props';
 
 import Button from '../Button/Button';
@@ -13,7 +13,7 @@ import Spin2 from './animations/spin-2.svg';
 export interface ServiceCardProps extends BaseProps {
   title: string;
   description: string;
-  image?: ImageProps;
+  image?: AssetProp;
   animation: string;
   button: BaseLink;
 }

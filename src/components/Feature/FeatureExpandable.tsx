@@ -6,7 +6,7 @@ import { useScreenSize } from '@/hooks/useScreenSize';
 import RichText from '@/storyblok/helpers/RichText';
 import { RichtextStoryblok } from '@sb-types';
 
-import { ImageProps } from '@/types/common';
+import { AssetProp } from '@/types/common';
 import { BaseProps } from '@/types/props';
 
 import Button, { ButtonSizes } from '@/components/Button/Button';
@@ -18,7 +18,7 @@ export interface FeatureExpandableProps extends BaseProps {
   title?: string;
   bgColor?: 'default' | 'inverted' | 'discrete';
   isContentRight?: boolean;
-  image?: ImageProps;
+  image?: AssetProp;
   body?: string;
   expandText?: string;
   expTitle?: string;
