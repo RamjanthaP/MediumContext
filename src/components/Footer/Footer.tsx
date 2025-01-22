@@ -6,7 +6,6 @@ import SectionWrapper from '@/components/Layout/SectionWrapper';
 import Link from '../../../node_modules/next/link';
 import { IconLinkedIn } from '../Icons/IconLinkedIn';
 import LogoAmaceit from '../Logo/Amaceit';
-import FooterAnimation from './FooterAnimation';
 import { OfficeItem, OfficeItemProps } from './OfficeItem';
 
 export function mapOfficeDTOtoData(dto: ContactFooterStoryblok) {
@@ -47,7 +46,6 @@ const Footer = ({ blok }: { blok: ContactFooterStoryblok }) => {
           >
             <IconLinkedIn className='h-6 w-6 inline ' /> LinkedIn
           </Link>
-          <FooterAnimation className='absolute top-0 left-0 w-full' />
         </div>
         <div className='offices w-full mt-4 flex flex-col md:flex-row gap-6'>
           {offices.map((office: OfficeItemProps) => (
