@@ -47,30 +47,16 @@ const HeroStart = ({
               {<RichText __html={title} unstyled />}
             </h1>
             <div className=' mt-12 flex justify-center align-middle'>
-              {(primaryButton || secondaryButton) && (
-                <ButtonWrapper>
-                  {primaryButton && (
-                    <Button
-                      size={isDesktop ? 'medium' : 'small'}
-                      element='Link'
-                      variant='primary'
-                      className='inline-block lg:px-6 py-3'
-                      href={primaryButton.url}
-                    >
-                      {primaryButton.text}
-                    </Button>
-                  )}
-                  {secondaryButton && (
-                    <Button
-                      element='Link'
-                      className='inline-block'
-                      transparent
-                      href={secondaryButton.url}
-                    >
-                      {secondaryButton.text}
-                    </Button>
-                  )}
-                </ButtonWrapper>
+              {primaryButton && (
+                <Button
+                  size={isDesktop ? 'medium' : 'small'}
+                  element='Link'
+                  variant='primary'
+                  className='inline-block lg:px-6 py-3'
+                  href={primaryButton.url}
+                >
+                  {primaryButton.text}
+                </Button>
               )}
             </div>
           </div>
