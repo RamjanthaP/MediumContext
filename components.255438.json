@@ -456,11 +456,11 @@
       "display_name": null,
       "description": null,
       "created_at": "2023-10-26T12:13:01.667Z",
-      "updated_at": "2025-01-08T09:43:51.323Z",
+      "updated_at": "2025-01-08T09:55:16.089Z",
       "id": 4789750,
       "schema": {
         "headLine": {
-          "type": "textarea",
+          "type": "richtext",
           "required": true,
           "customize_toolbar": true,
           "toolbar": [
@@ -535,10 +535,18 @@
       "display_name": null,
       "description": null,
       "created_at": "2024-11-25T17:04:31.854Z",
-      "updated_at": "2024-11-29T11:29:00.616Z",
+      "updated_at": "2025-01-21T15:02:06.627Z",
       "id": 6606385,
       "schema": {
-        "video": {
+        "headline": {
+          "type": "richtext",
+          "pos": 0,
+          "id": "jFQBIFXbRIukBCDlTFO73A",
+          "customize_toolbar": true,
+          "toolbar": [],
+          "style_options": []
+        },
+        "asset": {
           "type": "asset",
           "required": true,
           "filetypes": [
@@ -546,22 +554,18 @@
             "videos"
           ],
           "pos": 1,
-          "display_name": "Video Background",
-          "asset_folder_id": 400102
+          "display_name": "Hero Image",
+          "asset_folder_id": 400102,
+          "id": "c0QT9X8MRRm-CoCszGjVpg"
         },
-        "animated_texts": {
-          "type": "bloks",
+        "mobile_asset": {
+          "type": "asset",
           "pos": 2,
-          "display_name": "Animated texts",
-          "required": true,
-          "minimum": 2,
-          "maximum": 7,
-          "restrict_type": "",
-          "restrict_components": true,
-          "component_whitelist": [
-            "OnelineText"
+          "filetypes": [
+            "images"
           ],
-          "component_group_whitelist": []
+          "id": "eoI8-t8sSU6KlB9mn57sjw",
+          "display_name": "Hero Image Mobile"
         },
         "ctaPrimary": {
           "type": "bloks",
@@ -572,7 +576,8 @@
           ],
           "maximum": 2,
           "required": false,
-          "pos": 3
+          "pos": 4,
+          "id": "WY-fdX0iSKO3IKdszUb_eQ"
         },
         "ctaSecondary": {
           "type": "bloks",
@@ -582,7 +587,8 @@
             "Link"
           ],
           "maximum": 1,
-          "pos": 4
+          "pos": 5,
+          "id": "CYNThwVMSPSSWZfpct2pDQ"
         }
       },
       "image": null,
@@ -1426,7 +1432,7 @@
       "display_name": "Template Start",
       "description": null,
       "created_at": "2024-11-25T17:01:04.597Z",
-      "updated_at": "2024-11-25T17:20:02.521Z",
+      "updated_at": "2025-01-21T15:15:16.401Z",
       "id": 6606383,
       "schema": {
         "StartHero": {
@@ -1437,11 +1443,13 @@
           "restrict_components": true,
           "component_whitelist": [
             "hero_start"
-          ]
+          ],
+          "id": "qc_m8cu9SsyWmWKLJcZyjQ"
         },
         "body": {
           "type": "bloks",
-          "pos": 1
+          "pos": 1,
+          "id": "Ugz3OI2bQ42xu1Wzm2RchA"
         }
       },
       "image": null,
