@@ -29,7 +29,6 @@ function mapHeroStartDtoToData(blok: HeroStartStoryblok): HeroStartProps {
       alt: blok.mobile_asset.alt || 'hero-image-mobile',
     },
     primaryButton: extractLinkDataFromFirstItem(blok.ctaPrimary),
-    secondaryButton: extractLinkDataFromFirstItem(blok.ctaSecondary),
     animatedText: blok.animated_texts || '',
   };
 }

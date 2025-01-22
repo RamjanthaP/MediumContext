@@ -7,7 +7,6 @@ import { RichtextStoryblok } from '@sb-types';
 import { AssetProp, BaseLink } from '@/types/common';
 
 import Button from '@/components/Button/Button';
-import ButtonWrapper from '@/components/Button/ButtonWrapper';
 
 import Styles from './heroStart.module.css';
 
@@ -16,13 +15,11 @@ export type HeroStartProps = {
   image: AssetProp;
   mobileImage: AssetProp;
   primaryButton?: BaseLink;
-  secondaryButton?: BaseLink;
 };
 
 const HeroStart = ({
   title,
   primaryButton,
-  secondaryButton,
   image,
   mobileImage,
 }: HeroStartProps) => {
