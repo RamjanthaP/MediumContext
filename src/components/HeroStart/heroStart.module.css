@@ -5,13 +5,13 @@
   @apply object-cover;
 }
 
-.heroStartText span {
+.heroStartText p {
   @apply text-xl md:text-xxl lg:text-Jumbo/lg;
   @apply font-bold;
-  @apply text-white !important;
+  @apply dark:text-white !important;
 }
 
-.heroStartText span::after {
+.heroStartText p::after {
   @apply text-primary-default;
   content: '.';
 }
