@@ -1,0 +1,17 @@
+.heroImage {
+  @apply opacity-5;
+  @apply sm:h-artical-img;
+  @apply w-full;
+  @apply object-cover;
+}
+
+.heroStartText span {
+  @apply text-xl md:text-xxl lg:text-Jumbo/lg;
+  @apply font-bold;
+  @apply text-white !important;
+}
+
+.heroStartText span::after {
+  @apply text-primary-default;
+  content: '.';
+}

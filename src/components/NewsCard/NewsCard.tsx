@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { ImageProps } from '@/types/common';
+import { AssetProp } from '@/types/common';
 import { BaseProps } from '@/types/props';
 
 import PageSection from '../PageSection/PageSection';
@@ -11,7 +11,7 @@ import PageSection from '../PageSection/PageSection';
 interface NewsCardProps extends BaseProps {
   uid: any;
   title?: string;
-  image?: ImageProps;
+  image?: AssetProp;
   caption?: string;
   link?: {
     id: string;

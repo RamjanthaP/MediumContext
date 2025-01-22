@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { useScreenSize } from '@/hooks/useScreenSize';
 
-import { BaseLink, ImageProps } from '@/types/common';
+import { AssetProp, BaseLink } from '@/types/common';
 import { BaseProps } from '@/types/props';
 
 import Button from '@/components/Button/Button';
@@ -17,7 +17,7 @@ export interface FeatureSectionProps extends BaseProps {
   isContentRight?: boolean;
   firstButton?: BaseLink;
   secondButton?: BaseLink;
-  image?: ImageProps;
+  image?: AssetProp;
   body?: string;
   expBody?: string;
 }

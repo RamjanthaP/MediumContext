@@ -4,7 +4,7 @@ import { useScreenSize } from '@/hooks/useScreenSize';
 import RichText from '@/storyblok/helpers/RichText';
 import { RichtextStoryblok } from '@sb-types';
 
-import { BaseLink, ImageProps } from '@/types/common';
+import { AssetProp, BaseLink } from '@/types/common';
 
 import Button from '@/components/Button/Button';
 import ButtonWrapper from '@/components/Button/ButtonWrapper';
@@ -13,7 +13,7 @@ import Styles from './hero.module.css';
 
 export type HeroProps = {
   title: RichtextStoryblok;
-  image?: ImageProps | null;
+  image?: AssetProp | null;
   primaryButton?: BaseLink;
   secondaryButton?: BaseLink;
   bodyText?: RichtextStoryblok;

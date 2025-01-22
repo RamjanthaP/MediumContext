@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import { ImageProps } from '@/types/common';
+import { AssetProp } from '@/types/common';
 
 /**
  *
@@ -8,10 +8,10 @@ import { ImageProps } from '@/types/common';
 export function HeadMetadata(props: {
   title: string;
   description?: string;
-  image?: ImageProps;
+  image?: AssetProp;
 }) {
   const defaultTitle = 'Amaceit AB';
-  const fallbackImage: ImageProps = {
+  const fallbackImage: AssetProp = {
     url: '/images/placeholder.png',
     alt: 'ALT image',
   }; // TODO: Fixa fallback image
