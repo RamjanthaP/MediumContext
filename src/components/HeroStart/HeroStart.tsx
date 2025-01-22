@@ -2,9 +2,9 @@ import React from 'react';
 
 import { useScreenSize } from '@/hooks/useScreenSize';
 import RichText from '@/storyblok/helpers/RichText';
-import { LinkStoryblok, RichtextStoryblok } from '@sb-types';
+import { RichtextStoryblok } from '@sb-types';
 
-import { AnimatedTextProp, AssetProp, BaseLink } from '@/types/common';
+import { AssetProp, BaseLink } from '@/types/common';
 
 import Button from '@/components/Button/Button';
 import ButtonWrapper from '@/components/Button/ButtonWrapper';
