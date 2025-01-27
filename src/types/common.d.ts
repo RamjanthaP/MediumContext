@@ -6,6 +6,7 @@ export interface BaseLink {
 export interface AssetProp {
   url: string;
   alt: string;
+  className: string;
 }
 
 export type HeadingElementTag = 'h1' | 'h2' | 'h3' | 'h4' | 'div';
