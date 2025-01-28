@@ -19,6 +19,7 @@ const defaultArgs: FeatureSectionProps = {
   image: {
     url: 'https://via.placeholder.com/500',
     alt: 'Placeholder',
+    className: "classnames",
   },
   preTitle: 'Pretitle.',
   title: 'Title',
