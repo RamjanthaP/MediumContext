@@ -18,7 +18,7 @@ export function BreakpointIndicator() {
     <div className={styles.breakpointIndicator}>
       {breakpoints.map((bp, i) => (
         <div
-          key={bp}
+          key={i}
           className={`
           ${styles.breakpointIndicatorItem}
           ${bp === 'sm' ? 'sm:block md:hidden' : ''}
