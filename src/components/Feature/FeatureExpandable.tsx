@@ -82,7 +82,7 @@ function FeatureExpandable({
                 src={image.url}
                 alt={image.alt}
                 fill
-                className='object-cover'
+                className='object-contain'
               />
             )}
           </div>
