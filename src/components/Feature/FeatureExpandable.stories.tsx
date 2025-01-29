@@ -11,6 +11,7 @@ const defaultArgs: FeatureExpandableProps = {
   image: {
     url: 'https://via.placeholder.com/500',
     alt: 'Placeholder',
+    className: ''
   },
   preTitle: 'Pretitle.',
   title: 'Title',
