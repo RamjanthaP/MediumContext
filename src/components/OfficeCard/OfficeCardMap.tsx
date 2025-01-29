@@ -4,9 +4,6 @@ import Image from 'next/image';
 
 import { ArrowRightIcon as ButtonIcon } from '@heroicons/react/24/outline';
 
-import PlaceholderImageLinkoping from '../../../public/assets/linkoping-maps.png';
-import PlaceholderImageLjungby from '../../../public/assets/ljungby-maps.png';
-import PlaceholderImageStockholm from '../../../public/assets/stockholm-maps.png';
 import PlaceholderImage from "../../../public/assets/Map.png"
 import styles from './office-card-map.module.css';
 
