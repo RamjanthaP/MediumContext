@@ -19,7 +19,6 @@ export default function Page(
   return (
     <div>
       <HeadMetadata title={story.name} />
-
       <StoryblokStory story={story} />
     </div>
   );
@@ -42,7 +41,6 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (
       },
     };
   } catch (error) {
-    console.error(error);
     return {
       redirect: {
         destination: '/not-found', 
