@@ -22,6 +22,7 @@ function mapJumbotronDtoToData(blok: JumbotronStoryblok): JumbotronProps {
     image: {
       url: blok.image.filename,
       alt: blok.image.alt || "Bakgrund",
+      className: "",
     },
     layout: !blok.layout ? "content-right" : blok.layout, // TODO: Fix when types are accurate
   };

@@ -22,11 +22,13 @@ function mapHeroStartDtoToData(blok: HeroStartStoryblok): HeroStartProps {
       ? {
           url: blok.asset.filename || '',
           alt: blok.asset.alt || 'hero-image',
+          className: "",
         }
       : null,
     mobileImage: blok.mobile_asset && {
       url: blok.mobile_asset.filename || '',
       alt: blok.mobile_asset.alt || 'hero-image-mobile',
+      className: "",
     },
     primaryButton: extractLinkDataFromFirstItem(blok.ctaPrimary),
     animatedText: blok.animated_texts || '',

@@ -27,6 +27,7 @@ function mapServiceItemDtoToData(
       ? {
           url: 'https:' + blok.Image || 'https://via.placeholder.com/150',
           alt: 'Bakgrund',
+          className: "",
         }
       : undefined,
     animation: blok.animation || 'spin1',
