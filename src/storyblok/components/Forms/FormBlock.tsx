@@ -77,7 +77,7 @@ export default function Form({ blok }: FormStoryblok) {
   };
 
   return (
-    <div className='py-4 px-4 md:px-8 bg-discrete rounded-4xl h-fit'>
+    <div className='py-4 px-4 md:px-8 bg-discrete h-fit'>
       {!isSubmitted && (
         <form
           id='applicationForm'
@@ -116,7 +116,7 @@ export default function Form({ blok }: FormStoryblok) {
               {isLoading && (
                 <SparklesIcon className='h-5 w-5 mr-2 animate-spin' />
               )}
-              {isLoading ? 'Skickar...' : 'Skicka ansökan'}
+              {isLoading ? 'Skickar...' : 'Skicka'}
             </Button>
           </div>
         </form>
