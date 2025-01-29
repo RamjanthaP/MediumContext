@@ -10,4 +10,6 @@
   <circle cx="261.5" cy="1419.5" r="36.5" stroke="#5BA542" stroke-opacity=".2" stroke-width="10"/>
   <circle cx="455.5" cy="1209.5" r="31.5" fill="#75BC5C"/>
   <circle cx="455.5" cy="1209.5" r="36.5" stroke="#5BA542" stroke-opacity=".2" stroke-width="10"/>
+  <circle cx="80.5" cy="1435.5" r="31.5" fill="#75BC5C"/>
+  <circle cx="80.5" cy="1435.5" r="36.5" stroke="#5BA542" stroke-opacity=".2" stroke-width="10"/>
 </svg>
