@@ -19,6 +19,7 @@ function mapHeroDtoToData(blok: HeroStoryblok): HeroProps {
     image: blok.image ? {
       url: blok.image.filename || '',
       alt: blok.image.alt || 'Background',
+      className: "",
     } : null, 
     bodyText: blok?.bodyText,
     primaryButton: extractLinkDataFromFirstItem(blok.ctaPrimary),

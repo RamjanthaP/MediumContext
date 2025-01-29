@@ -40,6 +40,7 @@ const mapFeatureDtoToFeatureData = (
       ? {
           alt: image.alt || '', // This is mandatory in SB, but our type converter dont know that
           url: image.filename,
+          className: "",
         }
       : undefined,
     bgColor: blok.theme || 'default',
@@ -67,6 +68,7 @@ const mapFeatureDtoToFeatureExpandableData = (
       ? {
           alt: image.alt || '', // This is mandatory in SB, but our type converter dont know that
           url: image.filename,
+          className: "",
         }
       : undefined,
     bgColor: blok.theme || 'default',
