@@ -65,9 +65,6 @@ export async function POST(req: Request) {
   // Currently we are only sending mail using mailtrap in pipelines
   if (process.env.NODE_ENV === 'development' && !process.env.CI) {
     /* eslint-disable no-console */
-    console.log(
-      '🤖 ❤️  - Sending ok from Backend since we are just developing.'
-    );
     return Response.json({
       message: 'Sending ok from Back since we are just developing.',
       status: 200,
