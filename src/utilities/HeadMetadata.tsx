@@ -14,6 +14,7 @@ export function HeadMetadata(props: {
   const fallbackImage: AssetProp = {
     url: '/images/placeholder.png',
     alt: 'ALT image',
+    className: ""
   }; // TODO: Fixa fallback image
   const bodyData = 'Här är en beskrivning'; //TODO: Fixa beskrivning
   const { title, description, image } = props;
