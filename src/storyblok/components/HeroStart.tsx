@@ -29,6 +29,5 @@ function mapHeroStartDtoToData(blok: HeroStartStoryblok): HeroStartProps {
       className: '',
     },
     primaryButton: extractLinkDataFromFirstItem(blok.ctaPrimary),
-    animatedText: blok.animated_texts || '',
   };
 }
