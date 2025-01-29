@@ -32,7 +32,7 @@ const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
         <input
           {...inputProps}
           ref={ref}
-          className={`bg-default ${Style.field} ${borderColor}`}
+          className={`bg-default text-lg ${Style.field} ${borderColor}`}
           type='text'
           id={id}
         />

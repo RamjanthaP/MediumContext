@@ -1,10 +1,10 @@
 .label {
-  @apply my-1 mx-6 text-md font-semibold;
+  @apply my-1 mx-6 text-sm font-semibold;
 }
 .field {
   @apply border-2 focus:outline-none;
-  @apply py-2 px-6;
-  @apply rounded-full font-bold;
+  @apply py-6 px-6;
+  @apply rounded-2xl font-bold text-lg;
   @apply disabled:bg-secondary-200 disabled:cursor-not-allowed disabled:opacity-50;
 }
 .errorMessage {

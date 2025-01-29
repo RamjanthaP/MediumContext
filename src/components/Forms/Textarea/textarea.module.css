@@ -3,8 +3,9 @@
 }
 .field {
   @apply border-2 focus:outline-none;
-  @apply py-2 px-6;
-  @apply rounded-3xl;
+  @apply py-3 px-6;
+  @apply rounded-2xl;
+  @apply text-lg !important;
   @apply disabled:bg-secondary-200 disabled:cursor-not-allowed disabled:opacity-50;
 }
 .errorMessage {
@@ -30,6 +31,5 @@
   /* Identical styling required!! */
   @apply border-2 focus:outline-none;
   @apply py-2 px-6;
-  font: inherit;
   grid-area: 1 / 1 / 2 / 2;
 }
