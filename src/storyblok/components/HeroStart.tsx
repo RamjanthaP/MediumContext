@@ -18,17 +18,15 @@ export default HeroStartSb;
 function mapHeroStartDtoToData(blok: HeroStartStoryblok): HeroStartProps {
   return {
     title: blok.headline || 'Title missing',
-    image: blok.asset
-      ? {
-          url: blok.asset.filename || '',
-          alt: blok.asset.alt || 'hero-image',
-          className: "",
-        }
-      : null,
+    image: blok.asset && {
+      url: blok.asset.filename || '',
+      alt: blok.asset.alt || 'hero-image',
+      className: '',
+    },
     mobileImage: blok.mobile_asset && {
       url: blok.mobile_asset.filename || '',
       alt: blok.mobile_asset.alt || 'hero-image-mobile',
-      className: "",
+      className: '',
     },
     primaryButton: extractLinkDataFromFirstItem(blok.ctaPrimary),
     animatedText: blok.animated_texts || '',
