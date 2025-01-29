@@ -1,6 +1,7 @@
 import { StoryFn } from '@storybook/react';
-import ServiceItem, { ServiceCardProps } from './ServiceItem';
+
 import Grid from '../Grid/Grid';
+import ServiceItem, { ServiceCardProps } from './ServiceItem';
 
 export default {
   title: 'Components/ServiceItem',
@@ -27,6 +28,7 @@ export const Plain = {
     image: {
       url: '/',
       alt: 'Bakgrund',
+      className: '',
     },
   } as ServiceCardProps,
   parameters: {

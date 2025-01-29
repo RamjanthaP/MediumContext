@@ -156,6 +156,7 @@ const defaultArgs: HeroProps = {
   image: {
     url: 'https://unsplash.it/1500/500?image=1062',
     alt: 'placeholder',
+    className: ''
   },
   primaryButton: {
     text: 'Primary',
