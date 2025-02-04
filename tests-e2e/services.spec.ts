@@ -12,7 +12,7 @@ test.describe('Makes sure all service pages are available', () => {
 
   test('navigates to the page "Applikationsutveckling"', async ({ page }) => {
     await page
-      .getByText('Applikationsutveckling')
+      .getByText('Systemutveckling')
       .locator('..')
       .locator('a')
       .click();
@@ -42,7 +42,7 @@ test.describe('Checks related services', () => {
     ).toBeVisible();
     await expect(
       relatedServices.getByRole('heading', {
-        name: 'Applikationsutveckling',
+        name: 'Systemutveckling',
       })
     ).toBeVisible();
     await expect(

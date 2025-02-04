@@ -25,7 +25,7 @@ test.describe('Lets you get to all pages from navigation', () => {
   test('navigates to the page "Tjänster"', async ({ page }) => {
     await page.getByRole('link', { name: /Tjänster/ }).hover();
     await page.getByRole('link', { name: /Tjänster/ }).click();
-    await expect(page.getByRole('heading', { name: 'Tjänster' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Nyckelfärdiga lösningar och expertkompetens inom' })).toBeVisible();
     await expect(page).toHaveURL('/services');
   });
 
