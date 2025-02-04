@@ -6,7 +6,7 @@
 }
 
 .heroStartText p {
-  @apply text-xl md:text-xxl lg:text-Jumbo/lg;
+  @apply text-xl md:text-xxl lg:text-Jumbo/md;
   @apply font-bold;
   @apply dark:text-white !important;
 }
