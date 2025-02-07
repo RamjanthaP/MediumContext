@@ -62,6 +62,7 @@ const config: Config = {
       xl: ['24px', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
       xxl: ['32px', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
       '3xl': ['48px', { lineHeight: '1.1', letterSpacing: '-0.01em' }],
+      '1.1xl': ['22px', { lineHeight: '2', letterSpacing: '-0.0125em'}],
 
       'Jumbo/sm': ['32px', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
       'Jumbo/md': ['44px', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
