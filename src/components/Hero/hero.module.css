@@ -4,13 +4,6 @@
   @apply py-4 md:py-12;
   @apply w-full min-h-[400px] lg:min-h-[600px];
 }
-.heroText {
-  @apply font-bold;
-  @apply text-xxl md:text-3xl;
-  @apply mb-4 md:mb-8;
-  @apply max-w-5xl;
-  @apply transition-all duration-500;
-}
 
 .heroText b {
   @apply dark:text-white;
@@ -46,6 +39,7 @@
 }
 
 .heroText p {
+  @apply my-5;
   @apply text-lg md:text-xl;
   font-weight: 300;
 } 

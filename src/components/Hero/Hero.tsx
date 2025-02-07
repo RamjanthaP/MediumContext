@@ -29,10 +29,10 @@ const Hero = ({
 
   return (
     <div className={`relative ${Styles.root}`}>
-      <div className='flex flex-col text-center px-4 md:px-8 lg:px-0'>
-        <h1 className={`${Styles.heroText}`}>
-          <RichText __html={title} unstyled />
-        </h1>
+      <div
+        className={`flex flex-col text-center px-4 md:px-8 lg:px-0 ${Styles.heroText}`}
+      >
+        <RichText __html={title} unstyled />
         <span
           className={`mb-4 max-w-sm lg:max-w-3xl mx-auto ${Styles.heroText}`}
         >
