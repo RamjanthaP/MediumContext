@@ -20,7 +20,7 @@ export const PageSection = ({
   className = '',
   ...rest
 }: PageSectionProps) => (
-  <div className={`theme-block-${theme} py-8 md:py-12 ${className}`} {...rest}>
+  <div className={`theme-block-${theme} py-8 md:py-16 ${className}`} {...rest}>
     <Container>
       {title && (
         <BrandedTitle
