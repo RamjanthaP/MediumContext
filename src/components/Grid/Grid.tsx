@@ -27,9 +27,7 @@ const Grid = ({
       data-component='grid'
     >
       <div
-        className={`grid gap-4 md:gap-12 xl:gap-20 grid-cols-1 md:grid-cols-2 lg:grid-cols-${
-          columns?.length || 4
-        }`}
+        className={`grid gap-2 md:gap-16 xl:gap-11 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4`}
         data-testid='grid-items'
       >
         {/* Provides us a way to use it without storyblok */}
