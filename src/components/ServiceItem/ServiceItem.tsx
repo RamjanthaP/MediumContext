@@ -9,6 +9,7 @@ import Button from '../Button/Button';
 import Bounce from './animations/bounce.svg';
 import Spin1 from './animations/spin-1.svg';
 import Spin2 from './animations/spin-2.svg';
+import Styles from './serviceItem.module.css';
 
 export interface ServiceCardProps extends BaseProps {
   title: string;
@@ -33,9 +34,9 @@ const ServiceCard = ({
   className,
 }: ServiceCardProps) => (
   <div
-    className={`flex flex-row-reverse md:flex-col  overflow-hidden ${className}`}
+    className={`w-10/12 mx-auto md:w-full flex flex-col md:flex-col overflow-hidden ${Styles.cardContainer}`}
   >
-    <div className={`w-24 h-24 lg:w-full lg:h-24 relative lg:my-8 self-start`}>
+    <div className={`w-full h-40 lg:w-full lg:h-40 relative self-start`}>
       {image && (
         <Image className='object-cover' src={image.url} alt={image.alt} fill />
       )}
@@ -47,13 +48,13 @@ const ServiceCard = ({
         ></object>
       )}
     </div>
-    <div className='flex-grow-1 w-full '>
+    <div className={`flex-grow-1 w-full ${Styles.cardBody}`}>
       <h3 className='text-lg md:text-xl font-bold hyphens-auto'>{title}</h3>
       <div
-        className='pt-2 text'
+        className={`${Styles.cardText}`}
         dangerouslySetInnerHTML={{ __html: description }}
       />
-      <div className='mt-4'>
+      <div className='mt-4 flex justify-center my-4'>
         <Button href={`/${button.url}`} variant='primary' size='small'>
           <span>{button.text}</span>
           <IconForward className='w-4 h-4' />

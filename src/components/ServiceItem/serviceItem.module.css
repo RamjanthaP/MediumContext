@@ -1,0 +1,26 @@
+.cardContainer {
+  @apply rounded-2xl;
+  @apply mb-14 mt-3;
+  background-color: var(--themed-discrete-background);
+  border: 1px solid rgba(116, 116, 116, 0.205);
+}
+
+.cardBody {
+  @apply h-80;
+}
+
+.cardBody h3 {
+  @apply text-md font-bold uppercase text-center;
+  @apply p-3;
+  background-color: rgb(116 116 116 / 41%)
+}
+
+.cardText {
+  @apply h-3/5;
+}
+
+.cardText p {
+  @apply p-3;
+  @apply h-56;
+  @apply flex items-center;
+}
