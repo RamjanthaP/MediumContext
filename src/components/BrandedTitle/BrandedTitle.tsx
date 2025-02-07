@@ -12,7 +12,7 @@ function BrandedTitle({
   className = '',
   ...props
 }: BrandedTitleProps) {
-  const titleClasses = `text-xl font-bold mb-4 ${className}`;
+  const titleClasses = `font-bold mb-4 ${className}`;
 
   return (
     <Element className={titleClasses} {...props}>

@@ -41,11 +41,11 @@ function FeatureSection({
       <div
         className={`flex flex-col-reverse md:${layout} items-center gap-4 md:gap-12 lg:gap-20`}
       >
-        <div className='w-full md:w-1/2'>
+        <div className='w-full sm:w-4/5 md:w-1/2'>
           {title && (
-            <h3 className='text-xxl lg:text-3xl font-bold my-4'>{title}</h3>
+            <h3 className='text-xxl lg:text-Jumbo/md font-bold my-4'>{title}</h3>
           )}
-          <p className='mb-5 text-md lg:text-lg'>{body}</p>
+          <p className='mb-5 text-md lg:text-1.1xl'>{body}</p>
           <div className='flex flex-wrap gap-2'>
             {firstButton && (
               <Button
@@ -69,7 +69,7 @@ function FeatureSection({
             )}
           </div>
         </div>
-        <div className='w-full md:w-1/2'>
+        <div className='w-full sm:w-4/5 md:w-1/2'>
           <div className='bg-discrete rounded-4xl w-full lg:w-50 aspect-square mx-auto relative overflow-hidden'>
             {image && (
               <Image
