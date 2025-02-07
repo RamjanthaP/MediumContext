@@ -29,11 +29,11 @@ test.describe('Lets you get to all pages from navigation', () => {
     await expect(page).toHaveURL('/services');
   });
 
-  test('navigates to the page "Kontakta Oss"', async ({ page }) => {
-    await page.getByRole('link', { name: /Kontakta oss/ }).hover();
-    await page.getByRole('link', { name: /Kontakta oss/ }).click();
+  test('navigates to the page KONTAKTA OSS', async ({ page }) => {
+    await page.getByRole('link', { name: /KONTAKTA OSS/ }).hover();
+    await page.getByRole('link', { name: /KONTAKTA OSS/ }).click();
     await expect(
-      page.getByRole('heading', { name: 'Kontakta oss' })
+      page.getByRole('heading', { name: 'Vi vill gärna ha kontakt med er!' })
     ).toBeVisible();
     await expect(page).toHaveURL('/kontakta-oss');
   });

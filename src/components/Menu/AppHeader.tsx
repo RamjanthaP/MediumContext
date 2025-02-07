@@ -13,7 +13,7 @@ import MenuButton from './MenuButton';
 import { MenuItem } from './MenuItem';
 import { MobileMenu } from './MobileMenu';
 
-export const specialItemTitle = 'Kontakta oss';
+export const specialItemTitle = 'KONTAKTA OSS';
 const Menu = ({ blok }: { blok: MenuStoryblok }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [preventBodySroll, setPreventBodyScroll] = useState('');

@@ -25,7 +25,7 @@ export const PageSection = ({
       {title && (
         <BrandedTitle
           element={titleElement}
-          className='text-xxl font-bold mb-8'
+          className='text-xl font-bold mb-8'
         >
           {title}
         </BrandedTitle>

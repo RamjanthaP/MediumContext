@@ -23,7 +23,7 @@ const Footer = ({ blok }: { blok: ContactFooterStoryblok }) => {
   const offices = mapOfficeDTOtoData(blok);
   return (
     <footer>
-      <SectionWrapper color='default' title='Kontakta oss.'>
+      <SectionWrapper>
         <div className='flex flex-col items-center mb-8 pt-32 relative pb-32'>
           <div className='flex justify-center mb-4 z-10 '>
             <Link
