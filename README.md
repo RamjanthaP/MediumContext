@@ -45,6 +45,7 @@ This project is built in Next.js with Storyblok as CMS.
 These extensions are highly recommended when working with this repo: 
 - esbenp.prettier-vscode 
 - bradlc.vscode-tailwindcss 
+- Playwright Test for VSCode
 
 # Start developing
 
@@ -66,11 +67,34 @@ In order to get typecomletion and type safety we are using `storyblok-generate-t
 3. Get all types from our storyblok `npm run sb-types:fetch`
 4. Create types for our code `npm run sb-types:generate`
 
-### Trouble shooting
+### Troubleshooting
+
+**Fetching error Storyblok**
 
 If there's an error fetching, try to logout of storyblok cli by `storyblok logout` and then login again with `storyblok login` and enter your credentials.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+**Npm failed with return code 1**
+
+If this error occurs when deploying check the terminal in the Pipelines inside Devops. There it will show why the error has occured and what is throwing it.
+
+If the error shows a playwright test failing, you can either run the tests locally or use the **Playwright Exstenstion** to run the tests inside vscode. 
+Do this to ensure that the tests succeed before deploying.
+
+If you want to use the terminal to run the tests, use the commands below:
+
+- To run all the tests
+
+```bash
+npx playwright test
+```
+
+To run the last failed
+
+```bash
+npx playwright test --last-failed
+```
 
 ## Run Storybook (Our component library)
 
@@ -95,7 +119,7 @@ Our components are made available in our Storybook for review and testing purpos
 Are written in jest/testing-library syntax and is placed in context with the file it's testing.
 Use the suffix `filename.test.tsx` instead of `filename.spec.tsx`. This convention makes it easier to separate unit tests from e2e tests.
 
-#### Exemple
+#### Example
 
 For a function in `utils/text-helper.ts` the test should be `utils/test-helper.test.ts`
 
