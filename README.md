@@ -79,7 +79,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 If this error occurs when deploying check the terminal in the Pipelines inside Devops. There it will show why the error has occured and what is throwing it.
 
-If the error shows a playwright test failing, you can either run the tests locally or use the **Playwright Exstenstion** to run the tests inside vscode. 
+If the error shows a playwright test failing, you can either run the tests locally or use the * *Playwright Exstenstion* * to run the tests inside vscode. 
 Do this to ensure that the tests succeed before deploying.
 
 If you want to use the terminal to run the tests, use the commands below:
@@ -90,7 +90,7 @@ If you want to use the terminal to run the tests, use the commands below:
 npx playwright test
 ```
 
-To run the last failed
+- To run the last failed
 
 ```bash
 npx playwright test --last-failed
