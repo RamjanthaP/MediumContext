@@ -33,7 +33,7 @@ test.describe('Checks email from api ', () => {
         Body: 'test',
       },
     });
-    const response = await await checkMailtrapInbox(request);
+    const response = await checkMailtrapInbox(request);
     const mails = await response.json();
     const sentMailExists = mails.find(
       (mail: any) => mail.subject === timestampedSubject
