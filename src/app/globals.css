@@ -45,9 +45,6 @@
     --background-rgb: 0, 0, 0;
     --themed-discrete-foreground-rgb: 170, 170, 170;
     --themed-discrete-background-rgb: 24, 24, 24;
-
-    /* Filter for svg */
-    --filter-dark: invert(100%);
   }
 }
 
@@ -113,6 +110,6 @@ body {
 }
 
 .slick-dots li button:before {
-  color:var(--themed-inverted-background) !important;
+  color: var(--themed-inverted-background) !important;
   font-size: 20px !important;
 }
