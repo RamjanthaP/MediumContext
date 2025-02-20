@@ -10,8 +10,8 @@ const config: Config = {
   ],
   theme: {
     colors: {
-      black: '#1C1C1C',
-      white: '#FFFFFF',
+      black: '#131313',
+      white: '#FAFAFA',
       primary: {
         default: '#75BC5C', // Logo Green === 400
         50: '#f5faf3',
@@ -62,7 +62,7 @@ const config: Config = {
       xl: ['24px', { lineHeight: '1.5', letterSpacing: '-0.01em' }],
       xxl: ['32px', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
       '3xl': ['48px', { lineHeight: '1.1', letterSpacing: '-0.01em' }],
-      '1.1xl': ['22px', { lineHeight: '2', letterSpacing: '-0.0125em'}],
+      '1.1xl': ['22px', { lineHeight: '2', letterSpacing: '-0.0125em' }],
 
       'Jumbo/sm': ['32px', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
       'Jumbo/md': ['44px', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
