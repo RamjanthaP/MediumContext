@@ -60,6 +60,7 @@ const mapFeatureDtoToFeatureData = (
 const mapFeatureDtoToFeatureExpandableData = (
   blok: FeatureStoryblok
 ): FeatureExpandableProps => {
+    // The image url value assigned during this function is not a URL but the filename.
   const image: AssetStoryblok | undefined = blok.image;
   return {
     preTitle: blok.pre_title,
