@@ -101,9 +101,7 @@
           "maximum": 3,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "offices"
-          ]
+          "component_whitelist": ["offices"]
         }
       },
       "image": null,
@@ -185,9 +183,7 @@
           "tooltip": false,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "Link"
-          ],
+          "component_whitelist": ["Link"],
           "maximum": 1,
           "pos": 4,
           "description": "Använd endast för länkar på sajt eller till annat innehåll (#target)"
@@ -199,9 +195,7 @@
           "pos": 5,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "Link"
-          ],
+          "component_whitelist": ["Link"],
           "maximum": 1,
           "description": "Använd endast för länkar på sajt eller till annat innehåll (#target)"
         },
@@ -360,9 +354,7 @@
           "restrict_type": "groups",
           "restrict_components": true,
           "component_whitelist": [],
-          "component_group_whitelist": [
-            "c95114ec-be0d-4a7b-8d53-93f1cce845f3"
-          ],
+          "component_group_whitelist": ["c95114ec-be0d-4a7b-8d53-93f1cce845f3"],
           "minimum": 1,
           "maximum": 200
         }
@@ -463,25 +455,14 @@
           "type": "richtext",
           "required": true,
           "customize_toolbar": true,
-          "toolbar": [
-            "bold",
-            "h6",
-            "h5",
-            "h4",
-            "h1",
-            "h2",
-            "h3"
-          ],
+          "toolbar": ["bold", "h6", "h5", "h4", "h1", "h2", "h3"],
           "pos": 0,
           "id": "6d8KZ2UWRd6TsW_Q-CTpQQ"
         },
         "image": {
           "type": "asset",
           "required": false,
-          "filetypes": [
-            "images",
-            "videos"
-          ],
+          "filetypes": ["images", "videos"],
           "pos": 1,
           "id": "n3BSO8a1Sc-0EW6kJcI9RQ"
         },
@@ -494,9 +475,7 @@
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "Link"
-          ],
+          "component_whitelist": ["Link"],
           "maximum": 2,
           "required": false,
           "pos": 3,
@@ -506,9 +485,7 @@
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "Link"
-          ],
+          "component_whitelist": ["Link"],
           "maximum": 1,
           "pos": 4,
           "id": "t7JA3trpS8Cwq4wt0pstig"
@@ -549,10 +526,7 @@
         "asset": {
           "type": "asset",
           "required": true,
-          "filetypes": [
-            "images",
-            "videos"
-          ],
+          "filetypes": ["images", "videos"],
           "pos": 1,
           "display_name": "Hero Image",
           "asset_folder_id": 400102,
@@ -561,9 +535,7 @@
         "mobile_asset": {
           "type": "asset",
           "pos": 2,
-          "filetypes": [
-            "images"
-          ],
+          "filetypes": ["images"],
           "id": "eoI8-t8sSU6KlB9mn57sjw",
           "display_name": "Hero Image Mobile"
         },
@@ -571,9 +543,7 @@
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "Link"
-          ],
+          "component_whitelist": ["Link"],
           "maximum": 2,
           "required": false,
           "pos": 4,
@@ -583,9 +553,7 @@
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "Link"
-          ],
+          "component_whitelist": ["Link"],
           "maximum": 1,
           "pos": 5,
           "id": "CYNThwVMSPSSWZfpct2pDQ"
@@ -652,18 +620,14 @@
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "Link"
-          ]
+          "component_whitelist": ["Link"]
         },
         "ctaSecondary": {
           "type": "bloks",
           "required": false,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "Link"
-          ]
+          "component_whitelist": ["Link"]
         }
       },
       "image": null,
@@ -852,9 +816,7 @@
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "menu_link"
-          ]
+          "component_whitelist": ["menu_link"]
         }
       },
       "image": null,
@@ -900,9 +862,7 @@
           "required": false,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "menu_link"
-          ],
+          "component_whitelist": ["menu_link"],
           "component_group_whitelist": []
         }
       },
@@ -968,9 +928,7 @@
           "type": "asset",
           "required": true,
           "display_name": "image",
-          "filetypes": [
-            "images"
-          ],
+          "filetypes": ["images"],
           "asset_folder_id": null
         },
         "caption": {
@@ -1050,11 +1008,7 @@
         },
         "coordinates": {
           "type": "section",
-          "keys": [
-            "longitude",
-            "latitude",
-            "zoom"
-          ]
+          "keys": ["longitude", "latitude", "zoom"]
         },
         "longitude": {
           "type": "text",
@@ -1175,15 +1129,11 @@
           "type": "option",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "person"
-          ],
+          "component_whitelist": ["person"],
           "use_uuid": true,
           "required": true,
           "source": "internal_stories",
-          "filter_content_type": [
-            "person"
-          ]
+          "filter_content_type": ["person"]
         }
       },
       "image": null,
@@ -1394,9 +1344,7 @@
           "type": "bloks",
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "feature"
-          ],
+          "component_whitelist": ["feature"],
           "pos": 2,
           "key": "relatedCase"
         },
@@ -1404,9 +1352,7 @@
           "type": "option",
           "use_uuid": true,
           "source": "internal_stories",
-          "filter_content_type": [
-            "person"
-          ],
+          "filter_content_type": ["person"],
           "key": "person",
           "pos": 3
         }
@@ -1441,9 +1387,7 @@
           "required": true,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "hero_start"
-          ],
+          "component_whitelist": ["hero_start"],
           "id": "qc_m8cu9SsyWmWKLJcZyjQ"
         },
         "body": {

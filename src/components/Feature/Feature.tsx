@@ -43,7 +43,9 @@ function FeatureSection({
       >
         <div className='w-full sm:w-4/5 md:w-1/2'>
           {title && (
-            <h3 className='text-xxl lg:text-Jumbo/md font-bold my-4'>{title}</h3>
+            <h3 className='text-xxl lg:text-Jumbo/md font-bold my-4'>
+              {title}
+            </h3>
           )}
           <p className='mb-5 text-md lg:text-1.1xl'>{body}</p>
           <div className='flex flex-wrap gap-2'>
@@ -52,7 +54,6 @@ function FeatureSection({
                 variant='primary'
                 href={firstButton.url}
                 size={isDesktop ? 'medium' : 'small'}
-                element='button'
               >
                 {firstButton.text}
               </Button>

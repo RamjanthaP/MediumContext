@@ -3,7 +3,6 @@ import { expect, test } from '@playwright/test';
 test.describe('Lets you get to all pages from navigation', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
-    test.slow();
   });
 
   test('navigates to the page "Om Amaceit"', async ({ page }) => {
@@ -25,7 +24,11 @@ test.describe('Lets you get to all pages from navigation', () => {
   test('navigates to the page "Tjänster"', async ({ page }) => {
     await page.getByRole('link', { name: /Tjänster/ }).hover();
     await page.getByRole('link', { name: /Tjänster/ }).click();
-    await expect(page.getByRole('heading', { name: 'Nyckelfärdiga lösningar och expertkompetens inom' })).toBeVisible();
+    await expect(
+      page.getByRole('heading', {
+        name: 'Nyckelfärdiga lösningar och expertkompetens inom',
+      })
+    ).toBeVisible();
     await expect(page).toHaveURL('/services');
   });
 
@@ -42,8 +45,14 @@ test.describe('Lets you get to all pages from navigation', () => {
 test.describe('Lets you navigate to home by clicking logo', () => {
   test('Click on logo takes user home', async ({ page }) => {
     await page.goto('/kontakta-oss');
-    await page.locator('a').first().hover();
-    await page.locator('a').first().click();
+    await page
+      .getByRole('img', { name: /Amaceit logo/ })
+      .first()
+      .hover();
+    await page
+      .getByRole('img', { name: /Amaceit logo/ })
+      .first()
+      .click();
     await expect(page).toHaveURL('/');
   });
 });

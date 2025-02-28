@@ -53,7 +53,6 @@ const OfficeCard = ({
       </div>
       <div className='block md:hidden'>
         <Button
-          element='Link'
           variant='default'
           className='text-sm md:hidden'
           size='small'

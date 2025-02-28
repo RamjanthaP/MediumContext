@@ -44,7 +44,6 @@ const Hero = ({
               {primaryButton && (
                 <Button
                   size={isDesktop ? 'medium' : 'small'}
-                  element='Link'
                   variant='primary'
                   className='inline-block lg:px-6 py-3'
                   href={primaryButton.url}
@@ -54,7 +53,6 @@ const Hero = ({
               )}
               {secondaryButton && (
                 <Button
-                  element='Link'
                   className='inline-block'
                   transparent
                   href={secondaryButton.url}

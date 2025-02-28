@@ -21,3 +21,29 @@ steps:
     env:
       CI: 'true'
       PLAYWRIGHT_BROWSERS_PATH: $(PLAYWRIGHT_BROWSERS_PATH)
+
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+    condition: failed()
+    inputs:
+      SourceFolder: 'test-results/'
+      Contents: '**'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+  - task: ArchiveFiles@2
+    displayName: 'Zip files'
+    condition: failed()
+    inputs:
+      rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/'
+      includeRootFolder: true
+      archiveType: 'zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+      replaceExistingArchive: true
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+    condition: failed()
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+      ArtifactName: $(artifactName)
+      publishLocation: 'Container'

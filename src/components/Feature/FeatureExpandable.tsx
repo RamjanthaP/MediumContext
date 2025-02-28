@@ -58,14 +58,15 @@ function FeatureExpandable({
       >
         <div className='flex flex-col md:w-1/2 md:justify-center'>
           {title && (
-            <h3 className='text-xxl lg:text-Jumbo/md font-bold my-4'>{title}</h3>
+            <h3 className='text-xxl lg:text-Jumbo/md font-bold my-4'>
+              {title}
+            </h3>
           )}
           <p className='mb-5 text-md lg:text-1.1xl'>{body}</p>
           <div className='flex flex-wrap gap-2'>
             {expBody && (
               <Button
                 variant='primary'
-                element='button'
                 onClick={toggleExpanded}
                 size={btnSize}
                 style={{ visibility: expanded ? 'hidden' : 'visible' }}

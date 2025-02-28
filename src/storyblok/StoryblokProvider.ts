@@ -1,12 +1,8 @@
-/** 1. Tag it as a client component */
 import { apiKeyPublic } from '@/config';
 import FallbackComponent from '@/storyblok/fallback-component/Fallback';
-
-/** Import your components */
 import TemplateDefault from '@/storyblok/templates/Default';
 import TemplateService from '@/storyblok/templates/Service';
 import TemplateStart from '@/storyblok/templates/Start';
-
 import { apiPlugin, storyblokInit } from '@storyblok/react/rsc';
 
 import HeaderMenu from '@/components/Menu/HeaderMenu';
@@ -23,10 +19,10 @@ import HeroStartSb from './components/HeroStart';
 import JumbotronSb from './components/Jumbotron';
 import LogoCardSb from './components/LogoCard';
 import MapSb from './components/MapSb';
-import NewsSb from './components/News';
 import OfficeCard from './components/OfficeCard';
 import ReUseableSection from './components/ReUsableSection';
 import ServiceItemSb from './components/ServiceItems';
+import TemplateNews from './templates/News';
 
 /** 1. Tag it as a client component */
 
@@ -34,7 +30,7 @@ const components = {
   template_default: TemplateDefault,
   template_start: TemplateStart,
   template_service: TemplateService,
-  template_news: NewsSb,
+  template_news: TemplateNews,
   body: BodyBlockSb,
   feature: Feature,
   grid: GridSb,

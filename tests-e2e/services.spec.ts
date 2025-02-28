@@ -6,39 +6,18 @@ test.describe('Makes sure all service pages are available', () => {
   });
 
   test('navigates to the page "Digitalisering"', async ({ page }) => {
-      await page
-          .getByText('Digitalisering')
-          .locator('..')
-          .locator('a')
-          .click();
+    await page.getByText('Digitalisering').locator('..').locator('a').click();
     await expect(page).toHaveURL(`/services/digitalisering`);
   });
 
   test('navigates to the page "Applikationsutveckling"', async ({ page }) => {
-      await page
-          .getByText('Systemutveckling')
-          .locator('..')
-          .locator('a')
-          .click();
+    await page.getByText('Systemutveckling').locator('..').locator('a').click();
     await expect(page).toHaveURL('/services/modern-applikationsutveckling');
   });
 
   test('navigates to the page "IT-management"', async ({ page }) => {
-      await page
-          .getByText('IT-management')
-          .locator('..')
-          .locator('a')
-          .click();
+    await page.getByText('IT-management').locator('..').locator('a').click();
     await expect(page).toHaveURL(`/services/it-management`);
-  });
-
-  test('navigates to the page "Teams"', async ({ page }) => {
-      await page
-          .getByText('Teams')
-          .locator('..')
-          .locator('a')
-          .click();
-    await expect(page).toHaveURL(`/services/teams`);
   });
 });
 

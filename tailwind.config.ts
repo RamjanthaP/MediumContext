@@ -38,6 +38,12 @@ const config: Config = {
         800: '#2C2C2C',
         900: '#121212',
       },
+      debug: {
+        pink: 'pink',
+        blue: 'blue',
+        green: 'green',
+        yellow: 'yellow',
+      },
       error: '#FF0000',
       transparent: 'transparent',
       'btn-green': '#2FAB09',

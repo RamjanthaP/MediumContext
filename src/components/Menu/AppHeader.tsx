@@ -18,6 +18,7 @@ const Menu = ({ blok }: { blok: MenuStoryblok }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [preventBodySroll, setPreventBodyScroll] = useState('');
 
+  // TODO: Make this a hook
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     document.body.style.overflow = preventBodySroll;

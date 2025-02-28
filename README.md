@@ -13,7 +13,7 @@ This project is built in Next.js with Storyblok as CMS.
   - [Setup](#setup)
 - [Start developing](#start-developing)
   - [Proxy for Preview in Storyblok](#proxy-for-preview-in-storyblok)
-  - [Get types for storyblock](#get-types-for-storyblock)
+  - [Get types for storyblok](#get-types-for-storyblok)
     - [Trouble shooting](#trouble-shooting)
   - [Run Storybook (Our component library)](#run-storybook-our-component-library)
   - [Conventions](#conventions)
@@ -42,9 +42,10 @@ This project is built in Next.js with Storyblok as CMS.
 
 ## VsCode extenstions
 
-These extensions are highly recommended when working with this repo: 
-- esbenp.prettier-vscode 
-- bradlc.vscode-tailwindcss 
+These extensions are highly recommended when working with this repo:
+
+- esbenp.prettier-vscode
+- bradlc.vscode-tailwindcss
 - Playwright Test for VSCode
 
 # Start developing
@@ -58,7 +59,7 @@ In order preview things in Storyblok we need a HTTPS connection which we easily 
 3. Open a new terminal session in the working directory and run `npm run dev:proxy` in order to start the proxy server.
 4. Visit `https://localhost:3010` in order verify that the proxy is working and looks the same as `https://localhost:3000`
 
-## Get types for storyblock
+## Get types for storyblok
 
 In order to get typecomletion and type safety we are using `storyblok-generate-ts` that will translate our CMS data to types. In order to keep the codebase up to date with what we do on Storyblok we need to fetch an updated representation of the CMS data and then translate it to type definitions.
 
@@ -79,7 +80,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 If this error occurs when deploying check the terminal in the Pipelines inside Devops. There it will show why the error has occured and what is throwing it.
 
-If the error shows a playwright test failing, you can either run the tests locally or use the * *Playwright Exstenstion* * to run the tests inside vscode. 
+If the error shows a playwright test failing, you can either run the tests locally or use the \* _Playwright Exstenstion_ \* to run the tests inside vscode.
 Do this to ensure that the tests succeed before deploying.
 
 If you want to use the terminal to run the tests, use the commands below:

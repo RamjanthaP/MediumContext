@@ -1,18 +1,22 @@
 'use client';
-import { StoryblokComponent } from '@storyblok/react';
+
 import Button, { ButtonSizes } from '../Button/Button';
-import { specialItemTitle } from './AppHeader';
+
 import { MenuLinkStoryblok } from '@sb-types';
+import { StoryblokComponent } from '@storyblok/react';
+import { specialItemTitle } from './AppHeader';
+
 interface MenuItemProps {
   item: MenuLinkStoryblok;
   size?: ButtonSizes;
   closeMenu?: () => void;
+  className?: string;
 }
 
 export const MenuItem = ({
   item,
-  size = 'medium',
   closeMenu,
+  size = 'medium',
 }: MenuItemProps) => {
   if (item && item.title === specialItemTitle) {
     return (

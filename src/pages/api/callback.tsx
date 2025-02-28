@@ -20,7 +20,7 @@ export default async function callback(req: any, res: any) {
     );
 
     const { access_token: _access_token } = accessTokenResponse.data;
-  } catch (error) {
+  } catch (_error) {
     res.status(500).json({
       message: 'Error obtaining access token',
     });

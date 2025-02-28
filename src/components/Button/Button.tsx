@@ -1,4 +1,9 @@
-import React from 'react';
+import React, {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  ForwardedRef,
+  forwardRef,
+} from 'react';
 
 import Link from 'next/link';
 
@@ -7,14 +12,24 @@ import Styles from './button.module.css';
 export type ButtonSizes = keyof typeof sizeClass;
 export type ButtonColors = keyof typeof colorVariants;
 
-type ButtonProps = {
+type ButtonBaseProps = {
   variant?: ButtonColors;
   transparent?: boolean;
   children: React.ReactNode;
   size?: ButtonSizes;
-  [x: string]: any;
-  href?: string;
 };
+
+type ButtonAsButtonProps = ButtonBaseProps &
+  ButtonHTMLAttributes<HTMLButtonElement> & {
+    href?: undefined;
+  };
+
+type ButtonAsAnchorProps = ButtonBaseProps &
+  AnchorHTMLAttributes<HTMLAnchorElement> & {
+    href: string;
+  };
+
+type ButtonProps = ButtonAsButtonProps | ButtonAsAnchorProps;
 
 const colorVariants = {
   primary: {
@@ -37,50 +52,67 @@ const sizeClass = {
   large: 'px-7 py-3',
 };
 
-const Button = ({
-  children,
-  href,
-  size = 'medium',
-  transparent,
-  variant = 'default',
-  ...props
-}: ButtonProps) => {
-  const baseClasses = Styles.btn;
-  const colorVariant = colorVariants[variant] || colorVariants.default;
-  const colorClass = transparent
-    ? colorVariant.transparent
-    : colorVariant.default;
+const Button = forwardRef(
+  (
+    {
+      children,
+      href,
+      size = 'medium',
+      transparent,
+      variant = 'default',
+      onClick,
+      ...props
+    }: ButtonProps,
+    ref: ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
+  ) => {
+    const baseClasses = Styles.btn;
+    const colorVariant = colorVariants[variant] || colorVariants.default;
+    const colorClass = transparent
+      ? colorVariant.transparent
+      : colorVariant.default;
 
-  const sizeClasses = sizeClass[size];
+    const sizeClasses = sizeClass[size];
 
-  const handleClick = (e: { preventDefault: () => void }) => {
-    if (href?.includes('#')) {
-      e.preventDefault();
-      const id = href.split('#').at(-1) as string;
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    const classes = `${baseClasses} ${colorClass} ${sizeClasses}`;
+
+    const handleClick = (
+      e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>
+    ) => {
+      if (href?.includes('#')) {
+        e.preventDefault();
+        const id = href.split('#').at(-1) as string;
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      }
+      onClick?.(e as any);
+    };
+
+    if (href) {
+      return (
+        <Link
+          href={href}
+          {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)}
+          className={classes}
+          onClick={handleClick}
+          ref={ref as ForwardedRef<HTMLAnchorElement>}
+        >
+          {children}
+        </Link>
+      );
     }
-    if (props.onClick) props.onClick();
-  };
 
-  if (href)
     return (
-      <Link
-        className={`${baseClasses} ${colorClass} ${sizeClasses}`}
-        href={href || '#'}
+      <button
+        {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}
+        className={classes}
         onClick={handleClick}
+        ref={ref as ForwardedRef<HTMLButtonElement>}
       >
         {children}
-      </Link>
+      </button>
     );
+  }
+);
 
-  return (
-    <button
-      className={`${baseClasses} ${colorClass} ${sizeClasses}`}
-      {...props}
-    >
-      {children}
-    </button>
-  );
-};
+Button.displayName = 'Button';
 
 export default Button;

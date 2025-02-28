@@ -26,7 +26,7 @@ export default function NotFound() {
               (och vi har slarvat med redirecten. Ber om ursäkt i så fall. 😅).
             </p>
             <div className='mx-auto'>
-              <Button variant='default' transparent href='/' element='Link'>
+              <Button variant='default' transparent href='/'>
                 <ArrowLeftIcon className='inline-block h-4 mr-1' />
                 Gå till start
               </Button>

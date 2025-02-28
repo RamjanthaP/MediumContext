@@ -1,0 +1,13 @@
+.zoomOnHover {
+  transition: border 200ms;
+  border: transparent 1px solid;
+}
+
+.zoomOnHover img {
+  transition: all 500ms;
+  transform: scale(1);
+}
+.zoomOnHover:hover img,
+.zoomOnHover:focus-within img {
+  transform: scale(1.1);
+}

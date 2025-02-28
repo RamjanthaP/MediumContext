@@ -113,3 +113,12 @@ body {
   color: var(--themed-inverted-background) !important;
   font-size: 20px !important;
 }
+
+input:focus,
+a:focus,
+button:focus,
+textarea:focus {
+  outline-width: 2px;
+  outline-color: theme('colors.primary.500');
+  outline-style: solid;
+}

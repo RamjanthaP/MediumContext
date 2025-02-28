@@ -6,7 +6,9 @@ function Amaceit(props: { className?: string }) {
       className={`${props.className} custom-svg`}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 841 158'
+      role='img'
     >
+      <title>Amaceit logo</title>
       <path
         fill='#51B463'
         fillRule='evenodd'

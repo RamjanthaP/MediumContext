@@ -1,11 +1,10 @@
-import { getPage } from '@/api/pages';
-import { ISbStoryData } from '@storyblok/react';
-import StoryblokStory from '@storyblok/react/story';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 
-import { conformPathParams } from '@/utilities/helper';
-
 import { HeadMetadata } from '../utilities/HeadMetadata';
+import { ISbStoryData } from '@storyblok/react';
+import StoryblokStory from '@storyblok/react/story';
+import { conformPathParams } from '@/utilities/helper';
+import { getPage } from '@/api/pages';
 
 interface PageProps {
   isHome: boolean;
@@ -43,9 +42,9 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (
   } catch (error) {
     return {
       redirect: {
-        destination: '/not-found', 
+        destination: '/not-found',
         permanent: false,
       },
-};
+    };
   }
 };

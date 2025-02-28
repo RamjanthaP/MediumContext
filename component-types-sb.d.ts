@@ -41,6 +41,7 @@ export interface CarouselStoryblok {
     | NewsStoryblok
     | NoValidationStoryblok
     | OfficesStoryblok
+    | OnelineTextStoryblok
     | PersonStoryblok
     | QuickContactStoryblok
     | RequiredStoryblok
@@ -74,13 +75,20 @@ export interface EmailStoryblok {
 }
 
 export interface AssetStoryblok {
-  alt?: string;
-  copyright?: string;
+  _uid?: string;
   id: number;
-  filename: string;
+  alt?: string;
   name: string;
-  title?: string;
   focus?: string;
+  source?: string;
+  title?: string;
+  filename: string;
+  copyright?: string;
+  fieldtype?: string;
+  meta_data?: null | {
+    [k: string]: any;
+  };
+  is_external_url?: boolean;
   [k: string]: any;
 }
 
@@ -124,6 +132,7 @@ export interface FormStoryblok {
     | NewsStoryblok
     | NoValidationStoryblok
     | OfficesStoryblok
+    | OnelineTextStoryblok
     | PersonStoryblok
     | QuickContactStoryblok
     | RequiredStoryblok
@@ -185,6 +194,7 @@ export interface GridStoryblok {
     | NewsStoryblok
     | NoValidationStoryblok
     | OfficesStoryblok
+    | OnelineTextStoryblok
     | PersonStoryblok
     | QuickContactStoryblok
     | RequiredStoryblok
@@ -217,9 +227,8 @@ export interface HeroStoryblok {
 }
 
 export interface HeroStartStoryblok {
-  headLine: RichtextStoryblok;
-  video?: AssetStoryblok;
-  image?: AssetStoryblok;
+  video: AssetStoryblok;
+  animated_texts: OnelineTextStoryblok[];
   ctaPrimary?: LinkStoryblok[];
   ctaSecondary?: LinkStoryblok[];
   _uid: string;
@@ -245,35 +254,7 @@ export type MultilinkStoryblok =
       cached_url?: string;
       anchor?: string;
       linktype?: 'story';
-      story?: {
-        name: string;
-        created_at?: string;
-        published_at?: string;
-        id: number;
-        uuid: string;
-        content?: {
-          [k: string]: any;
-        };
-        slug: string;
-        full_slug: string;
-        sort_by_date?: null | string;
-        position?: number;
-        tag_list?: string[];
-        is_startpage?: boolean;
-        parent_id?: null | number;
-        meta_data?: null | {
-          [k: string]: any;
-        };
-        group_id?: string;
-        first_published_at?: string;
-        release_id?: null | number;
-        lang?: string;
-        path?: null | string;
-        alternates?: any[];
-        default_full_slug?: null | string;
-        translated_slugs?: null | any[];
-        [k: string]: any;
-      };
+      target?: '_self' | '_blank';
       [k: string]: any;
     }
   | {
@@ -281,11 +262,13 @@ export type MultilinkStoryblok =
       cached_url?: string;
       anchor?: string;
       linktype?: 'asset' | 'url';
+      target?: '_self' | '_blank';
       [k: string]: any;
     }
   | {
       email?: string;
       linktype?: 'email';
+      target?: '_self' | '_blank';
       [k: string]: any;
     };
 
@@ -383,6 +366,13 @@ export interface OfficesStoryblok {
   [k: string]: any;
 }
 
+export interface OnelineTextStoryblok {
+  Text: string;
+  _uid: string;
+  component: 'OnelineText';
+  [k: string]: any;
+}
+
 export interface PersonStoryblok {
   name: string;
   role?: string;
@@ -455,52 +445,7 @@ export interface TemplateDefaultStoryblok {
     | NewsStoryblok
     | NoValidationStoryblok
     | OfficesStoryblok
-    | PersonStoryblok
-    | QuickContactStoryblok
-    | RequiredStoryblok
-    | ReUsableSectionStoryblok
-    | ServiceItemsStoryblok
-    | TemplateDefaultStoryblok
-    | TemplateStartStoryblok
-    | TemplateNewsStoryblok
-    | TemplateServiceStoryblok
-    | TestStoryblok
-    | TestimonalStoryblok
-    | UrlStoryblok
-  )[];
-  _uid: string;
-  component: 'template_default';
-  [k: string]: any;
-}
-
-export interface TemplateStartStoryblok {
-  StartHero?:
-    | GridStoryblok
-    | HeroStoryblok
-    | HeroStartStoryblok
-    | LinkStoryblok;
-  body?: (
-    | BodyStoryblok
-    | CarouselStoryblok
-    | ContactFooterStoryblok
-    | EmailStoryblok
-    | FeatureStoryblok
-    | FormStoryblok
-    | FormInputsStoryblok
-    | GridStoryblok
-    | HeroStoryblok
-    | HeroStartStoryblok
-    | JumbotronStoryblok
-    | LinkStoryblok
-    | LogoCardStoryblok
-    | MapBlockStoryblok
-    | MaximumLengthStoryblok
-    | MenuStoryblok
-    | MenuLinkStoryblok
-    | MinimumLengthStoryblok
-    | NewsStoryblok
-    | NoValidationStoryblok
-    | OfficesStoryblok
+    | OnelineTextStoryblok
     | PersonStoryblok
     | QuickContactStoryblok
     | RequiredStoryblok
@@ -542,6 +487,7 @@ export interface TemplateNewsStoryblok {
     | NewsStoryblok
     | NoValidationStoryblok
     | OfficesStoryblok
+    | OnelineTextStoryblok
     | PersonStoryblok
     | QuickContactStoryblok
     | RequiredStoryblok
@@ -566,6 +512,49 @@ export interface TemplateServiceStoryblok {
   contact_person?: StoryblokStory<PersonStoryblok> | string;
   _uid: string;
   component: 'template_service';
+  [k: string]: any;
+}
+
+export interface TemplateStartStoryblok {
+  StartHero: HeroStartStoryblok[];
+  body?: (
+    | BodyStoryblok
+    | CarouselStoryblok
+    | ContactFooterStoryblok
+    | EmailStoryblok
+    | FeatureStoryblok
+    | FormStoryblok
+    | FormInputsStoryblok
+    | GridStoryblok
+    | HeroStoryblok
+    | HeroStartStoryblok
+    | JumbotronStoryblok
+    | LinkStoryblok
+    | LogoCardStoryblok
+    | MapBlockStoryblok
+    | MaximumLengthStoryblok
+    | MenuStoryblok
+    | MenuLinkStoryblok
+    | MinimumLengthStoryblok
+    | NewsStoryblok
+    | NoValidationStoryblok
+    | OfficesStoryblok
+    | OnelineTextStoryblok
+    | PersonStoryblok
+    | QuickContactStoryblok
+    | RequiredStoryblok
+    | ReUsableSectionStoryblok
+    | ServiceItemsStoryblok
+    | TemplateDefaultStoryblok
+    | TemplateNewsStoryblok
+    | TemplateServiceStoryblok
+    | TemplateStartStoryblok
+    | TestStoryblok
+    | TestimonalStoryblok
+    | UrlStoryblok
+  )[];
+  _uid: string;
+  component: 'template_start';
   [k: string]: any;
 }
 

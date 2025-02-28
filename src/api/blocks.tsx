@@ -4,11 +4,11 @@ import {
   MenuStoryblok,
 } from '@sb-types';
 
-import { revalidateTime } from './apiClient';
 import { apiClient } from './apiClient';
+import { revalidateTime } from './apiClient';
 import { StoryBlokRequest } from './types';
 
-type MenuRequest = StoryBlokRequest<MenuStoryblok>;
+export type MenuRequest = StoryBlokRequest<MenuStoryblok>;
 
 export async function getMenuData(): Promise<MenuRequest> {
   const request = await apiClient(

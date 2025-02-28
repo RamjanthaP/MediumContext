@@ -2,8 +2,8 @@ import { PersonStoryblok } from '@sb-types';
 import { ISbStories, ISbStoryData } from '@storyblok/react/rsc';
 
 import { apiClient } from './apiClient';
-import { storyblockBaseParams } from './apiClient';
 import { revalidateTime } from './apiClient';
+import { storyblokBaseParams } from './apiClient';
 import { StoryBlokRequest } from './types';
 
 export type PageRequest = StoryBlokRequest<{
@@ -14,9 +14,8 @@ export async function getPage(path: string[]): Promise<PageRequest> {
   const request = await apiClient(
     `cdn/stories/${path.join('/')}`,
     `Hittar inte sidor med slug ${path.join('/')}`,
-    { ...storyblockBaseParams, resolve_relations: 'reUsableSection.content' }
+    { ...storyblokBaseParams, resolve_relations: 'reUsableSection.content' }
   );
-
   return {
     data: {
       story: request.data.story,
@@ -38,7 +37,7 @@ export async function getServicePage(
   const request = await apiClient(
     `cdn/stories/${servicesBasePath}/${subPath}`,
     `Hittar inte sidor med slug "services/${subPath}"`,
-    { ...storyblockBaseParams, resolve_relations: ['contact_person'] }
+    { ...storyblokBaseParams, resolve_relations: ['contact_person'] }
   );
   const contact_person = request.data.rels.at(0) || null;
   return {
@@ -58,7 +57,7 @@ export const getPagesBySlugPattern = async (
   const request = await apiClient(
     'cdn/stories',
     `Hittar inte sidor med slug ${slugPattern}`,
-    { ...storyblockBaseParams, by_slugs: slugPattern }
+    { ...storyblokBaseParams, by_slugs: slugPattern }
   );
   return { data: request.data, revalidate: revalidateTime };
 };
