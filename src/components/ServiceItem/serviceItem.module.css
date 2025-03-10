@@ -1,3 +1,5 @@
+@reference "../../app/globals.css";
+
 .cardContainer {
   @apply rounded-2xl;
   @apply mb-14 mt-3;
@@ -12,7 +14,7 @@
 .cardBody h3 {
   @apply text-md font-bold uppercase text-center;
   @apply p-3;
-  background-color: rgb(116 116 116 / 41%)
+  background-color: rgb(116 116 116 / 41%);
 }
 
 .cardText {

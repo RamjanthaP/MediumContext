@@ -1,12 +1,9 @@
+@reference "../../app/globals.css";
 
 .rt p {
-  @apply mb-2
+  @apply mb-2;
 }
 
-.rt ul { 
- @apply list-disc px-6 py-4
+.rt ul {
+  @apply list-disc px-6 py-4;
 }
-
-
-
-

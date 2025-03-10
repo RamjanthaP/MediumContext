@@ -1,3 +1,5 @@
+@reference "../../../app/globals.css";
+
 .label {
   @apply my-1 mx-6 text-md font-semibold;
 }
@@ -5,7 +7,7 @@
   @apply border-2 focus:outline-none;
   @apply py-3 px-6;
   @apply rounded-2xl;
-  @apply text-lg !important;
+  @apply !text-lg;
   @apply disabled:bg-secondary-200 disabled:cursor-not-allowed disabled:opacity-50;
 }
 .errorMessage {

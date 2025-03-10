@@ -2,6 +2,8 @@
 * TODO: Move all variables to here
 */
 /* Base button styles */
+@reference "../../app/globals.css";
+
 .btn {
   @apply text-left inline-flex flex-grow-0 gap-x-0.5 items-center rounded-full border-2;
 }

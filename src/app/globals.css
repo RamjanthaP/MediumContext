@@ -1,6 +1,24 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@config '../../tailwind.config.ts';
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -11,15 +29,14 @@
   --opacity-20-dark-rgb: 0, 0, 0, 0.2;
 
   --green-hover-rgb: 47, 171, 9, 0.2;
+  --primary-color: var(--color-primary-650);
+  --primary-hover-color: var(--color-primary-500);
+  --primary-active-color: var(--color-primary-650);
+  --primary-transparent-hover: var(--color-primary-700);
+  --primary-transparent-active: var(--color-primary-500);
 
-  --primary-color: theme('colors.primary.650');
-  --primary-hover-color: theme('colors.primary.500');
-  --primary-active-color: theme('colors.primary.650');
-  --primary-transparent-hover: theme('colors.primary.700');
-  --primary-transparent-active: theme('colors.primary.500');
-
-  --white-active-bg-color: theme('colors.secondary.100');
-  --black-active-solid-color: theme('colors.secondary.800');
+  --white-active-bg-color: var(--color-secondary-100);
+  --black-active-solid-color: var(--color-secondary-800);
 
   --themed-discrete-foreground-rgb: 33, 33, 33;
   --themed-discrete-background-rgb: 244, 244, 244;
@@ -37,6 +54,38 @@
   --themed-discrete-background: rgb(var(--themed-discrete-background-rgb));
   /* Filter for svg */
   --filter-light: invert(0%);
+}
+
+@theme {
+  --color-black: #1c1c1c;
+  --color-white: FFFFFF;
+  --color-primary: #75bc5c; /* Logo Green === 400 */
+  --color-primary-50: #f5faf3;
+  --color-primary-100: #e8f6e2;
+  --color-primary-200: #d1ebc7;
+  --color-primary-300: #abda9b;
+  --color-primary-400: #75bc5c;
+  --color-primary-500: #5ba542;
+  --color-primary-600: #488732;
+  --color-primary-650: #47812c;
+  --color-primary-700: #3b6b2a;
+  --color-primary-800: #315526;
+  --color-primary-900: #284720;
+  --color-secondary-50: #ffffff;
+  --color-secondary-100: #f5f5f5;
+  --color-secondary-200: #e0e0e0;
+  --color-secondary-300: #bdbdbd;
+  --color-secondary-400: #9e9e9e;
+  --color-secondary-500: #7e7e7e;
+  --color-secondary-600: #616161;
+  --color-secondary-700: #424242;
+  --color-secondary-800: #2c2c2c;
+  --color-secondary-900: #121212;
+  --color-error: #ff0000;
+  --color-transparent: transparent;
+  --color-btn-green: #2fab09;
+  --color-btn-white: #ffffff;
+  --color-btn-black: #1c1c1c;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -82,6 +131,10 @@ body {
 }
 .bg-discrete {
   background: var(--themed-discrete-background);
+}
+
+.bg-opacity-10 {
+  --tw-bg-opacity: 0.1;
 }
 
 /* Filter to elements with the .custom-filter class */

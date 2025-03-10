@@ -102,7 +102,7 @@ export default function Form({ blok }: FormStoryblok) {
             className='inline-grid border-transparent appearance-none'
           />
           {formError && (
-            <p className='text-error p-4 rounded bg-error bg-opacity-10'>
+            <p className='text-error p-4 rounded-sm bg-error bg-opacity-10'>
               {formError}
             </p>
           )}

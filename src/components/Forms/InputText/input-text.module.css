@@ -1,3 +1,5 @@
+@reference "../../../app/globals.css";
+
 .label {
   @apply my-1 mx-6 text-sm font-semibold;
 }

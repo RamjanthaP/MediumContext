@@ -1,6 +1,3 @@
-import tailwindConfig from '@/../tailwind.config';
-import resolveConfig from 'tailwindcss/resolveConfig';
-
 import styles from './breakpoint-indicator.module.css';
 
 /**
@@ -10,9 +7,6 @@ import styles from './breakpoint-indicator.module.css';
  */
 export function BreakpointIndicator() {
   const breakpoints = ['sm', 'md', 'lg', 'xl', '2xl'];
-  const fullConfig = resolveConfig(tailwindConfig);
-  const getScreenValue = (bp: string) =>
-    (fullConfig.theme.screens as any)[bp] || '0px';
 
   return (
     <div className={styles.breakpointIndicator}>
@@ -29,9 +23,7 @@ export function BreakpointIndicator() {
         `}
         >
           <span>{bp}</span>
-          <span style={{ fontSize: '0.8em', marginLeft: '.5rem' }}>
-            ({getScreenValue(bp)})
-          </span>
+          <span style={{ fontSize: '0.8em', marginLeft: '.5rem' }}>({bp})</span>
         </div>
       ))}
     </div>

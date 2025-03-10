@@ -4,10 +4,6 @@ import plugin from 'tailwindcss/plugin';
 const config: Config = {
   darkMode: 'class', // Trigger darkmode by class, until we got things in
   content: ['./src/**/*.{tsx,mdx}'],
-  safelist: [
-    { pattern: /^[wh]-(24|32|44)$/ },
-    { pattern: /^(dark:)?bg-(white|black|gray|primary|secondary)(-[1-9]0+)?$/ },
-  ],
   theme: {
     colors: {
       black: '#131313',
@@ -80,6 +76,7 @@ const config: Config = {
       btn: '0.75vw',
     },
     fontWeight: {
+      semilight: '300',
       normal: '400',
       semibold: '600',
       bold: '700',

@@ -10,7 +10,7 @@ export interface OfficeItemProps extends BaseProps {
 }
 export const OfficeItem = ({ title, address, className }: OfficeItemProps) => (
   <div
-    className={`flex-grow ${className}`}
+    className={`grow ${className}`}
     itemScope
     itemType="https://schema.org/LocalBusiness"
   >

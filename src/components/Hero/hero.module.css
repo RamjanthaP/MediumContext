@@ -1,3 +1,5 @@
+@reference "../../app/globals.css";
+
 .root {
   @apply bg-primary-100;
   @apply flex justify-center items-center;
@@ -11,13 +13,13 @@
 }
 
 .heroText h1 {
-  @apply md:text-xxl lg:text-Jumbo/md;
+  @apply md:text-xxl lg:text-3xl;
 }
 
 .heroText h2 {
   @apply text-xl md:text-xxl;
   @apply font-bold;
-  @apply mb-1 ;
+  @apply mb-1;
 }
 
 .heroText h3,
@@ -41,9 +43,8 @@
 .heroText p {
   @apply my-5;
   @apply text-lg md:text-xl;
-  font-weight: 300;
-} 
-
+  @apply font-semilight;
+}
 
 @media (prefers-color-scheme: dark) {
   .root {
