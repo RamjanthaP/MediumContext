@@ -10,7 +10,10 @@ const GridSb = ({ blok }: GridStoryblok) => {
     <div {...storyblokEditable(blok)}>
       <Grid
         {...componentData}
-        className={clsx({ ' lg:grid-cols-3': blok.title != '' })}
+        className={clsx({
+          ' lg:grid-cols-3': blok.title != '' && blok.columns.length > 2,
+          ' xl:grid-cols-4': blok.title != '' && blok.columns.length > 3,
+        })}
       />
     </div>
   );
