@@ -6,12 +6,17 @@ const connectionString =
 
 const client = new EmailClient(connectionString);
 
-async function sendMailToAzure(toEmail: string, subject: string, body: string) {
+export async function sendContactMailToAzure(
+  toEmail: string,
+  subject: string,
+  body: string
+) {
   const emailMessage = {
     senderAddress: process.env.AZURE_EMAIL_SENDER_ADDRESS,
     content: {
       subject,
-      plainText: body,
+      plainText: `email: ${toEmail}\n
+      message: ${body}`,
     },
     recipients: {
       to: [
@@ -26,4 +31,33 @@ async function sendMailToAzure(toEmail: string, subject: string, body: string) {
   return result;
 }
 
-export default sendMailToAzure;
+export async function sendCareerMailToAzure(
+  subject: string,
+  name: string,
+  toEmail: string,
+  linkedin: string,
+  github: string,
+  message: string
+) {
+  const emailMessage = {
+    senderAddress: process.env.AZURE_EMAIL_SENDER_ADDRESS,
+    content: {
+      subject,
+      plainText: `Name: ${name}\n
+      email: ${toEmail}\n
+      linkedin: ${linkedin}\n
+      github: ${github}\n
+      message: ${message}`,
+    },
+    recipients: {
+      to: [
+        { address: process.env.AZURE_EMAIL_FORM_RECIEVER_ADDRESS as string },
+      ],
+    },
+    replyTo: [{ address: toEmail }],
+  } satisfies EmailMessage;
+
+  const poller = await client.beginSend(emailMessage);
+  const result = await poller.pollUntilDone();
+  return result;
+}

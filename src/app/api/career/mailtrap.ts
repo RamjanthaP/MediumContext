@@ -3,7 +3,7 @@ import { MailtrapTransport } from 'mailtrap';
 import { MailtrapResponse } from 'mailtrap/dist/types/transport';
 import Nodemailer from 'nodemailer';
 
-import { FormData } from './route';
+import { CareerFormData } from './route';
 
 dotenv.config({
   path: process.env.CI ? '.env' : '.env.local',
@@ -24,13 +24,13 @@ const sender = {
 const recipients = ['info@amaceit.se'];
 
 export async function sendTestMail(
-  data: FormData
+  data: CareerFormData
 ): Promise<Error | MailtrapResponse> {
   return transport.sendMail({
     from: sender,
     to: recipients,
-    subject: data.subject,
-    text: data.Body,
+    subject: data.subject || `Job application: ${data.name}`,
+    text: data.message,
     category: 'Integration Test',
     sandbox: true,
   });

@@ -17,7 +17,7 @@ variables:
 
 stages:
   - stage: Build
-    displayName: Build stage
+    displayName: Build prod
     jobs:
       - job: Build
         displayName: Build
@@ -51,8 +51,8 @@ stages:
           - task: ManualValidation@0
             timeoutInMinutes: 30
             inputs:
-              notifyUsers: 'joakim.nystrom@amaceit.com' ## TODO make this a variable
-              instructions: 'Approve deploy to STAGE' ## TODO make this dynamic
+              notifyUsers: 'david.vangheel@amaceit.com' ## TODO make this a variable
+              instructions: 'Approve deploy to prod' ## TODO make this dynamic
               onTimeout: 'reject'
 
   - stage: Deploy

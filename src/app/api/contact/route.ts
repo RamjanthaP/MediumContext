@@ -1,16 +1,16 @@
-import sendMailToAzure from '@/api/mailclient';
+import { sendContactMailToAzure } from '@/api/mailclient';
 
 import { getBodyFromRequest } from '../helpers/getBodyFromRequest';
 import { sendTestMail } from './mailtrap';
 
-export interface FormData {
+export interface ContactFormData {
   email: string;
   Body: string;
   subject: string;
 }
 
 export async function POST(req: Request) {
-  const data = await getBodyFromRequest<FormData>(req);
+  const data = await getBodyFromRequest<ContactFormData>(req);
 
   if (!data.email || !data.Body || !data.subject) {
     const missingParamStack = [];
@@ -30,7 +30,11 @@ export async function POST(req: Request) {
   /** PRODUCTION */
   if (process.env.NODE_ENV === 'production') {
     try {
-      const result = await sendMailToAzure(data.email, data.subject, data.Body);
+      const result = await sendContactMailToAzure(
+        data.email,
+        data.subject,
+        data.Body
+      );
       return Response.json({
         message: 'Sending from azure.',
         status: 200,
@@ -72,5 +76,5 @@ export async function POST(req: Request) {
     });
   }
 
-  throw new Error('Unknown enviornment.');
+  throw new Error('Unknown environment.');
 }

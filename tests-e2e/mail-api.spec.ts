@@ -7,16 +7,16 @@ dotenv.config({
 });
 
 // TODO: Enable this test when we have mailtrap setup in CI
-test.describe('Checks email from api ', () => {
+test.describe('Checks email from contact ', () => {
   test('Sends a mail if all params are sent"', async ({ request }) => {
-    const response = await request.post('/api/mail', {
+    const response = await request.post('/api/contact', {
       data: { email: 'test@test.com', subject: 'test', Body: 'test' },
     });
     expect(response.status()).toBe(200);
   });
 
   test('Fails to send a mail if params are missing"', async ({ request }) => {
-    const response = await request.post('/api/mail', {
+    const response = await request.post('/api/contact', {
       data: { subject: 'test', Body: 'test' },
     });
     expect(response.status()).toBe(500);
@@ -26,11 +26,47 @@ test.describe('Checks email from api ', () => {
     request,
   }) => {
     const timestampedSubject = 'Ämne ' + Date.now().toString();
-    await request.post('/api/mail', {
+    await request.post('/api/contact', {
       data: {
         email: 'test@test.com',
         subject: timestampedSubject,
         Body: 'test',
+      },
+    });
+    const response = await checkMailtrapInbox(request);
+    const mails = await response.json();
+    const sentMailExists = mails.find(
+      (mail: any) => mail.subject === timestampedSubject
+    );
+    expect(sentMailExists).toBeTruthy();
+  });
+});
+
+test.describe('Checks email from career ', () => {
+  test('Sends a mail if all params are sent"', async ({ request }) => {
+    const response = await request.post('/api/career', {
+      data: { email: 'test@test.com', name: 'test user', message: 'test' },
+    });
+    expect(response.status()).toBe(200);
+  });
+
+  test('Fails to send a mail if params are missing"', async ({ request }) => {
+    const response = await request.post('/api/career', {
+      data: { name: 'test user', message: 'test' },
+    });
+    expect(response.status()).toBe(500);
+  });
+
+  test('Can get an email with correct subject from mailtrap', async ({
+    request,
+  }) => {
+    const timestampedSubject = 'Ämne ' + Date.now().toString();
+    await request.post('/api/career', {
+      data: {
+        email: 'test@test.com',
+        subject: timestampedSubject,
+        name: 'test user',
+        message: 'test',
       },
     });
     const response = await checkMailtrapInbox(request);
