@@ -8,8 +8,10 @@ const options = {
 };
 
 const req = https.request(options, (res) => {
+  console.log(`Status Code: ${res.statusCode}`);
 
   if (res.statusCode === 200) {
+    console.log('Smoke test passed: Application is responding');
     process.exit(0);
   } else {
     console.error('Smoke test failed: Unexpected status code');
