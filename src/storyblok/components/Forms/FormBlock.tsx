@@ -34,12 +34,22 @@ export default function Form({ blok }: FormStoryblok) {
       setIsSubmitted(true);
       return false;
     }
-
-    const formData = {
-      email: data.Email,
-      subject: 'Mail från ' + data.Name,
-      Body: data.Text,
-    };
+    let formData = {};
+    if (data.Text != undefined) {
+      formData = {
+        email: data.Email,
+        subject: 'Mail från ' + data.Name,
+        Body: data.Text,
+      };
+    } else {
+      formData = {
+        name: data.name,
+        email: data.email,
+        linkedin: data.linkedin,
+        github: data.github,
+        message: data.message,
+      };
+    }
 
     setIsLoading(true);
     const result = await fetch(blok.Endpoint, {
