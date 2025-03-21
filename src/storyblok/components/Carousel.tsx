@@ -1,23 +1,25 @@
+import React from 'react';
+
+import { storyblokEditable } from '@storyblok/react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
+
 import PageSection from '@/components/PageSection/PageSection';
 import TestimonialCard from '@/components/TestimonialCard/TestimonialCard';
-import { storyblokEditable } from '@storyblok/react';
-import React from 'react'
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 interface CarouselSbProps {
-  _uid: string,
-  Title: string
+  _uid: string;
+  Title: string;
   items: Array<{
-    Name?: string
-    _uid?: string
-    Image?: string
-    Title?: string
-    Quotes?: string
-    component?: string
-  }>
-  component: string
+    Name?: string;
+    _uid?: string;
+    Image?: string;
+    Title?: string;
+    Quotes?: string;
+    component?: string;
+  }>;
+  component: string;
   [key: string]: any;
 }
 
@@ -36,11 +38,22 @@ const CarouselSb = ({ blok }: { blok: CarouselSbProps }) => {
   return (
     <div {...storyblokEditable(blok)} className='bg-discrete'>
       <div className='container'>
-        <PageSection title={blok.Title} theme="discrete">
+        <PageSection
+          title={blok.Title}
+          className='text-center'
+          theme='discrete'
+        >
           <Slider {...settings}>
-            {blok.items && blok.items.map((blok) => (
-              <TestimonialCard key={blok._uid} image={blok.Image} name={blok.Name} title={blok.Title} quote={blok.Quotes} />
-            ))}
+            {blok.items &&
+              blok.items.map((blok) => (
+                <TestimonialCard
+                  key={blok._uid}
+                  image={blok.Image}
+                  name={blok.Name}
+                  title={blok.Title}
+                  quote={blok.Quotes}
+                />
+              ))}
           </Slider>
         </PageSection>
       </div>
@@ -48,4 +61,3 @@ const CarouselSb = ({ blok }: { blok: CarouselSbProps }) => {
   );
 };
 export default CarouselSb;
-
