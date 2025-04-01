@@ -1,16 +1,19 @@
 'use client';
 
-import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+
+import Link from 'next/link';
+
+import { getMenuData } from '@/api/blocks';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { MenuLinkStoryblok } from '@sb-types';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import Amaceit from '@/components/Logo/Amaceit';
 import { DesktopMenu } from '@/components/Menu/DesktopMenu';
-import Link from 'next/link';
+
 import { MenuItem } from '../Menu/MenuItem';
-import { MenuLinkStoryblok, } from '@sb-types';
 import { MobileMenu } from '../Menu/MobileMenu';
-import { getMenuData } from '@/api/blocks';
-import { useState } from 'react';
 import { useStickyContext } from './StickyHeaderContext';
 
 const MotionMobileMenu = motion(MobileMenu);
@@ -22,19 +25,24 @@ export const specialItemTitle = 'Kontakta oss';
 
 const HeaderSticky = () => {
   const [menuData, setMenuData] = useState<null | MenuLinkStoryblok[]>(null);
-  const { isSticky, displayHeaderLogo, refHeader } = useStickyContext()
+  const { isSticky, displayHeaderLogo, refHeader } = useStickyContext();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   useState(() => {
     const init = async () => {
       const menyRequest = await getMenuData();
-      setMenuData(menyRequest.data.content.header_menu)
-
-    }
+      setMenuData(menyRequest.data.content.header_menu);
+    };
     init();
-  })
+  });
+
+  useEffect(() => {
+    isMenuOpen
+      ? (document.body.style.overflow = 'hidden')
+      : (document.body.style.overflow = '');
+  }, [isMenuOpen]);
 
   if (!menuData) {
-    return <p>Loading</p>
+    return <p>Loading</p>;
   }
 
   const menuItems =
@@ -46,15 +54,14 @@ const HeaderSticky = () => {
     (item: MenuLinkStoryblok) => item.title === specialItemTitle
   );
 
-
   return (
     <header
       ref={refHeader}
-      className={`w-full bg-default transition-colors duration-300 ${isSticky ? 'fixed top-0 left-0 right-0 z-50 shadow-md' : ''
-        }`}
+      className={`w-full bg-default transition-colors duration-300 ${
+        isSticky ? 'fixed top-0 left-0 right-0 z-50 shadow-md' : ''
+      }`}
     >
       <div className='container mx-auto px-4 md:px-8 py-2 flex items-center justify-between'>
-
         {displayHeaderLogo && (
           <MotionLink
             href={'/'}
@@ -72,8 +79,9 @@ const HeaderSticky = () => {
         )}
 
         <nav
-          className={`${isMenuOpen ? 'block' : 'hidden'
-            } md:block absolute top-full left-0 md:static md:w-auto z-50 justify-end flex-1 `}
+          className={`${
+            isMenuOpen ? 'block' : 'hidden'
+          } md:block absolute top-full left-0 md:static md:w-auto z-50 justify-end flex-1 `}
         >
           <DesktopMenu menuItems={menuItems} specialItem={specialItem} />
         </nav>
@@ -137,7 +145,7 @@ const HeaderSticky = () => {
       </div>
     </header>
   );
-}
+};
 
-HeaderSticky.displayName = 'HeaderSticky'
-export { HeaderSticky }
+HeaderSticky.displayName = 'HeaderSticky';
+export { HeaderSticky };
