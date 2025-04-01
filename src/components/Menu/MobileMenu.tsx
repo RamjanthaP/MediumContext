@@ -1,10 +1,10 @@
 'use client';
 
-import { AnimatePresence, motion } from 'framer-motion';
+import { forwardRef } from 'react';
+
+import type { MenuLinkStoryblok } from '@sb-types';
 
 import { MenuItem } from './MenuItem';
-import type { MenuLinkStoryblok } from '@sb-types';
-import { forwardRef } from 'react';
 
 interface MobileMenuProps {
   menuItems: MenuLinkStoryblok[];
@@ -22,22 +22,9 @@ const MobileMenu = forwardRef<HTMLDivElement, MobileMenuProps>(
         {props.menuItems.map((item) => (
           <MenuItem key={item._uid} item={item} closeMenu={props.closeMenu} />
         ))}
-        <AnimatePresence>
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0, opacity: 0 }}
-          >
-            <MenuItem
-              size='small'
-              item={props.specialItem}
-              closeMenu={props.closeMenu}
-            />
-          </motion.div>
-        </AnimatePresence>
       </div>
     );
   }
 );
-MobileMenu.displayName = 'MobileMenu'
-export { MobileMenu }
+MobileMenu.displayName = 'MobileMenu';
+export { MobileMenu };
