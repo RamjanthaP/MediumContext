@@ -17,8 +17,11 @@
 .autogrow {
   @apply grid;
 }
+/*
+Disabling this to force the text area to keep the same dimensions
 .autogrow::after {
   /* Reference: https://css--tricks-com.translate.goog/the-cleanest-trick-for-autogrowing-textareas/?_x_tr_sl=en&_x_tr_tl=sv&_x_tr_hl=sv&_x_tr_pto=sc */
+/*
   content: attr(data-replicated-value) ' ';
   white-space: pre-wrap;
   visibility: hidden;
@@ -31,7 +34,9 @@
 .autogrow > textarea,
 .autogrow::after {
   /* Identical styling required!! */
+/*
   @apply border-2 focus:outline-none;
   @apply py-2 px-6;
   grid-area: 1 / 1 / 2 / 2;
 }
+*/
