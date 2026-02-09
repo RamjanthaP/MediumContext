@@ -1,8 +1,7 @@
 import { APIRequestContext, expect, test } from '@playwright/test';
 import dotenv from 'dotenv';
 
-test.describe.configure({ mode: 'serial' });
-test.setTimeout(90_000);
+test.skip(!!process.env.CI, 'Disabled in CI due to Mailtrap rate limits');
 
 // Make our variables from our .env file available to our process
 dotenv.config({
