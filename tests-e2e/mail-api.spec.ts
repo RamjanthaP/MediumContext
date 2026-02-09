@@ -1,6 +1,8 @@
 import { APIRequestContext, expect, test } from '@playwright/test';
 import dotenv from 'dotenv';
 
+test.skip(!!process.env.CI, 'Disabled in CI due to Mailtrap rate limits');
+
 // Make our variables from our .env file available to our process
 dotenv.config({
   path: process.env.CI ? '.env' : '.env.local',
@@ -33,12 +35,10 @@ test.describe('Checks email from contact ', () => {
         Body: 'test',
       },
     });
-    const response = await checkMailtrapInbox(request);
-    const mails = await response.json();
-    const sentMailExists = mails.find(
-      (mail: any) => mail.subject === timestampedSubject
-    );
-    expect(sentMailExists).toBeTruthy();
+    const mail = await waitForMailtrapSubject(request, timestampedSubject, {
+      timeoutMs: 60_000,
+    });
+    expect(mail).toBeTruthy();
   });
 });
 
@@ -69,12 +69,10 @@ test.describe('Checks email from career ', () => {
         message: 'test',
       },
     });
-    const response = await checkMailtrapInbox(request);
-    const mails = await response.json();
-    const sentMailExists = mails.find(
-      (mail: any) => mail.subject === timestampedSubject
-    );
-    expect(sentMailExists).toBeTruthy();
+    const mail = await waitForMailtrapSubject(request, timestampedSubject, {
+      timeoutMs: 60_000,
+    });
+    expect(mail).toBeTruthy();
   });
 });
 
@@ -89,4 +87,43 @@ async function checkMailtrapInbox(requestContext: APIRequestContext) {
     },
   });
   return response;
+}
+
+async function waitForMailtrapSubject(
+  requestContext: APIRequestContext,
+  subject: string,
+  {
+    timeoutMs = 45_000,
+    intervalMs = 1_000,
+  }: { timeoutMs?: number; intervalMs?: number } = {}
+) {
+  const start = Date.now();
+  let lastSubjects: string[] = [];
+
+  while (Date.now() - start < timeoutMs) {
+    const resp = await checkMailtrapInbox(requestContext);
+
+    // If Mailtrap rate-limits or auth fails, fail with a clear error
+    if (!resp.ok()) {
+      const body = await resp.text().catch(() => '');
+      throw new Error(
+        `Mailtrap API error: ${resp.status()} ${resp.statusText()}\n${body.slice(0, 500)}`
+      );
+    }
+
+    const mails = (await resp.json()) as any[];
+    lastSubjects = (mails ?? [])
+      .map((m) => m?.subject)
+      .filter(Boolean)
+      .slice(0, 10);
+
+    const hit = (mails ?? []).find((m) => m?.subject === subject);
+    if (hit) return hit;
+
+    await new Promise((r) => setTimeout(r, intervalMs));
+  }
+
+  throw new Error(
+    `Timed out waiting for subject "${subject}". Last subjects: ${JSON.stringify(lastSubjects)}`
+  );
 }

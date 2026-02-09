@@ -11,6 +11,12 @@ const customJestConfig = {
   testEnvironment: 'jest-environment-jsdom',
   testPathIgnorePatterns: [path.join(__dirname, 'tests-e2e')], // Exclude e2e tests
   testRegex: 'test.tsx?$',
+  watchPathIgnorePatterns: [
+    "/node_modules/",
+    "/dist/",
+    "/build/",
+    "/.git/"
+  ]
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
