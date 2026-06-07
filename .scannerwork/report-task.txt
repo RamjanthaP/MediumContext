@@ -1,0 +1,7 @@
+organization=ramjanthap-1
+projectKey=RamjanthaP_MediumContext
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.89582
+dashboardUrl=https://sonarcloud.io/dashboard?id=RamjanthaP_MediumContext
+ceTaskId=AZ6j8MfD59Z-vZlOpeeb
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZ6j8MfD59Z-vZlOpeeb
